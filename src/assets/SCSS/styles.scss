@@ -1,5 +1,7 @@
 /* SCSS Main File */
 
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap');
+
 /* Vendors */
 @import "vendors/normalize";
 
@@ -8,3 +10,8 @@
 
 /* Shame */
 @import "shame";
+
+body {
+  background-color: #131313;
+  color: white !important;
+}
