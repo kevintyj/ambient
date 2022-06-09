@@ -37,7 +37,7 @@ const ColorSwatch: Component<{colorSwatch: Record<string, string>}> = ({colorSwa
 
   const SwatchBox = styled('div')`
     background-color: ${props => props.color};
-    height: auto;
+    height: 84px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -51,16 +51,25 @@ const ColorSwatch: Component<{colorSwatch: Record<string, string>}> = ({colorSwa
       font-weight: 700;
     }
     .contrast {
+      display: none;
+      opacity: 0;
       align-self: flex-start;
       width: 100%;
       color: white;
       padding: 7px;
-      padding-bottom: 20px;
     }
     .helper {
       align-self: flex-end;
+      margin-top: auto;
       width: 100%;
       padding: 7px;
+    }
+
+    &:hover {
+      .contrast {
+        display: block;
+        opacity: 1;
+      }
     }
   `
 

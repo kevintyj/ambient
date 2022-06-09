@@ -6,6 +6,7 @@ import {For} from "solid-js";
 import chroma from "chroma-js";
 import SwatchList from "./shared/components/swatchList";
 import ColorSelector from "./shared/components/colorSelector";
+import NavBar from './shared/components/navBar';
 
 export type ISwatchItem = {
   name: string;
@@ -36,8 +37,10 @@ const App: Component = () => {
     <>
       <GlobalStyles/>
 
+      <NavBar/>
+
       <Container style={{
-        "padding": `15px`
+        padding: ` 60px 16px 20px 16px`
       }}>
         <h1 style={{
           "margin-bottom": `15px`,
@@ -45,7 +48,6 @@ const App: Component = () => {
         }}>
           Color Generation Tool
         </h1>
-
 
         <ColorSelector/>
 
