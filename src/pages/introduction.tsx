@@ -54,6 +54,32 @@ const Introduction: Component = () => {
         APAC (WCAG 3 standard) values.
       </p>
       <br/>
+      <h4>
+        Contrast Ratio Labels
+      </h4>
+      <div style={{
+        display: 'flex',
+        "flex-direction": 'row',
+        "gap": '14px'
+      }}>
+        <i class="bi bi-x-circle"></i>
+        <p>
+          None of the Contrast tests pass. <strong>This color should not be used as a text color or background color in any case.</strong>
+        </p>
+        <i class="bi bi-dash-circle"></i>
+        <p>
+          Fails APCA Contrast for colored text, however, APCA Contrast test for default text colors passes. <strong>Only the recommended text color should be used with the background.</strong>
+        </p>
+        <i class="bi bi-exclamation-circle"></i>
+        <p>
+          Passes APCA Contrast for both colored text and default text colors, however, WCAG 2 contrast tests fail. <strong>The color text combination can be used as well as the recommended text color.</strong>
+        </p>
+        <i class="bi bi-check2-circle"></i>
+        <p>
+          Passes all APCA and WCAG Contrast tests. <strong>The color text combination can be used as well as the recommended text color.</strong>
+        </p>
+      </div>
+      <br/>
     </>
   )
 

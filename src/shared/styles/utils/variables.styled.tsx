@@ -24,7 +24,7 @@ const BLACK: string = '#000';
 
 const COLOR_SCALE = {
   PRIMARY: '#0066FF',
-  COMPLETE: '#3DAAAD',
+  COMPLETE: '#379498',
   SUCCESS: '#1AA35E',
   WARNING: '#ffcf37',
   DANGER: '#F12B56',

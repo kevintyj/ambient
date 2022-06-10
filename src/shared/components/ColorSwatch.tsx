@@ -2,7 +2,7 @@ import type {Component} from "solid-js";
 import {For} from "solid-js";
 import {ISwatchItem} from "../../App";
 import {styled} from "solid-styled-components";
-import {chunk, forEach} from 'lodash';
+import {chunk, forEach, max} from 'lodash';
 import chroma from "chroma-js";
 import { calcMaxAPCA, calcMaxWCAG } from "../styles/functions/contrastcalc";
 
@@ -22,6 +22,24 @@ const ColorSwatch: Component<{colorSwatch: Record<string, string>}> = ({colorSwa
     }, () => {
       /* clipboard write failed */
     })
+  }
+
+  const calculateContrast = (swatch: {[p: string]: string;}[], textDefault: {[p: string]: string}[], bg: string) => {
+    const MaxWCAG = Number(calcMaxWCAG(swatch, bg)[0]);
+    const MaxAPCA = Number(calcMaxAPCA(swatch, bg)[0]);
+    const MaxTextWCAG = Number(calcMaxWCAG(textDefault, bg)[0]);
+    const MaxTextAPCA = Number(calcMaxAPCA(textDefault, bg)[0]);
+
+    if (MaxTextWCAG < 4.5 || MaxWCAG < 4.5) {
+      if (MaxTextAPCA < 60) {
+        return (<i class="bi bi-x-circle"></i>);
+      } if (MaxAPCA < 60) {
+        return (<i class="bi bi-dash-circle"></i>);
+      }
+      return (<i class="bi bi-exclamation-circle"></i>);
+    }
+    
+    return (<i class="bi bi-check2-circle"></i>);
   }
 
   const textArry: Array<Record<string, string>> = [
@@ -44,6 +62,12 @@ const ColorSwatch: Component<{colorSwatch: Record<string, string>}> = ({colorSwa
     padding: 5px 0;
   `
 
+  const ContrastPassFail = styled('div')`
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  `
+
   const SwatchBox = styled('div')`
     background-color: ${props => props.color};
     height: 84px;
@@ -52,6 +76,7 @@ const ColorSwatch: Component<{colorSwatch: Record<string, string>}> = ({colorSwa
     flex-direction: column;
     overflow: hidden;
     padding: 8px 10px;
+    position: relative;
 
     p {
       color: ${props => calcMaxAPCA(textArry, props.color ? props.color : textArry[1].BLACK)[2]} !important;
@@ -102,6 +127,11 @@ const ColorSwatch: Component<{colorSwatch: Record<string, string>}> = ({colorSwa
                 width: j() == 3 ? '15%' : 'auto',
                 'border-radius': j() == 3 ? '4px' : '3px'
               }} onClick={() => copy(Object.values(obj)[0])}>
+                <ContrastPassFail style={{
+                    color: calcMaxAPCA(textArry, Object.values(obj)[0])[2]
+                  }}>
+                  {calculateContrast(splitChunks[i()], textArry, Object.values(obj)[0])}
+                </ContrastPassFail>
                 <p class="contrast">
                   <object style={{
                     color: calcMaxWCAG(splitChunks[i()], Object.values(obj)[0])[2]
