@@ -42,6 +42,20 @@ const GlobalStyles = createGlobalStyle`
     font: 18px/24px ${Base.TEXT_FONT_STACK};
     letter-spacing: +0.15px;
   }
+
+  p, a {
+    font: 12px/18px ${Base.CODE_FONT_STACK};
+    letter-spacing: -0.45px;
+  }
+
+  strong {
+    font-weight: bold !important;
+  }
+
+  a {
+    cursor: pointer;
+    font-weight: bold !important;
+  }
 `
 
 export default GlobalStyles;

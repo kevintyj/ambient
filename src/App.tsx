@@ -7,6 +7,7 @@ import chroma from "chroma-js";
 import SwatchList from "./shared/components/swatchList";
 import ColorSelector from "./shared/components/colorSelector";
 import NavBar from './shared/components/navBar';
+import Introduction from './shared/components/introduction';
 
 export type ISwatchItem = {
   name: string;
@@ -42,12 +43,7 @@ const App: Component = () => {
       <Container style={{
         padding: ` 60px 16px 20px 16px`
       }}>
-        <h1 style={{
-          "margin-bottom": `15px`,
-          "margin-top": `20px`
-        }}>
-          Color Generation Tool
-        </h1>
+        <Introduction/>
 
         <ColorSelector/>
 

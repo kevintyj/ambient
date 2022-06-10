@@ -42,10 +42,13 @@ const ColorSwatch: Component<{colorSwatch: Record<string, string>}> = ({colorSwa
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    padding: 8px 10px;
+
     p {
       color: ${props => calcMaxAPCA(textArry, props.color ? props.color : '#131313')[2]} !important;
       font-size: 10px;
       font-weight: 400;
+      line-height: 12px;
     }
     strong {
       font-weight: 700;
@@ -56,13 +59,11 @@ const ColorSwatch: Component<{colorSwatch: Record<string, string>}> = ({colorSwa
       align-self: flex-start;
       width: 100%;
       color: white;
-      padding: 7px;
     }
     .helper {
       align-self: flex-end;
       margin-top: auto;
       width: 100%;
-      padding: 7px;
     }
 
     &:hover {

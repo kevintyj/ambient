@@ -13,7 +13,7 @@ import {
 export const Base = {
   TEXT_FONT_STACK: `'Inter', 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif`,
   //TEXT_FONT_STACK: `'IBM Plex Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace`,
-  CODE_FONT_STACK: `'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace`,
+  CODE_FONT_STACK: `'IBM Plex Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace`,
   MAX_WIDTH: 1180
 }
 
