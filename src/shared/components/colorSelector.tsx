@@ -4,9 +4,9 @@ const ColorSelector: Component = () => {
 
   return(
     <>
-      <h5>
+      <h4>
         Color Selector
-      </h5>
+      </h4>
     </>
   )
 

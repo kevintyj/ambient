@@ -43,7 +43,7 @@ const App: Component = () => {
       <NavBar/>
 
       <Container style={{
-        padding: `80px 16px 20px 16px`
+        padding: `70px 16px 20px 16px`
       }}>
         <Introduction/>
 

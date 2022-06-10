@@ -8,12 +8,12 @@ const Introduction: Component = () => {
         Ambient Color Generation Tool
       </h3>
       <p>
-        This tool is designed to generate <strong>contrast ready</strong> color pallets built specifically for UIUX design. Unlike other pallete generation tools,
+        This tool is designed to generate <strong>contrast ready</strong> color pallets built specifically for UIUX design. Unlike other pallette generation tools,
         Ambient generates the colors <strong>based on the primary color</strong>. Hues, saturation, and relative lightness adjustments are made automatically using
-        our <a>algoorithm</a>. These values can be adjusted by adjusting the base functions.styled.tsx file located inside the styles folder.
+        our <a>algorithm</a>. These values can be adjusted by adjusting the base functions.styled.tsx file located inside the styles folder.
         As ambient relies on the primary color for alternative color generation, primary colors <strong>must be contrast compliant</strong>. 
         Ambient displays both WACG and APCA definitions of text contrast, a 4.5:1(WACG) or 60Lc(APCA) is recommended for text contrast. Please remember that for the
-        best results, contrast in colors or differences in color should not represent meaningful information in UIUX design to prevent accesability issues. 
+        best results, contrast in colors or differences in color should not represent meaningful information in UIUX design to prevent accessability issues. 
       </p>
       <br/>
       <h4>
@@ -22,8 +22,8 @@ const Introduction: Component = () => {
       <h5>Legacy Generation Algorithm</h5>
       <p>The Legacy method of generating shades of color utilizes brightening and darkening of colors.
         This method of generating colors generates a relatively good palette for general shades, but the hue and saturation of shades generated from the primary color
-        is perceived lower. The biggest issue with simply brigthening and darkening color is that <strong>the relative difference luminance of color shades</strong> are
-        much smaller for brighter colors. For example, a shade step for a yellow color is percieved to be a lesser change compared to a darker color like blue. 
+        is perceived lower. The biggest issue with simply brightening and darkening color is that <strong>the relative difference luminance of color shades</strong> are
+        much smaller for brighter colors. For example, a shade step for a yellow color is perceived to be a lesser change compared to a darker color like blue. 
       </p>
       <br/>
       <h5>
@@ -79,6 +79,14 @@ const Introduction: Component = () => {
           Passes all APCA and WCAG Contrast tests. <strong>The color text combination can be used as well as the recommended text color.</strong>
         </p>
       </div>
+      <br/>
+      <h4>
+        Limitations
+      </h4>
+      <p>
+        The current contrast ratio is based on 4.5:1 and 60 for recommended contrast between text and background. When designing for accessibility in mind, <strong>text sizes should also be considered</strong>. 
+        Ambient does not give any recommendation for text sizes on backgrounds and the official WCAG documentation should be referred to generate a lookup table for text and background combination for text sizes.
+      </p>
       <br/>
     </>
   )
