@@ -74,7 +74,7 @@ export function colorParsley (colorIn) {
          return objArray;
        }
     }; // End if statement
-        console.log('colorParsley error: invalid input')
+        // console.log('colorParsley error: invalid input')
         return [0,0,0,0,false,'inputError'] // throw 'InvalidInput' // return error 
 };
 
@@ -305,7 +305,7 @@ function parseString (colorString = '#abcdef') {
 
   } else {
     isValid = false;
-    console.log('colorParsley error: unable to parse string')
+    // console.log('colorParsley error: unable to parse string')
     return [0,0,0,0,isValid,'parsleyError']  // throw 'InvalidString'
   }
 };

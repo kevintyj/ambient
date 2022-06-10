@@ -7,7 +7,9 @@ import chroma from "chroma-js";
 import SwatchList from "./shared/components/swatchList";
 import ColorSelector from "./shared/components/colorSelector";
 import NavBar from './shared/components/navBar';
-import Introduction from './shared/components/introduction';
+import Introduction from './pages/introduction';
+import Toast from './shared/components/toast';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 export type ISwatchItem = {
   name: string;
@@ -44,6 +46,10 @@ const App: Component = () => {
         padding: ` 60px 16px 20px 16px`
       }}>
         <Introduction/>
+
+        <Toast showExit={false} box={'#131313'}>
+          Palette Copied!
+        </Toast>
 
         <ColorSelector/>
 

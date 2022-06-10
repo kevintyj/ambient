@@ -23,11 +23,11 @@ const ColorSwatch: Component<{colorSwatch: Record<string, string>}> = ({colorSwa
     }
   ];
 
-  console.log(swatch);
-  console.log(aSwatch);
-  console.log(swatchKeys);
-  console.log(swatchLength);
-  console.log(splitChunks);
+  // console.log(swatch);
+  // console.log(aSwatch);
+  // console.log(swatchKeys);
+  // console.log(swatchLength);
+  // console.log(splitChunks);
 
   const SwatchRow = styled('div')`
     display:flex;

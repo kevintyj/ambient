@@ -34,13 +34,13 @@ export const calcMaxWCAG = (swatch: { [p: string]: string; }[], bg:string) => {
     let maxContrastSwatch: string = '';
     let maxContrastHEX: string = '';
 
-    console.log(swatch)
+    // console.log(swatch)
 
     swatch.forEach((obj: {[p: string]: string}) => {
       let currContrast = Math.abs(calcAPCA(Object.values(obj)[0], bg));
-      console.log(Object.values(obj)[0])
-      console.log(bg)
-      console.log(currContrast)
+      // console.log(Object.values(obj)[0])
+      // console.log(bg)
+      // console.log(currContrast)
       if (currContrast > maxContrast) {
         maxContrast = currContrast;
         maxContrastSwatch = Object.keys(obj)[0];
