@@ -17,6 +17,7 @@ const SwatchList: Component<{swatchList: ISwatchItem[]}> = ({swatchList}) => {
             {swatch.name}
           </h5>
           <ColorSwatch colorSwatch={swatch.swatch}/>
+          <br/>
         </>
       }</For>
     </>
