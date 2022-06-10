@@ -1,8 +1,8 @@
 import chroma from "chroma-js";
-import {Component, For} from "solid-js";
+import {Component, createEffect, createSignal, For} from "solid-js";
 import SwatchList from "../shared/components/swatchList";
 import { Container } from "../shared/styles/components/container.styled";
-import {Color, ColorMix, ColorRelative, ColorShades} from "../shared/styles/utils/variables.styled";
+import { ColorLegacy, ColorMix, ColorRelative, colorScale, ColorShades} from "../shared/styles/utils/variables.styled";
 
 export type ISwatchItem = {
   name: string;
@@ -12,28 +12,38 @@ export type ISwatchItem = {
 
 const ColorListPage: Component = () => {
 
-  const sList: Array<ISwatchItem> = [
+  const [sList, setSList] = createSignal<Array<ISwatchItem>>([
     {
       name: 'Shades Corrected (RGB)',
-      swatch: ColorShades
-    }/* , {
+      swatch: ColorShades()
+    }/*, {
       name: 'Blended (Lab Color Mix)',
-      swatch: ColorMix
+      swatch: ColorMix()
     }, {
       name: 'Relative (HSV & Relative Luminance)',
-      swatch: ColorRelative
+      swatch: ColorRelative()
     }, {
       name: 'Brighten and Darken (Legacy)',
-      swatch: Color
-    }, */
-  ]
+      swatch: ColorLegacy()
+    },*/
+  ]);
+
+  createEffect(() => {
+    console.log('master update');
+    setSList([
+      {
+        name: 'Shades Corrected (RGB)',
+        swatch: ColorShades()
+      }
+    ])
+  })
 
   return(
     <>
       <h4>
         Generated Colors
       </h4>
-      <SwatchList swatchList={sList}/>
+      <SwatchList swatchList={sList()}/>
       <Container>
         <div style={{
           // display: 'flex',
@@ -45,7 +55,7 @@ const ColorListPage: Component = () => {
             <p>
               Constant (Legacy)
             </p>
-            <For each={Object.entries(Color)}>{([key, value], i) =>
+            <For each={Object.entries(colorScale())}>{([key, value], i) =>
               <div style={{
                 background: value,
                 color: 'white',

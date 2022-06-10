@@ -1,16 +1,19 @@
 import type {Component} from "solid-js";
 import {For} from "solid-js";
-import {ISwatchItem} from "../../App";
 import {styled} from "solid-styled-components";
 import {chunk, forEach, max} from 'lodash';
 import chroma from "chroma-js";
 import { calcMaxAPCA, calcMaxWCAG } from "../styles/functions/contrastcalc";
 
-const ColorSwatch: Component<{colorSwatch: Record<string, string>}> = ({colorSwatch}) => {
+type ColorSwatchComponent<T = {}> = Component<T &{
+  colorSwatch: Record<string, string>
+}>
 
-  const swatch: Record<string, string> = colorSwatch;
-  const aSwatch: { [p: string]: string }[] = Object.entries(swatch).map(([key, value]) => ({ [key]: value }));
-  const swatchKeys: string[] = Object.keys(swatch);
+const ColorSwatch: ColorSwatchComponent = (props) => {
+
+  const swatch = () => props.colorSwatch;
+  const aSwatch: { [p: string]: string }[] = Object.entries(swatch()).map(([key, value]) => ({ [key]: value }));
+  const swatchKeys: string[] = Object.keys(swatch());
   // @ts-ignore
   const swatchLength: number = Number(swatchKeys[swatchKeys.length - 1].match(/\d+/)[0].charAt(0));
   const splitChunks = chunk(aSwatch, 7);

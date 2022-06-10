@@ -1,17 +1,25 @@
-import type {Component} from "solid-js";
+import {Component, createComputed, createEffect, createSignal} from "solid-js";
 import {For} from "solid-js";
-import {ISwatchItem} from "../../App";
-import {Color} from "../styles/utils/variables.styled";
+import { ISwatchItem } from "../../pages/colorListPage";
 import ColorSwatch from "./colorSwatch";
 
-const SwatchList: Component<{swatchList: ISwatchItem[]}> = ({swatchList}) => {
-  const sList: ISwatchItem[] = swatchList;
+type SwatchListComponent<T = {}> = Component<T & {
+    swatchList: ISwatchItem[];
+  }
+>
+
+const SwatchList: SwatchListComponent = (props) => {
+  const [sList, setSList] = createSignal(props.swatchList);
   const sListLength: number = Object.keys(sList).length;
-  const sLength: number = Object.keys(swatchList[0]).length;
+  const sLength: number = Object.keys(props.swatchList[0]).length;
+
+  createComputed(() =>{
+    setSList(props.swatchList);
+  });
 
   return (
     <>
-      <For each={sList}>{(swatch, i) =>
+      <For each={sList()}>{(swatch) =>
         <>
           <h5>
             {swatch.name}

@@ -52,7 +52,7 @@ const GlobalStyles = createGlobalStyle`
     letter-spacing: +0.15px;
   }
 
-  p, a {
+  p, a, label, form, input {
     font: 12px/18px ${Base.CODE_FONT_STACK};
     letter-spacing: -0.45px;
   }

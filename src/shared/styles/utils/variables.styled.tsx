@@ -1,3 +1,4 @@
+import { createEffect, createSignal } from "solid-js";
 import {
   generatedColor,
   generatedColorMix,
@@ -22,37 +23,38 @@ export const Base = {
 const WHITE: string = '#FFF';
 const BLACK: string = '#000';
 
-const COLOR_SCALE = {
+export const [colorScale, setColorScale] = createSignal({
   PRIMARY: '#0066FF',
   COMPLETE: '#379498',
   SUCCESS: '#1AA35E',
   WARNING: '#ffcf37',
   DANGER: '#F12B56',
   INFO: '#2B364C'
-}
+});
 
+export const [ColorLegacy, setColorLegacy] = createSignal<Record<string, string>>({
+  ...generatedColor(colorScale())
+});
 
-const generatedColorScales = generatedColor(COLOR_SCALE);
+export const [ColorRelative, setColorRelative] = createSignal<Record<string, string>>({
+  ...generatedColorRelative(colorScale())
+});
 
-type colorScale = {
-  [K in keyof typeof generatedColorScales]: string;
-}
+export const [ColorMix, setColorMix] = createSignal<Record<string, string>>({
+  ...generatedColorMix(colorScale())
+})
 
-export const Color: Record<string, string> = {
-  ...generatedColor(COLOR_SCALE)
-}
+export const [ColorShades, setColorShades] = createSignal<Record<string, string>>({
+  ...generatedColorMixShadeCorrected(colorScale())
+});
 
-export const ColorRelative: Record<string, string> = {
-  ...generatedColorRelative(COLOR_SCALE)
-}
-
-export const ColorMix: Record<string, string> = {
-  ...generatedColorMix(COLOR_SCALE)
-}
-
-export const ColorShades: Record<string, string> = {
-  ...generatedColorMixShadeCorrected(COLOR_SCALE)
-}
+createEffect(() => {
+  console.log('Master color tables updated');
+  setColorLegacy({...generatedColor(colorScale())});
+  setColorRelative({...generatedColorRelative(colorScale())});
+  setColorMix({...generatedColorMix(colorScale())});
+  setColorShades({...generatedColorMixShadeCorrected(colorScale())});
+})
 
 /* Grid System */
 

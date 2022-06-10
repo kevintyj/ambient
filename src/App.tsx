@@ -1,4 +1,4 @@
-import type {Component} from 'solid-js';
+import {Component, lazy} from 'solid-js';
 import GlobalStyles from "./shared/styles/base/global.styled";
 import ColorSelector from "./shared/components/colorSelector";
 import NavBar from './shared/components/navBar';
@@ -7,9 +7,12 @@ import Toast from './shared/components/toast';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import ColorListPage from './pages/colorListPage';
 import { Route, Routes } from 'solid-app-router';
-import Documentation from './pages/documentation';
 import { styled } from 'solid-styled-components';
 import { Container } from './shared/styles/components/container.styled';
+
+
+// Lazy loaded
+const Documentation = lazy(() => import('./pages/documentation'));
 
 const App: Component = () => {
 

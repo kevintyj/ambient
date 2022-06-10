@@ -1,5 +1,6 @@
 import {ParentComponent, splitProps,} from "solid-js";
 import { styled } from "solid-styled-components";
+import { ColorIdentifier } from "../styles/components/colorIdentifier.styled";
 
 type IToastProps = ParentComponent< & {
     color?: 'warning' | 'error' | 'info',
@@ -33,21 +34,14 @@ const Toast: IToastProps = (props) => {
     background-color: ${toastColor};
     border-radius: 3px;
     border: 1px solid rgba(255, 255, 255, 0.14);
-    padding: 8px 12px;
+    padding: 8px 8px;
     gap: 8px;
-  `
-
-  const ColorIdentifier = styled('div')`
-    width: 16px;
-    height: 16px;
-    border-radius: 3px;
-    background-color: ${local.box ? local.box : 'white'};
   `
 
   return(
     <ToastComponent {...others}>
       {local.box && 
-        <ColorIdentifier/>
+        <ColorIdentifier color="#0066ff"/>
       }
       <p>
       {props.children}
