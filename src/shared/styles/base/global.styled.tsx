@@ -14,32 +14,41 @@ const GlobalStyles = createGlobalStyle`
     font-family: '${Base.CODE_FONT_STACK}';
   }
 
+  h1, h2, h3, h4, h5, h6  {
+    font-weight: 600 !important;
+    margin-bottom: 6px;
+  }
+
   h1 {
-    font: 56px/56px ${Base.TEXT_FONT_STACK};
+    font: 36px/56px ${Base.TEXT_FONT_STACK};
     letter-spacing: -0.5px;
-    font-weight: 400;
   }
 
   h2{
-    font: 36px/48px ${Base.TEXT_FONT_STACK};
+    font: 28px/48px ${Base.TEXT_FONT_STACK};
   }
 
   h3{
-    font: 30px/40px ${Base.TEXT_FONT_STACK};
+    font: 24px/40px ${Base.TEXT_FONT_STACK};
   }
 
   h4 {
-    font: 24px/32px ${Base.TEXT_FONT_STACK};
+    font: 20px/32px ${Base.TEXT_FONT_STACK};
     letter-spacing: +0.15px;
   }
 
   h5 {
-    font: 21px/28px ${Base.TEXT_FONT_STACK};
+    font: 18px/28px ${Base.TEXT_FONT_STACK};
     letter-spacing: +0.15px;
   }
 
   h5 {
-    font: 18px/24px ${Base.TEXT_FONT_STACK};
+    font: 16px/24px ${Base.TEXT_FONT_STACK};
+    letter-spacing: +0.15px;
+  }
+
+  h6 {
+    font: 12px/22px ${Base.TEXT_FONT_STACK};
     letter-spacing: +0.15px;
   }
 

@@ -22,7 +22,7 @@ const App: Component = () => {
     {
       name: 'Shades Corrected (RGB)',
       swatch: ColorShades
-    }, {
+    } /*, {
       name: 'Blended (Lab Color Mix)',
       swatch: ColorMix
     }, {
@@ -31,7 +31,7 @@ const App: Component = () => {
     }, {
       name: 'Brighten and Darken (Legacy)',
       swatch: Color
-    }, 
+    }, */ 
   ]
 
 
@@ -43,7 +43,7 @@ const App: Component = () => {
       <NavBar/>
 
       <Container style={{
-        padding: ` 60px 16px 20px 16px`
+        padding: `80px 16px 20px 16px`
       }}>
         <Introduction/>
 

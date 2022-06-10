@@ -15,6 +15,7 @@ const Introduction: Component = () => {
         Ambient displays both WACG and APCA definitions of text contrast, a 4.5:1(WACG) or 60Lc(APCA) is recommended for text contrast. Please remember that for the
         best results, contrast in colors or differences in color should not represent meaningful information in UIUX design to prevent accesability issues. 
       </p>
+      <br/>
       <h4>
         Ambient Color generation Algorithm
       </h4>

@@ -15,6 +15,15 @@ const ColorSwatch: Component<{colorSwatch: Record<string, string>}> = ({colorSwa
   const swatchLength: number = Number(swatchKeys[swatchKeys.length - 1].match(/\d+/)[0].charAt(0));
   const splitChunks = chunk(aSwatch, 7);
 
+
+  const copy = (color: string) => {
+    navigator.clipboard.writeText(color).then(() => {
+      /* clipboard successfully set */
+    }, () => {
+      /* clipboard write failed */
+    })
+  }
+
   const textArry: Array<Record<string, string>> = [
     {
       WHITE: "#FFFFFF"
@@ -45,7 +54,7 @@ const ColorSwatch: Component<{colorSwatch: Record<string, string>}> = ({colorSwa
     padding: 8px 10px;
 
     p {
-      color: ${props => calcMaxAPCA(textArry, props.color ? props.color : '#131313')[2]} !important;
+      color: ${props => calcMaxAPCA(textArry, props.color ? props.color : textArry[1].BLACK)[2]} !important;
       font-size: 10px;
       font-weight: 400;
       line-height: 12px;
@@ -92,7 +101,7 @@ const ColorSwatch: Component<{colorSwatch: Record<string, string>}> = ({colorSwa
                 "flex": j() == 3 ? 'none' : '1',
                 width: j() == 3 ? '15%' : 'auto',
                 'border-radius': j() == 3 ? '4px' : '3px'
-              }}>
+              }} onClick={() => copy(Object.values(obj)[0])}>
                 <p class="contrast">
                   <object style={{
                     color: calcMaxWCAG(splitChunks[i()], Object.values(obj)[0])[2]
