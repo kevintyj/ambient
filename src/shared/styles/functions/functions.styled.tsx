@@ -13,7 +13,7 @@ import chroma from "chroma-js";
 
 const Legacy: Array<number> = [1.7, 1.3, 1.1, 1, 0.9, 0.7, 0.1];
 const Relative: Array<number> = [1.3, 1.2, 1.1, 1, 0.9, 0.6, 0.5];
-const Shades: Array<number> = [0.5, 0.6, 0.9, 1, 1.1, 1.4, 1.5];
+const Shades: Array<number> = [0.4, 0.6, 0.9, 1, 1.1, 1.4, 1.6];
 
 /* Manual generation of color */
 export const generatedColor = (scale: Record<string,string>) => {

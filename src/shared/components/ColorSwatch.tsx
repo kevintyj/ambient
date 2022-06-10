@@ -81,11 +81,7 @@ const ColorSwatch: Component<{colorSwatch: Record<string, string>}> = ({colorSwa
     p {
       color: ${props => calcMaxAPCA(textArry, props.color ? props.color : textArry[1].BLACK)[2]} !important;
       font-size: 10px;
-      font-weight: 400;
       line-height: 12px;
-    }
-    strong {
-      font-weight: 700;
     }
     .contrast {
       display: none;

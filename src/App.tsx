@@ -1,38 +1,21 @@
 import type {Component} from 'solid-js';
 import GlobalStyles from "./shared/styles/base/global.styled";
-import {Container} from "./shared/styles/components/container.styled";
-import {Color, ColorMix, ColorRelative, ColorShades} from "./shared/styles/utils/variables.styled";
-import {For} from "solid-js";
-import chroma from "chroma-js";
-import SwatchList from "./shared/components/swatchList";
 import ColorSelector from "./shared/components/colorSelector";
 import NavBar from './shared/components/navBar';
 import Introduction from './pages/introduction';
 import Toast from './shared/components/toast';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-
-export type ISwatchItem = {
-  name: string;
-  swatch: Record<string, string>
-}
+import ColorListPage from './pages/colorListPage';
+import { Route, Routes } from 'solid-app-router';
+import Documentation from './pages/documentation';
+import { styled } from 'solid-styled-components';
+import { Container } from './shared/styles/components/container.styled';
 
 const App: Component = () => {
 
-  const sList: Array<ISwatchItem> = [
-    {
-      name: 'Shades Corrected (RGB)',
-      swatch: ColorShades
-    }/* , {
-      name: 'Blended (Lab Color Mix)',
-      swatch: ColorMix
-    }, {
-      name: 'Relative (HSV & Relative Luminance)',
-      swatch: ColorRelative
-    }, {
-      name: 'Brighten and Darken (Legacy)',
-      swatch: Color
-    }, */
-  ]
+  const Page = styled('div')`
+    padding: 70px 16px 20px 16px;
+  `
 
 
 
@@ -42,110 +25,30 @@ const App: Component = () => {
 
       <NavBar/>
 
-      <Container style={{
-        padding: `70px 16px 20px 16px`
-      }}>
-        <Introduction/>
+      <Routes>
+        <Route path="/" element={
+          <Container>
+          <Page>
+              <Introduction/>
+    
+              <Toast showExit={false} box={'#131313'}>
+                Palette Copied!
+              </Toast>
 
-        <Toast showExit={false} box={'#131313'}>
-          Palette Copied!
-        </Toast>
+              <ColorSelector/>
 
-        <ColorSelector/>
-
-        <SwatchList swatchList={sList}/>
-      </Container>
-      <Container>
-        <div style={{
-          // display: 'flex',
-          display: 'none',
-        }}>
-          <div style={{
-            width: '300px'
-          }}>
-            <p>
-              Constant (Legacy)
-            </p>
-            <For each={Object.entries(Color)}>{([key, value], i) =>
-              <div style={{
-                background: value,
-                color: 'white',
-                padding: '5px'
-              }}>
-                <p>
-                  {key.toLowerCase()}
-                </p>
-                <p>
-                  HEX: {value} | HSV: {chroma(value).hsv().map((value) => `${value.toFixed(4)}... `)}
-                </p>
-              </div>
-            }</For>
-          </div>
-          <div style={{
-            width: '300px'
-          }}>
-            <p>
-              Relative (New)
-            </p>
-            <For each={Object.entries(ColorRelative)}>{([key, value], i) =>
-              <div style={{
-                background: value,
-                color: 'white',
-                padding: '5px'
-              }}>
-                <p>
-                  {key.toLowerCase()}
-                </p>
-                <p>
-                  HEX: {value} | HSV: {chroma(value).hsv().map((value) => `${value.toFixed(4)}... `)}
-                </p>
-              </div>
-            }</For>
-          </div>
-          <div style={{
-            width: '300px'
-          }}>
-            <p>
-              Blended (Lab Colour Mix)
-            </p>
-            <For each={Object.entries(ColorMix)}>{([key, value], i) =>
-              <div style={{
-                background: value,
-                color: 'white',
-                padding: '5px'
-              }}>
-                <p>
-                  {key.toLowerCase()}
-                </p>
-                <p>
-                  HEX: {value} | HSV: {chroma(value).hsv().map((value) => `${value.toFixed(4)}... `)}
-                </p>
-              </div>
-            }</For>
-          </div>
-          <div style={{
-            width: '300px'
-          }}>
-            <p>
-              Shades Corrected (RGB)
-            </p>
-            <For each={Object.entries(ColorShades)}>{([key, value], i) =>
-              <div style={{
-                background: value,
-                color: 'white',
-                padding: '5px'
-              }}>
-                <p>
-                  {key.toLowerCase()}
-                </p>
-                <p>
-                  HEX: {value} | HSV: {chroma(value).hsv().map((value) => `${value.toFixed(4)}... `)}
-                </p>
-              </div>
-            }</For>
-          </div>
-        </div>
-      </Container>
+              <ColorListPage/>
+          </Page>
+          </Container>
+        } />
+        <Route path="/doc" element={
+          <Container>
+            <Page>
+              <Documentation/>
+            </Page>
+          </Container>
+        } />
+      </Routes>
     </>
   );
 };

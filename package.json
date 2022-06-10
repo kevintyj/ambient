@@ -21,6 +21,7 @@
     "bootstrap-icons": "^1.8.3",
     "chroma-js": "^2.4.2",
     "lodash": "^4.17.21",
+    "solid-app-router": "^0.3.3",
     "solid-js": "^1.4.2",
     "solid-styled-components": "^0.28.1"
   }

@@ -15,7 +15,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1, h2, h3, h4, h5, h6  {
-    font-weight: 600 !important;
+    font-weight: bold !important;
     margin-bottom: 6px;
   }
 
