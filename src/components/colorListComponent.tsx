@@ -1,8 +1,9 @@
 import chroma from "chroma-js";
 import {Component, createEffect, createSignal, For} from "solid-js";
 import SwatchList from "../shared/components/swatchList";
+import { Button } from "../shared/styles/components/button.styled";
 import { Container } from "../shared/styles/components/container.styled";
-import { ColorLegacy, ColorMix, ColorRelative, colorScale, ColorShades} from "../shared/styles/utils/variables.styled";
+import { ColorMix, ColorRelative, colorScale, ColorShades} from "../shared/styles/utils/variables.styled";
 
 export type ISwatchItem = {
   name: string;
@@ -44,6 +45,9 @@ const ColorListPage: Component = () => {
         Generated Colors
       </h4>
       <SwatchList swatchList={sList()}/>
+      <Button type="submit">
+        Export colors
+      </Button>
       <Container>
         <div style={{
           // display: 'flex',

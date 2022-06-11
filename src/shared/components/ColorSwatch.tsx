@@ -4,6 +4,8 @@ import {styled} from "solid-styled-components";
 import {chunk, forEach, max} from 'lodash';
 import chroma from "chroma-js";
 import { calcMaxAPCA, calcMaxWCAG } from "../styles/functions/contrastcalc";
+import { toast } from "solid-toast";
+import Toast from "./toast";
 
 type ColorSwatchComponent<T = {}> = Component<T &{
   colorSwatch: Record<string, string>
@@ -16,14 +18,24 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
   const swatchKeys: string[] = Object.keys(swatch());
   // @ts-ignore
   const swatchLength: number = Number(swatchKeys[swatchKeys.length - 1].match(/\d+/)[0].charAt(0));
-  const splitChunks = chunk(aSwatch, 7);
+  const splitChunks = () => chunk(aSwatch, 7);
 
 
   const copy = (color: string) => {
     navigator.clipboard.writeText(color).then(() => {
       /* clipboard successfully set */
+      toast.custom((t) => (
+        <Toast box={color} showExit={true} toast={t}>
+          Pallette Copied! {color}
+        </Toast>
+      ));
     }, () => {
       /* clipboard write failed */
+      toast.custom((t) => (
+        <Toast color={'error'} showExit={true} toast={t}>
+          Copying Failed
+        </Toast>
+      ));
     })
   }
 
@@ -115,7 +127,7 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
 
       }}>
 
-        <For each={splitChunks}>{(arr, i) =>
+        <For each={splitChunks()}>{(arr, i) =>
           <SwatchRow>
 
             <For each={arr}>{(obj, j) =>
@@ -129,16 +141,16 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
                 <ContrastPassFail style={{
                     color: calcMaxAPCA(textArry, Object.values(obj)[0])[2]
                   }}>
-                  {calculateContrast(splitChunks[i()], textArry, Object.values(obj)[0])}
+                  {calculateContrast(splitChunks()[i()], textArry, Object.values(obj)[0])}
                 </ContrastPassFail>
                 <p class="contrast">
                   <object style={{
-                    color: calcMaxWCAG(splitChunks[i()], Object.values(obj)[0])[2]
-                  }}><strong>WCAG: </strong> {calcMaxWCAG(splitChunks[i()], Object.values(obj)[0])[0]}</object>
+                    color: calcMaxWCAG(splitChunks()[i()], Object.values(obj)[0])[2]
+                  }}><strong>WCAG: </strong> {calcMaxWCAG(splitChunks()[i()], Object.values(obj)[0])[0]}</object>
                   <br/>
                   <object style={{
-                    color: calcMaxAPCA(splitChunks[i()], Object.values(obj)[0])[2]
-                  }}><strong>APCA: </strong> {calcMaxAPCA(splitChunks[i()], Object.values(obj)[0])[0]}</object>
+                    color: calcMaxAPCA(splitChunks()[i()], Object.values(obj)[0])[2]
+                  }}><strong>APCA: </strong> {calcMaxAPCA(splitChunks()[i()], Object.values(obj)[0])[0]}</object>
                   <br/>
                   <object style={{
                     color: calcMaxAPCA(textArry, Object.values(obj)[0])[2]

@@ -1,8 +1,11 @@
 import { createForm } from "@felte/solid";
 import {Component, createEffect, createSignal, For} from "solid-js";
 import { styled } from "solid-styled-components";
-import { ColorIdentifier } from "../styles/components/colorIdentifier.styled";
-import { colorScale, setColorScale } from "../styles/utils/variables.styled";
+import toast from "solid-toast";
+import { ColorIdentifier } from "../shared/styles/components/colorIdentifier.styled";
+import { colorScale, setColorScale } from "../shared/styles/utils/variables.styled";
+import Toast from "../shared/components/toast";
+import { Button } from "../shared/styles/components/button.styled";
 
 const ColorSelector: Component = () => {
   const [colors, setColors] = createSignal(Object.entries(colorScale()));
@@ -15,30 +18,6 @@ const ColorSelector: Component = () => {
   const removeColor = (index: number) => {
     setColors([...colors().slice(0, index), ...colors().slice(index + 1)]);
   }
-
-  const Button = styled('button')`
-  	background: none;
-    color: inherit;
-    font: inherit;
-    cursor: pointer;
-    outline: none;
-    padding: 6px 8px;
-    background-color: rgba(255, 255, 255, 0.14);
-    font-weight: bold;
-    border-radius: 3px;
-    border: none;
-    width: 154px;
-    transition: all 100ms ease-in-out;
-    outline: 0;
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.14);
-    margin-top: 12px;
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.09);
-    }
-    &:active {
-      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.14);
-    }
-  `
 
   const FormGroup = styled('div')`
     display: flex;
@@ -85,15 +64,41 @@ const ColorSelector: Component = () => {
     return obj;
   }
 
-  const { form, data } = createForm({
+  const arrToArr = (arr: []) => {
+    let c: [] = [];
+    for(let i = 0; i < arr.length; i += 2) {
+      c.push(arr[i]);
+    }
+    return c;
+  }
+
+  const { form, data, errors, isSubmitting, isValid } = createForm({
     onSubmit: (val) => {
-      console.log('color scale edited')
+      // console.log('color scale edited')
       setColorScale(arrToObj(Object.values(val) as []) as any);
-    },
+      // console.log(arrToObj(Object.values(val) as []) as any);
+      //console.log(val)
+    }, validate: (val) => {
+      const errors = {};
+      let values: string[] = arrToArr(Object.values(val) as []);
+      if (values.length !== new Set(values).size) {
+        errors.duplicate = 'There are duplicates in the color names!';
+      }
+      if (isSubmitting && !isValid) {
+        console.log('wow');
+        toast.custom((t) => (
+          <Toast color={'error'} showExit={true} toast={t}>
+            WOW! WTF
+          </Toast>
+        ));
+        console.log('lmao');
+      }
+      return errors;
+    }
   });
 
   createEffect(() => {
-    console.log("The count is now", colors());
+    // console.log("New arr", colors());
   });
 
   return(
@@ -110,15 +115,20 @@ const ColorSelector: Component = () => {
       }}>
         <For each={colors()}>{([key, val], i) =>
           <FormGroup>
-            {i() + 1}
-            <ColorIdentifier color={val}/>
+            <div style={{
+              width: '12px'
+            }}>
+              {i() + 1}
+            </div>
+            <ColorIdentifier color={data(`colorHEX${i()}`)}/>
             <div class="form-element">
               <label for="colorName">Name</label>
               <input type="text" name={`colorName${i()}`} value={key}/>
             </div>
             <div class="form-element">
               <label for="colorHEX">HEX</label>
-              <input type="text" name={`colorHEX${i()}`} value={val}/>
+              <input type="text" name={`colorHEX${i()}`} value={val} maxlength="7" 
+       style="text-transform:uppercase"/>
             </div>
             <a onclick={() => removeColor(i())}><i class="bi bi-trash3-fill"></i></a>
           </FormGroup>

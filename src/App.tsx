@@ -1,14 +1,16 @@
 import {Component, lazy} from 'solid-js';
 import GlobalStyles from "./shared/styles/base/global.styled";
-import ColorSelector from "./shared/components/colorSelector";
+import ColorSelector from "./components/colorSelector";
 import NavBar from './shared/components/navBar';
 import Introduction from './pages/introduction';
-import Toast from './shared/components/toast';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import ColorListPage from './pages/colorListPage';
+import ColorListPage from './components/colorListComponent';
 import { Route, Routes } from 'solid-app-router';
 import { styled } from 'solid-styled-components';
 import { Container } from './shared/styles/components/container.styled';
+import { Toaster } from 'solid-toast';
+import { ColorShades } from './shared/styles/utils/variables.styled';
+import GraphList from './components/graphListComponent';
 
 
 // Lazy loaded
@@ -21,22 +23,30 @@ const App: Component = () => {
   `
 
 
-
   return (
     <>
       <GlobalStyles/>
 
       <NavBar/>
 
+      <Toaster
+        position='bottom-right'
+        gutter={8}
+        containerClassName=""
+        containerStyle={{}}
+        toastOptions={{
+          className: '',
+          duration: 2000
+        }}
+      />
+
       <Routes>
         <Route path="/" element={
           <Container>
           <Page>
               <Introduction/>
-    
-              <Toast showExit={false} box={'#131313'}>
-                Palette Copied!
-              </Toast>
+
+              <GraphList colorSwatch={ColorShades()}/>
 
               <ColorSelector/>
 

@@ -21,9 +21,11 @@
     "@types/lodash": "^4.14.182",
     "bootstrap-icons": "^1.8.3",
     "chroma-js": "^2.4.2",
+    "csstype": "^3.1.0",
     "lodash": "^4.17.21",
     "solid-app-router": "^0.3.3",
     "solid-js": "^1.4.2",
-    "solid-styled-components": "^0.28.1"
+    "solid-styled-components": "^0.28.1",
+    "solid-toast": "^0.1.4"
   }
 }

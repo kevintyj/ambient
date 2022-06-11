@@ -6,11 +6,13 @@ specifiers:
   '@types/lodash': ^4.14.182
   bootstrap-icons: ^1.8.3
   chroma-js: ^2.4.2
+  csstype: ^3.1.0
   lodash: ^4.17.21
   sass: ^1.52.2
   solid-app-router: ^0.3.3
   solid-js: ^1.4.2
   solid-styled-components: ^0.28.1
+  solid-toast: ^0.1.4
   typescript: ^4.6.4
   vite: ^2.9.9
   vite-plugin-solid: ^2.2.6
@@ -21,10 +23,12 @@ dependencies:
   '@types/lodash': 4.14.182
   bootstrap-icons: 1.8.3
   chroma-js: 2.4.2
+  csstype: 3.1.0
   lodash: 4.17.21
   solid-app-router: 0.3.3_solid-js@1.4.3
   solid-js: 1.4.3
   solid-styled-components: 0.28.1_solid-js@1.4.3
+  solid-toast: 0.1.4_imweqxuap7cqontfgabz6kf26q
 
 devDependencies:
   sass: 1.52.2
@@ -998,6 +1002,17 @@ packages:
       csstype: 3.1.0
       goober: 2.1.9_csstype@3.1.0
       solid-js: 1.4.3
+    dev: false
+
+  /solid-toast/0.1.4_imweqxuap7cqontfgabz6kf26q:
+    resolution: {integrity: sha512-7RBkSg7KMdNQLGb92AlKhfU/UggRrrHISwqa1bHqksb/WqFFzo6G9LghfcLPb/WFzBEUTCmwefH8CnQ04FBl7g==}
+    peerDependencies:
+      solid-js: ^1.4.2
+    dependencies:
+      goober: 2.1.9_csstype@3.1.0
+      solid-js: 1.4.3
+    transitivePeerDependencies:
+      - csstype
     dev: false
 
   /source-map-js/1.0.2:

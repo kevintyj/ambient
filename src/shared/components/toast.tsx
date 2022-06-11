@@ -1,8 +1,10 @@
 import {ParentComponent, splitProps,} from "solid-js";
 import { styled } from "solid-styled-components";
+import toast from "solid-toast";
 import { ColorIdentifier } from "../styles/components/colorIdentifier.styled";
 
 type IToastProps = ParentComponent< & {
+    toast?: any,
     color?: 'warning' | 'error' | 'info',
     showExit?: boolean,
     box?: string,
@@ -11,7 +13,7 @@ type IToastProps = ParentComponent< & {
 
 const Toast: IToastProps = (props) => {
 
-  const [local, others] = splitProps(props, ['children', 'color', 'showExit', 'box']);
+  const [local, others] = splitProps(props, ['children', 'toast', 'color', 'showExit', 'box']);
 
   const toastColor = () => {
     switch(props.color) {
@@ -26,11 +28,7 @@ const Toast: IToastProps = (props) => {
   }
 
   const ToastComponent = styled('div')`
-    bottom: 40px;
-    right: 40px;
     display: flex;
-    position: fixed;
-    z-index: 99999;
     background-color: ${toastColor};
     border-radius: 3px;
     border: 1px solid rgba(255, 255, 255, 0.14);
@@ -41,13 +39,13 @@ const Toast: IToastProps = (props) => {
   return(
     <ToastComponent {...others}>
       {local.box && 
-        <ColorIdentifier color="#0066ff"/>
+        <ColorIdentifier color={props.box}/>
       }
       <p>
       {props.children}
       </p>
       {local.showExit &&
-        <a><i class="bi bi-x"></i></a>
+        <a  onClick={() => toast.dismiss(props.toast.id)}><i class="bi bi-x"></i></a>
       }
     </ToastComponent>
   )
