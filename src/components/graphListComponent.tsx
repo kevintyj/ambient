@@ -1,7 +1,6 @@
-import { chunk } from "lodash";
+import { chunk, create } from "lodash";
 import { Component, createEffect, createSignal, For } from "solid-js";
 import ColorGraph from "../shared/components/colorGraph";
-import { Button } from "../shared/styles/components/button.styled";
 import { Flex } from "../shared/styles/components/flex.styled";
 import { Select } from "../shared/styles/components/select.styled";
 import { INormal } from "../shared/styles/functions/relativeLuminanceCalc";
@@ -17,19 +16,25 @@ const GraphList: ColorGraphComponent = (props) => {
 
   const [displayType, setDisplayType] = createSignal('to-primary');
 
-  const aSwatch: { [p: string]: string }[] = Object.entries(swatch()).map(([key, value]) => ({ [key]: value }));
-  const splitChunks = chunk(aSwatch, 7);
+  const aSwatch =  ((swatchList: Record<string, string>) => {
+    return Object.entries(swatchList).map(([key, value]) => ({ [key]: value }))
+  });
+  const [splitChunks, setSplitChunks] = createSignal(chunk(aSwatch(swatch()), 7));
 
   const updateType = (type: any) => {
     setDisplayType(type.target.value);
   }
+
+  createEffect(() => {
+    setSplitChunks(chunk(aSwatch(swatch()), 7));
+  })
 
   return(
     <>
       <Flex flexDirection="column" gap={10} style={{
         padding: '0 20px'
       }}>
-        <For each={splitChunks}>{(graph, i) => 
+        <For each={splitChunks()}>{(graph, i) => 
           <ColorGraph colorSwatch={graph} displayType={displayType()}/>
         }</For>
       </Flex>
