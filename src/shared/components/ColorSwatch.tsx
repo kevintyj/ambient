@@ -92,6 +92,7 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
     overflow: hidden;
     padding: 8px 10px;
     position: relative;
+    cursor: pointer;
 
     p {
       color: ${props => calcMaxAPCA(textArry, props.color ? props.color : textArry[1].BLACK)[2]} !important;
@@ -99,11 +100,11 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
       line-height: 12px;
     }
     .contrast {
-      display: none;
       opacity: 0;
       align-self: flex-start;
       width: 100%;
       color: white;
+      transition: opacity 100ms ease-in-out;
     }
     .helper {
       align-self: flex-end;
@@ -113,7 +114,6 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
 
     &:hover {
       .contrast {
-        display: block;
         opacity: 1;
       }
     }

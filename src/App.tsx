@@ -1,20 +1,16 @@
 import {Component, lazy} from 'solid-js';
 import GlobalStyles from "./shared/styles/base/global.styled";
-import ColorSelector from "./components/colorSelector";
 import NavBar from './shared/components/navBar';
-import Introduction from './pages/introduction';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import ColorListPage from './components/colorListComponent';
 import { Route, Routes } from 'solid-app-router';
 import { styled } from 'solid-styled-components';
 import { Container } from './shared/styles/components/container.styled';
 import { Toaster } from 'solid-toast';
-import { ColorShades } from './shared/styles/utils/variables.styled';
-import GraphList from './components/graphListComponent';
 
 
 // Lazy loaded
 const Documentation = lazy(() => import('./pages/documentation'));
+const Home = lazy(() => import('./pages/home'))
 
 const App: Component = () => {
 
@@ -43,15 +39,9 @@ const App: Component = () => {
       <Routes>
         <Route path="/" element={
           <Container>
-          <Page>
-              <Introduction/>
-
-              <GraphList colorSwatch={ColorShades()}/>
-
-              <ColorSelector/>
-
-              <ColorListPage/>
-          </Page>
+            <Page>
+              <Home/>
+            </Page>
           </Container>
         } />
         <Route path="/doc" element={

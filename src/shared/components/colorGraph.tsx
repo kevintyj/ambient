@@ -1,23 +1,34 @@
-import { chunk } from "lodash";
-import { Component, For } from "solid-js";
+import { Component, createEffect, createSignal, For } from "solid-js";
 import { styled } from "solid-styled-components";
 import { ColorIdentifier } from "../styles/components/colorIdentifier.styled";
 import { Flex } from "../styles/components/flex.styled";
-import { relativeLuminanceCalc } from "../styles/functions/relativeLuminanceCalc";
+import { INormal, relativeLuminanceCalc } from "../styles/functions/relativeLuminanceCalc";
 
 type ColorGraphComponent<T = {}> = Component<T &{
-  colorSwatch: Record<string, string>[]
+  colorSwatch: Record<string, string>[];
+  displayType: INormal | string;
 }>
 
 const ColorGraph: ColorGraphComponent = (props) => {
 
   const swatch = () => props.colorSwatch;
+  const displayType = () => props.displayType;
 
-  const swatchCalc = relativeLuminanceCalc(swatch());
+  const [swatchCalc, setSwatchCalc] = createSignal(relativeLuminanceCalc(swatch(), displayType()));
 
+  createEffect(() => {
+    setSwatchCalc(relativeLuminanceCalc(swatch(), displayType()));
+  })
 
   const ColorGraphNodeText = styled('p')`
-    margin-top: -20px;
+    margin-top: -22px;
+    font-size: 10px;
+    opacity: 0;
+    transition: opacity 100ms ease-in-out;
+    line-height: 2;
+    &:hover {
+      opacity: 1;
+    }
   `
 
   const GraphLine = styled('div')`
@@ -31,20 +42,25 @@ const ColorGraph: ColorGraphComponent = (props) => {
     .start, .end {
       height: 10px;
       margin-top: -4px;
-      
       p {
-        margin: 12px -2px;
+        margin-top: -4px;
       }
     }
 
     .start{
       border-left: 1px solid rgba(256, 256, 256, 0.14);
       margin-left: -1px;
+      p {
+        margin-left: -20px;
+      }
     }
 
     .end {
       border-right: 1px solid rgba(256, 256, 256, 0.14);
       margin-right: -1px;
+      p {
+        transform: translateX(20px);
+      }
     }
   `
 
@@ -52,9 +68,10 @@ const ColorGraph: ColorGraphComponent = (props) => {
     <>
       <Flex style={{
         width: `100%`,
-        height: '48px',
+        height: '30px',
         position: 'relative',
-        "padding-top": '16px'
+        "padding-top": '16px',
+        cursor: 'crosshair',
       }}>
         <GraphLine>
           <div class="start">
@@ -64,10 +81,10 @@ const ColorGraph: ColorGraphComponent = (props) => {
             <p>1</p>
           </div>
         </GraphLine>
-        <For each={Object.entries(swatchCalc)}>{([key, val], i) => 
+        <For each={Object.entries(swatchCalc())}>{([key, val], i) => 
           <ColorIdentifier color={key} style={{
             position: 'absolute',
-            left: `${val}%`
+            left: `calc(${val * 100}% - 8px)`
           }}>
             <ColorGraphNodeText>
               {key}

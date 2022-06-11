@@ -22,7 +22,7 @@ const ColorSelector: Component = () => {
   const FormGroup = styled('div')`
     display: flex;
     flex-direction: row;
-    gap: 22px;
+    gap: 12px;
     align-items: center;
     .form-element {
       display: flex;
@@ -30,14 +30,14 @@ const ColorSelector: Component = () => {
       width: auto;
       align-items: center;
       position: relative;
+      margin-left: 4px;
       label {
         width: 50px;
         position: absolute;
         padding: 4px;
         padding-left: 8px;
-        margin-left: 3px;
         background-color: rgba(255, 255, 255, 0.14);
-        left: 0;
+        left: 1px;
         border-radius: 2px 0 0 2px;
       }
       input {
@@ -48,6 +48,7 @@ const ColorSelector: Component = () => {
         color: white;
         border-radius: 3px;
         outline: none;
+        width: 180px;
         &:focus {
           box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.14);
           font-weight: bold;
@@ -103,15 +104,11 @@ const ColorSelector: Component = () => {
 
   return(
     <>
-      <h4>
-        Color Selector
-      </h4>
-      <p>Each color should have a unique name. A new color cannot be created until a name has been given</p>
-      <br/>
       <form use:form style={{
         display: 'flex',
         "flex-direction": 'column',
-        "gap": '8px'
+        "gap": '8px',
+        "padding-top": '8px'
       }}>
         <For each={colors()}>{([key, val], i) =>
           <FormGroup>
