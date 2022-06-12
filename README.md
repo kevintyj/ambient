@@ -1,35 +1,25 @@
-## Usage
+![Ambient - generate contrast safe colors for UIUX](https://github.com/kevintyj/ambient/raw/master/public/ambient.png)
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
+**[Live Demo](https://ambient-rvx.web.app/)**
 
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely
-be removed once you clone a template.
+This tool is designed to generate **contrast ready** color pallets built specifically for UIUX design. Unlike other pallette generation tools, Ambient generates the colors **based on the primary color**. Hues, saturation, and relative lightness adjustments are made automatically using our algorithm. As ambient relies on the primary color for alternative color generation, primary colors **must be contrast compliant**. Ambient displays both WACG and APCA definitions of text contrast, 4.5:1(WACG) or 60Lc(APCA) is recommended for text contrast. 
 
-```bash
-$ npm install # or pnpm install or yarn install
-```
+#### Limitations
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+The current contrast ratios are based on 4.5:1 and 60 for recommended contrast between text and background. When designing for accessibility in mind,  **text sizes should also be considered**. Ambient does not give any recommendation for text sizes, the official WCAG documentation should be referred to generate a lookup tables for text and background combination for text sizes.
 
-## Available Scripts
+Ambient was built with [Solidjs](https://solidjs.com)
 
-In the project directory, you can run:
+## Key Features
+- Generate contrast ready color palette from base primary colors
+- See Luminance values of each shade generated
+- Get valuable contrast information on each shade
+- APCA Contrast ratio ready
 
-### `npm dev` or `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-
-### `npm run build`
-
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-## Deployment
-
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
+## Roadmap
+- Customize text color pairs (currently: #FFFFFF and #131313)
+- Export all color shades in CSS & SCSS ready formats
+- Export to library theming formats (Bootstrap, Tailwind, Chakra, Mantine etc.) 
+- Figma plugin
+- Compatability with Figma design tokens
+- Ability to customize algorithm
