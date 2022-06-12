@@ -6,9 +6,11 @@ import { ColorIdentifier } from "../shared/styles/components/colorIdentifier.sty
 import { colorScale, setColorScale } from "../shared/styles/utils/variables.styled";
 import Toast from "../shared/components/toast";
 import { Button } from "../shared/styles/components/button.styled";
+import { Flex } from "../shared/styles/components/flex.styled";
 
 const ColorSelector: Component = () => {
   const [colors, setColors] = createSignal(Object.entries(colorScale()));
+  const [jsonFile, setJsonFile] = createSignal();
 
   const addColor = () => {
     setColors([...colors(), ['NAME', '#ffffff']]);
@@ -102,13 +104,52 @@ const ColorSelector: Component = () => {
     // console.log("New arr", colors());
   });
 
+  const fileDownload = () => {
+    const fileData = JSON.stringify(colorScale());
+    const blob = new Blob([fileData], {type: "text/plain"});
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.download = 'ambientcolors.json';
+    link.href = url;
+    link.click();
+  }
+
+  const fileChange = (e: any) => {
+    const fileReader = new FileReader();
+    fileReader.readAsText(e.target.files[0]);
+    fileReader.onload = e => {
+      // console.log(e.target?.result);
+      setJsonFile(eval(`(${e.target?.result as string})`));
+      // console.log(eval(`(${jsonFile() as string})`))
+      setColors(Object.entries(jsonFile() as object));
+      // setColorScale(jsonFile() as any);
+    };
+  }
+
   return(
     <>
+      <Flex flexDirection={'row'} gap={12} style={{
+        "padding-bottom": '12px'
+      }}>
+        <Button type="submit" onclick={fileDownload}><i class="bi bi-cloud-arrow-down-fill"></i> Export Color Set</Button>
+        <Button type="submit">
+          <label style={{
+            'font-weight': 'bold',
+            cursor: 'pointer'
+          }}>
+            <input type="file" onchange={fileChange} style={{
+              display: 'none'
+            }}/>
+            <i class="bi bi-cloud-arrow-up-fill"></i> Import Color Set
+          </label>
+        </Button>
+      </Flex>
       <form use:form style={{
         display: 'flex',
         "flex-direction": 'column',
         "gap": '8px',
-        "padding-top": '8px'
+        "padding-top": '8px',
+        'align-items': 'flex-start'
       }}>
         <For each={colors()}>{([key, val], i) =>
           <FormGroup>

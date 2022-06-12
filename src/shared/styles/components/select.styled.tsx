@@ -12,7 +12,8 @@ export const Select = styled('select')`
   background-color: rgba(255, 255, 255, 0.14);
   border-radius: 3px;
   border: none;
-  width: auto;
+  max-width: auto;
+  flex: none;
   transition: all 100ms ease-in-out;
   outline: 0;
   box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.14);
