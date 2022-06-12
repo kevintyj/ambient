@@ -43,6 +43,7 @@ const Home: Component = () => {
       </Flex>
 
       <ColorListPage/>
+      <br/>
     </>
   )
 

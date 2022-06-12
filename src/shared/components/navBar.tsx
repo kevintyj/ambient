@@ -2,6 +2,8 @@ import { NavLink } from "solid-app-router";
 import {Component} from "solid-js";
 import { styled } from "solid-styled-components";
 import { Container } from "../styles/components/container.styled";
+import imgUrl from '../../assets/images/ambient_logo_white_new.png';
+
 
 const NavBar: Component = () => {
 
@@ -54,7 +56,7 @@ const NavBar: Component = () => {
             "align-items": `center`,
             "gap": `4px`
         }}>
-          <a href="/"><img src="src/assets/images/ambient_logo_white.png"/></a>
+          <a href="/"><img src={imgUrl}/></a>
           <p>
             by <a href="https://kevintyj.com">Kevin (Taeyoon) Jin</a>
           </p>

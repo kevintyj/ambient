@@ -6,6 +6,8 @@ import { Route, Routes } from 'solid-app-router';
 import { styled } from 'solid-styled-components';
 import { Container } from './shared/styles/components/container.styled';
 import { Toaster } from 'solid-toast';
+import Footer from './shared/components/footer';
+import { Flex } from './shared/styles/components/flex.styled';
 
 
 // Lazy loaded
@@ -20,7 +22,7 @@ const App: Component = () => {
 
 
   return (
-    <>
+    <Flex flexDirection={'column'}>
       <GlobalStyles/>
 
       <NavBar/>
@@ -52,7 +54,9 @@ const App: Component = () => {
           </Container>
         } />
       </Routes>
-    </>
+      
+      <Footer/>
+    </Flex>
   );
 };
 
