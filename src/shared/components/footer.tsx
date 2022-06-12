@@ -46,6 +46,9 @@ const Footer: Component = () => {
             <a href="https://icons.getbootstrap.com">Bootstrap Icons</a>, 
             and <a href="https://github.com/Myndex/SAPC-APCA">WCAG APCA</a>
           </p>
+          <a href="https://github.com/kevintyj/ambient">
+            <i class="bi bi-github"></i> Check out the source code!
+          </a>
         </Container>
       </FooterBar>
     </>

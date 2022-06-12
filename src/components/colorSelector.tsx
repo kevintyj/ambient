@@ -55,6 +55,11 @@ const ColorSelector: Component = () => {
           box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.14);
           font-weight: bold;
         }
+        @media only screen and (max-width: 472px) {
+        & {
+            width: 120px;
+          }
+        }
       }
     }
   `
@@ -91,7 +96,7 @@ const ColorSelector: Component = () => {
         console.log('wow');
         toast.custom((t) => (
           <Toast color={'error'} showExit={true} toast={t}>
-            WOW! WTF
+            Something Happened
           </Toast>
         ));
         console.log('lmao');
@@ -129,7 +134,7 @@ const ColorSelector: Component = () => {
   return(
     <>
       <Flex flexDirection={'row'} gap={12} style={{
-        "padding-bottom": '12px'
+        "padding-bottom": '44px'
       }}>
         <Button type="submit" onclick={fileDownload}><i class="bi bi-cloud-arrow-down-fill"></i> Export Color Set</Button>
         <Button type="submit">

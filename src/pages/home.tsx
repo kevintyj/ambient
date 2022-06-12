@@ -18,12 +18,11 @@ const Home: Component = () => {
           <h4>
             Color Table
           </h4>
-          <p style={{
-            'padding-bottom': '12px'
-          }}>
+          <p>
             Color table of generated colors can be edited here. Only the primary color is considered. 
             <strong>No duplicates in color name are allowed.</strong> 
           </p>
+          <br/>
           <ColorSelector/>
         </div>
         <div style={{
@@ -39,6 +38,8 @@ const Home: Component = () => {
             The graph does not update until the color set is generated. 
           </p>
           <GraphList colorSwatch={ColorShades()}/>
+          <br/>
+          <br/>
         </div>
       </Flex>
 
