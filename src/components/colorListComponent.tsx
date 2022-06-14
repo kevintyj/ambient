@@ -1,8 +1,6 @@
-import chroma from "chroma-js";
 import {Component, createEffect, createSignal, For} from "solid-js";
 import SwatchList from "../shared/components/swatchList";
 import { Button } from "../shared/styles/components/button.styled";
-import { Container } from "../shared/styles/components/container.styled";
 import { ColorLegacy, ColorMix, ColorRelative, colorScale, ColorShades} from "../shared/styles/utils/variables.styled";
 
 export type ISwatchItem = {
@@ -12,6 +10,16 @@ export type ISwatchItem = {
 
 
 const ColorListPage: Component = () => {
+
+  const fileDownloadFull = () => {
+    const fileData = JSON.stringify(sList());
+    const blob = new Blob([fileData], {type: "text/plain"});
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.download = 'ambientcolors-full.json';
+    link.href = url;
+    link.click();
+  }
 
   const [sList, setSList] = createSignal<Array<ISwatchItem>>([
     {
@@ -54,9 +62,10 @@ const ColorListPage: Component = () => {
         Generated Colors
       </h3>
       <SwatchList swatchList={sList()}/>
-      <Button type="submit">
+      <Button type="submit" onclick={fileDownloadFull}>
         Export colors
       </Button>
+      <br/>
     </>
   )
 

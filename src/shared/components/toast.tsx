@@ -32,8 +32,12 @@ const Toast: IToastProps = (props) => {
     background-color: ${toastColor};
     border-radius: 3px;
     border: 1px solid rgba(255, 255, 255, 0.14);
-    padding: 8px 8px;
+    padding: 10px 10px 6px 10px;
     gap: 8px;
+
+    @media only screen and (max-width: 780px) {
+      padding: 8px 8px 6px 8px;
+    }
   `
 
   return(
