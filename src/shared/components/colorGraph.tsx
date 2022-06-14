@@ -51,7 +51,7 @@ const ColorGraph: ColorGraphComponent = (props) => {
       border-left: 1px solid rgba(256, 256, 256, 0.14);
       margin-left: -1px;
       p {
-        margin-left: -20px;
+        margin-left: -28px;
       }
     }
 
@@ -59,7 +59,7 @@ const ColorGraph: ColorGraphComponent = (props) => {
       border-right: 1px solid rgba(256, 256, 256, 0.14);
       margin-right: -1px;
       p {
-        transform: translateX(20px);
+        transform: translateX(28px);
       }
     }
   `
@@ -75,16 +75,16 @@ const ColorGraph: ColorGraphComponent = (props) => {
       }}>
         <GraphLine>
           <div class="start">
-            <p>0</p>
+            <p>1</p>
           </div>
           <div class="end">
-            <p>1</p>
+            <p>0</p>
           </div>
         </GraphLine>
         <For each={Object.entries(swatchCalc())}>{([key, val], i) => 
           <ColorIdentifier color={key} style={{
             position: 'absolute',
-            left: `calc(${val * 100}% - 8px)`
+            left: `calc(${100 - val * 100}% - 8px)`
           }}>
             <ColorGraphNodeText>
               {key}

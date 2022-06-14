@@ -32,7 +32,7 @@ const GraphList: ColorGraphComponent = (props) => {
   return(
     <>
       <Flex flexDirection="column" gap={10} style={{
-        padding: '0 20px'
+        padding: '0 28px'
       }}>
         <For each={splitChunks()}>{(graph, i) => 
           <ColorGraph colorSwatch={graph} displayType={displayType()}/>

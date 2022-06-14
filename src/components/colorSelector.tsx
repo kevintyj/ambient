@@ -106,7 +106,7 @@ const ColorSelector: Component = () => {
   });
 
   createEffect(() => {
-    // console.log("New arr", colors());
+    console.log("New arr", colors());
   });
 
   const fileDownload = () => {
@@ -147,7 +147,7 @@ const ColorSelector: Component = () => {
             }}>
               {i() + 1}
             </div>
-            <ColorIdentifier color={data(`colorHEX${i()}`)}/>
+            <ColorIdentifier color={colors()[i()][1]}/>
             <div class="form-element">
               <label for="colorName">Name</label>
               <input type="text" name={`colorName${i()}`} value={key}/>
