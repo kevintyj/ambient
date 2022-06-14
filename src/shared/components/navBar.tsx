@@ -20,7 +20,7 @@ const NavBar: Component = () => {
     align-items: center;
 
     img {
-      height: 20px;
+      height: 24px;
       width: auto;
       margin-bottom: -4px;
     }
@@ -33,6 +33,10 @@ const NavBar: Component = () => {
       margin-top: -4px;
       margin-left: auto;
       overflow: visible;
+      white-space:nowrap;
+      li {
+        display:inline-block;
+      }
       a {
         font-size: 14px;
         font-weight: normal !important;
@@ -45,6 +49,17 @@ const NavBar: Component = () => {
         font-weight: bold !important;
       }
     }
+
+    @media only screen and (max-width: 780px) {
+
+      img {
+        height: 21px;
+      }
+
+      a {
+        font-size: 12px !important;
+      }
+    }
   `
 
   return(
@@ -54,7 +69,7 @@ const NavBar: Component = () => {
             padding: `18px 18px 14px 18px`,
             display: `flex`,
             "align-items": `center`,
-            "gap": `4px`
+            "gap": `8px`
         }}>
           <a href="/"><img src={imgUrl}/></a>
           <p>
@@ -63,6 +78,9 @@ const NavBar: Component = () => {
           <ul>
             <li>
               <NavLink href="/doc">Documentation</NavLink>
+            </li>
+            <li>
+              <NavLink href="https://github.com/kevintyj/ambient"><i class="bi bi-github"></i></NavLink>
             </li>
           </ul>
         </Container>

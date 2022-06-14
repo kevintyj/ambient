@@ -31,15 +31,6 @@ const GraphList: ColorGraphComponent = (props) => {
 
   return(
     <>
-      <p>
-        Graph Normalization Techniques:
-        <br/>
-        <strong>No Normalization:</strong> All colors represent the raw 0 to 1 value in luminance.
-        <br/>
-        <strong>Min Max Normalization:</strong> All data is normalized to min and max of each color group from 0 to 1.
-        <br/>
-        <strong>Primary Normalization (Recommended):</strong> Luminance values are normalized based on the primary color's luminance value as 0.5 (center).
-      </p>
       <Flex flexDirection="column" gap={10} style={{
         padding: '0 20px'
       }}>
@@ -60,6 +51,18 @@ const GraphList: ColorGraphComponent = (props) => {
         </option>
       </Select>
       <br/>
+      <p style={{
+        'padding-top': '12px',
+        'color': 'rgba(256, 256, 256, 0.5)'
+      }}>
+        Graph Normalization Techniques:
+        <br/>
+        <strong>No Normalization:</strong> All colors represent the raw 0 to 1 value in luminance.
+        <br/>
+        <strong>Min Max Normalization:</strong> All data is normalized to min and max of each color group from 0 to 1.
+        <br/>
+        <strong>Primary Normalization (Recommended):</strong> Luminance values are normalized based on the primary color's luminance value as 0.5 (center).
+      </p>
     </>
   )
 }

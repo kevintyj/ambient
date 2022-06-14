@@ -133,27 +133,11 @@ const ColorSelector: Component = () => {
 
   return(
     <>
-      <Flex flexDirection={'row'} gap={12} style={{
-        "padding-bottom": '44px'
-      }}>
-        <Button type="submit" onclick={fileDownload}><i class="bi bi-cloud-arrow-down-fill"></i> Export Color Set</Button>
-        <Button type="submit">
-          <label style={{
-            'font-weight': 'bold',
-            cursor: 'pointer'
-          }}>
-            <input type="file" onchange={fileChange} style={{
-              display: 'none'
-            }}/>
-            <i class="bi bi-cloud-arrow-up-fill"></i> Import Color Set
-          </label>
-        </Button>
-      </Flex>
       <form use:form style={{
         display: 'flex',
         "flex-direction": 'column',
         "gap": '8px',
-        "padding-top": '8px',
+        "padding": '4px 0 16px 0',
         'align-items': 'flex-start'
       }}>
         <For each={colors()}>{([key, val], i) =>
@@ -179,6 +163,24 @@ const ColorSelector: Component = () => {
         <a onClick={() => addColor()}><i class="bi bi-plus-circle-fill"></i> Add Color</a>
         <Button type="submit">Generate Color Set</Button>
       </form>
+      <Flex flexDirection={'row'} gap={12} style={{
+        "padding-bottom": '20px'
+      }}>
+        <Button type="submit" onclick={fileDownload}>
+          <i class="bi bi-cloud-arrow-down-fill"></i> Export Color Set
+          </Button>
+        <Button type="submit">
+          <label style={{
+            'font-weight': 'bold',
+            cursor: 'pointer'
+          }}>
+            <input type="file" onchange={fileChange} style={{
+              display: 'none'
+            }}/>
+            <i class="bi bi-cloud-arrow-up-fill"></i> Import Color Set
+          </label>
+        </Button>
+      </Flex>
       <br/>
     </>
   )

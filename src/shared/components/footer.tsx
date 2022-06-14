@@ -16,6 +16,7 @@ const Footer: Component = () => {
     display: flex;
     align-items: center;
     align-self: center;
+    text-align: center;
 
     img {
       height: 20px;
@@ -32,7 +33,7 @@ const Footer: Component = () => {
     <>
       <FooterBar>
         <Container style={{
-            padding: `21px 18px 21px 18px`,
+            padding: `24px 21px 24px 24px`,
             display: `flex`,
             "flex-direction": 'column',
             "align-items": `center`,

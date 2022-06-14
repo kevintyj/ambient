@@ -1,10 +1,9 @@
 import { styled } from "solid-styled-components";
-import { Base } from "../utils/variables.styled";
 
 export const Button = styled('button')`
   background: none;
   color: inherit;
-  font: 12px/18px ${Base.CODE_FONT_STACK} !important;
+  letter-spacing: -0.45px;
   font-weight: bold !important;
   cursor: pointer !important;
   outline: none;

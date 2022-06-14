@@ -52,8 +52,13 @@ const GlobalStyles = createGlobalStyle`
     letter-spacing: +0.15px;
   }
 
-  p, a, label, form, input {
-    font: 12px/18px ${Base.CODE_FONT_STACK};
+  p, a, i {
+    font: 14px/21px ${Base.CODE_FONT_STACK};
+    letter-spacing: -0.45px;
+  }
+
+  button, label, form, input, option, select {
+    font: 13px/21px ${Base.CODE_FONT_STACK};
     letter-spacing: -0.45px;
   }
 
@@ -64,6 +69,51 @@ const GlobalStyles = createGlobalStyle`
   a {
     cursor: pointer;
     font-weight: bold !important;
+  }
+
+  @media only screen and (max-width: 780px) {
+    h1 {
+      font: 32px/52px ${Base.TEXT_FONT_STACK};
+      letter-spacing: -0.5px;
+    }
+
+    h2{
+      font: 24px/42px ${Base.TEXT_FONT_STACK};
+    }
+
+    h3{
+      font: 20px/38px ${Base.TEXT_FONT_STACK};
+    }
+
+    h4 {
+      font: 16px/32px ${Base.TEXT_FONT_STACK};
+      letter-spacing: +0.15px;
+    }
+
+    h5 {
+      font: 14px/28px ${Base.TEXT_FONT_STACK};
+      letter-spacing: +0.15px;
+    }
+
+    h5 {
+      font: 12px/24px ${Base.TEXT_FONT_STACK};
+      letter-spacing: +0.15px;
+    }
+
+    h6 {
+      font: 11px/22px ${Base.TEXT_FONT_STACK};
+      letter-spacing: +0.15px;
+    }
+
+    p, a, i {
+      font: 12px/18px ${Base.CODE_FONT_STACK};
+      letter-spacing: -0.45px;
+    }
+    
+    button, label, form, input, option, select {
+      font: 11px/18px ${Base.CODE_FONT_STACK};
+      letter-spacing: -0.45px;
+    }
   }
 `
 

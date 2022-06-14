@@ -15,12 +15,12 @@ const Home: Component = () => {
         <div style={{
           width: 'auto'
         }}>
-          <h4>
+          <h3>
             Color Table
-          </h4>
+          </h3>
           <p>
             Color table of generated colors can be edited here. Only the primary color is considered. 
-            <strong>No duplicates in color name are allowed.</strong> 
+            <strong>Color names must be unique.</strong> 
           </p>
           <br/>
           <ColorSelector/>
@@ -28,9 +28,9 @@ const Home: Component = () => {
         <div style={{
           width: '100%'
         }}>
-          <h4>
+          <h3>
             Color Graph
-          </h4>
+          </h3>
           <p style={{
             'padding-bottom': '12px'
           }}>

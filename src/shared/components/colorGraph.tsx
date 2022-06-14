@@ -68,7 +68,7 @@ const ColorGraph: ColorGraphComponent = (props) => {
     <>
       <Flex style={{
         width: `100%`,
-        height: '30px',
+        height: '33px',
         position: 'relative',
         "padding-top": '16px',
         cursor: 'crosshair',

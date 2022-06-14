@@ -1,10 +1,8 @@
 import { styled } from "solid-styled-components";
-import { Base } from "../utils/variables.styled";
 
 export const Select = styled('select')`
   background: none;
   color: inherit;
-  font: 12px/18px ${Base.CODE_FONT_STACK} !important;
   font-weight: bold !important;
   cursor: pointer !important;
   outline: none;
