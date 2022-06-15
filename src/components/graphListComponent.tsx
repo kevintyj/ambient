@@ -3,6 +3,7 @@ import { Component, createEffect, createSignal, For } from "solid-js";
 import ColorGraph from "../shared/components/colorGraph";
 import { Flex } from "../shared/styles/components/flex.styled";
 import { Select } from "../shared/styles/components/select.styled";
+import { arrSize } from "../shared/styles/functions/functions.styled";
 import { INormal } from "../shared/styles/functions/relativeLuminanceCalc";
 
 type ColorGraphComponent<T = {}> = Component<T &{
@@ -19,14 +20,14 @@ const GraphList: ColorGraphComponent = (props) => {
   const aSwatch =  ((swatchList: Record<string, string>) => {
     return Object.entries(swatchList).map(([key, value]) => ({ [key]: value }))
   });
-  const [splitChunks, setSplitChunks] = createSignal(chunk(aSwatch(swatch()), 7));
+  const [splitChunks, setSplitChunks] = createSignal(chunk(aSwatch(swatch()), arrSize()));
 
   const updateType = (type: any) => {
     setDisplayType(type.target.value);
   }
 
   createEffect(() => {
-    setSplitChunks(chunk(aSwatch(swatch()), 7));
+    setSplitChunks(chunk(aSwatch(swatch()), arrSize()));
   })
 
   return(

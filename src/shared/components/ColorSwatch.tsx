@@ -6,6 +6,8 @@ import chroma from "chroma-js";
 import { calcMaxAPCA, calcMaxWCAG } from "../styles/functions/contrastcalc";
 import { toast } from "solid-toast";
 import Toast from "./toast";
+import { arrSize } from "../styles/functions/functions.styled";
+import { Flex } from "../styles/components/flex.styled";
 
 type ColorSwatchComponent<T = {}> = Component<T &{
   colorSwatch: Record<string, string>
@@ -18,7 +20,7 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
   const swatchKeys: string[] = Object.keys(swatch());
   // @ts-ignore
   const swatchLength: number = Number(swatchKeys[swatchKeys.length - 1].match(/\d+/)[0].charAt(0));
-  const splitChunks = () => chunk(aSwatch, 7);
+  const splitChunks = () => chunk(aSwatch, arrSize());
 
 
   const copy = (color: string) => {
@@ -54,10 +56,10 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
       return (<i class="bi bi-exclamation-circle"></i>);
     }
     
-    return (<i class="bi bi-check2-circle"></i>);
+    return (<i class="bi bi-check-circle"></i>);
   }
 
-  const textArry: Array<Record<string, string>> = [
+  const textArray: Array<Record<string, string>> = [
     {
       WHITE: "#FFFFFF"
     }, {
@@ -75,12 +77,23 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
     display:flex;
     column-gap: 10px;
     padding: 5px 0;
+
+    .helper {
+      font-size: 10px;
+      line-height: 12px;
+      align-self: flex-end;
+      margin-top: 8px;
+      width: 100%;
+    }
   `
 
   const ContrastPassFail = styled('div')`
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: 0px;
+    right: 6px;
+    i {
+      font-size: 12px;
+    }
   `
 
   const SwatchBox = styled('div')`
@@ -90,12 +103,15 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    padding: 8px 10px;
+    padding: 5px 8px;
     position: relative;
     cursor: pointer;
+    overflow: hidden;
+    border: 1px solid ${props => chroma(calcMaxAPCA(textArray, props.color ? props.color : textArray[1].BLACK)[2]).alpha(0.21).hex()};
+    width: 100%;
 
     p {
-      color: ${props => calcMaxAPCA(textArry, props.color ? props.color : textArry[1].BLACK)[2]} !important;
+      color: ${props => calcMaxAPCA(textArray, props.color ? props.color : textArray[1].BLACK)[2]} !important;
       font-size: 10px;
       line-height: 12px;
     }
@@ -105,11 +121,6 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
       width: 100%;
       color: white;
       transition: opacity 100ms ease-in-out;
-    }
-    .helper {
-      align-self: flex-end;
-      margin-top: auto;
-      width: 100%;
     }
 
     &:hover {
@@ -131,17 +142,19 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
           <SwatchRow>
 
             <For each={arr}>{(obj, j) =>
-            <>
+            <Flex flexDirection="column" style={{
+              'flex-basis': '100%',
+              'overflow': 'hidden'
+            }}>
               <SwatchBox color={Object.values(obj)[0]} style={{
-                border: j() == 3 ? '1.5px solid white' : '',
-                "flex": j() == 3 ? 'none' : '1',
-                width: j() == 3 ? '15%' : 'auto',
-                'border-radius': j() == 3 ? '4px' : '3px'
+                border: j() == Math.floor(arrSize() / 2) ? '1px solid white' : '',
+                "flex": j() == arrSize() / 2 ? 'none' : '1',
+                'border-radius': j() == Math.floor(arrSize() / 2) ? '3px' : '3px'
               }} onClick={() => copy(Object.values(obj)[0])}>
                 <ContrastPassFail style={{
-                    color: calcMaxAPCA(textArry, Object.values(obj)[0])[2]
+                    color: calcMaxAPCA(textArray, Object.values(obj)[0])[2]
                   }}>
-                  {calculateContrast(splitChunks()[i()], textArry, Object.values(obj)[0])}
+                  {calculateContrast(splitChunks()[i()], textArray, Object.values(obj)[0])}
                 </ContrastPassFail>
                 <p class="contrast">
                   <object style={{
@@ -153,16 +166,16 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
                   }}><strong>APCA: </strong> {calcMaxAPCA(splitChunks()[i()], Object.values(obj)[0])[0]}</object>
                   <br/>
                   <object style={{
-                    color: calcMaxAPCA(textArry, Object.values(obj)[0])[2]
-                  }}><strong>APCA TEXT: </strong> {calcMaxAPCA(textArry, Object.values(obj)[0])[0]}</object>
+                    color: calcMaxAPCA(textArray, Object.values(obj)[0])[2]
+                  }}><strong>APCA TEXT: </strong> {calcMaxAPCA(textArray, Object.values(obj)[0])[0]}</object>
                 </p>
-                <p class="helper">
+              </SwatchBox>
+              <p class="helper">
                   <strong>{Object.keys(obj)[0]}</strong>
                   <br/>
                   <strong>HEX: </strong>{Object.values(obj)[0]}
                 </p>
-              </SwatchBox>
-            </>
+            </Flex>
             }</For>
 
           </SwatchRow>

@@ -1,4 +1,5 @@
 import chroma from "chroma-js";
+import { createSignal } from "solid-js";
 
 /* Outdated generation of color */
 /*export const generatedColor = (scale: Record<string,string>) => {
@@ -15,11 +16,13 @@ const Legacy: Array<number> = [1.7, 1.3, 1.1, 1, 0.9, 0.7, 0.1];
 const Relative: Array<number> = [1.3, 1.2, 1.1, 1, 0.9, 0.6, 0.5];
 const Shades: Array<number> = [0.4, 0.6, 0.9, 1, 1.1, 1.4, 1.6];
 
+export const [arrSize] = createSignal(Legacy.length);
+
 /* Manual generation of color */
 export const generatedColor = (scale: Record<string,string>) => {
   let output: Record<string, string> = {}
   for (const [key, color] of Object.entries(scale)) {
-    for (let i = 1; i < 8; i++) {
+    for (let i = 1; i <= arrSize(); i++) {
       output[`${key}_${i}00`] = `${generateColor(color, Legacy[i - 1])}`;
     }
   }
@@ -30,7 +33,7 @@ export const generatedColor = (scale: Record<string,string>) => {
 export const generatedColorRelative = (scale: Record<string,string>) => {
   let output: Record<string, string> = {}
   for (const [key, color] of Object.entries(scale)) {
-    for (let i = 1; i < 8; i++) {
+    for (let i = 1; i <= arrSize(); i++) {
       output[`${key}_${i}00`] = `${generateColorRelative(color, Relative[i - 1])}`;
     }
   }
@@ -41,7 +44,7 @@ export const generatedColorRelative = (scale: Record<string,string>) => {
 export const generatedColorMix = (scale: Record<string,string>) => {
   let output: Record<string, string> = {}
   for (const [key, color] of Object.entries(scale)) {
-    for (let i = 1; i < 8; i++) {
+    for (let i = 1; i <= arrSize(); i++) {
       output[`${key}_${i}00`] = `${generateColorMix(color, Legacy[i - 1], Relative[i - 1])}`;
     }
   }
@@ -51,7 +54,7 @@ export const generatedColorMix = (scale: Record<string,string>) => {
 export const generatedColorMixShadeCorrected = (scale: Record<string, string>) => {
   let output: Record<string, string> = {}
   for (const [key, color] of Object.entries(scale)) {
-    for (let i = 1; i < 8; i++) {
+    for (let i = 1; i <= arrSize(); i++) {
       output[`${key}_${i}00`] = `${generateColorMixShade(color, Legacy[i - 1], Relative[i - 1], Shades[i -1])}`;
     }
   }
@@ -59,7 +62,7 @@ export const generatedColorMixShadeCorrected = (scale: Record<string, string>) =
 }
 
 export const generateColorScale = (color: string, step: number) => {
-  if (step == 3) {
+  if (step == arrSize()/2) {
     return color;
   }
 }
