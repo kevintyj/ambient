@@ -10,8 +10,6 @@ type SwatchListComponent<T = {}> = Component<T & {
 
 const SwatchList: SwatchListComponent = (props) => {
   const [sList, setSList] = createSignal(props.swatchList);
-  const sListLength: number = Object.keys(sList).length;
-  const sLength: number = Object.keys(props.swatchList[0]).length;
 
   createComputed(() =>{
     setSList(props.swatchList);
@@ -24,7 +22,7 @@ const SwatchList: SwatchListComponent = (props) => {
           <h5>
             {swatch.name}
           </h5>
-          <ColorSwatch colorSwatch={swatch.swatch}/>
+          <ColorSwatch colorSwatch={swatch.swatch as unknown as Record<string, Record<string, string>>}/>
           <br/>
         </>
       }</For>

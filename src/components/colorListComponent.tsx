@@ -6,7 +6,7 @@ import { ColorLegacy, ColorMix, ColorRelative, colorScale, ColorShades} from "..
 
 export type ISwatchItem = {
   name: string;
-  swatch: Record<string, Record<string, {}>>
+  swatch: Record<string, Record<string, Record<string, string>>>;
 }
 
 

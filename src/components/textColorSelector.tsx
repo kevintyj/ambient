@@ -3,23 +3,13 @@ import {Component, createEffect, createSignal, For} from "solid-js";
 import { styled } from "solid-styled-components";
 import toast from "solid-toast";
 import { ColorIdentifier } from "../shared/styles/components/colorIdentifier.styled";
-import { colorScale, setColorScale } from "../shared/styles/utils/variables.styled";
+import { colorScale, setColorScale, setTextColorScale, textColorScale } from "../shared/styles/utils/variables.styled";
 import Toast from "../shared/components/toast";
 import { Button } from "../shared/styles/components/button.styled";
 import { Flex } from "../shared/styles/components/flex.styled";
 
-const ColorSelector: Component = () => {
-  const [colors, setColors] = createSignal(Object.entries(colorScale()));
-  const [jsonFile, setJsonFile] = createSignal();
-
-  const addColor = () => {
-    setColors([...colors(), ['NAME', '#ffffff']]);
-    // console.log(Object.fromEntries(colors()));
-  }
-
-  const removeColor = (index: number) => {
-    setColors([...colors().slice(0, index), ...colors().slice(index + 1)]);
-  }
+const TextColorSelector: Component = () => {
+  const [colors, setColors] = createSignal(Object.entries(textColorScale()));
 
   const FormGroup = styled('div')`
     display: flex;
@@ -83,7 +73,7 @@ const ColorSelector: Component = () => {
   const { form, data, errors, isSubmitting, isValid } = createForm({
     onSubmit: (val) => {
       // console.log('color scale edited')
-      setColorScale(arrToObj(Object.values(val) as []) as any);
+      setTextColorScale(arrToObj(Object.values(val) as []) as any);
       // console.log(arrToObj(Object.values(val) as []) as any);
       //console.log(val)
     }, validate: (val) => {
@@ -106,30 +96,8 @@ const ColorSelector: Component = () => {
   });
 
   createEffect(() => {
-    setColors(Object.entries(colorScale()))
+    setColors(Object.entries(textColorScale()));
   });
-
-  const fileDownload = () => {
-    const fileData = JSON.stringify(colorScale());
-    const blob = new Blob([fileData], {type: "text/plain"});
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.download = 'ambientcolors.json';
-    link.href = url;
-    link.click();
-  }
-
-  const fileChange = (e: any) => {
-    const fileReader = new FileReader();
-    fileReader.readAsText(e.target.files[0]);
-    fileReader.onload = e => {
-      // console.log(e.target?.result);
-      setJsonFile(eval(`(${e.target?.result as string})`));
-      // console.log(eval(`(${jsonFile() as string})`))
-      setColors(Object.entries(jsonFile() as object));
-      // setColorScale(jsonFile() as any);
-    };
-  }
 
   return(
     <>
@@ -137,20 +105,22 @@ const ColorSelector: Component = () => {
         display: 'flex',
         "flex-direction": 'column',
         "gap": '8px',
-        "padding": '4px 0 8px 0',
+        "padding": '4px 0 16px 0',
         'align-items': 'flex-start'
       }}>
         <For each={colors()}>{([key, val], i) =>
           <FormGroup>
             <div style={{
-              width: '12px'
+              width: 'auto'
             }}>
-              {i() + 1}
+              {key}
             </div>
             <label>
               <ColorIdentifier color={colors()[i()][1]}/>
             </label>
-            <div class="form-element">
+            <div class="form-element" style={{
+              display: 'none'
+            }}>
               <label for="colorName">Name</label>
               <input type="text" name={`colorName${i()}`} value={key}/>
             </div>
@@ -159,33 +129,14 @@ const ColorSelector: Component = () => {
               <input type="text" name={`colorHEX${i()}`} value={val} maxlength="7" 
        style="text-transform:uppercase"/>
             </div>
-            <a onclick={() => removeColor(i())}><i class="bi bi-trash3-fill"></i></a>
           </FormGroup>
         }</For>
-        <a onClick={() => addColor()}><i class="bi bi-plus-circle-fill"></i> Add Color</a>
-        <Button type="submit">Generate Color Set</Button>
+        <Button type="submit">Change Text Colors</Button>
       </form>
-      <Flex flexDirection={'row'} gap={12} style={{
-        "padding-bottom": '20px'
-      }}>
-        <Button type="submit" onclick={fileDownload}>
-          <i class="bi bi-cloud-arrow-down-fill"></i> Export Color Set
-          </Button>
-        <Button type="submit">
-          <label style={{
-            'font-weight': 'bold',
-            cursor: 'pointer'
-          }}>
-            <input type="file" onchange={fileChange} style={{
-              display: 'none'
-            }}/>
-            <i class="bi bi-cloud-arrow-up-fill"></i> Import Color Set
-          </label>
-        </Button>
-      </Flex>
+      <br/>
     </>
   )
 
 }
 
-export default ColorSelector;
+export default TextColorSelector;

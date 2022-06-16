@@ -23,6 +23,11 @@ export const Base = {
 const WHITE: string = '#FFF';
 const BLACK: string = '#000';
 
+export const [textColorScale, setTextColorScale] = createSignal({
+  WHITE: '#FFFFFF',
+  BLACK: '#131313'
+})
+
 export const [colorScale, setColorScale] = createSignal({
   PRIMARY: '#0066FF',
   COMPLETE: '#379498',
@@ -49,7 +54,6 @@ export const [ColorShades, setColorShades] = createSignal<Record<string, {}>>({
 });
 
 createEffect(() => {
-  console.log('Master color tables updated');
   setColorLegacy({...generatedColor(colorScale())});
   setColorRelative({...generatedColorRelative(colorScale())});
   setColorMix({...generatedColorMix(colorScale())});

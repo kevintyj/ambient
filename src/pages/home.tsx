@@ -3,6 +3,7 @@ import ColorListPage from "../components/colorListComponent";
 import ColorSelector from "../components/colorSelector";
 import GraphList from "../components/graphListComponent";
 import Introduction from "../components/introduction";
+import TextColorSelector from "../components/textColorSelector";
 import { Flex } from "../shared/styles/components/flex.styled";
 import { ColorShades } from "../shared/styles/utils/variables.styled";
 
@@ -24,6 +25,10 @@ const Home: Component = () => {
           </p>
           <br/>
           <ColorSelector/>
+          <h4>
+            Text Colors
+          </h4>
+          <TextColorSelector/>
         </div>
         <div style={{
           width: '100%'
