@@ -32,19 +32,19 @@ export const [colorScale, setColorScale] = createSignal({
   INFO: '#2B364C'
 });
 
-export const [ColorLegacy, setColorLegacy] = createSignal<Record<string, string>>({
+export const [ColorLegacy, setColorLegacy] = createSignal<Record<string, {}>>({
   ...generatedColor(colorScale())
 });
 
-export const [ColorRelative, setColorRelative] = createSignal<Record<string, string>>({
+export const [ColorRelative, setColorRelative] = createSignal<Record<string, {}>>({
   ...generatedColorRelative(colorScale())
 });
 
-export const [ColorMix, setColorMix] = createSignal<Record<string, string>>({
+export const [ColorMix, setColorMix] = createSignal<Record<string, {}>>({
   ...generatedColorMix(colorScale())
 })
 
-export const [ColorShades, setColorShades] = createSignal<Record<string, string>>({
+export const [ColorShades, setColorShades] = createSignal<Record<string, {}>>({
   ...generatedColorMixShadeCorrected(colorScale())
 });
 

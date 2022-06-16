@@ -5,7 +5,7 @@ import { Flex } from "../styles/components/flex.styled";
 import { INormal, relativeLuminanceCalc } from "../styles/functions/relativeLuminanceCalc";
 
 type ColorGraphComponent<T = {}> = Component<T &{
-  colorSwatch: Record<string, string>[];
+  colorSwatch: Record<string, string>;
   displayType: INormal | string;
 }>
 

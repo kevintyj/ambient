@@ -10,18 +10,22 @@ import { arrSize } from "../styles/functions/functions.styled";
 import { Flex } from "../styles/components/flex.styled";
 
 type ColorSwatchComponent<T = {}> = Component<T &{
-  colorSwatch: Record<string, string>
+  colorSwatch: Record<string, Record<string, string>>
 }>
 
 const ColorSwatch: ColorSwatchComponent = (props) => {
 
   const swatch = () => props.colorSwatch;
-  const aSwatch: { [p: string]: string }[] = Object.entries(swatch()).map(([key, value]) => ({ [key]: value }));
-  const swatchKeys: string[] = Object.keys(swatch());
-  // @ts-ignore
-  const swatchLength: number = Number(swatchKeys[swatchKeys.length - 1].match(/\d+/)[0].charAt(0));
-  const splitChunks = () => chunk(aSwatch, arrSize());
 
+  // Object.entries(swatch()).forEach(([name, obj]) => {
+  //   console.log(name);
+  //   console.log(obj);
+  //   console.log(Object.entries(obj));
+  //   Object.entries(obj).forEach(([keys, value]) => {
+  //     console.log(keys);
+  //     console.log(value);
+  //   })
+  // });
 
   const copy = (color: string) => {
     navigator.clipboard.writeText(color).then(() => {
@@ -41,7 +45,7 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
     })
   }
 
-  const calculateContrast = (swatch: {[p: string]: string;}[], textDefault: {[p: string]: string}[], bg: string) => {
+  const calculateContrast = (swatch: Record<string, string>, textDefault: Record<string, string>, bg: string) => {
     const MaxWCAG = Number(calcMaxWCAG(swatch, bg)[0]);
     const MaxAPCA = Number(calcMaxAPCA(swatch, bg)[0]);
     const MaxTextWCAG = Number(calcMaxWCAG(textDefault, bg)[0]);
@@ -59,15 +63,11 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
     return (<i class="bi bi-check-circle"></i>);
   }
 
-  const textArray: Array<Record<string, string>> = [
-    {
-      WHITE: "#FFFFFF"
-    }, {
-      BLACK: "#131313"
-    }
-  ];
+  const textArray: Record<string, string> = {
+    WHITE: '#FFFFFF', 
+    BLACK: '#131313'
+  };
 
-  // console.log(swatch);
   // console.log(aSwatch);
   // console.log(swatchKeys);
   // console.log(swatchLength);
@@ -107,11 +107,11 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
     position: relative;
     cursor: pointer;
     overflow: hidden;
-    border: 1px solid ${props => chroma(calcMaxAPCA(textArray, props.color ? props.color : textArray[1].BLACK)[2]).alpha(0.21).hex()};
+    border: 1px solid ${props => calcMaxAPCA(textArray, props.color!)[0]};
     width: 100%;
 
     p {
-      color: ${props => calcMaxAPCA(textArray, props.color ? props.color : textArray[1].BLACK)[2]} !important;
+      color: ${props => calcMaxAPCA(textArray, props.color!)[2]} !important;
       font-size: 10px;
       line-height: 12px;
     }
@@ -138,47 +138,50 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
 
       }}>
 
-        <For each={splitChunks()}>{(arr, i) =>
+        <For each={Object.entries(swatch())}>{([name, arr], i) =>
+          <>
+          <p>
+            {name}
+          </p>
           <SwatchRow>
-
-            <For each={arr}>{(obj, j) =>
+            <For each={Object.entries(arr)}>{([name, hex], j) =>
             <Flex flexDirection="column" style={{
               'flex-basis': '100%',
               'overflow': 'hidden'
             }}>
-              <SwatchBox color={Object.values(obj)[0]} style={{
+              <SwatchBox color={hex} style={{
                 border: j() == Math.floor(arrSize() / 2) ? '1px solid white' : '',
                 "flex": j() == arrSize() / 2 ? 'none' : '1',
                 'border-radius': j() == Math.floor(arrSize() / 2) ? '3px' : '3px'
-              }} onClick={() => copy(Object.values(obj)[0])}>
+              }} onClick={() => copy(hex)}>
                 <ContrastPassFail style={{
-                    color: calcMaxAPCA(textArray, Object.values(obj)[0])[2]
+                    color: calcMaxAPCA(textArray, hex)[2]
                   }}>
-                  {calculateContrast(splitChunks()[i()], textArray, Object.values(obj)[0])}
+                  {calculateContrast(arr, textArray, hex)}
                 </ContrastPassFail>
                 <p class="contrast">
                   <object style={{
-                    color: calcMaxWCAG(splitChunks()[i()], Object.values(obj)[0])[2]
-                  }}><strong>WCAG: </strong> {calcMaxWCAG(splitChunks()[i()], Object.values(obj)[0])[0]}</object>
+                    color: calcMaxWCAG(arr, hex)[2]
+                  }}><strong>WCAG: </strong> {calcMaxWCAG(arr, hex)[0]}</object>
                   <br/>
                   <object style={{
-                    color: calcMaxAPCA(splitChunks()[i()], Object.values(obj)[0])[2]
-                  }}><strong>APCA: </strong> {calcMaxAPCA(splitChunks()[i()], Object.values(obj)[0])[0]}</object>
+                    color: calcMaxAPCA(arr, hex)[2]
+                  }}><strong>APCA: </strong> {calcMaxAPCA(arr, hex)[0]}</object>
                   <br/>
                   <object style={{
-                    color: calcMaxAPCA(textArray, Object.values(obj)[0])[2]
-                  }}><strong>APCA TEXT: </strong> {calcMaxAPCA(textArray, Object.values(obj)[0])[0]}</object>
+                    color: calcMaxAPCA(textArray, hex)[2]
+                  }}><strong>APCA TEXT: </strong> {calcMaxAPCA(textArray, hex)[0]}</object>
                 </p>
               </SwatchBox>
               <p class="helper">
-                  <strong>{Object.keys(obj)[0]}</strong>
+                  <strong>{name}</strong>
                   <br/>
-                  <strong>HEX: </strong>{Object.values(obj)[0]}
-                </p>
+                  {hex}
+              </p>
             </Flex>
             }</For>
-
           </SwatchRow>
+          </>
         }</For>
 
       </div>

@@ -52,13 +52,11 @@ const normalizeArr = (obj: Record<string, number>, norm: INormal | string) => {
 }
 
 
-export const relativeLuminanceCalc = (aSwatch: { [p: string]: string }[], normalize: INormal | string) => {
-  const swatchKeys = aSwatch.map((obj) => Object.values(obj)[0]);
-  // const swatchValues = aSwatch.map((obj) => Object.values(obj)[1]);
-
+export const relativeLuminanceCalc = (aSwatch: Record<string, string>, normalize: INormal | string) => {
+  
   const interNormalize: Record<string, number> = {};
 
-  for(var val of swatchKeys) {
+  for(var val of Object.values(aSwatch)) {
     interNormalize[val] = Number(LuminanceCalc(val));
   }
 

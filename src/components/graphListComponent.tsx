@@ -7,7 +7,7 @@ import { arrSize } from "../shared/styles/functions/functions.styled";
 import { INormal } from "../shared/styles/functions/relativeLuminanceCalc";
 
 type ColorGraphComponent<T = {}> = Component<T &{
-  colorSwatch: Record<string, string>
+  colorSwatch: Record<string, Record<string, string>>
   displayType?: INormal;
 }>
 
@@ -17,26 +17,17 @@ const GraphList: ColorGraphComponent = (props) => {
 
   const [displayType, setDisplayType] = createSignal('to-primary');
 
-  const aSwatch =  ((swatchList: Record<string, string>) => {
-    return Object.entries(swatchList).map(([key, value]) => ({ [key]: value }))
-  });
-  const [splitChunks, setSplitChunks] = createSignal(chunk(aSwatch(swatch()), arrSize()));
-
   const updateType = (type: any) => {
     setDisplayType(type.target.value);
   }
-
-  createEffect(() => {
-    setSplitChunks(chunk(aSwatch(swatch()), arrSize()));
-  })
 
   return(
     <>
       <Flex flexDirection="column" gap={10} style={{
         padding: '0 28px'
       }}>
-        <For each={splitChunks()}>{(graph, i) => 
-          <ColorGraph colorSwatch={graph} displayType={displayType()}/>
+        <For each={Object.entries(swatch())}>{([name, arr], i) => 
+          <ColorGraph colorSwatch={arr} displayType={displayType()}/>
         }</For>
       </Flex>
       <br/>

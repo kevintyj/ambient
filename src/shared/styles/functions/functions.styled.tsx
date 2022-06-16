@@ -20,45 +20,53 @@ export const [arrSize] = createSignal(Legacy.length);
 
 /* Manual generation of color */
 export const generatedColor = (scale: Record<string,string>) => {
-  let output: Record<string, string> = {}
+  let output: Record<string, {}> = {}
   for (const [key, color] of Object.entries(scale)) {
+    let colorScale: Record<string, string> = {};
     for (let i = 1; i <= arrSize(); i++) {
-      output[`${key}_${i}00`] = `${generateColor(color, Legacy[i - 1])}`;
+      colorScale[`${i}00`] = `${generateColor(color, Legacy[i - 1])}`;
     }
+    output[`${key}`] = colorScale;
   }
-  return output as Record<string, string>;
+  return output as Record<string, {}>;
 };
 
 /* Automatic generation of color */
 export const generatedColorRelative = (scale: Record<string,string>) => {
-  let output: Record<string, string> = {}
+  let output: Record<string, {}> = {}
   for (const [key, color] of Object.entries(scale)) {
+    let colorScale: Record<string, string> = {};
     for (let i = 1; i <= arrSize(); i++) {
-      output[`${key}_${i}00`] = `${generateColorRelative(color, Relative[i - 1])}`;
+      colorScale[`${i}00`] = `${generateColorRelative(color, Relative[i - 1])}`;
     }
+    output[`${key}`] = colorScale;
   }
-  return output as Record<string, string>;
+  return output as Record<string, {}>;
 };
 
 /* Automatic generation of color */
 export const generatedColorMix = (scale: Record<string,string>) => {
-  let output: Record<string, string> = {}
+  let output: Record<string, {}> = {}
   for (const [key, color] of Object.entries(scale)) {
+    let colorScale: Record<string, string> = {};
     for (let i = 1; i <= arrSize(); i++) {
-      output[`${key}_${i}00`] = `${generateColorMix(color, Legacy[i - 1], Relative[i - 1])}`;
+      colorScale[`${i}00`] = `${generateColorMix(color, Legacy[i - 1], Relative[i - 1])}`;
     }
+    output[`${key}`] 
   }
-  return output as Record<string, string>;
+  return output as Record<string, {}>;
 };
 
 export const generatedColorMixShadeCorrected = (scale: Record<string, string>) => {
-  let output: Record<string, string> = {}
+  let output: Record<string, {}> = {}
   for (const [key, color] of Object.entries(scale)) {
+    let colorScale: Record<string, string> = {};
     for (let i = 1; i <= arrSize(); i++) {
-      output[`${key}_${i}00`] = `${generateColorMixShade(color, Legacy[i - 1], Relative[i - 1], Shades[i -1])}`;
+      colorScale[`${i}00`] = `${generateColorMixShade(color, Legacy[i - 1], Relative[i - 1], Shades[i -1])}`;
     }
+    output[`${key}`] = colorScale;
   }
-  return output as Record<string, string>
+  return output as Record<string, {}>
 }
 
 export const generateColorScale = (color: string, step: number) => {
