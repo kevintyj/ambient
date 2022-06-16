@@ -15,9 +15,10 @@ Ambient was built with [Solidjs](https://solidjs.com)
 - See Luminance values of each shade generated
 - Get valuable contrast information on each shade
 - APCA Contrast ratio ready
+- Customize text color pairs
+- Export to Tailwind colors
 
 ## Roadmap
-- Customize text color pairs (currently: #FFFFFF and #131313)
 - Export all color shades in CSS & SCSS ready formats
 - Export to library theming formats (Bootstrap, Tailwind, Chakra, Mantine etc.) 
 - Figma plugin
