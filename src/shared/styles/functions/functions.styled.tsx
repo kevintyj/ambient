@@ -52,7 +52,7 @@ export const generatedColorMix = (scale: Record<string,string>) => {
     for (let i = 1; i <= arrSize(); i++) {
       colorScale[`${i}00`] = `${generateColorMix(color, Legacy[i - 1], Relative[i - 1])}`;
     }
-    output[`${key}`] 
+    output[`${key}`] = colorScale;
   }
   return output as Record<string, {}>;
 };

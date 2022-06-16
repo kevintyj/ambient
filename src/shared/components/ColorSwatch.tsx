@@ -107,7 +107,7 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
     position: relative;
     cursor: pointer;
     overflow: hidden;
-    border: 1px solid ${props => calcMaxAPCA(textArray, props.color!)[0]};
+    border: 1px solid ${props => calcMaxAPCA(textArray, props.color!)[2] == '#FFFFFF' ? chroma(props.color!).brighten(1.02).hex() : chroma(props.color!).darken(1.02).hex()};
     width: 100%;
 
     p {
@@ -150,7 +150,7 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
               'overflow': 'hidden'
             }}>
               <SwatchBox color={hex} style={{
-                border: j() == Math.floor(arrSize() / 2) ? '1px solid white' : '',
+                border: j() == Math.floor(arrSize() / 2) ? '1px solid rgba(256, 256, 256, 1)' : '',
                 "flex": j() == arrSize() / 2 ? 'none' : '1',
                 'border-radius': j() == Math.floor(arrSize() / 2) ? '3px' : '3px'
               }} onClick={() => copy(hex)}>
