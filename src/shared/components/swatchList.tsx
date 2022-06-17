@@ -1,4 +1,4 @@
-import {Component, createComputed, createEffect, createSignal} from "solid-js";
+import {Component, createComputed, createSignal} from "solid-js";
 import {For} from "solid-js";
 import { ISwatchItem } from "../../components/colorListComponent";
 import ColorSwatch from "./colorSwatch";

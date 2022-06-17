@@ -1,5 +1,5 @@
 import chroma from "chroma-js";
-import { createEffect, createSignal } from "solid-js";
+import { createSignal } from "solid-js";
 
 /* Outdated generation of color */
 /*export const generatedColor = (scale: Record<string,string>) => {
@@ -17,10 +17,6 @@ export const [Relative, SetRelative] = createSignal([1.3, 1.2, 1.1, 1, 0.9, 0.6,
 export const [Shades, SetShades] = createSignal([0.4, 0.6, 0.9, 1, 1.1, 1.4, 1.6]);
 
 export const [arrSize, setArrSize] = createSignal(Legacy().length);
-
-createEffect(() => {
-  setArrSize(Legacy().length);
-});
 
 /* Manual generation of color */
 export const generatedColor = (scale: Record<string,string>) => {

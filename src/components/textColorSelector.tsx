@@ -9,8 +9,7 @@ import { Button } from "../shared/styles/components/button.styled";
 import { Flex } from "../shared/styles/components/flex.styled";
 
 const TextColorSelector: Component = () => {
-  const [colors, setColors] = createSignal(Object.entries(textColorScale()));
-
+  
   const FormGroup = styled('div')`
     display: flex;
     flex-direction: row;
@@ -96,7 +95,7 @@ const TextColorSelector: Component = () => {
   });
 
   createEffect(() => {
-    setColors(Object.entries(textColorScale()));
+    textColorScale();
   });
 
   return(
@@ -108,7 +107,7 @@ const TextColorSelector: Component = () => {
         "padding": '4px 0 16px 0',
         'align-items': 'flex-start'
       }}>
-        <For each={colors()}>{([key, val], i) =>
+        <For each={Object.entries(textColorScale())}>{([key, val], i) =>
           <FormGroup>
             <div style={{
               width: 'auto'
@@ -116,7 +115,7 @@ const TextColorSelector: Component = () => {
               {key}
             </div>
             <label>
-              <ColorIdentifier color={colors()[i()][1]}/>
+              <ColorIdentifier color={Object.entries(textColorScale())[i()][1]}/>
             </label>
             <div class="form-element" style={{
               display: 'none'

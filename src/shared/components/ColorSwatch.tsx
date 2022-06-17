@@ -18,11 +18,8 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
 
   const swatch = () => props.colorSwatch;
 
-  const [textArray, setTextArray] = createSignal(textColorScale());
-
-
   createEffect(() => {
-    setTextArray(textColorScale());
+    textColorScale();
   })
 
   // Object.entries(swatch()).forEach(([name, obj]) => {
@@ -89,6 +86,12 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
       margin-top: 8px;
       width: 100%;
     }
+
+    .left {
+      background-color: aliceblue;
+      height: 110px;
+      width: 500px;
+    }
   `
 
   const ContrastPassFail = styled('div')`
@@ -111,11 +114,11 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
     position: relative;
     cursor: pointer;
     overflow: hidden;
-    border: 1px solid ${props => calcMaxAPCA(textArray(), props.color!)[2] == '#FFFFFF' ? chroma(props.color!).brighten(1.02).hex() : chroma(props.color!).darken(1.02).hex()};
+    border: 1px solid ${props => calcMaxAPCA(textColorScale(), props.color!)[2] == '#FFFFFF' ? chroma(props.color!).brighten(1.02).hex() : chroma(props.color!).darken(1.02).hex()};
     width: 100%;
 
     p {
-      color: ${props => calcMaxAPCA(textArray(), props.color!)[2]} !important;
+      color: ${props => calcMaxAPCA(textColorScale(), props.color!)[2]} !important;
       font-size: 10px;
       line-height: 12px;
     }
@@ -159,9 +162,9 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
                 'border-radius': j() == Math.floor(arrSize() / 2) ? '3px' : '3px'
               }} onClick={() => copy(hex)}>
                 <ContrastPassFail style={{
-                    color: calcMaxAPCA(textArray(), hex)[2]
+                    color: calcMaxAPCA(textColorScale(), hex)[2]
                   }}>
-                  {calculateContrast(arr, textArray(), hex)}
+                  {calculateContrast(arr, textColorScale(), hex)}
                 </ContrastPassFail>
                 <p class="contrast">
                   <object style={{
@@ -173,12 +176,12 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
                   }}><strong>APCA: </strong> {calcMaxAPCA(arr, hex)[0]}</object>
                   <br/>
                   <object style={{
-                    color: calcMaxAPCA(textArray(), hex)[2]
-                  }}><strong>APCA TEXT: </strong> {calcMaxAPCA(textArray(), hex)[0]}</object>
+                    color: calcMaxAPCA(textColorScale(), hex)[2]
+                  }}><strong>APCA TEXT: </strong> {calcMaxAPCA(textColorScale(), hex)[0]}</object>
                   <br/>
                   <object style={{
-                    color: calcMaxAPCABG(textArray(), hex)[2]
-                  }}><strong>APCA BG: </strong> {calcMaxAPCABG(textArray(), hex)[0]}</object>
+                    color: calcMaxAPCABG(textColorScale(), hex)[2]
+                  }}><strong>APCA BG: </strong> {calcMaxAPCABG(textColorScale(), hex)[0]}</object>
                 </p>
               </SwatchBox>
               <p class="helper">

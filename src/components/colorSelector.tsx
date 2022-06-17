@@ -105,10 +105,6 @@ const ColorSelector: Component = () => {
     }
   });
 
-  createEffect(() => {
-    setColors(Object.entries(colorScale()))
-  });
-
   const fileDownload = () => {
     const fileData = JSON.stringify(colorScale());
     const blob = new Blob([fileData], {type: "text/plain"});

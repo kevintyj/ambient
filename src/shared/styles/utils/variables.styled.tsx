@@ -1,4 +1,5 @@
 import { createEffect, createSignal } from "solid-js";
+import { createStore } from "solid-js/store";
 import {
   generatedColor,
   generatedColorMix,
@@ -37,28 +38,13 @@ export const [colorScale, setColorScale] = createSignal({
   INFO: '#2B364C'
 });
 
-export const [ColorLegacy, setColorLegacy] = createSignal<Record<string, {}>>({
-  ...generatedColor(colorScale())
-});
+export const ColorLegacy = () => generatedColor(colorScale());
 
-export const [ColorRelative, setColorRelative] = createSignal<Record<string, {}>>({
-  ...generatedColorRelative(colorScale())
-});
+export const ColorRelative = () => generatedColorRelative(colorScale());
 
-export const [ColorMix, setColorMix] = createSignal<Record<string, {}>>({
-  ...generatedColorMix(colorScale())
-})
+export const ColorMix = () => generatedColorMix(colorScale());
 
-export const [ColorShades, setColorShades] = createSignal<Record<string, {}>>({
-  ...generatedColorMixShadeCorrected(colorScale())
-});
-
-createEffect(() => {
-  setColorLegacy({...generatedColor(colorScale())});
-  setColorRelative({...generatedColorRelative(colorScale())});
-  setColorMix({...generatedColorMix(colorScale())});
-  setColorShades({...generatedColorMixShadeCorrected(colorScale())});
-})
+export const ColorShades = () => generatedColorMixShadeCorrected(colorScale());
 
 /* Grid System */
 

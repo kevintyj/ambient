@@ -1,9 +1,7 @@
-import { chunk, create } from "lodash";
-import { Component, createEffect, createSignal, For } from "solid-js";
+import { Component, createSignal, For } from "solid-js";
 import ColorGraph from "../shared/components/colorGraph";
 import { Flex } from "../shared/styles/components/flex.styled";
 import { Select } from "../shared/styles/components/select.styled";
-import { arrSize } from "../shared/styles/functions/functions.styled";
 import { INormal } from "../shared/styles/functions/relativeLuminanceCalc";
 
 type ColorGraphComponent<T = {}> = Component<T &{
