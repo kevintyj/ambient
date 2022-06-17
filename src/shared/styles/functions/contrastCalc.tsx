@@ -1,4 +1,5 @@
 import chroma from "chroma-js";
+import { contrastCalcType } from "../../../components/colorListComponent";
 import { APCAcontrast, sRGBtoY } from "./apca";
 
 const calcWCAG = (text: string, bg: string) => {
@@ -10,17 +11,24 @@ export const calcMaxWCAG = (swatch: Record<string, string>, bg:string) => {
   let maxContrastSwatch: string = '';
   let maxContrastHEX: string = '';
 
-  Object.entries(swatch).forEach(([name, hex]) => {
+  for(const [name, hex] of Object.entries(swatch)) {
     let currContrast = calcWCAG(hex, bg);
 
     if (currContrast > maxContrast) {
       maxContrast = currContrast;
       maxContrastSwatch = name;
       maxContrastHEX = hex;
-    }
-  })
 
-  return [maxContrast.toFixed(2), maxContrastSwatch, maxContrastHEX];
+      if (maxContrast > 4.5 && contrastCalcType() == 1) {
+        return [maxContrast.toFixed(2), maxContrastSwatch, maxContrastHEX];
+      }
+    }
+  }
+
+  if (maxContrast > 4.5) {
+    return [maxContrast.toFixed(2), maxContrastSwatch, maxContrastHEX];
+  }
+  return ['NA', 'NA', maxContrastHEX];
 }
 
 const calcAPCA = (txt: string, bg: string) => {
@@ -35,16 +43,23 @@ export const calcMaxAPCA = (swatch: Record<string, string>, bg:string) => {
   let maxContrastSwatch: string = '';
   let maxContrastHEX: string = '';
 
-  Object.entries(swatch).forEach(([name, hex]) => {
+  for (const [name, hex] of Object.entries(swatch)) {
     let currContrast = Math.abs(calcAPCA(hex, bg));
+
     if (currContrast > maxContrast) {
       maxContrast = currContrast;
       maxContrastSwatch = name;
       maxContrastHEX = hex;
+      if (maxContrast > 60 && contrastCalcType() == 1) {
+        return [maxContrast.toFixed(2), maxContrastSwatch, maxContrastHEX];
+      }
     }
-  })
+  }
 
-  return [maxContrast.toFixed(2), maxContrastSwatch, maxContrastHEX];
+  if (maxContrast > 60) {
+    return [maxContrast.toFixed(2), maxContrastSwatch, maxContrastHEX];
+  }
+  return ['NA', 'NA', maxContrastHEX];
 }
 
 export const calcMaxAPCABG = (swatch: Record<string, string>, bg:string) => {
@@ -52,14 +67,20 @@ export const calcMaxAPCABG = (swatch: Record<string, string>, bg:string) => {
   let maxContrastSwatch: string = '';
   let maxContrastHEX: string = '';
 
-  Object.entries(swatch).forEach(([name, hex]) => {
+  for (const [name, hex] of Object.entries(swatch)) {
     let currContrast = Math.abs(calcAPCA(bg, hex));
     if (currContrast > maxContrast) {
       maxContrast = currContrast;
       maxContrastSwatch = name;
       maxContrastHEX = hex;
+      if (maxContrast > 60 && contrastCalcType() == 1) {
+        return [maxContrast.toFixed(2), maxContrastSwatch, maxContrastHEX];
+      }
     }
-  })
-
-  return [maxContrast.toFixed(2), maxContrastSwatch, maxContrastHEX];
+  }
+  
+  if (maxContrast > 60) {
+    return [maxContrast.toFixed(2), maxContrastSwatch, maxContrastHEX];
+  }
+  return ['NA', 'NA', maxContrastHEX];
 }

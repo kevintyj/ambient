@@ -12,6 +12,8 @@ export type ISwatchItem = {
   swatch: Record<string, Record<string, string>>;
 }
 
+export const [showContrast, setShowContrast] = createSignal('0');
+export const [contrastCalcType, setContrastCalcType] = createSignal(0);
 
 const ColorListPage: Component = () => {
 
@@ -125,13 +127,21 @@ const ColorListPage: Component = () => {
     }
   }
 
+  const updateShowContrast = (type: any) => {
+    setShowContrast(type.target.value);
+  }
+
+  const updateContrastCalc = (type: any) => {
+    setContrastCalcType(type.target.value);
+  }
+
   return(
     <>
       <h3>
         Generated Colors
       </h3>
       <Flex flexDirection="row" gap={8} style={{
-        margin: '0 0 24px -2px'
+        margin: '0 0 8px -2px'
       }}>
         <Button type="submit" onclick={fileDownloadFull}>
           Export colors
@@ -187,6 +197,36 @@ const ColorListPage: Component = () => {
           </option>
           <option value={9}>
             9
+          </option>
+        </Select>
+      </Flex>
+      <Flex flexDirection="row" gap={8} style={{
+        margin: '0 0 24px -2px'
+      }}>
+        <p style={{
+            'padding': '18px 0 0 0'
+        }}>
+          Contrast Color Method:
+        </p>
+        <Select value={contrastCalcType()} onChange={updateContrastCalc}>
+          <option value={0} selected>
+            Most Contrasting Color (Default)
+          </option>
+          <option value={1}>
+            First Compliant Color
+          </option>
+        </Select>
+        <p style={{
+          'padding': '18px 0 0 12px'
+        }}>
+          Always Show Contrast Info
+        </p>
+        <Select value={showContrast()} onChange={updateShowContrast}>
+          <option value={'0'} selected>
+            False (Default)
+          </option>
+          <option value={'1'}>
+            True
           </option>
         </Select>
       </Flex>

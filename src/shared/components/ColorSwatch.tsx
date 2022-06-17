@@ -7,6 +7,7 @@ import Toast from "./toast";
 import { arrSize } from "../styles/functions/functions.styled";
 import { Flex } from "../styles/components/flex.styled";
 import { textColorScale } from "../styles/utils/variables.styled";
+import { showContrast } from "../../components/colorListComponent";
 
 type ColorSwatchComponent<T = {}> = Component<T &{
   colorSwatch: Record<string, Record<string, string>>
@@ -86,6 +87,42 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
     }
   `
 
+  const calcSwatchStyle = (index: number) => {
+    if (index == 0) {
+      return {
+        'border-radius': '5px 0 0 5px',
+        'padding':  '5px 5px 5px 5px',
+        'border-width': '1px 0 1px 1px',
+        'margin-right': '-5px'
+      }
+    } if (index == 1) {
+      return {
+        'border-radius': '0 5px 5px 0',
+        'padding':  '5px 5px 5px 5px',
+        'border-width': '1px 1px 1px 0',
+        'margin': '0 -5px'
+      }
+    } if (index == arrSize() - 2) {
+      return {
+        'border-radius': '5px 0 0 5px',
+        'padding':  '5px 5px 5px 5px',
+        'border-width': '1px 0 1px 1px',
+        'margin': '0 -5px'
+      }
+    } if (index == arrSize() - 1) {
+      return {
+        'border-radius': '0 5px 5px 0',
+        'padding':  '5px 5px 5px 5px',
+        'border-width': '1px 1px 1px 0',
+        'margin-left': '-5px'
+      }
+    } else {
+      return {
+        'padding':  '5px 0',
+      }
+    }
+  }
+
   const SwatchBox = styled('div')`
     background-color: ${props => props.color};
     height: 84px;
@@ -106,7 +143,7 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
       line-height: 12px;
     }
     .contrast {
-      opacity: 0;
+      opacity: ${() => showContrast()};
       align-self: flex-start;
       width: 100%;
       color: white;
@@ -135,10 +172,12 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
           </p>
           <SwatchRow>
             <For each={Object.entries(arr)}>{([name, hex], j) =>
-            <Flex flexDirection="column" style={{
+            <Flex flexDirection="column" style={Object.assign({
               'flex-basis': '100%',
-              'overflow': 'hidden'
-            }}>
+              'overflow': 'hidden',
+              'border-style': 'solid',
+              'border-color': 'rgba(256, 256, 256, 0.14)',
+            }, calcSwatchStyle(j()))}>
               <SwatchBox color={hex} style={{
                 border: j() == Math.floor(arrSize() / 2) ? '1px solid rgba(256, 256, 256, 1)' : '',
                 "flex": j() == arrSize() / 2 ? 'none' : '1',
@@ -152,11 +191,11 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
                 <p class="contrast">
                   <object style={{
                     color: calcMaxWCAG(arr, hex)[2]
-                  }}><strong>WCAG: </strong> {calcMaxWCAG(arr, hex)[0]}</object>
+                  }}><strong>WCAG: </strong> {`${calcMaxWCAG(arr, hex)[1]} (${calcMaxWCAG(arr, hex)[0]})`}</object>
                   <br/>
                   <object style={{
                     color: calcMaxAPCA(arr, hex)[2]
-                  }}><strong>APCA: </strong> {calcMaxAPCA(arr, hex)[0]}</object>
+                  }}><strong>APCA: </strong> {`${calcMaxAPCA(arr, hex)[1]} (${calcMaxAPCA(arr, hex)[0]})`}</object>
                   <br/>
                   <object style={{
                     color: calcMaxAPCA(textColorScale(), hex)[2]
@@ -175,6 +214,22 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
             </Flex>
             }</For>
           </SwatchRow>
+          <Flex flexDirection="row" flexJustify={'space-between'} style={{
+            color: 'rgba(256, 256, 256, 0.4)',
+            "margin-top": '-3px',
+            padding: '0 5px 9px 5px'
+          }}>
+            <p style={{
+              'font-size': '12px'
+            }}>
+              BG Color Safe
+            </p>
+            <p style={{
+              'font-size': '12px'
+            }}>
+              BG Color Safe
+            </p>
+          </Flex>
           </>
         }</For>
 
