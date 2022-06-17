@@ -1,12 +1,11 @@
 import chroma from "chroma-js";
-import { forEach } from "lodash";
-import {Component, createEffect, createSignal, For} from "solid-js";
+import {Component, createSignal, For} from "solid-js";
 import SwatchList from "../shared/components/swatchList";
 import { Button } from "../shared/styles/components/button.styled";
 import { Flex } from "../shared/styles/components/flex.styled";
 import { Select } from "../shared/styles/components/select.styled";
 import { SetLegacy, SetRelative, SetShades } from "../shared/styles/functions/functions.styled";
-import { ColorLegacy, ColorMix, ColorRelative, colorScale, ColorShades} from "../shared/styles/utils/variables.styled";
+import { ColorLegacy, ColorMix, ColorRelative, ColorShades} from "../shared/styles/utils/variables.styled";
 
 export type ISwatchItem = {
   name: string;
@@ -93,7 +92,7 @@ const ColorListPage: Component = () => {
     link.click();
   }
 
-  const [sList, setSList] = createSignal<Array<ISwatchItem>>([
+  const sList = () => [
     {
       name: 'Shades Corrected (RGB)',
       swatch: ColorShades()
@@ -107,26 +106,7 @@ const ColorListPage: Component = () => {
       name: 'Brighten and Darken (Legacy)',
       swatch: ColorLegacy()
     }
-  ]);
-
-  createEffect(() => {
-    console.log('master update');
-    setSList([
-      {
-        name: 'Shades Corrected (RGB)',
-        swatch: ColorShades()
-      }, {
-        name: 'Blended (Lab Color Mix)',
-        swatch: ColorMix()
-      }, {
-        name: 'Relative (HSV & Relative Luminance)',
-        swatch: ColorRelative()
-      }, {
-        name: 'Brighten and Darken (Legacy)',
-        swatch: ColorLegacy()
-      }
-    ])
-  })
+  ];
 
   const updateColorType = (type: any) => {
     setColorType(type.target.value);

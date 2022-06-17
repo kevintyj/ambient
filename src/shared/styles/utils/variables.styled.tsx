@@ -1,5 +1,4 @@
-import { createEffect, createSignal } from "solid-js";
-import { createStore } from "solid-js/store";
+import { createSignal } from "solid-js";
 import {
   generatedColor,
   generatedColorMix,

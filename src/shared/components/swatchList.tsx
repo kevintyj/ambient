@@ -9,11 +9,7 @@ type SwatchListComponent<T = {}> = Component<T & {
 >
 
 const SwatchList: SwatchListComponent = (props) => {
-  const [sList, setSList] = createSignal(props.swatchList);
-
-  createComputed(() =>{
-    setSList(props.swatchList);
-  });
+  const sList = () => props.swatchList;
 
   return (
     <>

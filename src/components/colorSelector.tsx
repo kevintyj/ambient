@@ -1,5 +1,5 @@
 import { createForm } from "@felte/solid";
-import {Component, createEffect, createSignal, For} from "solid-js";
+import {Component, createSignal, For} from "solid-js";
 import { styled } from "solid-styled-components";
 import toast from "solid-toast";
 import { ColorIdentifier } from "../shared/styles/components/colorIdentifier.styled";

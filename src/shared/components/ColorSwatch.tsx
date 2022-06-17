@@ -1,4 +1,4 @@
-import {Component, createEffect, createSignal} from "solid-js";
+import {Component, createEffect} from "solid-js";
 import {For} from "solid-js";
 import {styled} from "solid-styled-components";
 import chroma from "chroma-js";
@@ -22,16 +22,6 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
     textColorScale();
   })
 
-  // Object.entries(swatch()).forEach(([name, obj]) => {
-  //   console.log(name);
-  //   console.log(obj);
-  //   console.log(Object.entries(obj));
-  //   Object.entries(obj).forEach(([keys, value]) => {
-  //     console.log(keys);
-  //     console.log(value);
-  //   })
-  // });
-
   const copy = (color: string) => {
     navigator.clipboard.writeText(color).then(() => {
       /* clipboard successfully set */
@@ -44,7 +34,7 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
       /* clipboard write failed */
       toast.custom((t) => (
         <Toast color={'error'} showExit={true} toast={t}>
-          Copying Failed
+          Copying Failed!
         </Toast>
       ));
     })
@@ -55,10 +45,10 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
     const MaxAPCA = Number(calcMaxAPCA(swatch, bg)[0]);
     const MaxTextWCAG = Number(calcMaxWCAG(textDefault, bg)[0]);
     const MaxTextAPCA = Number(calcMaxAPCA(textDefault, bg)[0]);
-    const MAXBGAPCA = Number(calcMaxAPCABG(textDefault, bg)[0]);
+    const MaxBGAPCA = Number(calcMaxAPCABG(textDefault, bg)[0]);
 
     if (MaxTextWCAG < 4.5 || MaxWCAG < 4.5) {
-      if (MaxTextAPCA < 60) {
+      if (MaxTextAPCA < 60 && MaxBGAPCA) {
         return (<i class="bi bi-x-circle"></i>);
       } if (MaxAPCA < 60) {
         return (<i class="bi bi-dash-circle"></i>);
@@ -68,11 +58,6 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
     
     return (<i class="bi bi-check-circle"></i>);
   }
-
-  // console.log(aSwatch);
-  // console.log(swatchKeys);
-  // console.log(swatchLength);
-  // console.log(splitChunks);
 
   const SwatchRow = styled('div')`
     display:flex;
