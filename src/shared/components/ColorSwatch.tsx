@@ -1,9 +1,8 @@
 import {Component, createEffect, createSignal} from "solid-js";
 import {For} from "solid-js";
 import {styled} from "solid-styled-components";
-import {chunk, forEach, max} from 'lodash';
 import chroma from "chroma-js";
-import { calcMaxAPCA, calcMaxWCAG } from "../styles/functions/contrastcalc";
+import { calcMaxAPCA, calcMaxAPCABG, calcMaxWCAG } from "../styles/functions/contrastcalc";
 import { toast } from "solid-toast";
 import Toast from "./toast";
 import { arrSize } from "../styles/functions/functions.styled";
@@ -59,6 +58,7 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
     const MaxAPCA = Number(calcMaxAPCA(swatch, bg)[0]);
     const MaxTextWCAG = Number(calcMaxWCAG(textDefault, bg)[0]);
     const MaxTextAPCA = Number(calcMaxAPCA(textDefault, bg)[0]);
+    const MAXBGAPCA = Number(calcMaxAPCABG(textDefault, bg)[0]);
 
     if (MaxTextWCAG < 4.5 || MaxWCAG < 4.5) {
       if (MaxTextAPCA < 60) {
@@ -175,6 +175,10 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
                   <object style={{
                     color: calcMaxAPCA(textArray(), hex)[2]
                   }}><strong>APCA TEXT: </strong> {calcMaxAPCA(textArray(), hex)[0]}</object>
+                  <br/>
+                  <object style={{
+                    color: calcMaxAPCABG(textArray(), hex)[2]
+                  }}><strong>APCA BG: </strong> {calcMaxAPCABG(textArray(), hex)[0]}</object>
                 </p>
               </SwatchBox>
               <p class="helper">
