@@ -1,5 +1,4 @@
-import {Component, createEffect} from "solid-js";
-import {For} from "solid-js";
+import {Component, createEffect, For} from "solid-js";
 import {styled} from "solid-styled-components";
 import chroma from "chroma-js";
 import { calcMaxAPCA, calcMaxAPCABG, calcMaxWCAG } from "../styles/functions/contrastcalc";
@@ -11,7 +10,6 @@ import { textColorScale } from "../styles/utils/variables.styled";
 
 type ColorSwatchComponent<T = {}> = Component<T &{
   colorSwatch: Record<string, Record<string, string>>
-
 }>
 
 const ColorSwatch: ColorSwatchComponent = (props) => {

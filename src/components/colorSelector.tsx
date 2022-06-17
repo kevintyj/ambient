@@ -1,5 +1,5 @@
 import { createForm } from "@felte/solid";
-import {Component, createSignal, For} from "solid-js";
+import {Component, createEffect, createSignal, For} from "solid-js";
 import { styled } from "solid-styled-components";
 import toast from "solid-toast";
 import { ColorIdentifier } from "../shared/styles/components/colorIdentifier.styled";
@@ -14,12 +14,15 @@ const ColorSelector: Component = () => {
 
   const addColor = () => {
     setColors([...colors(), ['NAME', '#ffffff']]);
-    // console.log(Object.fromEntries(colors()));
   }
 
   const removeColor = (index: number) => {
     setColors([...colors().slice(0, index), ...colors().slice(index + 1)]);
   }
+
+  createEffect(() => {
+    setColors(Object.entries(colorScale()));
+  })
 
   const FormGroup = styled('div')`
     display: flex;

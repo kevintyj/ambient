@@ -1,5 +1,5 @@
 import chroma from "chroma-js";
-import {Component, createSignal, For} from "solid-js";
+import {Component, createSignal} from "solid-js";
 import SwatchList from "../shared/components/swatchList";
 import { Button } from "../shared/styles/components/button.styled";
 import { Flex } from "../shared/styles/components/flex.styled";

@@ -4,7 +4,7 @@
   "description": "Color Checker Tool",
   "scripts": {
     "start": "vite",
-    "dev": "vite",
+    "dev": "vite --debug",
     "build": "vite build",
     "serve": "vite preview"
   },

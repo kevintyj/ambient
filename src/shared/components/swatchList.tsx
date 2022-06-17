@@ -1,12 +1,10 @@
-import {Component, createComputed, createSignal} from "solid-js";
-import {For} from "solid-js";
+import {Component, For} from "solid-js";
 import { ISwatchItem } from "../../components/colorListComponent";
 import ColorSwatch from "./colorSwatch";
 
 type SwatchListComponent<T = {}> = Component<T & {
     swatchList: ISwatchItem[];
-  }
->
+}>
 
 const SwatchList: SwatchListComponent = (props) => {
   const sList = () => props.swatchList;
