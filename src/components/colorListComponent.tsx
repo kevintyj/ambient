@@ -5,6 +5,7 @@ import SwatchList from "../shared/components/swatchList";
 import { Button } from "../shared/styles/components/button.styled";
 import { Flex } from "../shared/styles/components/flex.styled";
 import { Select } from "../shared/styles/components/select.styled";
+import { SetLegacy, SetRelative, SetShades } from "../shared/styles/functions/functions.styled";
 import { ColorLegacy, ColorMix, ColorRelative, colorScale, ColorShades} from "../shared/styles/utils/variables.styled";
 
 export type ISwatchItem = {
@@ -16,6 +17,8 @@ export type ISwatchItem = {
 const ColorListPage: Component = () => {
 
   const [colorType, setColorType] = createSignal('hex');
+
+  const [shadeLength, setShadeLength] = createSignal(7);
 
   const listColorConversion = () => {
     let output = [];
@@ -129,6 +132,19 @@ const ColorListPage: Component = () => {
     setColorType(type.target.value);
   }
 
+  const updateShadeLength = (type: any) => {
+    setShadeLength(type.target.value);
+    if (shadeLength() == 9) {
+      SetLegacy([1.7, 1.3, 1.2, 1.1, 1, 0.9, 0.8, 0.7, 0.1]);
+      SetRelative([1.3, 1.2, 1.15, 1.1, 1, 0.9, 0.85, 0.6, 0.5]);
+      SetShades([0.4, 0.6, 0.8, 0.9, 1, 1.1, 1.2, 1.4, 1.6]);
+    } if (shadeLength() == 7) {
+      SetLegacy([1.7, 1.3, 1.1, 1, 0.9, 0.7, 0.1]);
+      SetRelative([1.3, 1.2, 1.1, 1, 0.9, 0.6, 0.5]);
+      SetShades([0.4, 0.6, 0.9, 1, 1.1, 1.4, 1.6]);
+    }
+  }
+
   return(
     <>
       <h3>
@@ -179,6 +195,19 @@ const ColorListPage: Component = () => {
         <option value='okhcl'>
           OKHCL
         </option>
+        </Select>
+        <p style={{
+          'padding': '18px 0 0 12px'
+        }}>
+          Color Shade Length:
+        </p>
+        <Select value={shadeLength()} onChange={updateShadeLength}>
+          <option value={7} selected>
+            7 (Default)
+          </option>
+          <option value={9}>
+            9
+          </option>
         </Select>
       </Flex>
       <SwatchList swatchList={sList()}/>
