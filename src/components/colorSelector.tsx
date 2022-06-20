@@ -3,7 +3,7 @@ import {Component, createEffect, createSignal, For} from "solid-js";
 import { styled } from "solid-styled-components";
 import toast from "solid-toast";
 import { ColorIdentifier } from "../shared/styles/components/colorIdentifier.styled";
-import { colorScale, setColorScale } from "../shared/styles/utils/variables.styled";
+import { colorScale, ColorShades, setColorScale } from "../shared/styles/utils/variables.styled";
 import Toast from "../shared/components/toast";
 import { Button } from "../shared/styles/components/button.styled";
 import { Flex } from "../shared/styles/components/flex.styled";
@@ -89,6 +89,10 @@ const ColorSelector: Component = () => {
       setColorScale(arrToObj(Object.values(val) as []) as any);
       // console.log(arrToObj(Object.values(val) as []) as any);
       //console.log(val)
+
+      console.log(
+        ColorShades()
+      );
     }, validate: (val) => {
       const errors = {};
       let values: string[] = arrToArr(Object.values(val) as []);

@@ -28,7 +28,9 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
         <Toast box={color} showExit={true} toast={t}>
           Pallette Copied! {color}
         </Toast>
-      ));
+      ), {
+        unmountDelay: 0
+      });
     }, () => {
       /* clipboard write failed */
       toast.custom((t) => (

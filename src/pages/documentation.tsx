@@ -1,11 +1,77 @@
-import {Component} from "solid-js";
+import {Component, onCleanup, onMount} from "solid-js";
+import { styled } from "solid-styled-components";
+import { setShowContrast, showContrast } from "../components/colorListComponent";
 import ColorSwatch from "../shared/components/colorSwatch";
+import { Flex } from "../shared/styles/components/flex.styled";
 
 const Documentation: Component = () => {
 
-  const swatch = {
+  let contrastPreVal = showContrast();
 
+  const swatch = {
+    PINK: {
+    100: "#fcc7d2",
+    200: "#fc4d8b",
+    400: "#4a0008"
+    }
   }
+
+  const SwatchHelper = styled('div')`
+    width: 100%;
+    position: relative;
+  
+    .helper-number {
+      position: absolute;
+      background-color: #F1475F;
+      border: 1px solid rgba(256, 256, 256, 0.5);
+      color: #fff;
+      border-radius: 100%;
+      width: 18px !important;
+      min-width: 18px !important;
+      height: 18px !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 800;
+      cursor: default;
+      z-index: 9999;
+    }
+
+    .list {
+      position: relative;
+      margin-right: 8px;
+      margin-top: 1px;
+    }
+
+    .one {
+      left: 36px;
+      top: -4px;
+    }
+    
+    .two {
+      left: 52px;
+      top: 102px;
+    }
+
+    .three {
+      left: 100px;
+      top: 134px;
+    }
+
+    .four {
+      left: calc(33% + 110px);
+      top: 35px;
+    }
+  `
+
+  onMount(() => {
+    setShowContrast('1');
+  })
+
+  onCleanup(() => {
+    setShowContrast(contrastPreVal);
+  })
 
   return(
     <>
@@ -93,7 +159,97 @@ const Documentation: Component = () => {
       <h3>
         Understanding the color visualization
       </h3>
-      {/* <ColorSwatch colorSwatch={swatch as unknown as Record<string, Record<string, string>>}/> */}
+      <SwatchHelper>
+        <div class="helper-number one">
+          1
+        </div>
+
+        <div class="helper-number two">
+          2
+        </div>
+
+
+        <div class="helper-number three">
+          3
+        </div>
+
+
+        <div class="helper-number four">
+          4
+        </div>
+        <ColorSwatch colorSwatch={swatch}/>
+      </SwatchHelper>
+      <br/>
+      <SwatchHelper>
+        <Flex flexDirection={'column'} flexAlign={'flex-start'} gap={8}>
+          <Flex style={{
+            margin: '0 0'
+          }}>
+            <div class="helper-number list">
+              1
+            </div>
+            <p>
+              Name of the color
+            </p>
+          </Flex>
+          <Flex style={{
+            margin: '0 0'
+          }}>
+            <div class="helper-number list">
+              2
+            </div>
+            <p>
+              Name of the color shade (100 = lightest), Followed by the HEX value of the color.
+            </p>
+          </Flex>
+          <Flex style={{
+            margin: '0 0'
+          }}>
+            <div class="helper-number list">
+              3
+            </div>
+            <p>
+              Colors inside BG color safe should be reserved as a shade for either the background of a text wand should not be used for UI elements unless specified.
+            </p>
+          </Flex>
+          <Flex style={{
+            margin: '0 0'
+          }}>
+            <div class="helper-number list">
+              3
+            </div>
+            <p>
+              Name of the color swatch
+            </p>
+          </Flex>
+          <Flex style={{
+            margin: '0 0'
+          }}>
+            <div class="helper-number list">
+              4
+            </div>
+            <div>
+            <p>
+              For all: If NA is displayed, it means that there are no compatible colors for this color set.
+            </p>
+            <p>
+              WCAG: Shows the recommended text contrast safe (WCAG) color in the same color shade for the current color shade (For color 200 as background, color 400 should be used as a text color)
+            </p>
+            <p>
+              APCA: Shows the recommended text contrast safe (APCA) color in the same color shade for the current color shade (For color 200 as background, color 400 should be used as a text color)
+            </p>
+            <p>
+              APCA TEXT: Shows the contrast ratio if this color shade is used as a text color. The color of this text denotes the recommended background for this color. If NA is displayed, this color should not be used in any background unless specified.
+            </p>
+            <p>
+              APCA BG: Shows the contrast ratio if this color shade is used as a background color for the defined text colors. The color of this text denotes teh recommended text for this color. If NA is displayed, this color should not used used as a color for any important textual information as it fails contrasts tests.
+            </p>
+            </div>
+          </Flex>
+        </Flex>
+
+        <br/>
+      </SwatchHelper>
     </>
   )
 
