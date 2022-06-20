@@ -1,6 +1,11 @@
 import {Component} from "solid-js";
+import ColorSwatch from "../shared/components/colorSwatch";
 
 const Documentation: Component = () => {
+
+  const swatch = {
+
+  }
 
   return(
     <>
@@ -85,6 +90,10 @@ const Documentation: Component = () => {
         Ambient does not give any recommendation for text sizes on backgrounds and the official WCAG documentation should be referred to generate a lookup table for text and background combination for text sizes.
       </p>
       <br/>
+      <h3>
+        Understanding the color visualization
+      </h3>
+      {/* <ColorSwatch colorSwatch={swatch as unknown as Record<string, Record<string, string>>}/> */}
     </>
   )
 

@@ -14,7 +14,12 @@ export const calcMaxWCAG = (swatch: Record<string, string>, bg:string) => {
   for(const [name, hex] of Object.entries(swatch)) {
     let currContrast = calcWCAG(hex, bg);
 
-    if (currContrast > maxContrast) {
+    if (currContrast < maxContrast) {
+      if (maxContrast > 4.5 && contrastCalcType() == 1) {
+        return [maxContrast.toFixed(2), maxContrastSwatch, maxContrastHEX];
+      }
+    }
+    else {
       maxContrast = currContrast;
       maxContrastSwatch = name;
       maxContrastHEX = hex;
@@ -46,7 +51,12 @@ export const calcMaxAPCA = (swatch: Record<string, string>, bg:string) => {
   for (const [name, hex] of Object.entries(swatch)) {
     let currContrast = Math.abs(calcAPCA(hex, bg));
 
-    if (currContrast > maxContrast) {
+    if (currContrast < maxContrast) {
+      if (maxContrast > 60 && contrastCalcType() == 1) {
+        return [maxContrast.toFixed(2), maxContrastSwatch, maxContrastHEX];
+      }
+    }
+    else {
       maxContrast = currContrast;
       maxContrastSwatch = name;
       maxContrastHEX = hex;

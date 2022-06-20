@@ -19,7 +19,6 @@ export const Base = {
 }
 
 /* Color System */
-
 const WHITE: string = '#FFF';
 const BLACK: string = '#000';
 
