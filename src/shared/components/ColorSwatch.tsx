@@ -42,16 +42,16 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
   }
 
   const calculateContrast = (swatch: Record<string, string>, textDefault: Record<string, string>, bg: string) => {
-    const MaxWCAG = Number(calcMaxWCAG(swatch, bg)[0]);
-    const MaxAPCA = Number(calcMaxAPCA(swatch, bg)[0]);
-    const MaxTextWCAG = Number(calcMaxWCAG(textDefault, bg)[0]);
-    const MaxTextAPCA = Number(calcMaxAPCA(textDefault, bg)[0]);
-    const MaxBGAPCA = Number(calcMaxAPCABG(textDefault, bg)[0]);
+    const MaxWCAG = calcMaxWCAG(swatch, bg)[0];
+    const MaxAPCA = calcMaxAPCA(swatch, bg)[0];
+    const MaxTextWCAG = calcMaxWCAG(textDefault, bg)[0];
+    const MaxTextAPCA = calcMaxAPCA(textDefault, bg)[0];
+    const MaxBGAPCA = calcMaxAPCABG(textDefault, bg)[0];
 
-    if (MaxTextWCAG < 4.5 || MaxWCAG < 4.5) {
-      if (MaxTextAPCA < 60 && MaxBGAPCA) {
+    if (MaxTextWCAG == 'NA' || MaxWCAG == 'NA') {
+      if (MaxTextAPCA == 'NA' && MaxBGAPCA) {
         return (<i class="bi bi-x-circle"></i>);
-      } if (MaxAPCA < 60) {
+      } if (MaxAPCA == 'NA') {
         return (<i class="bi bi-dash-circle"></i>);
       }
       return (<i class="bi bi-exclamation-circle"></i>);
