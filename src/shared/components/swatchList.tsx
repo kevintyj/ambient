@@ -1,6 +1,6 @@
 import {Component, For} from "solid-js";
 import { ISwatchItem } from "../../components/colorListComponent";
-import ColorSwatch from "./colorSwatch";
+import ColorSwatch from "./ColorSwatch";
 
 type SwatchListComponent<T = {}> = Component<T & {
     swatchList: ISwatchItem[];

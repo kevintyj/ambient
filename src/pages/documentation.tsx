@@ -1,7 +1,7 @@
 import {Component, onCleanup, onMount} from "solid-js";
 import { styled } from "solid-styled-components";
 import { setShowContrast, showContrast } from "../components/colorListComponent";
-import ColorSwatch from "../shared/components/colorSwatch";
+import ColorSwatch from "../shared/components/ColorSwatch";
 import { Flex } from "../shared/styles/components/flex.styled";
 
 const Documentation: Component = () => {
