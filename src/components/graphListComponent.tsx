@@ -1,4 +1,4 @@
-import { Component, createSignal, For } from "solid-js";
+import { Component, createEffect, createSignal, For } from "solid-js";
 import ColorGraph from "../shared/components/colorGraph";
 import { Flex } from "../shared/styles/components/flex.styled";
 import { Select } from "../shared/styles/components/select.styled";
@@ -18,7 +18,7 @@ const GraphList: ColorGraphComponent = (props) => {
   const updateType = (type: any) => {
     setDisplayType(type.target.value);
   }
-
+  
   return(
     <>
       <Flex flexDirection="column" gap={10} style={{
