@@ -114,21 +114,22 @@ const ColorListPage: Component = () => {
     setColorType(type.target.value);
   }
 
+
   const updateShadeLength = (type: any) => {
     setShadeLength(type.target.value);
     if (shadeLength() == 10) {
-      SetLegacy([1.8, 1.7, 1.3, 1.2, 1.1, 1, 0.9, 0.8, 0.7, 0.1]);
-      SetRelative([1.4, 1.3, 1.2, 1.15, 1.1, 1, 0.9, 0.85, 0.7, 0.5]);
-      SetShades([0.15, 0.25, 0.5, 0.8, 0.9, 1, 1.1, 1.2, 1.5, 1.7]);
+      SetLegacy([1.7, 1.5, 1.25, 1.2, 1.1, 1, 0.9, 0.8, 0.7, 0.1]);
+      SetRelative([1.4, 1.3, 1.2, 1.15, 1.1, 1, 0.9, 0.85, 0.7, 0.6]);
+      SetShades([0.15, 0.25, 0.5, 0.8, 0.9, 1, 1.1, 1.2, 1.5, 1.75]);
     }
     if (shadeLength() == 9) {
-      SetLegacy([1.7, 1.3, 1.2, 1.1, 1, 0.9, 0.8, 0.7, 0.1]);
+      SetLegacy([1.5, 1.25, 1.2, 1.1, 1, 0.9, 0.8, 0.7, 0.1]);
       SetRelative([1.3, 1.2, 1.15, 1.1, 1, 0.9, 0.85, 0.7, 0.6]);
-      SetShades([0.25, 0.5, 0.8, 0.9, 1, 1.1, 1.2, 1.5, 1.7]);
+      SetShades([0.25, 0.5, 0.8, 0.9, 1, 1.1, 1.2, 1.5, 1.75]);
     } if (shadeLength() == 7) {
-      SetLegacy([1.7, 1.3, 1.1, 1, 0.9, 0.7, 0.1]);
+      SetLegacy([1.5, 1.2, 1.1, 1, 0.9, 0.7, 0.1]);
       SetRelative([1.3, 1.2, 1.1, 1, 0.9, 0.7, 0.6]);
-      SetShades([0.25, 0.5, 0.9, 1, 1.1, 1.5, 1.7]);
+      SetShades([0.25, 0.5, 0.9, 1, 1.1, 1.5, 1.75]);
     }
   }
 

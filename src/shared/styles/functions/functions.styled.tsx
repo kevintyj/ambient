@@ -12,9 +12,9 @@ import { createSignal } from "solid-js";
   return output as Record<string, string>;
 };*/
 
-export const [Legacy, SetLegacy] = createSignal([1.7, 1.3, 1.1, 1, 0.9, 0.7, 0.1]);
+export const [Legacy, SetLegacy] = createSignal([1.5, 1.2, 1.1, 1, 0.9, 0.7, 0.1]);
 export const [Relative, SetRelative] = createSignal([1.3, 1.2, 1.1, 1, 0.9, 0.7, 0.6]);
-export const [Shades, SetShades] = createSignal([0.25, 0.5, 0.9, 1, 1.1, 1.5, 1.7]);
+export const [Shades, SetShades] = createSignal([0.25, 0.5, 0.9, 1, 1.1, 1.5, 1.75]);
 
 export const arrSize = () => Legacy().length;
 
@@ -101,7 +101,7 @@ const generateColorRelative = (color: string, amount: number) => {
 }
 
 const generateColorMix = (color: string, amountL: number, amountR: number) => {
-  return chroma.mix(generateColor(color, amountL), generateColorRelative(color, amountR), 0.7, 'hsv').hex();
+  return chroma.mix(generateColor(color, amountL), generateColorRelative(color, amountR), 0.55, 'hsv').hex();
 }
 
 const generateColorMixShade = (color: string, amountL: number, amountR: number, shade: number) => {
