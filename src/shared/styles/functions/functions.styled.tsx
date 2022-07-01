@@ -14,7 +14,7 @@ import { createSignal } from "solid-js";
 
 export const [Legacy, SetLegacy] = createSignal([1.5, 1.2, 1.1, 1, 0.9, 0.7, 0.1]);
 export const [Relative, SetRelative] = createSignal([1.3, 1.2, 1.1, 1, 0.9, 0.7, 0.6]);
-export const [Shades, SetShades] = createSignal([0.25, 0.5, 0.9, 1, 1.1, 1.5, 1.75]);
+export const [Shades, SetShades] = createSignal([0.18, 0.35, 0.9, 1, 1.1, 1.65, 1.85]);
 
 export const arrSize = () => Legacy().length;
 
