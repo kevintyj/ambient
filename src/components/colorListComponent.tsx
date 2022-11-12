@@ -1,10 +1,16 @@
 import chroma from "chroma-js";
-import {Component, createSignal} from "solid-js";
+import {Component, createSignal, JSX} from "solid-js";
 import SwatchList from "../shared/components/swatchList";
 import { Button } from "../shared/styles/components/button.styled";
 import { Flex } from "../shared/styles/components/flex.styled";
 import { Select } from "../shared/styles/components/select.styled";
-import { SetLegacy, SetRelative, SetShades } from "../shared/styles/functions/functions.styled";
+import {
+  SetLegacy, SetLegacyLight,
+  SetRelative,
+  SetRelativeLight,
+  SetShades,
+  SetShadesLight
+} from "../shared/styles/functions/functions.styled";
 import {
   ColorLegacy, ColorLegacyLight,
   ColorMix, ColorMixLight,
@@ -22,7 +28,7 @@ export type ISwatchItem = {
 export const [showContrast, setShowContrast] = createSignal('0');
 export const [contrastCalcType, setContrastCalcType] = createSignal(0);
 
-const ColorListPage: Component = () => {
+const ColorListPage: () => JSX.Element = () => {
 
   const [colorType, setColorType] = createSignal('hex');
 
@@ -157,18 +163,27 @@ const ColorListPage: Component = () => {
   const updateShadeLength = (type: any) => {
     setShadeLength(type.target.value);
     if (shadeLength() == 10) {
-      SetLegacy([1.7, 1.5, 1.25, 1.2, 1.1, 1, 0.9, 0.8, 0.7, 0.1]);
-      SetRelative([1.4, 1.3, 1.2, 1.15, 1.1, 1, 0.9, 0.85, 0.7, 0.6]);
-      SetShades([0.12, 0.18, 0.35, 0.8, 0.9, 1, 1.1, 1.2, 1.65, 1.85]);
+      SetLegacy([0.1, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.25, 1.5, 1.7]);
+      SetRelative([0.6, 0.7, 0.85, 0.9, 1, 1.1, 1.15, 1.2, 1.3, 1.4]);
+      SetShades([1.85, 1.65, 1.2, 1.1, 1, 0.9, 0.8, 0.35, 0.18, 0.12]);
+      SetLegacyLight([1.7, 1.5, 1.25, 1.2, 1.1, 1, 0.9, 0.8, 0.7, 0.1]);
+      SetRelativeLight([1.4, 1.3, 1.2, 1.15, 1.1, 1, 0.9, 0.85, 0.7, 0.6]);
+      SetShadesLight([0.12, 0.18, 0.35, 0.8, 0.9, 1, 1.1, 1.2, 1.65, 1.85]);
     }
     if (shadeLength() == 9) {
-      SetLegacy([1.5, 1.25, 1.2, 1.1, 1, 0.9, 0.8, 0.7, 0.1]);
-      SetRelative([1.3, 1.2, 1.15, 1.1, 1, 0.9, 0.85, 0.7, 0.6]);
-      SetShades([0.18, 0.35, 0.8, 0.9, 1, 1.1, 1.2, 1.65, 1.85]);
+      SetLegacy([0.1, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.25, 1.5]);
+      SetRelative([0.6, 0.7, 0.85, 0.9, 1, 1.1, 1.15, 1.2, 1.3]);
+      SetShades([1.85, 1.65, 1.2, 1.1, 1, 0.9, 0.8, 0.35, 0.18]);
+      SetLegacyLight([1.5, 1.25, 1.2, 1.1, 1, 0.9, 0.8, 0.7, 0.1]);
+      SetRelativeLight([1.3, 1.2, 1.15, 1.1, 1, 0.9, 0.85, 0.7, 0.6]);
+      SetShadesLight([0.18, 0.35, 0.8, 0.9, 1, 1.1, 1.2, 1.65, 1.85]);
     } if (shadeLength() == 7) {
-      SetLegacy([1.5, 1.2, 1.1, 1, 0.9, 0.7, 0.1]);
-      SetRelative([1.3, 1.2, 1.1, 1, 0.9, 0.7, 0.6]);
-      SetShades([0.18, 0.35, 0.9, 1, 1.1, 1.65, 1.85]);
+      SetLegacy([0.1, 0.7, 0.9, 1, 1.1, 1.2, 1.5]);
+      SetRelative([0.6, 0.7, 0.9, 1, 1.1, 1.2, 1.3]);
+      SetShades([1.85, 1.65, 1.1, 1, 0.9, 0.35, 0.18]);
+      SetLegacyLight([1.5, 1.2, 1.1, 1, 0.9, 0.7, 0.1]);
+      SetRelativeLight([1.3, 1.2, 1.1, 1, 0.9, 0.7, 0.6]);
+      SetShadesLight([0.18, 0.35, 0.9, 1, 1.1, 1.65, 1.85]);
     }
   }
 

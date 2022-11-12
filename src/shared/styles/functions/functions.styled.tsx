@@ -84,7 +84,7 @@ export const generatedColorRelativeLight = (scale: Record<string,string>) => {
 
 /* Automatic generation of color */
 export const generatedColorMixLight = (scale: Record<string,string>) => {
-  return evalColor(scale, generateColorMix, Legacy(), RelativeLight())
+  return evalColor(scale, generateColorMix, LegacyLight(), RelativeLight())
 };
 
 // Shade Corrected Output (Returns a mix of the mixed colors + adds luminance correction)

@@ -1,4 +1,4 @@
-import {Component, createEffect, For} from "solid-js";
+import {Component, createEffect, For, JSX} from "solid-js";
 import {styled} from "solid-styled-components";
 import chroma from "chroma-js";
 import { calcMaxAPCA, calcMaxAPCABG, calcMaxWCAG } from "../styles/functions/contrastcalc";
@@ -14,7 +14,7 @@ type ColorSwatchComponent<T = {}> = Component<T &{
   light: boolean
 }>
 
-const ColorSwatch: ColorSwatchComponent = (props) => {
+const ColorSwatch: (props) => JSX.Element = (props) => {
 
   const swatch = () => props.colorSwatch;
   const light = () => props.light;
@@ -183,7 +183,7 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
               'border-color': light() ? 'rgba(0, 0, 0, 0.14)' : 'rgba(256, 256, 256, 0.14)',
             }, calcSwatchStyle(j()))}>
               <SwatchBox color={hex} style={{
-                border: j() == Math.floor(arrSize() / 2) ? '1px solid rgba(256, 256, 256, 1)' : '',
+                border: j() == Math.floor(arrSize() / 2) ? light() ? `1px solid #131313` : `1px solid rgba(256, 256, 256, 1)` : '',
                 "flex": j() == arrSize() / 2 ? 'none' : '1',
                 'border-radius': j() == Math.floor(arrSize() / 2) ? '3px' : '3px'
               }} onClick={() => copy(hex)}>
