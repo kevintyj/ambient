@@ -14,7 +14,7 @@ type ColorSwatchComponent<T = {}> = Component<T &{
   light: boolean
 }>
 
-const ColorSwatch: (props) => JSX.Element = (props) => {
+const ColorSwatch: ColorSwatchComponent = (props) => {
 
   const swatch = () => props.colorSwatch;
   const light = () => props.light;
@@ -161,6 +161,7 @@ const ColorSwatch: (props) => JSX.Element = (props) => {
     }
   `
 
+
   return (
     <>
 
@@ -171,7 +172,9 @@ const ColorSwatch: (props) => JSX.Element = (props) => {
 
         <For each={Object.entries(swatch())}>{([name, arr], i) =>
           <>
-          <p>
+          <p style={{
+            color: light() ? '#131313' : 'white',
+          }}>
             {name}
           </p>
           <SwatchRow>
@@ -183,9 +186,9 @@ const ColorSwatch: (props) => JSX.Element = (props) => {
               'border-color': light() ? 'rgba(0, 0, 0, 0.14)' : 'rgba(256, 256, 256, 0.14)',
             }, calcSwatchStyle(j()))}>
               <SwatchBox color={hex} style={{
-                border: j() == Math.floor(arrSize() / 2) ? light() ? `1px solid #131313` : `1px solid rgba(256, 256, 256, 1)` : '',
+                border: j() == Math.floor(arrSize() / 2) + 1 ? light() ? `1px solid #131313` : `1px solid rgba(256, 256, 256, 1)` : '',
                 "flex": j() == arrSize() / 2 ? 'none' : '1',
-                'border-radius': j() == Math.floor(arrSize() / 2) ? '3px' : '3px'
+                'border-radius': j() == Math.floor(arrSize() / 2) + 1 ? '4px' : '3px'
               }} onClick={() => copy(hex)}>
                 <ContrastPassFail style={{
                     color: calcMaxAPCA(textColorScale(), hex)[2]

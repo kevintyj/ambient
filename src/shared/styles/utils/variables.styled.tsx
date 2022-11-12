@@ -28,12 +28,37 @@ export const [textColorScale, setTextColorScale] = createSignal({
 })
 
 export const [colorScale, setColorScale] = createSignal({
-  PRIMARY: '#0066FF',
-  COMPLETE: '#379498',
-  SUCCESS: '#1AA35E',
-  WARNING: '#ffcf37',
-  DANGER: '#F12B56',
-  INFO: '#2B364C'
+  OCEAN: "#1893f6",
+
+  // PRIMARY BLUE
+  BLUE:"#2b50e2",
+
+  INDIGO: "#4c0cc7",
+
+  // SECONDARY VIOLET
+  VIOLET: "#6d2fc2",
+
+  CRIMSON: "#e14785",
+  WINE: "#9d1635",
+
+  // PRIMARY RED
+  RED:"#C31F2E",
+
+  SUN:"#EA3E33",
+
+  // SECONDARY ORANGE
+  ORANGE:"#FB7912",
+
+  // PRIMARY YELLOW
+  YELLOW:"#f8c51a",
+
+  SAPLING:"#a2c940",
+
+  //SECONDARY GREEN
+  GREEN:"#0DA750",
+
+  AURORA: "#3bcbab",
+  CYAN: "#09c8de",
 });
 
 export const ColorLegacy = () => generatedColor(colorScale());
