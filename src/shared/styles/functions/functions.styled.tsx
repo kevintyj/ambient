@@ -1,5 +1,6 @@
 import chroma from "chroma-js";
 import { createSignal } from "solid-js";
+import {method} from "lodash";
 
 /* Outdated generation of color */
 /*export const generatedColor = (scale: Record<string,string>) => {
@@ -18,55 +19,43 @@ export const [Shades, SetShades] = createSignal([0.18, 0.35, 0.9, 1, 1.1, 1.65, 
 
 export const arrSize = () => Legacy().length;
 
-/* Manual generation of color */
-export const generatedColor = (scale: Record<string,string>) => {
+export function evalColor(scale: Record<string, string>, func: any, color1: number[], color2?: number[], color3?: number[]) {
   let output: Record<string, {}> = {}
   for (const [key, color] of Object.entries(scale)) {
     let colorScale: Record<string, string> = {};
     for (let i = 1; i <= arrSize(); i++) {
-      colorScale[`${i}00`] = `${generateColor(color, Legacy()[i - 1])}`;
+      // @ts-ignore
+      if (color3 && color2){
+        colorScale[`${i}00`] = `${func(color, color1[i - 1], color2[i - 1], color3[i - 1])}`;
+      } else if (color2) {
+        colorScale[`${i}00`] = `${func(color, color1[i - 1], color2[i - 1])}`;
+      } else {
+        colorScale[`${i}00`] = `${func(color, color1[i - 1])}`;
+      }
     }
     output[`${key}`] = colorScale;
   }
   return output as Record<string, {}>;
+}
+
+/* Manual generation of color */
+export const generatedColor = (scale: Record<string,string>) => {
+  return evalColor(scale, generateColor, Legacy())
 };
 
 /* Automatic generation of color */
 export const generatedColorRelative = (scale: Record<string,string>) => {
-  let output: Record<string, {}> = {}
-  for (const [key, color] of Object.entries(scale)) {
-    let colorScale: Record<string, string> = {};
-    for (let i = 1; i <= arrSize(); i++) {
-      colorScale[`${i}00`] = `${generateColorRelative(color, Relative()[i - 1])}`;
-    }
-    output[`${key}`] = colorScale;
-  }
-  return output as Record<string, {}>;
+  return evalColor(scale, generateColorRelative, Relative())
 };
 
 /* Automatic generation of color */
 export const generatedColorMix = (scale: Record<string,string>) => {
-  let output: Record<string, {}> = {}
-  for (const [key, color] of Object.entries(scale)) {
-    let colorScale: Record<string, string> = {};
-    for (let i = 1; i <= arrSize(); i++) {
-      colorScale[`${i}00`] = `${generateColorMix(color, Legacy()[i - 1], Relative()[i - 1])}`;
-    }
-    output[`${key}`] = colorScale;
-  }
-  return output as Record<string, {}>;
+  return evalColor(scale, generateColorMix, Legacy(), Relative())
 };
 
+// Shade Corrected Output (Returns a mix of the mixed colors + adds luminance correction)
 export const generatedColorMixShadeCorrected = (scale: Record<string, string>) => {
-  let output: Record<string, {}> = {}
-  for (const [key, color] of Object.entries(scale)) {
-    let colorScale: Record<string, string> = {};
-    for (let i = 1; i <= arrSize(); i++) {
-      colorScale[`${i}00`] = `${generateColorMixShade(color, Legacy()[i - 1], Relative()[i - 1], Shades()[i -1])}`;
-    }
-    output[`${key}`] = colorScale;
-  }
-  return output as Record<string, {}>
+  return evalColor(scale, generateColorMixShade, Legacy(), Relative(), Shades())
 }
 
 export const generateColorScale = (color: string, step: number) => {

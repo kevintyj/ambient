@@ -14,14 +14,14 @@ const Home: Component = () => {
       <Introduction/>
       <Flex flexDirection='row' gap={16}>
         <div style={{
-          width: 'auto'
+          width: 'auto',
         }}>
           <h3>
             Color Table
           </h3>
           <p>
-            Color table of generated colors can be edited here. Only the primary color is considered. 
-            <strong>Color names must be unique.</strong> 
+            Color table of generated colors can be edited here. Only the primary color is considered.
+            <strong>Color names must be unique.</strong>
           </p>
           <br/>
           <ColorSelector/>
@@ -40,7 +40,7 @@ const Home: Component = () => {
             'padding-bottom': '12px'
           }}>
             These values are the calculated luminance values of each color.
-            The graph does not update until the color set is generated. 
+            The graph does not update until the color set is generated.
           </p>
           <GraphList colorSwatch={ColorShades()}/>
           <br/>

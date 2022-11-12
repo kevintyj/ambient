@@ -56,7 +56,7 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
       }
       return (<i class="bi bi-exclamation-circle"></i>);
     }
-    
+
     return (<i class="bi bi-check-circle"></i>);
   }
 
@@ -164,7 +164,7 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
 
 
       <div style={{
-
+        // background: 'white',
       }}>
 
         <For each={Object.entries(swatch())}>{([name, arr], i) =>

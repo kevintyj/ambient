@@ -30,36 +30,48 @@ const ColorListPage: Component = () => {
       for (const [colorName, colorSwatch] of Object.entries(scale.swatch)){
         let colorScaleObj: Record<string, string> = {};
         for (const [scaleName, scaleValue] of Object.entries(colorSwatch)){
-          colorScaleObj[scaleName] = scaleValue;
+          if (typeof scaleValue === "string") {
+            colorScaleObj[scaleName] = scaleValue;
+          }
           switch(colorType()){
             case 'hex':
+              // @ts-ignore
               colorScaleObj[scaleName] = chroma(scaleValue).hex();
               break;
             case 'rgb':
+              // @ts-ignore
               colorScaleObj[scaleName] = `rgb(${chroma(scaleValue).rgb().toString()})`;
               break;
             case 'hsl':
+              // @ts-ignore
               colorScaleObj[scaleName] = `hsl(${chroma(scaleValue).hsl().toString()})`;
               break;
             case 'hsv':
+              // @ts-ignore
               colorScaleObj[scaleName] = `hsv(${chroma(scaleValue).hsv().toString()})`;
               break;
             case 'hsi':
+              // @ts-ignore
               colorScaleObj[scaleName] = `hsi(${chroma(scaleValue).hsi().toString()})`;
               break;
             case 'lab':
+              // @ts-ignore
               colorScaleObj[scaleName] = `lab(${chroma(scaleValue).lab().toString()})`;
               break;
             case 'oklab':
+              // @ts-ignore
               colorScaleObj[scaleName] = `oklab(${chroma(scaleValue).oklab().toString()})`;
               break;
             case 'lch':
+              // @ts-ignore
               colorScaleObj[scaleName] = `lch(${chroma(scaleValue).lch().toString()})`;
               break;
             case 'hcl':
+              // @ts-ignore
               colorScaleObj[scaleName] = `hcl(${chroma(scaleValue).hcl().toString()})`;
               break;
             case 'okhcl':
+              // @ts-ignore
               colorScaleObj[scaleName] = `okhcl(${chroma(scaleValue).okhcl().toString()})`;
               break;
           }
@@ -97,16 +109,36 @@ const ColorListPage: Component = () => {
   const sList = () => [
     {
       name: 'Shades Corrected (RGB)',
-      swatch: ColorShades()
+      swatch: ColorShades(),
+      light: false
+    }, {
+      name: 'Shades Corrected (RGB) Light Mode',
+      swatch: ColorShades(),
+      light: true
     }, {
       name: 'Blended (Lab Color Mix)',
-      swatch: ColorMix()
+      swatch: ColorMix(),
+      light: false
+    }, {
+      name: 'Blended (Lab Color Mix) Light',
+      swatch: ColorMix(),
+      light: true
     }, {
       name: 'Relative (HSV & Relative Luminance)',
-      swatch: ColorRelative()
+      swatch: ColorRelative(),
+      light: false
+    }, {
+      name: 'Relative (HSV & Relative Luminance) Light Mode',
+      swatch: ColorRelative(),
+      light: true
     }, {
       name: 'Brighten and Darken (Legacy)',
-      swatch: ColorLegacy()
+      swatch: ColorLegacy(),
+      light: false
+    }, {
+      name: 'Brighten and Darken (Legacy) Light Mode',
+      swatch: ColorLegacy(),
+      light: true
     }
   ];
 
