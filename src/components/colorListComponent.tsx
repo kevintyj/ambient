@@ -5,11 +5,18 @@ import { Button } from "../shared/styles/components/button.styled";
 import { Flex } from "../shared/styles/components/flex.styled";
 import { Select } from "../shared/styles/components/select.styled";
 import { SetLegacy, SetRelative, SetShades } from "../shared/styles/functions/functions.styled";
-import { ColorLegacy, ColorMix, ColorRelative, ColorShades} from "../shared/styles/utils/variables.styled";
+import {
+  ColorLegacy, ColorLegacyLight,
+  ColorMix, ColorMixLight,
+  ColorRelative, ColorRelativeLight,
+  ColorShades,
+  ColorShadesLight
+} from "../shared/styles/utils/variables.styled";
 
 export type ISwatchItem = {
   name: string;
   swatch: Record<string, Record<string, string>>;
+  light: boolean;
 }
 
 export const [showContrast, setShowContrast] = createSignal('0');
@@ -113,15 +120,15 @@ const ColorListPage: Component = () => {
       light: false
     }, {
       name: 'Shades Corrected (RGB) Light Mode',
-      swatch: ColorShades(),
+      swatch: ColorShadesLight(),
       light: true
     }, {
       name: 'Blended (Lab Color Mix)',
       swatch: ColorMix(),
       light: false
     }, {
-      name: 'Blended (Lab Color Mix) Light',
-      swatch: ColorMix(),
+      name: 'Blended (Lab Color Mix) Light Mode',
+      swatch: ColorMixLight(),
       light: true
     }, {
       name: 'Relative (HSV & Relative Luminance)',
@@ -129,7 +136,7 @@ const ColorListPage: Component = () => {
       light: false
     }, {
       name: 'Relative (HSV & Relative Luminance) Light Mode',
-      swatch: ColorRelative(),
+      swatch: ColorRelativeLight(),
       light: true
     }, {
       name: 'Brighten and Darken (Legacy)',
@@ -137,7 +144,7 @@ const ColorListPage: Component = () => {
       light: false
     }, {
       name: 'Brighten and Darken (Legacy) Light Mode',
-      swatch: ColorLegacy(),
+      swatch: ColorLegacyLight(),
       light: true
     }
   ];

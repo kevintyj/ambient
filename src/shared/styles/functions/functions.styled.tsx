@@ -13,9 +13,16 @@ import {method} from "lodash";
   return output as Record<string, string>;
 };*/
 
-export const [Legacy, SetLegacy] = createSignal([1.5, 1.2, 1.1, 1, 0.9, 0.7, 0.1]);
-export const [Relative, SetRelative] = createSignal([1.3, 1.2, 1.1, 1, 0.9, 0.7, 0.6]);
-export const [Shades, SetShades] = createSignal([0.18, 0.35, 0.9, 1, 1.1, 1.65, 1.85]);
+export const [Legacy, SetLegacy] = createSignal([0.1, 0.7, 0.9, 1, 1.1, 1.2, 1.5]);
+export const [Relative, SetRelative] = createSignal([0.6, 0.7, 0.9, 1, 1.1, 1.2, 1.3]);
+export const [Shades, SetShades] = createSignal([1.85, 1.65, 1.1, 1, 0.9, 0.35, 0.18]);
+
+
+export const [LegacyLight, SetLegacyLight] = createSignal([1.5, 1.2, 1.1, 1, 0.9, 0.7, 0.1]);
+export const [RelativeLight, SetRelativeLight] = createSignal([1.3, 1.2, 1.1, 1, 0.9, 0.7, 0.6]);
+export const [ShadesLight, SetShadesLight] = createSignal([0.18, 0.35, 0.9, 1, 1.1, 1.65, 1.85]);
+
+
 
 export const arrSize = () => Legacy().length;
 
@@ -57,6 +64,36 @@ export const generatedColorMix = (scale: Record<string,string>) => {
 export const generatedColorMixShadeCorrected = (scale: Record<string, string>) => {
   return evalColor(scale, generateColorMixShade, Legacy(), Relative(), Shades())
 }
+
+
+/**
+ * LIGHT MODE
+ *
+ * EXPERIMENTAL!
+ */
+
+/* Manual generation of color */
+export const generatedColorLight = (scale: Record<string,string>) => {
+  return evalColor(scale, generateColor, LegacyLight())
+};
+
+/* Automatic generation of color */
+export const generatedColorRelativeLight = (scale: Record<string,string>) => {
+  return evalColor(scale, generateColorRelative, RelativeLight())
+};
+
+/* Automatic generation of color */
+export const generatedColorMixLight = (scale: Record<string,string>) => {
+  return evalColor(scale, generateColorMix, Legacy(), RelativeLight())
+};
+
+// Shade Corrected Output (Returns a mix of the mixed colors + adds luminance correction)
+export const generatedColorMixShadeCorrectedLight = (scale: Record<string, string>) => {
+  return evalColor(scale, generateColorMixShade, LegacyLight(), RelativeLight(), ShadesLight())
+}
+
+
+
 
 export const generateColorScale = (color: string, step: number) => {
   if (step == arrSize()/2) {

@@ -1,6 +1,6 @@
 import {styled} from "solid-styled-components";
 
-import {Base, Color} from "../utils/variables.styled";
+import {Base} from "../utils/variables.styled";
 
 export const Container = styled('div')`
   width: 100%;

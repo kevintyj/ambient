@@ -1,9 +1,9 @@
 import { createSignal } from "solid-js";
 import {
-  generatedColor,
-  generatedColorMix,
-  generatedColorMixShadeCorrected,
-  generatedColorRelative
+  generatedColor, generatedColorLight,
+  generatedColorMix, generatedColorMixLight,
+  generatedColorMixShadeCorrected, generatedColorMixShadeCorrectedLight,
+  generatedColorRelative, generatedColorRelativeLight
 } from "../functions/functions.styled";
 
 /**
@@ -43,6 +43,18 @@ export const ColorRelative = () => generatedColorRelative(colorScale());
 export const ColorMix = () => generatedColorMix(colorScale());
 
 export const ColorShades = () => generatedColorMixShadeCorrected(colorScale());
+
+
+
+export const ColorLegacyLight = () => generatedColorLight(colorScale());
+
+export const ColorRelativeLight = () => generatedColorRelativeLight(colorScale());
+
+export const ColorMixLight = () => generatedColorMixLight(colorScale());
+
+export const ColorShadesLight = () => generatedColorMixShadeCorrectedLight(colorScale());
+
+
 
 /* Grid System */
 

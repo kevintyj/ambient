@@ -5,7 +5,7 @@ import GraphList from "../components/graphListComponent";
 import Introduction from "../components/introduction";
 import TextColorSelector from "../components/textColorSelector";
 import { Flex } from "../shared/styles/components/flex.styled";
-import { ColorShades } from "../shared/styles/utils/variables.styled";
+import {ColorShades, ColorShadesLight} from "../shared/styles/utils/variables.styled";
 
 const Home: Component = () => {
 
@@ -42,7 +42,7 @@ const Home: Component = () => {
             These values are the calculated luminance values of each color.
             The graph does not update until the color set is generated.
           </p>
-          <GraphList colorSwatch={ColorShades()}/>
+          <GraphList colorSwatch={ColorShadesLight()}/>
           <br/>
           <br/>
         </div>

@@ -10,12 +10,14 @@ import { textColorScale } from "../styles/utils/variables.styled";
 import { showContrast } from "../../components/colorListComponent";
 
 type ColorSwatchComponent<T = {}> = Component<T &{
-  colorSwatch: Record<string, Record<string, string>>
+  colorSwatch: Record<string, Record<string, string>>,
+  light: boolean
 }>
 
 const ColorSwatch: ColorSwatchComponent = (props) => {
 
   const swatch = () => props.colorSwatch;
+  const light = () => props.light;
 
   createEffect(() => {
     textColorScale();
@@ -164,7 +166,7 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
 
 
       <div style={{
-        // background: 'white',
+        // background: light() ? 'white' : 'none'
       }}>
 
         <For each={Object.entries(swatch())}>{([name, arr], i) =>
@@ -178,7 +180,7 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
               'flex-basis': '100%',
               'overflow': 'hidden',
               'border-style': 'solid',
-              'border-color': 'rgba(256, 256, 256, 0.14)',
+              'border-color': light() ? 'rgba(0, 0, 0, 0.14)' : 'rgba(256, 256, 256, 0.14)',
             }, calcSwatchStyle(j()))}>
               <SwatchBox color={hex} style={{
                 border: j() == Math.floor(arrSize() / 2) ? '1px solid rgba(256, 256, 256, 1)' : '',
@@ -208,7 +210,9 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
                   }}><strong>APCA BG: </strong> {calcMaxAPCABG(textColorScale(), hex)[0]}</object>
                 </p>
               </SwatchBox>
-              <p class="helper">
+              <p class="helper" style={{
+                color: light() ? textColorScale().BLACK : textColorScale().WHITE,
+              }}>
                   <strong>{name}</strong>
                   <br/>
                   {hex}
@@ -217,7 +221,7 @@ const ColorSwatch: ColorSwatchComponent = (props) => {
             }</For>
           </SwatchRow>
           <Flex flexDirection="row" flexJustify={'space-between'} style={{
-            color: 'rgba(256, 256, 256, 0.4)',
+            color: light() ? 'rgba(0, 0, 0, 0.4)' : 'rgba(256, 256, 256, 0.4)',
             "margin-top": '-3px',
             padding: '0 5px 9px 5px'
           }}>
