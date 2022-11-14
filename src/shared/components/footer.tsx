@@ -7,7 +7,7 @@ import imgUrl from '../../assets/images/ambient_logo_transparent_new.png';
 const Footer: Component = () => {
 
   const FooterBar = styled('nav')`
-    width: calc(100vw - 16px);
+    width: calc(100vw);
     overflow-x: hidden;
     margin-top: auto;
     background-color: rgba(0, 0, 0, 0.9);

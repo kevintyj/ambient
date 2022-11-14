@@ -18,6 +18,7 @@ import {
   ColorShades,
   ColorShadesLight
 } from "../shared/styles/utils/variables.styled";
+import {create} from "lodash";
 
 export type ISwatchItem = {
   name: string;
@@ -166,7 +167,7 @@ const ColorListPage: () => JSX.Element = () => {
     link.click();
   }
 
-  const sList = () => [
+  const sListDeepCopy = () => [
     {
       name: 'Shades Corrected (RGB)',
       swatch: ColorShades(),
@@ -175,32 +176,35 @@ const ColorListPage: () => JSX.Element = () => {
       name: 'Shades Corrected (RGB) Light Mode',
       swatch: ColorShadesLight(),
       light: true
-    }, {
-      name: 'Blended (Lab Color Mix)',
-      swatch: ColorMix(),
-      light: false
-    }, {
-      name: 'Blended (Lab Color Mix) Light Mode',
-      swatch: ColorMixLight(),
-      light: true
-    }, {
-      name: 'Relative (HSV & Relative Luminance)',
-      swatch: ColorRelative(),
-      light: false
-    }, {
-      name: 'Relative (HSV & Relative Luminance) Light Mode',
-      swatch: ColorRelativeLight(),
-      light: true
-    }, {
-      name: 'Brighten and Darken (Legacy)',
-      swatch: ColorLegacy(),
-      light: false
-    }, {
-      name: 'Brighten and Darken (Legacy) Light Mode',
-      swatch: ColorLegacyLight(),
-      light: true
     }
-  ];
+    // , {
+    //   name: 'Blended (Lab Color Mix)',
+    //     swatch: ColorMix(),
+    //     light: false
+    // }, {
+    //   name: 'Blended (Lab Color Mix) Light Mode',
+    //     swatch: ColorMixLight(),
+    //     light: true
+    // }, {
+    //   name: 'Relative (HSV & Relative Luminance)',
+    //     swatch: ColorRelative(),
+    //     light: false
+    // }, {
+    //   name: 'Relative (HSV & Relative Luminance) Light Mode',
+    //     swatch: ColorRelativeLight(),
+    //     light: true
+    // }, {
+    //   name: 'Brighten and Darken (Legacy)',
+    //     swatch: ColorLegacy(),
+    //     light: false
+    // }, {
+    //   name: 'Brighten and Darken (Legacy) Light Mode',
+    //     swatch: ColorLegacyLight(),
+    //     light: true
+    // }
+  ]
+
+  const [sList, setSList]= createSignal([sListDeepCopy()[0], sListDeepCopy()[1]]);
 
   return(
     <>
@@ -270,11 +274,28 @@ const ColorListPage: () => JSX.Element = () => {
           </option>
         </Select>
       </Flex>
+      {/*<Flex flexDirection="row" gap={8} style={{*/}
+      {/*  margin: '0 0 8px -2px'*/}
+      {/*}}>*/}
+      {/*  <p style={{*/}
+      {/*      'padding': '18px 0 0 0'*/}
+      {/*  }}>*/}
+      {/*    Display Colors:*/}
+      {/*  </p>*/}
+      {/*  <Select value={contrastCalcType()} onChange={updateContrastCalc}>*/}
+      {/*    <option value={0} selected>*/}
+      {/*      Most Contrasting Color (Default)*/}
+      {/*    </option>*/}
+      {/*    <option value={1}>*/}
+      {/*      First Compliant Color*/}
+      {/*    </option>*/}
+      {/*  </Select>*/}
+      {/*</Flex>*/}
       <Flex flexDirection="row" gap={8} style={{
         margin: '0 0 24px -2px'
       }}>
         <p style={{
-            'padding': '18px 0 0 0'
+          'padding': '18px 0 0 0'
         }}>
           Contrast Color Method:
         </p>
@@ -300,7 +321,7 @@ const ColorListPage: () => JSX.Element = () => {
           </option>
         </Select>
       </Flex>
-      <SwatchList swatchList={sList()}/>
+      <SwatchList swatchList={sListDeepCopy()}/>
       <br/>
     </>
   )
