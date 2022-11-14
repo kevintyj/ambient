@@ -28,11 +28,58 @@ export type ISwatchItem = {
 export const [showContrast, setShowContrast] = createSignal('0');
 export const [contrastCalcType, setContrastCalcType] = createSignal(0);
 
+const [colorType, setColorType] = createSignal('hex');
+
+export const [shadeLength, setShadeLength] = createSignal(7);
+
+const updateColorType = (type: any) => {
+  setColorType(type.target.value);
+}
+
+const updateShowContrast = (type: any) => {
+  setShowContrast(type.target.value);
+}
+
+const updateContrastCalc = (type: any) => {
+  setContrastCalcType(type.target.value);
+}
+
+const updateShadeLength = (type: any) => {
+  setShadeLength(type.target.value);
+  setShades(shadeLength());
+}
+
+export const setShades = (len: number)  => {
+  if (len == 10) {
+    SetLegacy([0.1, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.25, 1.5, 1.7]);
+    SetRelative([0.6, 0.7, 0.85, 0.9, 1, 1.1, 1.15, 1.2, 1.3, 1.4]);
+    SetShades([1.85, 1.65, 1.2, 1.1, 1, 0.9, 0.8, 0.35, 0.18, 0.12]);
+
+    SetLegacyLight([1.7, 1.5, 1.25, 1.2, 1.1, 1, 0.9, 0.8, 0.7, 0.1]);
+    SetRelativeLight([1.4, 1.3, 1.2, 1.15, 1.1, 1, 0.9, 0.85, 0.7, 0.6]);
+    SetShadesLight([0.12, 0.18, 0.35, 0.8, 0.9, 1, 1.1, 1.2, 1.65, 1.85]);
+  }
+  if (len == 9) {
+    SetLegacy([0.1, 0.2, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3]);
+    SetRelative([0.6, 0.65, 0.7, 0.85, 0.9, 1, 1.1, 1.2, 1.35]);
+    SetShades([1.85, 1.79, 1.65, 1.2, 1.1, 1, 0.9, 0.65, 0.4]);
+
+    SetLegacyLight([1.7, 1.5, 1.25, 1.2, 1.1, 1, 0.8, 0.7, 0.3]);
+    SetRelativeLight([1.4, 1.3, 1.2, 1.15, 1.1, 1, 0.85, 0.7, 0.6]);
+    SetShadesLight([0.12, 0.18, 0.35, 0.8, 0.9, 1, 1.2, 1.65, 1.78]);
+
+  } if (len == 7) {
+    SetLegacy([0.1, 0.7, 0.9, 1, 1.1, 1.2, 1.5]);
+    SetRelative([0.6, 0.7, 0.9, 1, 1.1, 1.2, 1.3]);
+    SetShades([1.85, 1.65, 1.1, 1, 0.9, 0.35, 0.18]);
+
+    SetLegacyLight([1.5, 1.2, 1.1, 1, 0.9, 0.7, 0.1]);
+    SetRelativeLight([1.3, 1.2, 1.1, 1, 0.9, 0.7, 0.6]);
+    SetShadesLight([0.18, 0.35, 0.9, 1, 1.1, 1.65, 1.85]);
+  }
+}
+
 const ColorListPage: () => JSX.Element = () => {
-
-  const [colorType, setColorType] = createSignal('hex');
-
-  const [shadeLength, setShadeLength] = createSignal(7);
 
   const listColorConversion = () => {
     let output = [];
@@ -154,50 +201,6 @@ const ColorListPage: () => JSX.Element = () => {
       light: true
     }
   ];
-
-  const updateColorType = (type: any) => {
-    setColorType(type.target.value);
-  }
-
-
-  const updateShadeLength = (type: any) => {
-    setShadeLength(type.target.value);
-    if (shadeLength() == 10) {
-      SetLegacy([0.1, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.25, 1.5, 1.7]);
-      SetRelative([0.6, 0.7, 0.85, 0.9, 1, 1.1, 1.15, 1.2, 1.3, 1.4]);
-      SetShades([1.85, 1.65, 1.2, 1.1, 1, 0.9, 0.8, 0.35, 0.18, 0.12]);
-
-      SetLegacyLight([1.7, 1.5, 1.25, 1.2, 1.1, 1, 0.9, 0.8, 0.7, 0.1]);
-      SetRelativeLight([1.4, 1.3, 1.2, 1.15, 1.1, 1, 0.9, 0.85, 0.7, 0.6]);
-      SetShadesLight([0.12, 0.18, 0.35, 0.8, 0.9, 1, 1.1, 1.2, 1.65, 1.85]);
-    }
-    if (shadeLength() == 9) {
-      SetLegacy([0.1, 0.2, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3]);
-      SetRelative([0.6, 0.65, 0.7, 0.85, 0.9, 1, 1.1, 1.2, 1.35]);
-      SetShades([1.85, 1.79, 1.65, 1.2, 1.1, 1, 0.9, 0.65, 0.4]);
-
-      SetLegacyLight([1.7, 1.5, 1.25, 1.2, 1.1, 1, 0.8, 0.7, 0.3]);
-      SetRelativeLight([1.4, 1.3, 1.2, 1.15, 1.1, 1, 0.85, 0.7, 0.6]);
-      SetShadesLight([0.12, 0.18, 0.35, 0.8, 0.9, 1, 1.2, 1.65, 1.78]);
-
-    } if (shadeLength() == 7) {
-      SetLegacy([0.1, 0.7, 0.9, 1, 1.1, 1.2, 1.5]);
-      SetRelative([0.6, 0.7, 0.9, 1, 1.1, 1.2, 1.3]);
-      SetShades([1.85, 1.65, 1.1, 1, 0.9, 0.35, 0.18]);
-
-      SetLegacyLight([1.5, 1.2, 1.1, 1, 0.9, 0.7, 0.1]);
-      SetRelativeLight([1.3, 1.2, 1.1, 1, 0.9, 0.7, 0.6]);
-      SetShadesLight([0.18, 0.35, 0.9, 1, 1.1, 1.65, 1.85]);
-    }
-  }
-
-  const updateShowContrast = (type: any) => {
-    setShowContrast(type.target.value);
-  }
-
-  const updateContrastCalc = (type: any) => {
-    setContrastCalcType(type.target.value);
-  }
 
   return(
     <>

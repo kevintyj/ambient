@@ -8,6 +8,7 @@ import { Container } from './shared/styles/components/container.styled';
 import { Toaster } from 'solid-toast';
 import Footer from './shared/components/footer';
 import { Flex } from './shared/styles/components/flex.styled';
+import Playground from "./pages/playground";
 
 
 // Lazy loaded
@@ -19,7 +20,6 @@ const App: Component = () => {
   const Page = styled('div')`
     padding: 70px 16px 20px 16px;
   `
-
 
   return (
     <Flex flexDirection={'column'}>
@@ -46,6 +46,13 @@ const App: Component = () => {
             </Page>
           </Container>
         } />
+        <Route path="/playground" element={
+          <Container>
+            <Page>
+              <Playground/>
+            </Page>
+          </Container>
+        } />
         <Route path="/doc" element={
           <Container>
             <Page>
@@ -54,7 +61,7 @@ const App: Component = () => {
           </Container>
         } />
       </Routes>
-      
+
       <Footer/>
     </Flex>
   );

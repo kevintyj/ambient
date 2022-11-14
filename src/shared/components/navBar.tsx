@@ -77,6 +77,9 @@ const NavBar: Component = () => {
           </p>
           <ul>
             <li>
+              <NavLink href="/playground">Playground</NavLink>
+            </li>
+            <li>
               <NavLink href="/doc">Documentation</NavLink>
             </li>
             <li>
