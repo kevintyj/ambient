@@ -7,11 +7,12 @@ import imgUrl from '../../assets/images/ambient_logo_transparent_new.png';
 const Footer: Component = () => {
 
   const FooterBar = styled('nav')`
-    width: 100vw;
+    width: calc(100vw - 16px);
+    overflow-x: hidden;
     margin-top: auto;
     background-color: rgba(0, 0, 0, 0.9);
     backdrop-filter: blur(5px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
     border-bottom: 0;
     display: flex;
     align-items: center;
@@ -41,10 +42,10 @@ const Footer: Component = () => {
         }}>
           <a href="/"><img src={imgUrl}/></a>
           <p>
-            Built with <a href="http://solidjs.com">Solidjs</a>, 
-            with the help of <a href="https://vis4.net/chromajs/">Chromajs</a>, 
-            <a href="https://felte.dev">Felte</a>, 
-            <a href="https://icons.getbootstrap.com">Bootstrap Icons</a>, 
+            Built with <a href="http://solidjs.com">Solidjs</a>,
+            with the help of <a href="https://vis4.net/chromajs/">Chromajs</a>,
+            <a href="https://felte.dev">Felte</a>,
+            <a href="https://icons.getbootstrap.com">Bootstrap Icons</a>,
             and <a href="https://github.com/Myndex/SAPC-APCA">WCAG APCA</a>
           </p>
           <a href="https://github.com/kevintyj/ambient">

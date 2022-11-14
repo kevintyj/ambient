@@ -22,7 +22,10 @@ const App: Component = () => {
   `
 
   return (
-    <Flex flexDirection={'column'}>
+    <Flex flexDirection={'column'} style={{
+      "max-width": '100vw',
+      "overflow-x": 'hidden'
+    }}>
       <GlobalStyles/>
 
       <NavBar/>

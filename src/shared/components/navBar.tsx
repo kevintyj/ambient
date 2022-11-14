@@ -3,6 +3,7 @@ import {Component} from "solid-js";
 import { styled } from "solid-styled-components";
 import { Container } from "../styles/components/container.styled";
 import imgUrl from '../../assets/images/ambient_logo_white_new.png';
+import {darkMode, setDarkMode} from "../styles/base/global.styled";
 
 
 const NavBar: Component = () => {
@@ -36,6 +37,7 @@ const NavBar: Component = () => {
       white-space:nowrap;
       li {
         display:inline-block;
+        margin-left: 5px;
       }
       a {
         font-size: 14px;
@@ -84,6 +86,9 @@ const NavBar: Component = () => {
             </li>
             <li>
               <NavLink href="https://github.com/kevintyj/ambient"><i class="bi bi-github"></i></NavLink>
+            </li>
+            <li>
+              <a onClick={() => setDarkMode(!darkMode())}><i class="bi bi-cloud-sun-fill"></i></a>
             </li>
           </ul>
         </Container>

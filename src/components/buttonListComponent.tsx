@@ -3,11 +3,13 @@ import {ColorShades, ColorShadesLight, textColorScale} from "../shared/styles/ut
 import TesterButton from "../shared/components/testerButton";
 import {Flex} from "../shared/styles/components/flex.styled";
 import {calcMaxAPCA} from "../shared/styles/functions/contrastCalc";
+import {transform} from "lodash";
 
 type IButtonListComponent<T = {}> = Component<T & {
   mode: 'dark' | 'light',
   baseColor: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | string,
   baseBgColor: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900,
+  transparent?: boolean,
   border?: boolean,
   strictBorder?: boolean,
   APCAText?: boolean,
@@ -30,13 +32,20 @@ const ButtonListComponent: IButtonListComponent = (props) => {
     } return props.baseColor
   }
 
+  const checkBgColor = (swatchObj: Record<any, any>) => {
+    if (props.transparent) {
+      return "transparent"
+    } else {
+      return swatchObj[props.baseBgColor]
+    }
+  }
+
   const checkValidSwatchVal = (num: number) => {
     if (num < 100) {
       return false
     }else if (num > 800) {
       return false
     }
-
     return true
   }
 
@@ -45,7 +54,7 @@ const ButtonListComponent: IButtonListComponent = (props) => {
       <For each={cList()}>{(swatch: Record<number, any>, i) =>
         <TesterButton
           textColor={checkTextColor(swatch)}
-          bgColor={swatch[props.baseBgColor]}
+          bgColor={checkBgColor(swatch)}
           borderColor={props.border ? swatch[props.baseBgColor + 100] : null}
 
           hoverBgColor={checkValidSwatchVal(swatch[props.baseBgColor]) ? swatch[props.baseBgColor - 100] : swatch[props.baseBgColor]}
@@ -54,7 +63,7 @@ const ButtonListComponent: IButtonListComponent = (props) => {
               props.strictBorder ?
                 swatch[props.baseBgColor] : swatch[props.baseBgColor + 100] : null : null}
 
-          activeBgColor={checkValidSwatchVal(swatch[props.baseBgColor]) ? swatch[props.baseBgColor + 100] : swatch[props.baseBgColor]}
+          activeBgColor={checkValidSwatchVal(swatch[props.baseBgColor]) ? props.transparent ? swatch[props.baseBgColor] : swatch[props.baseBgColor + 100] : swatch[props.baseBgColor]}
           activeBorderColor={checkValidSwatchVal(swatch[props.baseBgColor]) ?
             props.border ?
               props.strictBorder ?

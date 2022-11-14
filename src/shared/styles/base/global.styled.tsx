@@ -1,10 +1,27 @@
 import {createGlobalStyles as createGlobalStyle} from "solid-styled-components";
 import {Base} from "../utils/variables.styled";
+import {createEffect, createSignal} from "solid-js";
+
+export const [darkMode, setDarkMode] = createSignal(true);
+
+export const [globalBgColor, setGlobalBgColor] = createSignal('#131313');
+export const [globalTextColor, setGlobalTextColor] = createSignal('#ffffff');
+
+createEffect(() => {
+  if (darkMode()) {
+    setGlobalTextColor('#ffffff');
+    setGlobalBgColor('#131313');
+  } else {
+    setGlobalTextColor('#000000');
+    setGlobalBgColor('#ffffff')
+  }
+})
 
 const GlobalStyles = createGlobalStyle`
   body {
     margin: 0;
-    color: #1E1E1E;
+    background-color: ${globalBgColor};
+    color: ${globalTextColor}; 
     font-family: ${Base.TEXT_FONT_STACK};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
