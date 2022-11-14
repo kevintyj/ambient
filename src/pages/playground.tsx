@@ -5,6 +5,7 @@ import ButtonListComponent from "../components/buttonListComponent";
 import {setShades, shadeLength} from "../components/colorListComponent";
 import {Flex} from "../shared/styles/components/flex.styled";
 import {styled} from "solid-styled-components";
+import MenuListcomponent from "../components/menuListComponent";
 
 const Playground: Component = () => {
 
@@ -26,7 +27,7 @@ const Playground: Component = () => {
     padding: 24px 20px;
     width: 100%;
     
-    background: ${props.mode == 'dark' ? '#000000' : '#ffffff'};
+    background: ${props.mode == 'dark' ? '#080808' : '#ffffff'};
     border: 1px solid ${props.mode == 'dark' ? 'rgba(256,256,256,0.14)' : 'rgb(196,196,196)'};
     border-radius: 6px;
     
@@ -38,6 +39,114 @@ const Playground: Component = () => {
       <h3>
         Color Testing Playground
       </h3>
+      <Flex flexDirection={"column"}>
+        <h4>
+          Active and Clickable Component
+        </h4>
+        <Flex flexDirection={"column"} gap={6} style={{
+          width: '100%',
+          "margin-bottom": '6px'
+        }}>
+          <p>
+            Dark Mode
+          </p>
+          <ButtonContainer mode={"dark"}>
+            <Flex>
+              <MenuListcomponent mode={"dark"}/>
+            </Flex>
+          </ButtonContainer>
+          <p>
+            Light Mode
+          </p>
+          <ButtonContainer mode={"light"}>
+            <Flex>
+              <MenuListcomponent mode={"light"}/>
+            </Flex>
+          </ButtonContainer>
+        </Flex>
+      </Flex>
+
+      <Flex flexDirection={"column"}>
+        <h4>
+          Active and Clickable Component with Highlighted Content
+        </h4>
+        <Flex flexDirection={"column"} gap={6} style={{
+          width: '100%',
+          "margin-bottom": '6px'
+        }}>
+          <p>
+            Dark Mode
+          </p>
+          <ButtonContainer mode={"dark"}>
+            <Flex>
+              <MenuListcomponent mode={"dark"} highlight/>
+            </Flex>
+          </ButtonContainer>
+          <p>
+            Light Mode
+          </p>
+          <ButtonContainer mode={"light"}>
+            <Flex>
+              <MenuListcomponent mode={"light"} highlight/>
+            </Flex>
+          </ButtonContainer>
+        </Flex>
+      </Flex>
+
+      <Flex flexDirection={"column"}>
+        <h4>
+          Active and Clickable Component Solid
+        </h4>
+        <Flex flexDirection={"column"} gap={6} style={{
+          width: '100%',
+          "margin-bottom": '6px'
+        }}>
+          <p>
+            Dark Mode
+          </p>
+          <ButtonContainer mode={"dark"}>
+            <Flex>
+              <MenuListcomponent mode={"dark"} solid/>
+            </Flex>
+          </ButtonContainer>
+          <p>
+            Light Mode
+          </p>
+          <ButtonContainer mode={"light"}>
+            <Flex>
+              <MenuListcomponent mode={"light"} solid/>
+            </Flex>
+          </ButtonContainer>
+        </Flex>
+      </Flex>
+
+      <Flex flexDirection={"column"}>
+        <h4>
+          Active and Clickable Component with Highlighted Content Solid
+        </h4>
+        <Flex flexDirection={"column"} gap={6} style={{
+          width: '100%',
+          "margin-bottom": '6px'
+        }}>
+          <p>
+            Dark Mode
+          </p>
+          <ButtonContainer mode={"dark"}>
+            <Flex>
+              <MenuListcomponent mode={"dark"} highlight solid/>
+            </Flex>
+          </ButtonContainer>
+          <p>
+            Light Mode
+          </p>
+          <ButtonContainer mode={"light"}>
+            <Flex>
+              <MenuListcomponent mode={"light"} highlight solid/>
+            </Flex>
+          </ButtonContainer>
+        </Flex>
+      </Flex>
+
       <Flex flexDirection={"column"}>
         <h4>
           Component Backgrounds
@@ -168,6 +277,33 @@ const Playground: Component = () => {
           <ButtonContainer mode={"light"}>
             <Flex>
               <ButtonListComponent mode={"light"} baseColor={800} baseBgColor={600} border={true} APCAText={true}/>
+            </Flex>
+          </ButtonContainer>
+        </Flex>
+      </Flex>
+
+      <Flex flexDirection={"column"}>
+        <h4>
+          Component Transparent Backgrounds with Border
+        </h4>
+        <Flex flexDirection={"column"} gap={6} style={{
+          width: '100%',
+          "margin-bottom": '6px'
+        }}>
+          <p>
+            Dark Mode
+          </p>
+          <ButtonContainer mode={"dark"}>
+            <Flex>
+              <ButtonListComponent mode={"dark"} baseColor={600} baseBgColor={200} border={true} transparent={true}/>
+            </Flex>
+          </ButtonContainer>
+          <p>
+            Light Mode
+          </p>
+          <ButtonContainer mode={"light"}>
+            <Flex>
+              <ButtonListComponent mode={"light"} baseColor={600} baseBgColor={200} border={true} transparent={true}/>
             </Flex>
           </ButtonContainer>
         </Flex>

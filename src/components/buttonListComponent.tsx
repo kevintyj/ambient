@@ -55,19 +55,19 @@ const ButtonListComponent: IButtonListComponent = (props) => {
         <TesterButton
           textColor={checkTextColor(swatch)}
           bgColor={checkBgColor(swatch)}
-          borderColor={props.border ? swatch[props.baseBgColor + 100] : null}
+          borderColor={props.border ? props.transparent ? swatch[400] : swatch[props.baseBgColor + 100] : null}
 
           hoverBgColor={checkValidSwatchVal(swatch[props.baseBgColor]) ? swatch[props.baseBgColor - 100] : swatch[props.baseBgColor]}
           hoverBorderColor={checkValidSwatchVal(swatch[props.baseBgColor]) ?
             props.border ?
               props.strictBorder ?
-                swatch[props.baseBgColor] : swatch[props.baseBgColor + 100] : null : null}
+                swatch[props.baseBgColor] : props.transparent ? swatch[400] : swatch[props.baseBgColor + 100] : null : null}
 
           activeBgColor={checkValidSwatchVal(swatch[props.baseBgColor]) ? props.transparent ? swatch[props.baseBgColor] : swatch[props.baseBgColor + 100] : swatch[props.baseBgColor]}
           activeBorderColor={checkValidSwatchVal(swatch[props.baseBgColor]) ?
             props.border ?
               props.strictBorder ?
-                swatch[props.baseBgColor + 200] : swatch[props.baseBgColor + 100] : null: null}
+                swatch[props.baseBgColor + 200] : props.transparent ? swatch[400] : swatch[props.baseBgColor + 100] : null: null}
         >
           {/*Name of the Swatch*/}
           {cListName()[i()]}
