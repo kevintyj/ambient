@@ -4,14 +4,16 @@
   "description": "Color Checker Tool",
   "scripts": {
     "start": "vite",
-    "dev": "vite",
+    "dev": "vite --debug",
     "build": "vite build",
     "serve": "vite preview"
   },
   "license": "MIT",
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.8",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.19",
+    "sass": "^1.56.2",
     "tailwindcss": "^3.2.4",
     "typescript": "^4.8.2",
     "vite": "^3.0.9",
@@ -19,6 +21,10 @@
   },
   "dependencies": {
     "@solidjs/router": "^0.5.1",
-    "solid-js": "^1.6.4"
+    "@types/chroma-js": "^2.1.4",
+    "chroma-js": "^2.4.2",
+    "lodash": "^4.17.21",
+    "solid-js": "^1.6.4",
+    "solid-styled-components": "^0.28.5"
   }
 }

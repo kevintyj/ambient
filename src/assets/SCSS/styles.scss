@@ -1,0 +1,19 @@
+/* SCSS Main File */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap');
+
+/* Vendors */
+// Skipped import, using Tailwind
+// @import "vendors/normalize";
+
+/* Base */
+@import "base/base";
+
+/* Shame */
+@import "shame";
+
+body {
+  //background-color: #131313;
+  //color: white !important;
+  //height: 100vh;
+}
