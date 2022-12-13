@@ -4,6 +4,7 @@ import NavBar from "./components/layouts/navBar";
 import Button from "./components/shared/button";
 import ColorSwatch from "./components/colorSwatch";
 import KeyHandler from "./functions/keyHandler";
+import ColorSwatchLarge from './components/colorSwatchLarge';
 
 const App: Component = () => {
   return (
@@ -27,6 +28,8 @@ const App: Component = () => {
       </h3>
      </div>
      <ColorSwatch/>
+     <ColorSwatchLarge trackIndex='color'/>
+     <ColorSwatchLarge trackIndex='id'/>
      <Button>
        This is also a button
      </Button>
