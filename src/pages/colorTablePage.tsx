@@ -42,7 +42,7 @@ const ColorTablePage: Component = () => {
       </div>
       <div class='flex justify-center w-full px-6'>
         <div class='flex flex-row gap-x-8 flex-wrap 2xl:flex-nowrap w-full max-w-screen-2xl'>
-          <div class='flex flex-col basis-full 2xl:basis-1/2'>
+          <div class='flex flex-col basis-full 2xl:basis-1/2 pb-10'>
             <h4 class="text-slate-600 dark:text-neutral-500">
               Active Color Swatch
             </h4>

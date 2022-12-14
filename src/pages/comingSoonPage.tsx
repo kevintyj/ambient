@@ -5,7 +5,7 @@ import LinkUrl from "../assets/images/link.png"
 const ComingSoonPage: Component = () => {
   return (
     <>
-      <div class='flex justify-center max-w-screen-2xl gap-y-1 h-screen px-auto -my-16'>
+      <div class='flex justify-center max-w-screen-2xl gap-y-1 px-auto'>
         <div class='flex flex-col justify-center items-center text-center max-w-screen-md gap-y-1 pb-6'>
           <img src={LinkUrl} class="w-20 pb-4"/>
           <h1 class="font-semibold font-display text-3xl text-slate-800 dark:text-slate-200 pb-2">

@@ -8,7 +8,7 @@ const NavBar: Component = () => {
 
   return (
     <nav class=" border-b h-14 p-6 flex justify-center fixed backdrop-blur-md backdrop-brightness-125
-    bg-white dark:bg-neutral-900 border-b-neutral-200 dark:border-b-neutral-800 
+    bg-neutral-50 dark:bg-neutral-900 border-b-neutral-200 dark:border-b-neutral-800 
     bg-opacity-80 dark:bg-opacity-90 w-full z-50">
       <div class="flex items-center w-full max-w-screen-2xl">
         <div class="flex items-center space-x-4 w-full pt-[1px]">
@@ -26,6 +26,11 @@ const NavBar: Component = () => {
           <a href="/coming-soon">
             <Button>
               Documentation
+            </Button>
+          </a>
+          <a href="https://github.com/kevintyj/ambient">
+            <Button>
+              <i class="bi bi-github"></i>
             </Button>
           </a>
           <DarkModeToggle/>
