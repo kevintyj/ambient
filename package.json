@@ -23,6 +23,7 @@
     "@solidjs/router": "^0.5.1",
     "@types/chroma-js": "^2.1.4",
     "chroma-js": "^2.4.2",
+    "d3": "^7.7.0",
     "lodash": "^4.17.21",
     "solid-js": "^1.6.4",
     "solid-styled-components": "^0.28.5"

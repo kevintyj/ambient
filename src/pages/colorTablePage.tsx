@@ -1,6 +1,7 @@
 import { Component } from "solid-js";
 import ColorSwatch from "../components/colorSwatch";
 import ColorSwatchLarge from "../components/colorSwatchLarge";
+import LineChart from "../components/views/lineChart";
 import KeyHandler from "../functions/keyHandler";
 
 const ColorTablePage: Component = () => {
@@ -25,6 +26,14 @@ const ColorTablePage: Component = () => {
           </div>
           <div class='basis-full 2xl:basis-7/12'>
             <ColorSwatchLarge trackIndex='color'/>
+            <div class="flex flex-col h-100">
+              <div class="flex flex-col">
+                <LineChart/>
+              </div>
+              <div class="flex flex-col">
+                <LineChart/>
+              </div>
+            </div>
             <ColorSwatchLarge trackIndex='id'/>
           </div>
         </div>
