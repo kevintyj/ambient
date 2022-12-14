@@ -7,7 +7,6 @@ import Toast, { copy } from "./shared/tost";
 
 type IColorSwatchProps<T = {}> = Component<T &{
   swatch?: Record<string, Record<string, string>>;
-  swatchArr?: Array<Array<string>>;
 }>
 
 const ColorSwatch: IColorSwatchProps = (props) => {

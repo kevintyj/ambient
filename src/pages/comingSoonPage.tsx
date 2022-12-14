@@ -1,5 +1,5 @@
 import { Component } from "solid-js";
-import Button from "../components/shared/button";
+import Button from "../assets/components/button.styled";
 import LinkUrl from "../assets/images/link.png"
 
 const ComingSoonPage: Component = () => {

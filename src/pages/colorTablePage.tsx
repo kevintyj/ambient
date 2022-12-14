@@ -1,11 +1,34 @@
-import { Component } from "solid-js";
+import { Component, createEffect, createSignal } from "solid-js";
 import ColorSwatch from "../components/colorSwatch";
 import ColorSwatchLarge from "../components/colorSwatchLarge";
 import DataPlot from "../components/dataPlot";
-import Button from "../components/shared/button";
+import Button from "../assets/components/button.styled";
 import KeyHandler from "../functions/keyHandler";
+import Select from "../assets/components/select.styled";
+import { colors } from "../assets/color";
+import { colorsToArr, generatedColors } from "../functions/colorConfig";
 
 const ColorTablePage: Component = () => {
+
+  const [visibleColorScale, setColorScale] = createSignal(colors())
+  const visibleColorScaleArr = () => colorsToArr(visibleColorScale())
+
+  const [currScale, setCurrScale] = createSignal('Flex Design Colors')
+
+  createEffect(() => {
+    setColorScale(colors())
+  })
+
+  const handleColorScaleChange = (type: any) => {
+    if (type.target.value == 'c1'){
+      setColorScale(colors())
+      setCurrScale('Flex Design Colors')
+    } else {
+      setColorScale(generatedColors())
+      setCurrScale('Flex Design Colors Uniform')
+    };
+  }
+
   return (
     <>
       <KeyHandler/>
@@ -37,7 +60,16 @@ const ColorTablePage: Component = () => {
                 Import Colorset
               </Button>
             </a>
+            <Select onChange={handleColorScaleChange}>
+              <option value={'c1'} selected>
+                Flex Design Colors
+              </option>
+              <option value={'c2'}>
+                Flex Design Colors Uniform
+              </option>
+            </Select>
           </div>
+          
         </div>
       </div>
       <div class='flex justify-center w-full px-6'>
@@ -47,22 +79,22 @@ const ColorTablePage: Component = () => {
               Active Color Swatch
             </h4>
             <h3 class="font-semibold font-display text-xl text-slate-800 dark:text-slate-200">
-              Flex Design Colors
+              {currScale()}
             </h3>
-            <ColorSwatch/>
+            <ColorSwatch swatch={visibleColorScale()}/>
           </div>
           <div class='basis-full 2xl:basis-1/2'>
-            <ColorSwatchLarge trackIndex='color'/>
+            <ColorSwatchLarge swatch={visibleColorScale()} swatchArr={visibleColorScaleArr()} trackIndex='color'/>
             <div class="flex flex-row gap-x-4 pb-6">
-              <DataPlot plotArea={1} plotType={"l"}/>
-              <DataPlot plotArea={1} plotType={"c"}/>
-              <DataPlot plotArea={1} plotType={"h"}/>
+              <DataPlot swatchArr={visibleColorScaleArr()} plotArea={1} plotType={"l"}/>
+              <DataPlot swatchArr={visibleColorScaleArr()} plotArea={1} plotType={"c"}/>
+              <DataPlot swatchArr={visibleColorScaleArr()} plotArea={1} plotType={"h"}/>
             </div>
-            <ColorSwatchLarge trackIndex='id'/>
+            <ColorSwatchLarge swatch={visibleColorScale()} swatchArr={visibleColorScaleArr()}trackIndex='id'/>
             <div class="flex flex-row gap-x-4">
-              <DataPlot plotArea={0} plotType={"l"}/>
-              <DataPlot plotArea={0} plotType={"c"}/>
-              <DataPlot plotArea={0} plotType={"h"}/>
+              <DataPlot swatchArr={visibleColorScaleArr()} plotArea={0} plotType={"l"}/>
+              <DataPlot swatchArr={visibleColorScaleArr()} plotArea={0} plotType={"c"}/>
+              <DataPlot swatchArr={visibleColorScaleArr()} plotArea={0} plotType={"h"}/>
             </div>
           </div>
         </div>

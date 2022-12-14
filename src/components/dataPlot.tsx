@@ -1,18 +1,22 @@
 import chroma from "chroma-js";
 import { Component, For } from "solid-js"
 import { colorsArr } from "../assets/color";
+import { colorsToArr } from "../functions/colorConfig";
 import { focused } from "../functions/keyHandler";
 
 type IDataPlotProps<T = {}> = Component<T &{
+  swatchArr?: Array<Array<string>>;
   plotArea: 1 | 0;
   plotType: 'l' | 'c' | 'h';
 }>
 
 const DataPlot: IDataPlotProps = (props) => {
 
+  const watchingSwatch = () => props.swatchArr ? props.swatchArr : colorsArr();
+
   const colorsRemap = () => props.plotArea == 1 ? 
-  colorsArr()[focused()[1]] : 
-  colorsArr().map(val => val[focused()[0]]);
+  watchingSwatch()[focused()[1]] : 
+  watchingSwatch().map(val => val[focused()[0]]);
 
   const lchCalc = () => colorsRemap().map(hex => {
     const lch = chroma(hex).lch()

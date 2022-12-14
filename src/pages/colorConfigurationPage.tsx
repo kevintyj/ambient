@@ -2,12 +2,16 @@ import { Component, createEffect } from "solid-js";
 import ColorSwatch from "../components/colorSwatch";
 import ColorSwatchLarge from "../components/colorSwatchLarge";
 import DataPlot from "../components/dataPlot";
-import Button from "../components/shared/button";
+import Button from "../assets/components/button.styled";
 import { generatedColors } from "../functions/colorConfig";
 import KeyHandler from "../functions/keyHandler";
+import Select from "../assets/components/select.styled";
 
 const ColorConfigurationPage: Component = () => {
 
+  const handleColorScaleChange = (type: any) => {
+    setColorScale(type.target.value);
+  }
 
   return (
     <>
@@ -40,6 +44,14 @@ const ColorConfigurationPage: Component = () => {
                 Import Colorset
               </Button>
             </a>
+            <Select onChange={handleColorScaleChange}>
+              <option value={'c1'} selected>
+                Flex Design Colors
+              </option>
+              <option value={'c2'}>
+                Flex Design Colors Uniform
+              </option>
+            </Select>
           </div>
         </div>
       </div>

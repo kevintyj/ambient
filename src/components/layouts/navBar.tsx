@@ -1,7 +1,7 @@
 import {Component } from "solid-js";
 import lightLogoUrl from "../../assets/images/ambient_logo_black_new.png";
 import darkLogoUrl from "../../assets/images/ambient_logo_white_new.png";
-import Button from "../shared/button";
+import Button from "../../assets/components/button.styled";
 import DarkModeToggle, { darkMode } from "../shared/darkModeToggle";
 
 const NavBar: Component = () => {

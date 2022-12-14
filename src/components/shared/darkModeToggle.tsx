@@ -1,5 +1,5 @@
 import { Component, createEffect, createSignal, onMount } from "solid-js"
-import Button from "./button"
+import Button from "../../assets/components/button.styled"
 
 export const [darkMode, setDarkMode] = createSignal(window.matchMedia('(prefers-color-scheme: dark)').matches)
 

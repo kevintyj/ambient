@@ -1,5 +1,5 @@
 import { Component, For } from "solid-js";
-import { colors } from "../assets/color";
+import { colors, colorsArr } from "../assets/color";
 import { ColorIdentifier } from "../assets/components/colorIdentifier.styled";
 import { colorsToArr } from "../functions/colorConfig";
 import { focused } from "../functions/keyHandler";
@@ -7,12 +7,14 @@ import { copy } from "./shared/tost";
 
 type IColorSwatchLargeProps<T = {}> = Component<T &{
   swatch?: Record<string, Record<string, string>>;
+  swatchArr?: Array<Array<string>>;
   trackIndex?: 'color' | 'id';
 }>
 
 const ColorSwatchLarge: IColorSwatchLargeProps = (props) => {
+  
   const watchingSwatch = () => props.swatch ? props.swatch : colors();
-  const watchingSwatchArr = () => colorsToArr(watchingSwatch())
+  const watchingSwatchArr = () => props.swatchArr ? props.swatchArr : colorsArr();
 
   return (
     <>

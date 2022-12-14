@@ -11,7 +11,7 @@ import chroma from "chroma-js"
 const ScalePrimObj = {
   "NEUTRAL": ['#F7F8F7', '#626262', '#1b1d1c'],
   "OCEAN": ['#E6F5FA', '#1893f6', '#081F46'],
-  "SKY": ['#E2F1FF', '#1B78E7', '#091847'],
+  // "SKY": ['#E2F1FF', '#1B78E7', '#091847'],
   "BLUE": ['#E9EEFE', '#264FE3', '#061148'],
   "INDIGO": ['#EEECFA', '#4624D3', '#0a003d'],
   "VIOLET": ['#F0E9F8', '#6C1CDB', '#1c063d'],
