@@ -1,5 +1,5 @@
 import chroma from "chroma-js";
-import {Component, createSignal, JSX} from "solid-js";
+import {Component, createEffect, createSignal, JSX} from "solid-js";
 import SwatchList from "../shared/components/swatchList";
 import { Button } from "../shared/styles/components/button.styled";
 import { Flex } from "../shared/styles/components/flex.styled";
@@ -84,7 +84,7 @@ const ColorListPage: () => JSX.Element = () => {
 
   const listColorConversion = () => {
     let output = [];
-    for (const scale of sList()) {
+    for (const scale of sListDeepCopy()) {
       let calcType: Record<string, any> = {};
       calcType[`name`] = scale.name;
       let colorSwatchObj: Record<string, Record<string, string>> = {};
@@ -148,7 +148,7 @@ const ColorListPage: () => JSX.Element = () => {
 
   const fileDownloadFull = () => {
     console.log(listColorConversion());
-    const fileData = JSON.stringify(sList());
+    const fileData = JSON.stringify(sListDeepCopy());
     const blob = new Blob([fileData], {type: "text/plain"});
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');

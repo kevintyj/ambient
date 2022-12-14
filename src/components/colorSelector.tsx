@@ -22,6 +22,7 @@ const ColorSelector: Component = () => {
 
   createEffect(() => {
     setColors(Object.entries(colorScale()));
+    console.log(colorScale())
   })
 
   const FormGroup = styled('div')`
@@ -159,7 +160,7 @@ const ColorSelector: Component = () => {
             </div>
             <div class="form-element">
               <label for="colorHEX">HEX</label>
-              <input type="text" name={`colorHEX${i()}`} value={val} maxlength="7" 
+              <input type="text" name={`colorHEX${i()}`} value={val} maxlength="7"
        style="text-transform:uppercase"/>
             </div>
             <a onclick={() => removeColor(i())}><i class="bi bi-trash3-fill"></i></a>
