@@ -5,6 +5,7 @@ specifiers:
   '@tailwindcss/typography': ^0.5.8
   '@types/chroma-js': ^2.1.4
   autoprefixer: ^10.4.13
+  bootstrap-icons: ^1.10.2
   chroma-js: ^2.4.2
   lodash: ^4.17.21
   postcss: ^8.4.19
@@ -19,6 +20,7 @@ specifiers:
 dependencies:
   '@solidjs/router': 0.5.1_solid-js@1.6.4
   '@types/chroma-js': 2.1.4
+  bootstrap-icons: 1.10.2
   chroma-js: 2.4.2
   lodash: 4.17.21
   solid-js: 1.6.4
@@ -514,6 +516,10 @@ packages:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==}
     engines: {node: '>=8'}
     dev: true
+
+  /bootstrap-icons/1.10.2:
+    resolution: {integrity: sha512-PTPYadRn1AMGr+QTSxe4ZCc+Wzv9DGZxbi3lNse/dajqV31n2/wl/7NX78ZpkvFgRNmH4ogdIQPQmxAfhEV6nA==}
+    dev: false
 
   /braces/3.0.2:
     resolution: {integrity: sha512-b8um+L1RzM3WDSzvhm6gIz1yfTbBt6YTlcEKAvsmqCZZFw46z626lVj9j1yEPW33H5H+lBQpZMP1k8l+78Ha0A==}

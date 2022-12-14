@@ -9,13 +9,16 @@ type IColorWatchLargeProps<T = {}> = Component<T &{
 
 const ColorSwatchLarge: IColorWatchLargeProps = (props) => {
 
-  const focusedState = () => focused();
-
   return (
     <>
       <div class="flex flex-col w-full pb-6">
+        <h4 class="text-slate-600 dark:text-neutral-500">
+          {props.trackIndex == 'color' ? 'Color Name' : 'Color ID'}
+        </h4>
         <h2 class="font-display text-xl capitalize font-semibold text-slate-800 dark:text-slate-200">
-          {props.trackIndex == 'color' ? Object.keys(colors())[focusedState()[1]].toLocaleLowerCase() : Object.keys(Object.values(colors()))[focusedState()[0]]}
+          {props.trackIndex == 'color' ? 
+          Object.keys(colors())[focused()[1]].toLocaleLowerCase() : 
+          `0${Object.keys(Object.values(colors()))[focused()[0]]}`}
         </h2>
         <div class="flex h-9 items-center">
           <For each={props.trackIndex == 'color' ? 
@@ -29,13 +32,13 @@ const ColorSwatchLarge: IColorWatchLargeProps = (props) => {
         </div>
         <div class="flex">
           <For each={props.trackIndex == 'color' ? 
-          colorsArr()[focusedState()[1]] : 
-          colorsArr().map(val => val[focusedState()[0]])}>{(color, k) =>
+          colorsArr()[focused()[1]] : 
+          colorsArr().map(val => val[focused()[0]])}>{(color, k) =>
             <ColorIdentifier color={color}
                               tabindex="0"
                               class={`h-12 flex flex-1 justify-center items-center font-mono font-medium outline-none 
-                              ${(focusedState()[0] == k() && props.trackIndex == 'color') || 
-                              (focusedState()[1] ==  k() && props.trackIndex == 'id') ? 
+                              ${(focused()[0] == k() && props.trackIndex == 'color') || 
+                              (focused()[1] ==  k() && props.trackIndex == 'id') ? 
                               'focused' : ''}`}/>
           }</For>
         </div>
