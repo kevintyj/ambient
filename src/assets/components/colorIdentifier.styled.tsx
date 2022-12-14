@@ -10,6 +10,7 @@ export const ColorIdentifier = styled('div')((props: IColorIdentifier) => `
   position: relative;
   background-color: ${props.color ? props.color : 'white'};
   color:  ${props.textColor ? props.textColor : 'white'};
+  cursor: pointer;
   &.focused {
     z-index: 1;
     &::after {

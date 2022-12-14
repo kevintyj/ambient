@@ -17,7 +17,7 @@ const Footer: Component = () => {
         </div>
         <p class='text-slate-600 dark:text-neutral-500 pt-2 text-sm'>
           Built with <a class="font-semibold underline" href="http://solidjs.com/">Solidjs</a>, 
-          with the help of <a class="font-semibold underline" href="https://vis4.net/chromajs/">Chromajs</a>,
+          with the help of <a class="font-semibold underline" href="https://vis4.net/chromajs/">Chromajs</a>, 
           <a class="font-semibold underline" href="https://felte.dev/">Felte</a>, 
           <a class="font-semibold underline" href="https://icons.getbootstrap.com/">Bootstrap Icons</a>, 
           and <a class="font-semibold underline" href="https://github.com/Myndex/SAPC-APCA">WCAG APCA</a>

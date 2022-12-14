@@ -26,6 +26,7 @@
     "chroma-js": "^2.4.2",
     "lodash": "^4.17.21",
     "solid-js": "^1.6.4",
-    "solid-styled-components": "^0.28.5"
+    "solid-styled-components": "^0.28.5",
+    "solid-toast": "^0.3.5"
   }
 }

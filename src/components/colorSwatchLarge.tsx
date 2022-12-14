@@ -2,6 +2,7 @@ import { Component, For } from "solid-js";
 import { colors, colorsArr } from "../assets/color";
 import { ColorIdentifier } from "../assets/components/colorIdentifier.styled";
 import { focused } from "../functions/keyHandler";
+import { copy } from "./shared/tost";
 
 type IColorWatchLargeProps<T = {}> = Component<T &{
   trackIndex?: 'color' | 'id';
@@ -39,7 +40,8 @@ const ColorSwatchLarge: IColorWatchLargeProps = (props) => {
                               class={`h-12 flex flex-1 justify-center items-center font-mono font-medium outline-none 
                               ${(focused()[0] == k() && props.trackIndex == 'color') || 
                               (focused()[1] ==  k() && props.trackIndex == 'id') ? 
-                              'focused' : ''}`}/>
+                              'focused' : ''}`}
+                              onClick={() => copy(color)}/>
           }</For>
         </div>
       </div>

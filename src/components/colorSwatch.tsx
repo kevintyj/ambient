@@ -3,6 +3,7 @@ import { colors } from "../assets/color";
 import { ColorIdentifier } from "../assets/components/colorIdentifier.styled";
 import { calcMinAPCA } from "../functions/contrastCalc";
 import { focused } from "../functions/keyHandler";
+import Toast, { copy } from "./shared/tost";
 
 const ColorSwatch: Component = () => {
 
@@ -27,7 +28,8 @@ const ColorSwatch: Component = () => {
             <ColorIdentifier color={color} textColor={calcMinAPCA(Object.values(swatch), color)[1].toString()}
                              tabindex="0"
                              class={`grow text-xs h-10 flex flex-1 justify-center items-center font-mono font-medium outline-none 
-                             ${focusedState()[0] == k() && focusedState()[1] == j() ? 'focused' : ''}`}>
+                             ${focusedState()[0] == k() && focusedState()[1] == j() ? 'focused' : ''}`}
+                             onClick={() => copy(color)}>
               {calcMinAPCA(Object.values(swatch), color)[0].toFixed()}
             </ColorIdentifier>
           }</For>

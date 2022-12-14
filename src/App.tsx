@@ -4,10 +4,21 @@ import NavBar from "./components/layouts/navBar";
 import ColorTablePage from './pages/colorTablePage';
 import ComingSoonPage from './pages/comingSoonPage';
 import Footer from './components/layouts/footer';
+import { Toaster } from 'solid-toast';
 
 const App: Component = () => {
   return (
    <>
+      <Toaster 
+        position='bottom-right'
+        gutter={8}
+        containerClassName=""
+        containerStyle={{}}
+        toastOptions={{
+          className: '',
+          duration: 2000
+        }}
+      />
      <div class='flex flex-col h-screen justify-between'>
       <NavBar/>
       <main class='my-auto'>

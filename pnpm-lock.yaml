@@ -12,6 +12,7 @@ specifiers:
   sass: ^1.56.2
   solid-js: ^1.6.4
   solid-styled-components: ^0.28.5
+  solid-toast: ^0.3.5
   tailwindcss: ^3.2.4
   typescript: ^4.8.2
   vite: ^3.0.9
@@ -25,6 +26,7 @@ dependencies:
   lodash: 4.17.21
   solid-js: 1.6.4
   solid-styled-components: 0.28.5_solid-js@1.6.4
+  solid-toast: 0.3.5_solid-js@1.6.4
 
 devDependencies:
   '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.4
@@ -1287,6 +1289,14 @@ packages:
     dependencies:
       csstype: 3.1.0
       goober: 2.1.11_csstype@3.1.0
+      solid-js: 1.6.4
+    dev: false
+
+  /solid-toast/0.3.5_solid-js@1.6.4:
+    resolution: {integrity: sha512-m4PX2ESex9nSwt9d9XTr3r+Kp3vjSoViDWj3gj6Xxgz21IKYODMKhACXurlZCztz56NQBnfX2m4es4I8JgXGQQ==}
+    peerDependencies:
+      solid-js: ^1.5.4
+    dependencies:
       solid-js: 1.6.4
     dev: false
 
