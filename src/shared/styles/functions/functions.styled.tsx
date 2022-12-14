@@ -132,7 +132,7 @@ const generateColorMix = (color: string, amountL: number, amountR: number) => {
 
 const generateColorMixShade = (color: string, amountL: number, amountR: number, shade: number) => {
   if (shade > 1) {
-    return chroma.mix(generateColorMix(color, amountL, amountR), 'black', (shade - 1), 'rgb').hex();
+    return chroma.mix(generateColorMix(color, amountL, amountR), '#18181a', (shade - 1), 'rgb').hex();
   } if (shade < 1) {
     return chroma.mix(generateColorMix(color, amountL, amountR), 'white', (1 - shade), 'rgb').hex();
   } else {
