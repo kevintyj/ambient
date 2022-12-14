@@ -1,12 +1,9 @@
 import {Component, createEffect, createSignal} from "solid-js";
-import { BaseColorScale } from "../assets/color";
+import { colorsArr } from "../assets/color";
 
-export const [focused, setFocused] = createSignal([5,2]);
+export const [focused, setFocused] = createSignal([7,5]);
 
 const keyHandler: Component = () => {
-
-  const colors = () => BaseColorScale;
-
 
   createEffect(() => {
     document.addEventListener('keydown', (e: KeyboardEvent) => {
@@ -16,13 +13,13 @@ const keyHandler: Component = () => {
       if("ArrowUp" == e.code && focused()[1] > 0) { 
         setFocused([focused()[0], focused()[1] - 1]);
       }
-      if("ArrowDown" == e.code && focused()[1] < Object.keys(colors()).length - 1) { 
+      if("ArrowDown" == e.code && focused()[1] < colorsArr().length -1) { 
         setFocused([focused()[0], focused()[1] + 1]);
       }
       if("ArrowLeft" == e.code && focused()[0] > 0) { 
         setFocused([focused()[0] - 1, focused()[1]]);
       }
-      if("ArrowRight" == e.code && focused()[0] < Object.keys(Object.values(colors())[0]).length - 1) { 
+      if("ArrowRight" == e.code && focused()[0] < colorsArr()[0].length - 1) { 
         setFocused([focused()[0] + 1, focused()[1]]);
       }
     })

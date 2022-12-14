@@ -16,7 +16,7 @@ const App: Component = () => {
      <KeyHandler/>
      <div class='flex justify-center w-full px-6'>
       <div class='flex flex-row gap-x-8 flex-wrap 2xl:flex-nowrap w-full max-w-screen-2xl'>
-        <div class='flex flex-col grow 2xl:basis-5/12'>
+        <div class='flex flex-col basis-full 2xl:basis-5/12'>
           <div class='flex flex-col gap-y-1 pb-6'>
             <h1 class="font-semibold font-display text-3xl text-slate-800">
               Color Table
@@ -30,7 +30,7 @@ const App: Component = () => {
           </h3>
           <ColorSwatch/>
         </div>
-        <div class='grow 2xl:basis-7/12'>
+        <div class='basis-full 2xl:basis-7/12'>
           <ColorSwatchLarge trackIndex='color'/>
           <ColorSwatchLarge trackIndex='id'/>
         </div>

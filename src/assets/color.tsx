@@ -1,3 +1,6 @@
+export const colors = () => BaseColorScale;
+export const colorsArr = () => Object.values(BaseColorScale).map((obj) => {return Object.values(obj)});
+
 export const BaseColorScale: Record<string, Record<string, string>> = {
   "NEUTRAL": {
     "00": "#f3f5f3",

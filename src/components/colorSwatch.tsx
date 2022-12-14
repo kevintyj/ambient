@@ -1,12 +1,11 @@
-import { Component, createEffect, createSignal, For } from "solid-js";
-import { BaseColorScale } from "../assets/color";
+import { Component, For } from "solid-js";
+import { colors } from "../assets/color";
 import { ColorIdentifier } from "../assets/components/colorIdentifier.styled";
-import {calcAPCA, calcMinAPCA, calcWCAG} from "../functions/contrastCalc";
+import { calcMinAPCA } from "../functions/contrastCalc";
 import { focused } from "../functions/keyHandler";
 
 const ColorSwatch: Component = () => {
 
-  const colors = () => BaseColorScale;
   const focusedState = () => focused();
 
   return (
@@ -24,7 +23,7 @@ const ColorSwatch: Component = () => {
           <div class="w-24 pr-4 flex-none justify-end text-slate-500 capitalize">
             {color.toLocaleLowerCase()}
           </div>
-          <For each={Object.entries(swatch)}>{([id, color], k) =>
+          <For each={Object.values(swatch)}>{(color, k) =>
             <ColorIdentifier color={color} textColor={calcMinAPCA(Object.values(swatch), color)[1].toString()}
                              tabindex="0"
                              class={`grow text-xs h-10 flex flex-1 justify-center items-center font-mono font-medium outline-none 
