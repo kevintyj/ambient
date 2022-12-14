@@ -14,7 +14,7 @@ const ColorSwatchLarge: IColorWatchLargeProps = (props) => {
   return (
     <>
       <div class="flex flex-col w-full pb-6">
-        <h2 class="font-display text-xl capitalize font-semibold text-slate-800">
+        <h2 class="font-display text-xl capitalize font-semibold text-slate-800 dark:text-slate-200">
           {props.trackIndex == 'color' ? Object.keys(colors())[focusedState()[1]].toLocaleLowerCase() : Object.keys(Object.values(colors()))[focusedState()[0]]}
         </h2>
         <div class="flex h-9 items-center">
@@ -22,7 +22,7 @@ const ColorSwatchLarge: IColorWatchLargeProps = (props) => {
           Object.keys(Object.values(colors())[0]) :
           Object.keys(colors())
         }>{(id, i) =>
-            <div class={`${props.trackIndex == 'color' ? 'font-mono' : ''} w-full text-slate-500 capitalize text-sm`}>
+            <div class={`${props.trackIndex == 'color' ? 'font-mono' : ''} w-full text-slate-600 dark:text-neutral-500 capitalize text-sm`}>
               {props.trackIndex == 'color' ? id : Object.keys(colors())[i()].toLocaleLowerCase()}
             </div>
           }</For>

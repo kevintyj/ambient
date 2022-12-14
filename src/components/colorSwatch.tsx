@@ -1,4 +1,4 @@
-import { Component, For } from "solid-js";
+import { Component, createEffect, For, onMount } from "solid-js";
 import { colors } from "../assets/color";
 import { ColorIdentifier } from "../assets/components/colorIdentifier.styled";
 import { calcMinAPCA } from "../functions/contrastCalc";
@@ -13,14 +13,14 @@ const ColorSwatch: Component = () => {
       <div class="flex h-9 items-center w-full">
         <div class="w-24" />
         <For each={Object.keys(Object.values(colors())[0])}>{(id, i) =>
-          <div class="flex-grow font-mono text-slate-500">
+          <div class="flex-grow font-mono text-slate-600 dark:text-neutral-500">
             {id}
           </div>
         }</For>
       </div>
       <For each={Object.entries(colors())}>{([color, swatch], j) =>
         <div class="flex items-center">
-          <div class="w-24 pr-4 flex-none justify-end text-slate-500 capitalize">
+          <div class="w-24 pr-4 flex-none justify-end text-slate-600 dark:text-neutral-500 capitalize">
             {color.toLocaleLowerCase()}
           </div>
           <For each={Object.values(swatch)}>{(color, k) =>
