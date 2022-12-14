@@ -1,11 +1,18 @@
 import { Component, createEffect, For, onMount } from "solid-js";
-import { colors } from "../assets/color";
+import { colors, colorsArr } from "../assets/color";
 import { ColorIdentifier } from "../assets/components/colorIdentifier.styled";
 import { calcMinAPCA } from "../functions/contrastCalc";
 import { focused } from "../functions/keyHandler";
 import Toast, { copy } from "./shared/tost";
 
-const ColorSwatch: Component = () => {
+type IColorSwatchProps<T = {}> = Component<T &{
+  swatch?: Record<string, Record<string, string>>;
+  swatchArr?: Array<Array<string>>;
+}>
+
+const ColorSwatch: IColorSwatchProps = (props) => {
+
+  const watchingSwatch = () => props.swatch ? props.swatch : colors();
 
   const focusedState = () => focused();
 
@@ -13,13 +20,13 @@ const ColorSwatch: Component = () => {
     <>
       <div class="flex h-9 items-center w-full">
         <div class="w-24" />
-        <For each={Object.keys(Object.values(colors())[0])}>{(id, i) =>
+        <For each={Object.keys(Object.values(watchingSwatch())[0])}>{(id, i) =>
           <div class="flex-grow font-mono text-slate-600 dark:text-neutral-500">
             {id}
           </div>
         }</For>
       </div>
-      <For each={Object.entries(colors())}>{([color, swatch], j) =>
+      <For each={Object.entries(watchingSwatch())}>{([color, swatch], j) =>
         <div class="flex items-center">
           <div class="w-24 pr-4 flex-none justify-end text-slate-600 dark:text-neutral-500 capitalize">
             {color.toLocaleLowerCase()}

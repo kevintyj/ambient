@@ -1,4 +1,5 @@
 import { darkMode } from "../components/shared/darkModeToggle";
+import { colorsToArr } from "../functions/colorConfig";
 
 const BaseColorScaleDark: Record<string, Record<string, string>> = {
   "NEUTRAL": {
@@ -367,4 +368,4 @@ const BaseColorScaleLight: Record<string, Record<string, string>> = {
 }
 
 export const colors = () => darkMode() ? BaseColorScaleDark : BaseColorScaleLight;
-export const colorsArr = () => Object.values(darkMode() ? BaseColorScaleDark : BaseColorScaleLight).map((obj) => {return Object.values(obj)});
+export const colorsArr = () => colorsToArr(colors());

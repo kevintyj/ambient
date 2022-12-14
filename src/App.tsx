@@ -5,6 +5,7 @@ import ColorTablePage from './pages/colorTablePage';
 import ComingSoonPage from './pages/comingSoonPage';
 import Footer from './components/layouts/footer';
 import { Toaster } from 'solid-toast';
+import ColorConfigurationPage from './pages/colorConfigurationPage';
 
 const App: Component = () => {
   return (
@@ -26,6 +27,7 @@ const App: Component = () => {
         </div>
         <Routes>
             <Route path={"/"} component={ColorTablePage}/>
+            <Route path={"/config"} component={ColorConfigurationPage}/>
             <Route path={"/coming-soon"} component={ComingSoonPage}/>
             <Route path={"/*"} component={ComingSoonPage}/>
         </Routes>
