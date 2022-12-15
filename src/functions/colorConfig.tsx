@@ -1,4 +1,4 @@
-import chroma from "chroma-js"
+import chroma, { hex } from "chroma-js"
 import { darkMode } from "../components/shared/darkModeToggle"
 
 export const BaseBackgroundArr = ['#FFFFFF', '#18181A'];
@@ -6,8 +6,8 @@ export const BaseBackgroundArr = ['#FFFFFF', '#18181A'];
 const BaseBackgroundDarkMixed = chroma.mix(BaseBackgroundArr[1], '#000', 0.2, 'rgb')
 
 const ScalePrimObj = {
-  "NEUTRAL": ['#EEEEEA', '#626262', '#1b1d1c'],
-  "OCEAN": ['#E6F5FA', '#1893f6', '#081F46'],
+  "NEUTRAL": ['#EEEEEA', '#626262', '#181816'],
+  "OCEAN": ['#E6F5FA', '#359AFA', '#081F46'],
   // "SKY": ['#E2F1FF', '#1B78E7', '#091847'],
   "BLUE": ['#E9EEFE', '#264FE3', '#061148'],
   "INDIGO": ['#EEECFA', '#4624D3', '#0a003d'],
@@ -35,7 +35,7 @@ const generateDarkScales = (genScaleObj: Record<string, Array<string>>, darkScal
       chroma.mix(chroma(genScaleObj[prop][2]).darken(0.2), mixedDark, 0.07, 'lab')
         .saturate(prop == "NEUTRAL" ? 0.1 : 0.5).hex(), 
       primary.hex(), 
-      chroma.mix(mixedLight, genScaleObj[prop][0], (prop == "NEUTRAL" ? 0.85 : 0.35), 'lab').hex()]
+      prop == "NEUTRAL" ? chroma(mixedLight).brighten(0.75).hex() : chroma.mix(mixedLight, genScaleObj[prop][0], 0.6, 'lab').hex()]
   }
   return out
 }

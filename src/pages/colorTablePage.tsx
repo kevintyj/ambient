@@ -13,19 +13,20 @@ const ColorTablePage: Component = () => {
   const [visibleColorScale, setColorScale] = createSignal(colors())
   const visibleColorScaleArr = () => colorsToArr(visibleColorScale())
 
-  const [currScale, setCurrScale] = createSignal('Flex Design Colors')
+  const [currScale, setCurrScale] = createSignal('fc')
+  const [currScaleText, setCurrScaleTest] = createSignal('Flex Design Colors (Legacy)')
 
   createEffect(() => {
-    setColorScale(colors())
+    if (currScale() == 'fc') setColorScale(colors())
+    if (currScale() == 'fu') setColorScale(generatedColors())
+    else setColorScale(colors())
   })
 
   const handleColorScaleChange = (type: any) => {
-    if (type.target.value == 'c1'){
-      setColorScale(colors())
-      setCurrScale('Flex Design Colors')
-    } else {
-      setColorScale(generatedColors())
-      setCurrScale('Flex Design Colors Uniform')
+    if (type.target.value == 'fc'){
+      setCurrScale('fc')
+    } else if (type.target.value == 'fu') {
+      setCurrScale('fu')
     };
   }
 
@@ -61,10 +62,10 @@ const ColorTablePage: Component = () => {
               </Button>
             </a>
             <Select onChange={handleColorScaleChange}>
-              <option value={'c1'} selected>
+              <option value={'fc'} selected>
                 Flex Design Colors
               </option>
-              <option value={'c2'}>
+              <option value={'fu'}>
                 Flex Design Colors Uniform
               </option>
             </Select>
@@ -79,7 +80,7 @@ const ColorTablePage: Component = () => {
               Active Color Swatch
             </h4>
             <h3 class="font-semibold font-display text-xl text-slate-800 dark:text-slate-200">
-              {currScale()}
+              {currScaleText()}
             </h3>
             <ColorSwatch swatch={visibleColorScale()}/>
           </div>

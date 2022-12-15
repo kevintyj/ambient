@@ -11,6 +11,7 @@ const DarkModeToggle: Component = () => {
       setDarkMode(localStorage.getItem('theme') == 'dark' ? true : false);
     }
   })
+  
   createEffect(() => {
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
     if (darkMode()) {
