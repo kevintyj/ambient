@@ -1,6 +1,6 @@
 import { Component, For } from "solid-js";
 import { colors, colorsArr } from "../assets/color";
-import { ColorIdentifier } from "../assets/components/colorIdentifier.styled";
+import ColorIdentifier from "../assets/components/colorIdentifier.styled";
 import { colorsToArr } from "../functions/colorConfig";
 import { focused } from "../functions/keyHandler";
 import { copy } from "./shared/tost";
@@ -42,7 +42,7 @@ const ColorSwatchLarge: IColorSwatchLargeProps = (props) => {
           watchingSwatchArr()[focused()[1]] : 
           watchingSwatchArr().map(val => val[focused()[0]])}>{(color, k) =>
             <ColorIdentifier color={color}
-                              tabindex="0"
+                              tabindex={0}
                               class={`h-12 flex flex-1 justify-center items-center font-mono font-medium outline-none 
                               ${(focused()[0] == k() && props.trackIndex == 'color') || 
                               (focused()[1] ==  k() && props.trackIndex == 'id') ? 

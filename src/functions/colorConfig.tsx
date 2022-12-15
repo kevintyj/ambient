@@ -1,12 +1,10 @@
 import chroma from "chroma-js"
+import { onMount } from "solid-js";
+import { darkMode } from "../components/shared/darkModeToggle"
 
-// const ColorScaleGen = ["#fef4f2", "#fbc2be", "#f67c73", "#ea3e33", "#b21c16", "#460405"];
+export const BaseBackgroundArr = ['#18181A', '#FFFFFF'];
 
-// const generateColorScale = (genScale: Array<string>) => {
-//   return [...chroma.scale([genScale[0], genScale[1]]).mode('lch').colors(4),
-//   ...chroma.scale([genScale[2], genScale[3]]).mode('lch').colors(3),
-//   ...chroma.scale([genScale[4], genScale[5]]).mode('lch').colors(3)]
-// }
+const BaseBackgroundDarkMixed = '#0a0a0a'; // chroma.mix(BaseBackgroundArr[0], '#000', 0.15, 'lab')
 
 const ScalePrimObj = {
   "NEUTRAL": ['#F7F8F7', '#626262', '#1b1d1c'],
@@ -27,17 +25,34 @@ const ScalePrimObj = {
   "CYAN": ['#EFFDFD', '#20C4D9', '#01313F']
 }
 
+// Generate dark scales using background colors
+const generateDarkScales = (genScaleObj: Record<string, Array<string>>, darkScale: Array<string>) => {
+  const out: Record<string, Array<string>> = {}
+  // for (const prop in genScaleObj) {
+  //   out[prop] = [
+  //     chroma.mix(mixedDark, BaseBackgroundDarkMixed, 0, 'lab').hex(), 
+  //     chroma.mix(genScaleObj[prop][0], genScaleObj[prop][1], 0.95, 'lab').hex(), 
+  //     genScaleObj[prop][0]]
+  // }
+  return out
+}
+
+// Steps to elect using the color scales generator
 const ColorTakeInd = [0, 1, 2, 3, 6, 8]
 
+
+// Generate color scales from the primitive scale for one color
 const generateScalePrim = (genPrim: Array<string>) => {
   return [...chroma.scale([genPrim[0], genPrim[1]]).mode('lch').colors(10).filter((val, i) => ColorTakeInd.includes(i)),
   ...chroma.scale([genPrim[1], genPrim[2]]).mode('lch').colors(7).filter((val, i) => i % 2 == 0)]
 }
 
+// Generate color scale object with name for one color
 const generateScalePrimObject = (genScale: Array<string>) => {
   return genScale.reduce((memo, val, i) => ({...memo, [`0${i}`]: val}), {})
 }
 
+// Generate the entire object map for the color scale
 const genColorScale = (genScaleObj: Record<string, Array<string>>) => {
   const out: Record<string, Record<string, string>> = {}
   for (const prop in genScaleObj) {
@@ -46,8 +61,11 @@ const genColorScale = (genScaleObj: Record<string, Array<string>>) => {
   return out
 }
 
-export const generatedColors = () => genColorScale(ScalePrimObj)
+let genLightScale = genColorScale(ScalePrimObj)
+let genDarkScale = genColorScale(generateDarkScales(ScalePrimObj, BaseBackgroundArr))
 
+export const generatedColors = () => darkMode() ? genDarkScale : genLightScale
+export const generatedColorsArr = () => darkMode() ? colorsToArr(genDarkScale) : colorsToArr(genLightScale)
 
 export const colorsToArr = (colorObj : Record<string, Record<string, string>>) => {
   return Object.values(colorObj).map((obj) => {return Object.values(obj)})

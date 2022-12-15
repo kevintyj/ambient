@@ -1,29 +1,36 @@
-import { styled } from "solid-styled-components";
-import {JSX} from "solid-js";
+import {JSX, ParentComponent, splitProps} from "solid-js";
 
-type IColorIdentifier = JSX.HTMLAttributes<HTMLDivElement> & {
+import './colorIdentifier.scss'
+
+type IColorIdentifier = ParentComponent< & {
   color?: string;
   textColor?: string;
-};
+  class?: string;
+  tabindex?: number;
+  onClick?: any;
+}
+>;
 
-export const ColorIdentifier = styled('div')((props: IColorIdentifier) => `
-  position: relative;
-  background-color: ${props.color ? props.color : 'white'};
-  color:  ${props.textColor ? props.textColor : 'white'};
-  cursor: pointer;
-  &.focused {
-    z-index: 1;
-    &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: -1.5px;
-      bottom: -1.5px;
-      left: -1.5px;
-      right: -1.5px;
-      border-radius: 6px;
-      border: 2.5px solid #fff;
-      box-shadow: 0px 0px 2px 0px #00000032, inset 0px 0px 2px 0px #00000032;
-    }
-  }
-`)
+
+const ColorIdentifier: IColorIdentifier = (props) => {
+
+  const [local, others] = splitProps(props, ['children', 'color', 'textColor', 'class', 'tabindex']);
+
+  return (
+    <div
+      tabindex={props.tabindex}
+      onClick={props.onClick}
+      class={`
+        color-identifier ${props.class ? props.class : '' }
+      `}
+      style={`
+        background-color: ${props.color ? props.color : 'white'};
+        color: ${props.textColor ? props.textColor : 'black'}
+      `} 
+    >
+      {props.children}
+    </div>
+  )
+}
+
+export default ColorIdentifier;

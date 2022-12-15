@@ -1,7 +1,6 @@
 import {ParentComponent, splitProps,} from "solid-js";
-import { styled } from "solid-styled-components";
 import toast from "solid-toast";
-import { ColorIdentifier } from "../../assets/components/colorIdentifier.styled";
+import ColorIdentifier from "../../assets/components/colorIdentifier.styled";
 
 export const copy = (color: string) => {
   navigator.clipboard.writeText(color).then(() => {
@@ -47,15 +46,10 @@ const Toast: IToastProps = (props) => {
     return 'black';
   }
 
-  const ToastComponent = styled('div')`
-    display: flex;
-    padding: 8px 8px 6px 8px;
-    gap: 8px;
-  `
-
   return(
-    <ToastComponent {...others} 
-    class="bg-neutral-50 border border-neutral-200 dark:bg-neutral-800 dark:border-neutral-700 dark:shadow-black/40 hover:shadow-lg rounded-md shadow-md">
+    <div {...others} 
+    class="flex p-2 pb-1.5 gap-2
+    bg-neutral-50 border border-neutral-200 dark:bg-neutral-800 dark:border-neutral-700 dark:shadow-black/40 hover:shadow-lg rounded-md shadow-md">
       {local.box && 
         <ColorIdentifier class="h-5 w-5 rounded-md" color={props.box}/>
       }
@@ -68,7 +62,7 @@ const Toast: IToastProps = (props) => {
       {local.showExit &&
         <a class="cursor-pointer -mt-0.5" onClick={() => toast.dismiss(props.toast.id)}><i class="bi bi-x text-slate-600 dark:text-neutral-500"></i></a>
       }
-    </ToastComponent>
+    </div>
   )
 
 }
