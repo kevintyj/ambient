@@ -1,13 +1,12 @@
 import chroma from "chroma-js"
-import { onMount } from "solid-js";
 import { darkMode } from "../components/shared/darkModeToggle"
 
-export const BaseBackgroundArr = ['#18181A', '#FFFFFF'];
+export const BaseBackgroundArr = ['#FFFFFF', '#18181A'];
 
-const BaseBackgroundDarkMixed = '#0a0a0a'; // chroma.mix(BaseBackgroundArr[0], '#000', 0.15, 'lab')
+const BaseBackgroundDarkMixed = chroma.mix(BaseBackgroundArr[1], '#000', 0.2, 'rgb')
 
 const ScalePrimObj = {
-  "NEUTRAL": ['#F7F8F7', '#626262', '#1b1d1c'],
+  "NEUTRAL": ['#EEEEEA', '#626262', '#1b1d1c'],
   "OCEAN": ['#E6F5FA', '#1893f6', '#081F46'],
   // "SKY": ['#E2F1FF', '#1B78E7', '#091847'],
   "BLUE": ['#E9EEFE', '#264FE3', '#061148'],
@@ -28,12 +27,16 @@ const ScalePrimObj = {
 // Generate dark scales using background colors
 const generateDarkScales = (genScaleObj: Record<string, Array<string>>, darkScale: Array<string>) => {
   const out: Record<string, Array<string>> = {}
-  // for (const prop in genScaleObj) {
-  //   out[prop] = [
-  //     chroma.mix(mixedDark, BaseBackgroundDarkMixed, 0, 'lab').hex(), 
-  //     chroma.mix(genScaleObj[prop][0], genScaleObj[prop][1], 0.95, 'lab').hex(), 
-  //     genScaleObj[prop][0]]
-  // }
+  for (const prop in genScaleObj) {
+    const primary = chroma.mix(genScaleObj[prop][0], genScaleObj[prop][1], (prop == "NEUTRAL" ? 0.8 : 0.95), 'lab')
+    const mixedDark = chroma.mix(chroma(genScaleObj[prop][1]), BaseBackgroundDarkMixed, 1, 'rgb')
+    const mixedLight = chroma.mix(primary, genScaleObj[prop][0], 0.7, 'lch')
+    out[prop] = [
+      chroma.mix(chroma(genScaleObj[prop][2]).darken(0.2), mixedDark, 0.07, 'lab')
+        .saturate(prop == "NEUTRAL" ? 0.1 : 0.5).hex(), 
+      primary.hex(), 
+      chroma.mix(mixedLight, genScaleObj[prop][0], (prop == "NEUTRAL" ? 0.85 : 0.35), 'lab').hex()]
+  }
   return out
 }
 
@@ -43,8 +46,8 @@ const ColorTakeInd = [0, 1, 2, 3, 6, 8]
 
 // Generate color scales from the primitive scale for one color
 const generateScalePrim = (genPrim: Array<string>) => {
-  return [...chroma.scale([genPrim[0], genPrim[1]]).mode('lch').colors(10).filter((val, i) => ColorTakeInd.includes(i)),
-  ...chroma.scale([genPrim[1], genPrim[2]]).mode('lch').colors(7).filter((val, i) => i % 2 == 0)]
+  return [...chroma.scale([genPrim[0], genPrim[1]]).mode('lab').colors(10).filter((val, i) => ColorTakeInd.includes(i)),
+  ...chroma.scale([genPrim[1], genPrim[2]]).mode('lab').colors(7).filter((val, i) => i % 2 == 0)]
 }
 
 // Generate color scale object with name for one color
@@ -53,16 +56,29 @@ const generateScalePrimObject = (genScale: Array<string>) => {
 }
 
 // Generate the entire object map for the color scale
-const genColorScale = (genScaleObj: Record<string, Array<string>>) => {
+const genColorScale = (genScaleObj: Record<string, Array<string>>, dark: boolean) => {
   const out: Record<string, Record<string, string>> = {}
   for (const prop in genScaleObj) {
-    out[prop] = generateScalePrimObject(generateScalePrim(genScaleObj[prop]))
+    if (dark) out[prop] = generateScalePrimObject(redefineDarkScale(generateScalePrim(genScaleObj[prop])))
+    else out[prop] = generateScalePrimObject(generateScalePrim(genScaleObj[prop]))
   }
   return out
 }
 
-let genLightScale = genColorScale(ScalePrimObj)
-let genDarkScale = genColorScale(generateDarkScales(ScalePrimObj, BaseBackgroundArr))
+const DarkenInd = [0.85, 0.6, 0.45, 0.3, 0.1, 0.1]
+
+// Correct dark scales for background
+const redefineDarkScale = (genScale: Array<string>) => {
+  const out: Array<string> = genScale
+  const BackgroundMixed = chroma(BaseBackgroundArr[1]).brighten(0.1)
+  for (var c = 0; c < 6; c++){
+    out[c] = chroma.mix(genScale[c], BackgroundMixed, DarkenInd[c], 'rgb').hex()
+  }
+  return out
+}
+
+let genLightScale = genColorScale(ScalePrimObj, false)
+let genDarkScale = genColorScale(generateDarkScales(ScalePrimObj, BaseBackgroundArr), true)
 
 export const generatedColors = () => darkMode() ? genDarkScale : genLightScale
 export const generatedColorsArr = () => darkMode() ? colorsToArr(genDarkScale) : colorsToArr(genLightScale)
