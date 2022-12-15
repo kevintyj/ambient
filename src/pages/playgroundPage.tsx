@@ -7,7 +7,7 @@ import ToggleColorScale, { currScaleText } from "../components/shared/toggleColo
 const PlaygroundPage: Component = () => {
   return (
     <>
-      <div class='flex justify-center w-full px-6'>
+      <div class='flex justify-center w-full px-4 sm:px-6'>
         <div class='flex flex-col w-full max-w-screen-2xl gap-y-1 pb-6'>
           <h1 class="font-semibold font-display text-3xl text-slate-800 dark:text-slate-200">
             Color Playground
@@ -23,7 +23,7 @@ const PlaygroundPage: Component = () => {
           </div>
         </div>
       </div>
-      <div class='flex justify-center w-full px-6'>
+      <div class='flex justify-center w-full px-4 sm:px-6'>
         <div class='flex flex-col gap-x-8 w-full max-w-screen-2xl'>
           <div class='flex flex-col pb-4'>
             <h4 class="text-slate-600 dark:text-neutral-500">

@@ -23,7 +23,7 @@ const App: Component = () => {
      <div class='flex flex-col min-h-screen justify-between bg-white dark:bg-[#181819]'>
       <NavBar/>
       <main class='my-auto lg:px-4'>
-        <div class="h-20">
+        <div class="h-[72px] lg:h-20">
         </div>
         <Routes>
             <Route path={"/"} component={ColorTablePage}/>

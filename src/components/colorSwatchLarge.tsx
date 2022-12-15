@@ -27,12 +27,13 @@ const ColorSwatchLarge: IColorSwatchLargeProps = (props) => {
           Object.keys(watchingSwatch())[focused()[1]].toLocaleLowerCase() : 
           `0${Object.keys(Object.values(watchingSwatch()))[focused()[0]]}`}
         </h2>
-        <div class="flex h-9 items-center">
+        <div class="flex h-9 items-center w-full overflow-hidden">
           <For each={props.trackIndex == 'color' ? 
           Object.keys(Object.values(watchingSwatch())[0]) :
           Object.keys(watchingSwatch())
         }>{(id, i) =>
-            <div class={`${props.trackIndex == 'color' ? 'font-mono' : ''} w-full text-slate-600 dark:text-neutral-500 capitalize text-sm`}>
+            <div class={`${props.trackIndex == 'color' ? 'font-mono' : ''} 
+            w-full text-slate-600 dark:text-neutral-500 capitalize text-xs sm: text-sm`}>
               {props.trackIndex == 'color' ? id : Object.keys(watchingSwatch())[i()].toLocaleLowerCase()}
             </div>
           }</For>

@@ -14,7 +14,7 @@ const ColorTablePage: Component = () => {
   return (
     <>
       <KeyHandler/>
-      <div class='flex justify-center w-full px-6'>
+      <div class='flex justify-center w-full px-4 sm:px-6'>
         <div class='flex flex-col w-full max-w-screen-2xl gap-y-1 pb-6'>
           <h1 class="font-semibold font-display text-3xl text-slate-800 dark:text-slate-200">
             Ambient Color Generation Tool
@@ -31,7 +31,7 @@ const ColorTablePage: Component = () => {
           <p class='text-slate-600 dark:text-neutral-500 pb-2'>
           This tool was designed with the Flex Design Colors in mind. This color set can be modified and also exported. 
           </p>
-          <div class="flex gap-x-2">
+          <div class="flex gap-2 flex-wrap">
             <a href="/coming-soon">
               <Button>
                 Configure Colors
@@ -46,7 +46,7 @@ const ColorTablePage: Component = () => {
           </div>
         </div>
       </div>
-      <div class='flex justify-center w-full px-6'>
+      <div class='flex justify-center w-full px-4 sm:px-6'>
         <div class='flex flex-row gap-x-8 flex-wrap 2xl:flex-nowrap w-full max-w-screen-2xl'>
           <div class='flex flex-col basis-full 2xl:basis-1/2 pb-10'>
             <h4 class="text-slate-600 dark:text-neutral-500">
@@ -57,18 +57,30 @@ const ColorTablePage: Component = () => {
             </h3>
             <ColorSwatch swatch={visibleColorScale()}/>
           </div>
-          <div class='basis-full 2xl:basis-1/2'>
+          <div class='grow w-full basis-full 2xl:basis-1/2'>
             <ColorSwatchLarge swatch={visibleColorScale()} swatchArr={visibleColorScaleArr()} trackIndex='color'/>
-            <div class="flex flex-row gap-x-4 pb-6">
-              <DataPlot swatchArr={visibleColorScaleArr()} plotArea={1} plotType={"l"}/>
-              <DataPlot swatchArr={visibleColorScaleArr()} plotArea={1} plotType={"c"}/>
-              <DataPlot swatchArr={visibleColorScaleArr()} plotArea={1} plotType={"h"}/>
+            <div class="flex flex-row gap-x-4 pb-6 flex-wrap">
+              <div class="grow basis-ful md:basis-0">
+                <DataPlot swatchArr={visibleColorScaleArr()} plotArea={1} plotType={"l"}/>
+              </div>
+              <div class="grow basis-full md:basis-0">
+                <DataPlot swatchArr={visibleColorScaleArr()} plotArea={1} plotType={"c"}/>
+              </div>
+              <div class="grow basis-full md:basis-0">
+                <DataPlot swatchArr={visibleColorScaleArr()} plotArea={1} plotType={"h"}/>
+              </div>
             </div>
             <ColorSwatchLarge swatch={visibleColorScale()} swatchArr={visibleColorScaleArr()}trackIndex='id'/>
-            <div class="flex flex-row gap-x-4">
-              <DataPlot swatchArr={visibleColorScaleArr()} plotArea={0} plotType={"l"}/>
-              <DataPlot swatchArr={visibleColorScaleArr()} plotArea={0} plotType={"c"}/>
-              <DataPlot swatchArr={visibleColorScaleArr()} plotArea={0} plotType={"h"}/>
+            <div class="flex flex-row gap-x-4 pb-6 flex-wrap">
+              <div class="grow basis-ful md:basis-0">
+                <DataPlot swatchArr={visibleColorScaleArr()} plotArea={0} plotType={"l"}/>
+              </div>
+              <div class="grow basis-full md:basis-0">
+                <DataPlot swatchArr={visibleColorScaleArr()} plotArea={0} plotType={"c"}/>
+              </div>
+              <div class="grow basis-full md:basis-0">
+                <DataPlot swatchArr={visibleColorScaleArr()} plotArea={0} plotType={"h"}/>
+              </div>
             </div>
           </div>
         </div>

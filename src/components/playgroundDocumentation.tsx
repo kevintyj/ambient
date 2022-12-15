@@ -20,10 +20,10 @@ const PlaygroundDocumentation: Component = (props) => {
   const baseSwatch = () => watchingSwatch()[focusRow()]
   const baseNeutral = () => watchingSwatch()[0]
   const headerColor = () => baseNeutral()[9]
-  const bodyColor = () => baseNeutral()[6]
-  const boldColor = () => baseNeutral()[7]
+  const bodyColor = () => baseNeutral()[7]
+  const boldColor = () => baseNeutral()[8]
   const hintColor = () => baseNeutral()[5]
-  const linkColor = () => baseSwatch()[6]
+  const linkColor = () => baseSwatch()[7]
 
   const codeBG = () => baseNeutral()[0]
   const codeBorder = () => baseNeutral()[1]

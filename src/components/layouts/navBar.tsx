@@ -1,53 +1,115 @@
-import {Component, createMemo } from "solid-js";
+import {Component, createMemo, createSignal } from "solid-js";
 import lightLogoUrl from "../../assets/images/ambient_logo_black_new.png";
 import darkLogoUrl from "../../assets/images/ambient_logo_white_new.png";
 import Button from "../../assets/components/button.styled";
 import DarkModeToggle, { darkMode } from "../shared/darkModeToggle";
 import { useLocation } from "@solidjs/router";
+import { css } from "solid-styled";
 
 const NavBar: Component = () => {
 
   const location = useLocation();
   const pathname = createMemo(() => location.pathname);
 
+  css`
+    .menuBG {
+      display: flex;
+    }
+    .menuShown {
+      transform: translateX(0) !important;
+    }
+    .anim-menu {
+      transition: all 2s;
+    }
+  `
+
+  const [mobileMenu, setMobileMenu] = createSignal(false)
+
   return (
-    <nav class=" border-b h-14 p-6 flex justify-center fixed backdrop-blur-md backdrop-brightness-125
-    bg-neutral-50 dark:bg-[#181819] border-b-neutral-200 dark:border-b-neutral-800 
-    bg-opacity-80 dark:bg-opacity-90 w-full z-50">
-      <div class="flex items-center w-full max-w-screen-2xl lg:px-4">
-        <div class="flex items-center space-x-4 w-full pt-[1px]">
-          <div class="-mt-1">
-            <a href="/" class="block dark:hidden w-28"><img src={lightLogoUrl} alt={"Ambient Logo"}/></a>
-            <a href="/" class="hidden dark:block w-28"><img src={darkLogoUrl} alt={"Ambient Logo"}/></a>
+    <>
+      <nav class="h-screen w-screen hidden justify-end fixed
+      backdrop-blur-sm z-[100]" classList={{menuBG: mobileMenu()}}>
+        <div class="absolute h-screen shadow-xl border-l p-4 py-3 sm:px-6 lg:px-10 flex flex-col justify-between
+         backdrop-blur-md bg-neutral-50 dark:bg-[#181819] 
+         border-r-neutral-200 dark:border-r-neutral-800 
+        bg-opacity-80 dark:bg-opacity-90 w-64 max-w-full translate-x-full anim-menu" 
+        classList={{menuShown: mobileMenu()}}>
+          <div class="flex space-x-2 w-full justify-end">
+            <a onClick={() => setMobileMenu(false)}>
+              <Button>
+                <i class="bi bi-list"></i>
+              </Button>
+            </a>
           </div>
-          <a href="https://kevintyj.com" class="font-medium text-sm font-display text-slate-700 dark:text-slate-300 rounded-lg hover:text-slate-900 underline pr-4">by Kevin (Taeyoon) Jin</a>
-
-
-
-          <a href="/playground" 
-          class="font-medium text-sm font-display text-slate-700 dark:text-slate-300 rounded-lg hover:text-slate-900"
-          classList={{['font-bold']: pathname() == '/playground'}}>
-            Playground
-          </a>
-          {/* <a href="/team" class="font-medium text-sm font-display text-slate-700 dark:text-slate-300 rounded-lg hover:text-slate-900">Team</a>
-          <a href="/projects" class="font-medium text-sm font-display text-slate-700 dark:text-slate-300 rounded-lg hover:text-slate-900">Projects</a>
-          <a href="/reports" class="font-medium text-sm font-display text-slate-700 dark:text-slate-300 rounded-lg hover:text-slate-900">Reports</a> */}
+          <div class="flex flex-col space-y-2 w-full pt-[1px] justify-start text-end">
+            <a href="/playground" 
+            class="font-medium text-lg font-display 
+            text-slate-700 dark:text-slate-300 rounded-lg 
+            hover:text-slate-900 hover:-translate-x-1 transition-all"
+            classList={{['font-bold']: pathname() == '/playground'}}>
+              Playground
+            </a>
+            <a href="#" 
+            class="font-medium text-lg font-display 
+            text-slate-700 dark:text-slate-300 rounded-lg 
+            hover:text-slate-900 hover:-translate-x-1 transition-all"
+            classList={{['font-bold']: pathname() == '/github'}}>
+              Github
+            </a>
+          </div>
+          <div class="flex flex-col space-y-3 w-full items-end">
+            <a href="https://github.com/kevintyj/ambient">
+              <Button>
+                <i class="bi bi-github"></i>
+              </Button>
+            </a>
+            <a href="/coming-soon">
+              <Button>
+                Documentation
+              </Button>
+            </a>
+            <a href="https://kevintyj.com" class="font-medium text-sm font-display text-slate-700 dark:text-slate-300 rounded-lg hover:text-slate-900 underline pt-1">by Kevin (Taeyoon) Jin</a>
+          </div>
         </div>
-        <div class="flex items-center space-x-2">
-          <a href="/coming-soon">
-            <Button>
-              Documentation
-            </Button>
-          </a>
-          <a href="https://github.com/kevintyj/ambient">
-            <Button>
-              <i class="bi bi-github"></i>
-            </Button>
-          </a>
-          <DarkModeToggle/>
+      </nav>
+      <nav class="border-b h-14 px-4 sm:px-6 lg:px-10 flex justify-center fixed backdrop-blur-md backdrop-brightness-125
+      bg-neutral-50 dark:bg-[#181819] border-b-neutral-200 dark:border-b-neutral-800 
+      bg-opacity-80 dark:bg-opacity-90 w-full z-50">
+        <div class="flex items-center w-full max-w-screen-2xl">
+          <div class="flex items-center space-x-4 w-full pt-[1px]">
+            <div class="-mt-1">
+              <a href="/" class="block dark:hidden w-28"><img src={lightLogoUrl} alt={"Ambient Logo"}/></a>
+              <a href="/" class="hidden dark:block w-28"><img src={darkLogoUrl} alt={"Ambient Logo"}/></a>
+            </div>
+            <a href="https://kevintyj.com" class="font-medium text-sm font-display text-slate-700 dark:text-slate-300 rounded-lg hover:text-slate-900 underline pr-4 hidden sm:block">by Kevin (Taeyoon) Jin</a>
+
+            <a href="/playground" 
+            class="font-medium text-sm font-display text-slate-700 dark:text-slate-300 rounded-lg hover:text-slate-900 hidden md:block"
+            classList={{['font-bold']: pathname() == '/playground'}}>
+              Playground
+            </a>
+          </div>
+          <div class="flex items-center space-x-2">
+            <a href="/coming-soon" class="hidden md:block">
+              <Button>
+                Documentation
+              </Button>
+            </a>
+            <a href="https://github.com/kevintyj/ambient">
+              <Button>
+                <i class="bi bi-github"></i>
+              </Button>
+            </a>
+            <DarkModeToggle/>
+            <a onClick={() => setMobileMenu(true)} class="block md:hidden">
+              <Button>
+                <i class="bi bi-list"></i>
+              </Button>
+            </a>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </>
   )
 }
 
