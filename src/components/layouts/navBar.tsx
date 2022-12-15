@@ -14,7 +14,7 @@ const NavBar: Component = () => {
     <nav class=" border-b h-14 p-6 flex justify-center fixed backdrop-blur-md backdrop-brightness-125
     bg-neutral-50 dark:bg-[#181819] border-b-neutral-200 dark:border-b-neutral-800 
     bg-opacity-80 dark:bg-opacity-90 w-full z-50">
-      <div class="flex items-center w-full max-w-screen-2xl">
+      <div class="flex items-center w-full max-w-screen-2xl lg:px-4">
         <div class="flex items-center space-x-4 w-full pt-[1px]">
           <div class="-mt-1">
             <a href="/" class="block dark:hidden w-28"><img src={lightLogoUrl} alt={"Ambient Logo"}/></a>

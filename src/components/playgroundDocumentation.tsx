@@ -21,6 +21,7 @@ const PlaygroundDocumentation: Component = (props) => {
   const baseNeutral = () => watchingSwatch()[0]
   const headerColor = () => baseNeutral()[9]
   const bodyColor = () => baseNeutral()[6]
+  const boldColor = () => baseNeutral()[7]
   const hintColor = () => baseNeutral()[5]
   const linkColor = () => baseSwatch()[6]
 
@@ -46,6 +47,10 @@ const PlaygroundDocumentation: Component = (props) => {
     }
     .paragraph{
       color: ${bodyColor()};
+    }
+    .bold{
+      color: ${boldColor()};
+      font-weight: 500;
     }
     .hint{
       color: ${hintColor()}
@@ -98,7 +103,7 @@ const PlaygroundDocumentation: Component = (props) => {
           <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
             Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+            laboris nisi ut <b class="bold">aliquip ex ea commodo consequat.</b> Duis aute irure 
             dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
             proident, sunt in culpa qui officia deserunt mollit anim id 
