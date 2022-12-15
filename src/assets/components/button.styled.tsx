@@ -7,7 +7,7 @@ const Button: ParentComponent = (props) => {
     border border-neutral-200 dark:border-neutral-800
     border-7-neutral-300 dark:border-t-neutral-700/50
     shadow-sm py-1 px-3
-    dark:shadow-black/40 hover:shadow
+    dark:shadow-black/50 hover:shadow
     active:border-neutral-300
     dark:active:border-neutral-700
     active:translate-y-px">

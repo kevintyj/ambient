@@ -1,3 +1,4 @@
+import { createMemo } from "solid-js";
 import { darkMode } from "../components/shared/darkModeToggle";
 import { colorsToArr } from "../functions/colorConfig";
 
@@ -367,5 +368,5 @@ const BaseColorScaleLight: Record<string, Record<string, string>> = {
   }
 }
 
-export const colors = () => darkMode() ? BaseColorScaleDark : BaseColorScaleLight;
-export const colorsArr = () => colorsToArr(colors());
+export const colors = createMemo(() => darkMode() ? BaseColorScaleDark : BaseColorScaleLight);
+export const colorsArr = createMemo(() => colorsToArr(colors()));

@@ -5,7 +5,7 @@ import { colorsToArr } from "../functions/colorConfig";
 import { focused } from "../functions/keyHandler";
 
 type IDataPlotProps<T = {}> = Component<T &{
-  swatchArr?: Array<Array<string>>;
+  swatchArr: Array<Array<string>>;
   plotArea: 1 | 0;
   plotType: 'l' | 'c' | 'h';
 }>

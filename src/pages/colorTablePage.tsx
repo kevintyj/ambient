@@ -1,16 +1,15 @@
-import { Component, createEffect, createSignal } from "solid-js";
+import { Component, createEffect, createMemo, createSignal } from "solid-js";
 import ColorSwatch from "../components/colorSwatch";
 import ColorSwatchLarge from "../components/colorSwatchLarge";
 import DataPlot from "../components/dataPlot";
 import Button from "../assets/components/button.styled";
 import KeyHandler from "../functions/keyHandler";
-import Select from "../assets/components/select.styled";
 import { colorsToArr } from "../functions/colorConfig";
 import ToggleColorScale, { currScaleText, visibleColorScale } from "../components/shared/toggleColorScale";
 
 const ColorTablePage: Component = () => {
 
-  const visibleColorScaleArr = () => colorsToArr(visibleColorScale())
+  const visibleColorScaleArr = createMemo(() => colorsToArr(visibleColorScale()))
 
   return (
     <>

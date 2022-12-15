@@ -1,18 +1,17 @@
 import { Component, createEffect, createSignal, onMount } from "solid-js"
 import { colors } from "../../assets/color";
-import Button from "../../assets/components/button.styled"
 import Select from "../../assets/components/select.styled";
 import { generatedColors } from "../../functions/colorConfig";
 
 
 const DEBUG = true;
 
-export const [currScaleText, setCurrScaleTest] = createSignal('Flex Design Colors (Legacy)')
+export const [currScaleText, setCurrScaleText] = createSignal('Flex Design Colors Uniform')
 export const [visibleColorScale, setColorScale] = createSignal(colors())
 
 const ToggleColorScale: Component = () => {
-  
-  const [currScale, setCurrScale] = createSignal('fc')
+
+  const [currScale, setCurrScale] = createSignal('fu')
 
   createEffect(() => {
     if (currScale() == 'fc') setColorScale(colors())
@@ -23,16 +22,18 @@ const ToggleColorScale: Component = () => {
   const handleColorScaleChange = (type: any) => {
     if (type.target.value == 'fc'){
       setCurrScale('fc')
+      setCurrScaleText('Flex Design Colors (Legacy)')
     } else if (type.target.value == 'fu') {
       setCurrScale('fu')
+      setCurrScaleText('Flex Design Colors Uniform')
     };
   }
   return(
-    <Select onChange={handleColorScaleChange}>
-      <option value={'fc'} selected>
+    <Select value="fu" onChange={handleColorScaleChange}>
+      <option value={'fc'}>
         Flex Design Colors
       </option>
-      <option value={'fu'}>
+      <option value={'fu'} selected>
         Flex Design Colors Uniform
       </option>
     </Select>

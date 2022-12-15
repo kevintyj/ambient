@@ -21,3 +21,8 @@ export const calcMinAPCA = (text: Array<string>, bg: string) : [number, string] 
   return [0, '#000']
 }
 
+export const calcMaxAPCAText = (bg: string, txtBright: string, txtDark: string) => {
+  const brightAPCA = Math.abs(calcAPCA(txtBright, bg))
+  const darkAPCA = Math.abs(calcAPCA(txtDark, bg))
+  return brightAPCA > darkAPCA ? txtBright : txtDark
+}
