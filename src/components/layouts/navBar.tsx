@@ -57,7 +57,7 @@ const NavBar: Component = () => {
               Github
             </a>
           </div>
-          <div class="flex flex-col space-y-3 w-full items-end">
+          <div class="flex flex-col space-y-2 w-full items-end">
             <a href="https://github.com/kevintyj/ambient">
               <Button>
                 <i class="bi bi-github"></i>
