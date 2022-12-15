@@ -6,7 +6,7 @@ export const BaseBackgroundArr: Array<string> = ['#FFFFFF', '#181819'];
 const BaseBackgroundDarkMixed = chroma.mix(BaseBackgroundArr[1], '#000', 0.2, 'rgb')
 
 const ScalePrimObj = {
-  "NEUTRAL": ['#F1F1EF', '#626262', '#181816'],
+  "NEUTRAL": ['#F4F4F2', '#626262', '#181816'],
   "OCEAN": ['#E6F5FA', '#359AFA', '#081F46'],
   // "SKY": ['#E2F1FF', '#1B78E7', '#091847'],
   "BLUE": ['#E9EEFE', '#264FE3', '#061148'],
@@ -67,7 +67,7 @@ const genColorScale = (genScaleObj: Record<string, Array<string>>, dark: boolean
   return out
 }
 
-const DarkenInd = [0.9, 0.7, 0.5, 0.4, 0.1, 0]
+const DarkenInd = [0.87, 0.7, 0.5, 0.4, 0.1, 0]
 
 // Correct dark scales for background
 const redefineDarkScale = (genScale: Array<string>) => {

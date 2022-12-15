@@ -1,13 +1,14 @@
 import { Component, For } from "solid-js";
-import { colorsToArr } from "../functions/colorConfig";
+import { BaseBackgroundArr, colorsToArr } from "../functions/colorConfig";
 import { calcMaxAPCAText } from "../functions/contrastCalc";
 import PlaygroundBtn from "./playground/button/playgroundButton";
+import { darkMode } from "./shared/darkModeToggle";
 import { visibleColorScale } from "./shared/toggleColorScale";
 
 type IButtonProps = Component< & {
   baseColorPos: number;
   textColorful?: boolean;
-  border?: 'top' | 'full';
+  border?: 'top' | 'full' | 'full-top';
 }>;
 
 const PlaygroundButtons: IButtonProps = (props) => {
@@ -16,7 +17,7 @@ const PlaygroundButtons: IButtonProps = (props) => {
   const swatchNames = () => Object.keys(visibleColorScale());
 
   const textColor = () => "NEUTRAL" in visibleColorScale() ? 
-  [visibleColorScale()["NEUTRAL"]["01"], visibleColorScale()["NEUTRAL"]["09"]] : ['red', 'red'];
+  [visibleColorScale()["NEUTRAL"]["00"], visibleColorScale()["NEUTRAL"]["09"]] : ['red', 'red'];
 
   const calcTextColor = (swatch: Array<string>) => {
     const bg = swatch[props.baseColorPos];
@@ -30,6 +31,14 @@ const PlaygroundButtons: IButtonProps = (props) => {
   return (
     <>
       <div class="flex flex-row flex-wrap gap-4 justify-center">
+        <PlaygroundBtn border={props.border ? props.border : 'full'}
+        textColor={watchingSwatch()[0][9]}
+        color={darkMode() ? watchingSwatch()[0][0] : BaseBackgroundArr[0]}
+        hoverColor={darkMode() ? BaseBackgroundArr[1] : BaseBackgroundArr[0]}
+        borderColor={watchingSwatch()[0][2]}
+        hoverBorderColor={watchingSwatch()[0][1]}>
+          Default
+        </PlaygroundBtn>
         <For each={watchingSwatch()}>{(swatch, i) =>
             <PlaygroundBtn border={props.border ? props.border : 'full'} 
             textColor={calcTextColor(swatch)}

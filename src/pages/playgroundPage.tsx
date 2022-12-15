@@ -1,6 +1,7 @@
 import { Component } from "solid-js";
 import PlaygroundBtn from "../components/playground/button/playgroundButton";
 import PlaygroundButtons from "../components/playgroundButtons";
+import PlaygroundDocumentation from "../components/playgroundDocumentation";
 import ToggleColorScale, { currScaleText } from "../components/shared/toggleColorScale";
 
 const PlaygroundPage: Component = () => {
@@ -32,12 +33,13 @@ const PlaygroundPage: Component = () => {
               {currScaleText()}
             </h3>
           </div>
-          <div class="flex flex-col gap-8">
+          <div class="flex flex-col gap-8 pb-8">
             <PlaygroundButtons baseColorPos={2}/>
             <PlaygroundButtons baseColorPos={5} border="top"/>
             <PlaygroundButtons baseColorPos={2} textColorful/>
             <PlaygroundButtons baseColorPos={5} border="top" textColorful/>
           </div>
+          <PlaygroundDocumentation/>
         </div>
       </div> 
     </>
