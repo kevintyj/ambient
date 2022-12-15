@@ -5,30 +5,12 @@ import DataPlot from "../components/dataPlot";
 import Button from "../assets/components/button.styled";
 import KeyHandler from "../functions/keyHandler";
 import Select from "../assets/components/select.styled";
-import { colors } from "../assets/color";
-import { colorsToArr, generatedColors } from "../functions/colorConfig";
+import { colorsToArr } from "../functions/colorConfig";
+import ToggleColorScale, { currScaleText, visibleColorScale } from "../components/shared/toggleColorScale";
 
 const ColorTablePage: Component = () => {
 
-  const [visibleColorScale, setColorScale] = createSignal(colors())
   const visibleColorScaleArr = () => colorsToArr(visibleColorScale())
-
-  const [currScale, setCurrScale] = createSignal('fc')
-  const [currScaleText, setCurrScaleTest] = createSignal('Flex Design Colors (Legacy)')
-
-  createEffect(() => {
-    if (currScale() == 'fc') setColorScale(colors())
-    if (currScale() == 'fu') setColorScale(generatedColors())
-    else setColorScale(colors())
-  })
-
-  const handleColorScaleChange = (type: any) => {
-    if (type.target.value == 'fc'){
-      setCurrScale('fc')
-    } else if (type.target.value == 'fu') {
-      setCurrScale('fu')
-    };
-  }
 
   return (
     <>
@@ -61,16 +43,8 @@ const ColorTablePage: Component = () => {
                 Import Colorset
               </Button>
             </a>
-            <Select onChange={handleColorScaleChange}>
-              <option value={'fc'} selected>
-                Flex Design Colors
-              </option>
-              <option value={'fu'}>
-                Flex Design Colors Uniform
-              </option>
-            </Select>
+            <ToggleColorScale/>
           </div>
-          
         </div>
       </div>
       <div class='flex justify-center w-full px-6'>
@@ -79,7 +53,7 @@ const ColorTablePage: Component = () => {
             <h4 class="text-slate-600 dark:text-neutral-500">
               Active Color Swatch
             </h4>
-            <h3 class="font-semibold font-display text-xl text-slate-800 dark:text-slate-200">
+            <h3 class="font-semibold font-display text-xl text-slate-800 dark:text-slate-200 pb-2">
               {currScaleText()}
             </h3>
             <ColorSwatch swatch={visibleColorScale()}/>

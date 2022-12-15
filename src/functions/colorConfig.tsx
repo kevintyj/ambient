@@ -29,10 +29,10 @@ const generateDarkScales = (genScaleObj: Record<string, Array<string>>, darkScal
   const out: Record<string, Array<string>> = {}
   for (const prop in genScaleObj) {
     const primary = chroma.mix(genScaleObj[prop][0], genScaleObj[prop][1], (prop == "NEUTRAL" ? 0.8 : 0.95), 'lab')
-    const mixedDark = chroma.mix(chroma(genScaleObj[prop][1]), BaseBackgroundDarkMixed, 1, 'rgb')
+    const mixedDark = chroma.mix(chroma(genScaleObj[prop][1]), BaseBackgroundDarkMixed, 0.5, 'rgb')
     const mixedLight = chroma.mix(primary, genScaleObj[prop][0], 0.7, 'lch')
     out[prop] = [
-      chroma.mix(chroma(genScaleObj[prop][2]).darken(0.2), mixedDark, 0.07, 'lab')
+      chroma.mix(chroma(genScaleObj[prop][2]).darken(0.2), mixedDark, 0.1, 'lab')
         .saturate(prop == "NEUTRAL" ? 0.1 : 0.5).hex(), 
       primary.hex(), 
       prop == "NEUTRAL" ? chroma(mixedLight).brighten(0.75).hex() : chroma.mix(mixedLight, genScaleObj[prop][0], 0.6, 'lab').hex()]
@@ -65,12 +65,12 @@ const genColorScale = (genScaleObj: Record<string, Array<string>>, dark: boolean
   return out
 }
 
-const DarkenInd = [0.85, 0.6, 0.45, 0.3, 0.1, 0.1]
+const DarkenInd = [0.85, 0.6, 0.45, 0.4, 0.1, 0.1]
 
 // Correct dark scales for background
 const redefineDarkScale = (genScale: Array<string>) => {
   const out: Array<string> = genScale
-  const BackgroundMixed = chroma(BaseBackgroundArr[1]).brighten(0.1)
+  const BackgroundMixed = chroma(BaseBackgroundArr[1]).brighten(0.15)
   for (var c = 0; c < 6; c++){
     out[c] = chroma.mix(genScale[c], BackgroundMixed, DarkenInd[c], 'rgb').hex()
   }
