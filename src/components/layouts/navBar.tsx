@@ -14,12 +14,13 @@ const NavBar: Component = () => {
   css`
     .menuBG {
       display: flex;
+      transition: all 0.5s;
     }
     .menuShown {
       transform: translateX(0) !important;
     }
     .anim-menu {
-      transition: all 2s;
+      transition: all 0.5s;
     }
   `
 
@@ -28,11 +29,12 @@ const NavBar: Component = () => {
   return (
     <>
       <nav class="h-screen w-screen hidden justify-end fixed
-      backdrop-blur-sm z-[100]" classList={{menuBG: mobileMenu()}}>
-        <div class="absolute h-screen shadow-xl border-l p-4 py-3 sm:px-6 lg:px-10 flex flex-col justify-between
+      backdrop-blur-sm z-[100] bg-neutral-50 dark:bg-[#181819]
+      bg-opacity-60 dark:bg-opacity-70" classList={{menuBG: mobileMenu()}}>
+        <div class="absolute h-screen border-l p-4 py-3 sm:px-6 lg:px-10 flex flex-col justify-between
          backdrop-blur-md bg-neutral-50 dark:bg-[#181819] 
-         border-r-neutral-200 dark:border-r-neutral-800 
-        bg-opacity-80 dark:bg-opacity-90 w-64 max-w-full translate-x-full anim-menu" 
+         border-l-neutral-200 dark:border-l-neutral-800 
+        bg-opacity-80 dark:bg-opacity-90 w-64 max-w-full translate-x-full shadow-xl anim-menu" 
         classList={{menuShown: mobileMenu()}}>
           <div class="flex space-x-2 w-full justify-end">
             <a onClick={() => setMobileMenu(false)}>
@@ -49,12 +51,19 @@ const NavBar: Component = () => {
             classList={{['font-bold']: pathname() == '/playground'}}>
               Playground
             </a>
-            <a href="#" 
+            <a href="https://github.com/kevintyj/ambient" 
             class="font-medium text-lg font-display 
             text-slate-700 dark:text-slate-300 rounded-lg 
             hover:text-slate-900 hover:-translate-x-1 transition-all"
             classList={{['font-bold']: pathname() == '/github'}}>
               Github
+            </a>
+            <a href="/coming-soon" 
+            class="font-medium text-lg font-display 
+            text-slate-700 dark:text-slate-300 rounded-lg 
+            hover:text-slate-900 hover:-translate-x-1 transition-all"
+            classList={{['font-bold']: pathname() == '/coming-soon'}}>
+              Documentation
             </a>
           </div>
           <div class="flex flex-col space-y-2 w-full items-end">
