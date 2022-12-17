@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <meta name="theme-color" content="#000000"/>
+        <meta name="theme-color" content="#F13D52"/>
         <!--<link rel="shortcut icon" type="image/ico" href="/src/assets/favicon.ico"/>-->
         <!-- HTML Meta Tags -->
         <title>Ambient - generate contrast-safe colors for UI/UX</title>
@@ -38,13 +38,17 @@
 
         <!-- Font -->
         <link rel="preload" href="/assets/Hubot-Sans.5e6d5593.woff2" as="font" type="font/woff2" crossorigin>
-      <script type="module" crossorigin src="/assets/index.14b55e48.js"></script>
-      <link rel="stylesheet" href="/assets/index.d1f4d3c6.css">
+      <script type="module" crossorigin src="/assets/index.5a97956c.js"></script>
+      <link rel="stylesheet" href="/assets/index.9936b34d.css">
     </head>
-    <body class="bg-white dark:bg-[#181819]">
+    <body class="bg-am-pink">
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root"></div>
-
+        <script>
+            window.addEventListener("error", (event) => {
+                console.log(event);
+            });
+        </script>
         
     </body>
 </html>
