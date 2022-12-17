@@ -1,4 +1,5 @@
 import { Component } from "solid-js";
+import Collapsible from "../assets/components/collapsible.styled";
 import PlaygroundBtn from "../components/playground/button/playgroundButton";
 import PlaygroundButtons from "../components/playgroundButtons";
 import PlaygroundDocumentation from "../components/playgroundDocumentation";
@@ -33,11 +34,43 @@ const PlaygroundPage: Component = () => {
               {currScaleText()}
             </h3>
           </div>
-          <div class="flex flex-col gap-8 pb-8">
-            <PlaygroundButtons baseColorPos={2}/>
-            <PlaygroundButtons baseColorPos={5} border="top"/>
-            <PlaygroundButtons baseColorPos={2} textColorful/>
-            <PlaygroundButtons baseColorPos={5} border="top" textColorful/>
+          <div class="flex flex-col gap-8 pb-16">
+            <Collapsible title="Possible color combinations for button">
+              <div class="flex flex-col gap-8 pb-6 pt-2"> 
+                <h6 class="text-slate-800 dark:text-slate-200 -my-2">
+                  Secondary Buttons - Increase text contrast on hover
+                </h6>
+                <PlaygroundButtons baseColorPos={2}/>
+                <h6 class="text-slate-800 dark:text-slate-200 -my-2">
+                  Primary Buttons - Increase text contrast on hover
+                </h6>
+                <PlaygroundButtons baseColorPos={5} border="top"/>
+                <h6 class="text-slate-800 dark:text-slate-200 -my-2">
+                  Primary Buttons - Colorful text
+                </h6>
+                <PlaygroundButtons baseColorPos={5} border="top" textColorful/>
+                <h6 class="text-slate-800 dark:text-slate-200 -my-2">
+                  Secondary Buttons (Default) - Colorful text
+                </h6>
+                <PlaygroundButtons baseColorPos={2} textColorful/>
+                <h6 class="text-slate-800 dark:text-slate-200 -my-2">
+                  Primary Buttons (Default) - Increase button contrast on hover
+                </h6>
+                <PlaygroundButtons baseColorPos={5} border="top" direction={1}/>
+              </div>
+            </Collapsible>
+            <div class="flex flex-col gap-3">
+              <h6 class="text-lg text-slate-800 dark:text-slate-200 pb-2">
+                Secondary Buttons
+              </h6>
+              <PlaygroundButtons baseColorPos={2} textColorful/>
+            </div>
+            <div class="flex flex-col gap-3">
+              <h6 class="text-lg text-slate-800 dark:text-slate-200 pb-2">
+                Primary Buttons
+              </h6>
+              <PlaygroundButtons baseColorPos={5} border="top" direction={1}/>
+            </div>
           </div>
           <PlaygroundDocumentation/>
         </div>

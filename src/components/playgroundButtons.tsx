@@ -9,12 +9,14 @@ type IButtonProps = Component< & {
   baseColorPos: number;
   textColorful?: boolean;
   border?: 'top' | 'full' | 'full-top';
+  direction?: 1 | -1;
 }>;
 
 const PlaygroundButtons: IButtonProps = (props) => {
 
   const watchingSwatch = () => colorsToArr(visibleColorScale());
   const swatchNames = () => Object.keys(visibleColorScale());
+  const direction = props.direction ? props.direction : -1 ;
 
   const textColor = () => "NEUTRAL" in visibleColorScale() ? 
   [visibleColorScale()["NEUTRAL"]["00"], visibleColorScale()["NEUTRAL"]["09"]] : ['red', 'red'];
@@ -43,9 +45,9 @@ const PlaygroundButtons: IButtonProps = (props) => {
             <PlaygroundBtn border={props.border ? props.border : 'full'} 
             textColor={calcTextColor(swatch)}
             color={swatch[props.baseColorPos]}
-            hoverColor={swatch[props.baseColorPos - 1]}
+            hoverColor={swatch[props.baseColorPos + direction]}
             borderColor={swatch[props.baseColorPos + 1]}
-            hoverBorderColor={swatch[props.baseColorPos]}>
+            hoverBorderColor={swatch[props.baseColorPos + direction + 1]}>
               {swatchNames()[i()].toLocaleLowerCase()}
             </PlaygroundBtn>
           }</For>
