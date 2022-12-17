@@ -21,13 +21,13 @@ const Collapsible: ICollapsibleProps = (props) => {
     hover:shadow hover:border-neutral-300 dark:hover:border-neutral-700
     active:border-neutral-300
     dark:active:border-neutral-700
-    flex flex-col transition-all ease-out">
+    flex flex-col transition-all">
       <button class="flex text-default sm:text-lg justify-between py-2.5 px-3 sm:px-5" onClick={handleState}>
         {props.title}
-        <i class="bi bi-plus text-lg"></i>
+        <i class={`bi text-lg ${state() ? 'bi-chevron-down' : 'bi-chevron-up'}`}></i>
       </button>
       <div class={`h-auto overflow-hidden max-h-0 transition-all duration-[400ms] 
-      ${state() ? 'max-h-[5000px]' : ''}`}>
+      ${state() ? 'max-h-[2000px]' : ''}`}>
         <div class="px-3 sm:px-5">
           <div class="border-t border-neutral-200 dark:border-neutral-700 pb-4"></div>
           {props.children}

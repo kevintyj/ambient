@@ -1,4 +1,4 @@
-import { useLocation } from "@solidjs/router";
+import { A, useLocation } from "@solidjs/router";
 import { Component, createMemo, For, ParentComponent, Show } from "solid-js";
 
 type IMenuItemProps = ParentComponent< & {
@@ -14,11 +14,11 @@ type IMenuListProps = Component< & {
 
 const MenuItem: IMenuItemProps = (props) => {
   return (
-    <a href={props.link}
+    <A href={props.link}
     class="pl-3 py-1"
-    classList={{'-ml-px text-[#F13D52] font-semibold border-l-2 border-[#F13D52]': props.selected}}>
+    classList={{'-ml-px text-am-pink font-semibold border-l-2 border-am-pink': props.selected}}>
       {props.children}
-    </a>
+    </A>
   )
 }
 
@@ -31,7 +31,7 @@ const DocumentationMenuList: IMenuListProps = (props) => {
       <For each={Object.entries(props.list)}>{([item, link]) =>
         <Show
           when={link && link != ""}
-          fallback={<h3 class="font-semibold font-display text-slate-800 dark:text-slate-200 pb-3.5">
+          fallback={<h3 class="font-semibold font-display text-slate-800 dark:text-slate-200 pb-3.5 pt-5">
             {item}
           </h3>}
         >

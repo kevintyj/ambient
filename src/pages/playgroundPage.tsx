@@ -11,8 +11,10 @@ const PlaygroundPage: Component = () => {
   const [menuList, setMenuList] = createSignal({
     "Components" : "",
     "Introduction" : "/playground/intro",
-    "Buttons" : "/playground",
-    "Texts" : "/playground/text"
+    "Buttons" : "/playground/buttons",
+    "Texts" : "/playground/text",
+    "Pages": "",
+    "Documentation": "/playground/documentation"
   })
 
   css`
@@ -28,7 +30,8 @@ const PlaygroundPage: Component = () => {
     <>
       <div class="hidden h-screen w-screen fixed top-0 left-0
       backdrop-blur-sm z-[100] bg-neutral-50 dark:bg-[#181819]
-      bg-opacity-60 dark:bg-opacity-70" classList={{menuBG: mobileMenu()}}>
+      bg-opacity-60 dark:bg-opacity-70 cursor-pointer" 
+      classList={{menuBG: mobileMenu()}} onClick={() => setMobileMenu(false)}>
         <div class="left-0 h-screen border-r p-4 py-3 sm:px-6 flex flex-col
          backdrop-blur-md bg-neutral-50 dark:bg-[#181819] 
          border-neutral-200 dark:border-neutral-800 
@@ -61,9 +64,10 @@ const PlaygroundPage: Component = () => {
           backdrop-blur-md backdrop-brightness-125 bg-opacity-80 
           bg-neutral-50 dark:bg-[#181819] 
           border-r border-neutral-200 dark:border-neutral-800 
-          pb-20 z-50 h-full justify-between transition-all
+          pb-20 z-50 h-full justify-between transition-[transform]
           -translate-x-60 md:-translate-x-56 lg:translate-x-0 
-          hover:translate-x-0 hover:drop-shadow-[0_0_35px_rgba(0,0,0,0.4)]">
+          hover:translate-x-0 hover:drop-shadow-[0_0_35px_rgba(0,0,0,0.4)]
+          lg:hover:drop-shadow-none">
             <a onClick={() => setMobileMenu(true)} class="
             hidden md:block lg:hidden fixed left-60 top-8
             bg-white dark:bg-neutral-900 z-50 md:z-[60] rounded-md
@@ -72,7 +76,7 @@ const PlaygroundPage: Component = () => {
                 <i class="bi bi-chevron-bar-right"></i>
               </Button>
             </a>
-            <div class="p-6 pl-4 sm:pl-6 md:pt-8 lg:pl-4">
+            <div class="p-6 pl-4 sm:pl-6 lg:pl-4 pt-2">
               <DocumentationMenuList list={menuList()}/>
             </div>
             <div class="h-28"/>

@@ -3,7 +3,7 @@ import lightLogoUrl from "../../assets/images/ambient_logo_black_new.png";
 import darkLogoUrl from "../../assets/images/ambient_logo_white_new.png";
 import Button from "../../assets/components/button.styled";
 import DarkModeToggle, { darkMode } from "../shared/darkModeToggle";
-import { useLocation } from "@solidjs/router";
+import { A, useLocation } from "@solidjs/router";
 import { css } from "solid-styled";
 
 
@@ -31,10 +31,10 @@ const NavBar: Component = () => {
     <>
       <nav class="h-screen w-screen hidden justify-end fixed
       backdrop-blur-sm z-[100] bg-neutral-50 dark:bg-[#181819]
-      bg-opacity-60 dark:bg-opacity-70" classList={{menuBG: mobileMenu()}}>
+      bg-opacity-60 dark:bg-opacity-70 cursor-pointer" classList={{menuBG: mobileMenu()}} onClick={() => setMobileMenu(false)}>
         <div class="absolute h-screen border-l p-4 py-3 sm:px-6 lg:px-10 flex flex-col justify-between
          backdrop-blur-md bg-neutral-50 dark:bg-[#181819] 
-         border-l-neutral-200 dark:border-l-neutral-800 
+         border-l-neutral-200 dark:border-l-neutral-800
         bg-opacity-80 dark:bg-opacity-90 w-64 max-w-full translate-x-full shadow-xl anim-menu" 
         classList={{menuShown: mobileMenu()}}>
           <div class="flex space-x-2 w-full justify-end">
@@ -45,11 +45,11 @@ const NavBar: Component = () => {
             </a>
           </div>
           <div class="flex flex-col space-y-2 w-full pt-[1px] justify-start text-end">
-            <a href="/playground" 
+            <a href="/playground/intro" 
             class="font-medium text-lg font-display 
             text-slate-700 dark:text-slate-300 rounded-lg 
             hover:text-slate-900 hover:-translate-x-1 transition-all"
-            classList={{['font-bold']: pathname() == '/playground'}}>
+            classList={{['font-bold']: pathname().includes('/playground')}}>
               Playground
             </a>
             <a href="https://github.com/kevintyj/ambient" 
@@ -88,28 +88,28 @@ const NavBar: Component = () => {
         <div class="flex items-center w-full max-w-screen-2xl">
           <div class="flex items-center space-x-4 w-full pt-[1px]">
             <div class="-mt-1">
-              <a href="/" class="block dark:hidden w-28"><img src={lightLogoUrl} alt={"Ambient Logo"}/></a>
-              <a href="/" class="hidden dark:block w-28"><img src={darkLogoUrl} alt={"Ambient Logo"}/></a>
+              <A href="/" class="block dark:hidden w-28"><img src={lightLogoUrl} alt={"Ambient Logo"}/></A>
+              <A href="/" class="hidden dark:block w-28"><img src={darkLogoUrl} alt={"Ambient Logo"}/></A>
             </div>
             <a href="https://kevintyj.com" class="font-medium text-sm font-display text-slate-700 dark:text-slate-300 rounded-lg hover:text-slate-900 underline pr-4 hidden sm:block">by Kevin (Taeyoon) Jin</a>
 
-            <a href="/playground" 
+            <A href="/playground/intro" 
             class="font-medium text-sm font-display text-slate-700 dark:text-slate-300 rounded-lg hover:text-slate-900 hidden md:block"
-            classList={{['font-bold']: pathname() == '/playground'}}>
+            classList={{['font-bold']: pathname().includes('/playground')}}>
               Playground
-            </a>
+            </A>
           </div>
           <div class="flex items-center space-x-2">
-            <a href="/coming-soon" class="hidden md:block">
+            <A href="/docs" class="hidden md:block">
               <Button>
                 Documentation
               </Button>
-            </a>
-            <a href="https://github.com/kevintyj/ambient">
+            </A>
+            <A href="https://github.com/kevintyj/ambient">
               <Button>
                 <i class="bi bi-github"></i>
               </Button>
-            </a>
+            </A>
             <DarkModeToggle/>
             <a onClick={() => setMobileMenu(true)} class="block md:hidden">
               <Button>

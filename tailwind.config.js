@@ -9,6 +9,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        'am-pink':'#F13D52',
+      },
       fontFamily: {
         'display': ['Hubot Sans', ...defaultTheme.fontFamily.sans],
       },

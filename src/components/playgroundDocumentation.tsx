@@ -1,4 +1,4 @@
-import { Component, createMemo, For } from "solid-js";
+import { Component, createEffect, createMemo, For } from "solid-js";
 import { css } from "solid-styled";
 import { BaseBackgroundArr, colorsToArr } from "../functions/colorConfig";
 import { calcMaxAPCAText } from "../functions/contrastCalc";
@@ -8,9 +8,11 @@ import PlaygroundBtn from "./playground/button/playgroundButton";
 import { darkMode } from "./shared/darkModeToggle";
 import { visibleColorScale } from "./shared/toggleColorScale";
 
+const DEBUG = false
+
 const PlaygroundDocumentation: Component = (props) => {
 
-  const watchingSwatch = createMemo(() => colorsToArr(visibleColorScale()));
+  const watchingSwatch = () => colorsToArr(visibleColorScale());
   const swatchNames = () => Object.keys(visibleColorScale());
   const focusRow = () => focused()[1]
 
@@ -31,6 +33,12 @@ const PlaygroundDocumentation: Component = (props) => {
   const codeColor = () => baseNeutral()[8]
 
   const buttonBG = () => baseSwatch()[5]
+
+  createEffect(() => {
+    if (DEBUG) console.log("Page Effected")
+    if (DEBUG) console.log(darkMode());
+    if (DEBUG) console.log(watchingSwatch());
+  })
 
   css`
     .link{
@@ -69,7 +77,7 @@ const PlaygroundDocumentation: Component = (props) => {
   }
 
   return (
-    <>
+    <div class="flex flex-col">
       <ColorSwatchLarge swatch={visibleColorScale()} swatchArr={watchingSwatch()}trackIndex='id'/>
       <KeyHandler/>
       <div class="flex pt-6 gap-x-6">
@@ -108,7 +116,7 @@ const PlaygroundDocumentation: Component = (props) => {
             fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
             proident, sunt in culpa qui officia deserunt mollit anim id 
             est laborum.</p>
-          <div class="flex py-2 gap-3">
+          <div class="flex flex-wrap py-2 gap-3">
             <PlaygroundBtn border={'full'}
               textColor={watchingSwatch()[0][9]}
               color={darkMode() ? watchingSwatch()[0][0] : BaseBackgroundArr[0]}
@@ -132,7 +140,7 @@ const PlaygroundDocumentation: Component = (props) => {
           <code class="code rounded-md px-5 py-3 mt-4">npx create-spring-turbo@latest</code>
         </div>
       </div>
-  </>
+  </div>
   )
 }
 

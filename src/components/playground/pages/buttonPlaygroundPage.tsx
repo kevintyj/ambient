@@ -4,13 +4,16 @@ import PlaygroundButtons from "../../playgroundButtons";
 import PlaygroundDocumentation from "../../playgroundDocumentation";
 import ToggleColorScale, { currScaleText } from "../../shared/toggleColorScale";
 
-const ComponentPlaygroundPage: Component = () => {
+const buttonPlaygroundPage: Component = () => {
   return (
-    <>
+    <div class="flex flex-col">
       <div class='flex justify-center px-4 sm:px-6'>
         <div class='flex flex-col w-full max-w-screen-2xl gap-y-1 pb-6'>
+          <h6 class="font-semibold text-sm text-am-pink">
+            Components
+          </h6>
           <h1 class="font-semibold font-display text-3xl text-slate-800 dark:text-slate-200">
-            Color Playground
+            Buttons
           </h1>
           <p class='text-slate-600 dark:text-neutral-500 pb-6'>
             This area was created for users to see the effect of Color Scales on UIUX components. We have devised components to test your color scales to.
@@ -71,11 +74,10 @@ const ComponentPlaygroundPage: Component = () => {
               <PlaygroundButtons baseColorPos={5} border="top" direction={1}/>
             </div>
           </div>
-          <PlaygroundDocumentation/>
         </div>
       </div> 
-    </>
+    </div>
   )
 }
 
-export default ComponentPlaygroundPage
+export default buttonPlaygroundPage
