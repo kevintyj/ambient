@@ -30,11 +30,6 @@ const PlaygroundBtn: IButtonProps = (props) => {
       props.borderColor ? props.borderColor : ''};
       border-top-color: ${props.borderTopHoverColor ? props.borderTopHoverColor : props.hoverBorderColor ? props.hoverBorderColor : '' };
     }
-    /* .playground-btn:active {
-      background-color: ${props.color ? props.color : ''};
-      border-color: ${props.borderColor ? props.borderColor : ''};
-      border-top-color: ${props.borderTopColor ? props.borderTopColor : props.borderColor ? props.borderColor : '' };
-    } */
   `;
 
   return (

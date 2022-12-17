@@ -1,9 +1,13 @@
 import { Component, createEffect, createSignal, onMount } from "solid-js"
+import { setColorScale } from "../../App";
+import { colors } from "../../assets/color";
 import Button from "../../assets/components/button.styled"
+import { generatedColors } from "../../functions/colorConfig";
+import { currScaleText } from "./toggleColorScale";
 
 export const [darkMode, setDarkMode] = createSignal(window.matchMedia('(prefers-color-scheme: dark)').matches)
 
-const DEBUG = true;
+const DEBUG = false;
 
 const DarkModeToggle: Component = () => {
   onMount(() => {
@@ -24,6 +28,11 @@ const DarkModeToggle: Component = () => {
     if (DEBUG) {
       console.log('Theme dark: ' + darkMode());
       console.log('Local storage theme: ' + localStorage.theme);
+    }
+    if (currScaleText() == 'Flex Design Colors Uniform') {
+      setColorScale(generatedColors())
+    } else {
+      setColorScale(colors())
     }
   })
 

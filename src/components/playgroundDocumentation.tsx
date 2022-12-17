@@ -1,16 +1,16 @@
-import { Component, createEffect, createMemo, For } from "solid-js";
+import { Component, createEffect } from "solid-js";
 import { css } from "solid-styled";
+import { visibleColorScale } from "../App";
 import { BaseBackgroundArr, colorsToArr } from "../functions/colorConfig";
 import { calcMaxAPCAText } from "../functions/contrastCalc";
 import KeyHandler, { focused } from "../functions/keyHandler";
 import ColorSwatchLarge from "./colorSwatchLarge";
 import PlaygroundBtn from "./playground/button/playgroundButton";
 import { darkMode } from "./shared/darkModeToggle";
-import { visibleColorScale } from "./shared/toggleColorScale";
 
 const DEBUG = false
 
-const PlaygroundDocumentation: Component = (props) => {
+const PlaygroundDocumentation: Component = () => {
 
   const watchingSwatch = () => colorsToArr(visibleColorScale());
   const swatchNames = () => Object.keys(visibleColorScale());
@@ -35,7 +35,7 @@ const PlaygroundDocumentation: Component = (props) => {
   const buttonBG = () => baseSwatch()[5]
 
   createEffect(() => {
-    if (DEBUG) console.log("Page Effected")
+    if (DEBUG) console.log("Page Effected");
     if (DEBUG) console.log(darkMode());
     if (DEBUG) console.log(watchingSwatch());
   })
@@ -72,8 +72,7 @@ const PlaygroundDocumentation: Component = (props) => {
   `
 
   const calcTextColor = () => {
-    const bg = buttonBG();
-    return calcMaxAPCAText(bg, textColor()[0], textColor()[1])
+    return calcMaxAPCAText(buttonBG(), textColor()[0], textColor()[1])
   }
 
   return (

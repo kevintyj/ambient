@@ -1,4 +1,4 @@
-import type { Component } from 'solid-js';
+import { Component, createSignal } from 'solid-js';
 import { Routes, Route } from "@solidjs/router"
 import NavBar from "./components/layouts/navBar";
 import ColorTablePage from './pages/colorTablePage';
@@ -6,6 +6,9 @@ import ComingSoonPage from './pages/comingSoonPage';
 import Footer from './components/layouts/footer';
 import { Toaster } from 'solid-toast';
 import PlaygroundRoutes from './components/playground/playgroundRoutes';
+import { colors } from './assets/color';
+
+export const [visibleColorScale, setColorScale] = createSignal(colors())
 
 const App: Component = () => {
   return (

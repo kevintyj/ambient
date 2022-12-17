@@ -1,4 +1,5 @@
 import { Component, createEffect, createSignal, onMount } from "solid-js"
+import { setColorScale } from "../../App";
 import { colors } from "../../assets/color";
 import Select from "../../assets/components/select.styled";
 import { generatedColors } from "../../functions/colorConfig";
@@ -7,7 +8,6 @@ import { generatedColors } from "../../functions/colorConfig";
 const DEBUG = true;
 
 export const [currScaleText, setCurrScaleText] = createSignal('Flex Design Colors Uniform')
-export const [visibleColorScale, setColorScale] = createSignal(colors())
 
 const ToggleColorScale: Component = () => {
 

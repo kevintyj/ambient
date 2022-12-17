@@ -5,7 +5,8 @@ import DataPlot from "../components/dataPlot";
 import Button from "../assets/components/button.styled";
 import KeyHandler from "../functions/keyHandler";
 import { colorsToArr } from "../functions/colorConfig";
-import ToggleColorScale, { currScaleText, visibleColorScale } from "../components/shared/toggleColorScale";
+import ToggleColorScale, { currScaleText } from "../components/shared/toggleColorScale";
+import { visibleColorScale } from "../App";
 
 const ColorTablePage: Component = () => {
 
