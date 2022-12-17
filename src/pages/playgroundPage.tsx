@@ -67,7 +67,7 @@ const PlaygroundPage: Component = () => {
           pb-20 z-50 justify-between transition-[transform]
           -translate-x-60 md:-translate-x-56 lg:translate-x-0 
           hover:translate-x-0 hover:drop-shadow-[0_0_35px_rgba(0,0,0,0.4)]
-          lg:hover:drop-shadow-none h-[calc(100vh-56px)] overflow-y-scroll">
+          lg:hover:drop-shadow-none h-[calc(100vh-56px)]">
             <a onClick={() => setMobileMenu(true)} class="
             hidden md:block lg:hidden fixed left-60 top-8
             bg-white dark:bg-neutral-900 z-50 md:z-[60] rounded-md

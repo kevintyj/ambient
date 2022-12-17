@@ -1,11 +1,16 @@
-import {Component, createEffect, createSignal} from "solid-js";
+import {Component, createEffect, createSignal, onCleanup } from "solid-js";
 import { colorsArr } from "../assets/color";
 
 export const [focused, setFocused] = createSignal([7,5]);
 
-const keyHandler: Component = () => {
+const KeyHandler: Component = () => {
+
+  onCleanup(() => {
+    document.removeEventListener('keydown', () => true);
+  })
 
   createEffect(() => {
+    document.removeEventListener('keydown', () => true);
     document.addEventListener('keydown', (e: KeyboardEvent) => {
       if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
         e.preventDefault();
@@ -27,4 +32,4 @@ const keyHandler: Component = () => {
   return (<></>)
 }
 
-export default keyHandler;
+export default KeyHandler;

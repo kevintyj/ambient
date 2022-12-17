@@ -3,7 +3,7 @@ import { css } from "solid-styled";
 import { visibleColorScale } from "../App";
 import { BaseBackgroundArr, colorsToArr } from "../functions/colorConfig";
 import { calcMaxAPCAText } from "../functions/contrastCalc";
-import KeyHandler, { focused } from "../functions/keyHandler";
+import { focused } from "../functions/keyHandler";
 import ColorSwatchLarge from "./colorSwatchLarge";
 import PlaygroundBtn from "./playground/button/playgroundButton";
 import { darkMode } from "./shared/darkModeToggle";
@@ -78,7 +78,6 @@ const PlaygroundDocumentation: Component = () => {
   return (
     <div class="flex flex-col">
       <ColorSwatchLarge swatch={visibleColorScale()} swatchArr={watchingSwatch()}trackIndex='id'/>
-      <KeyHandler/>
       <div class="flex pt-6 gap-x-6">
         <div class="flex-none w-64 h-full border-r border-color">
           <div class="flex flex-col pr-6">
