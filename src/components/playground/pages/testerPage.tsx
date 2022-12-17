@@ -1,8 +1,8 @@
 import { Component, createEffect, onError, onMount } from "solid-js"
 import { css } from "solid-styled"
-import { visibleColorScale } from "../../../App";
 import Button from "../../../assets/components/button.styled";
 import { colorsToArr } from "../../../functions/colorConfig";
+import ToggleColorScale, { visibleColorScale } from "../../shared/toggleColorScale";
 
 
 const TesterPage: Component = () => {
@@ -21,6 +21,7 @@ const TesterPage: Component = () => {
 
   return (
     <>
+      <ToggleColorScale/>
       <div class="text-2xl text-style">
         Testing Reactivity
       </div>

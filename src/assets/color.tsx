@@ -2,7 +2,7 @@ import { createMemo } from "solid-js";
 import { darkMode } from "../components/shared/darkModeToggle";
 import { colorsToArr } from "../functions/colorConfig";
 
-const BaseColorScaleDark: Record<string, Record<string, string>> = {
+export const BaseColorScaleDark: Record<string, Record<string, string>> = {
   "NEUTRAL": {
     "00": "#1b1d1c",
     "01": "#262727",

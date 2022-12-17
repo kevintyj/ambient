@@ -1,9 +1,9 @@
 import { Component, For } from "solid-js";
-import { visibleColorScale } from "../App";
 import { BaseBackgroundArr, colorsToArr } from "../functions/colorConfig";
 import { calcMaxAPCAText } from "../functions/contrastCalc";
 import PlaygroundBtn from "./playground/button/playgroundButton";
 import { darkMode } from "./shared/darkModeToggle";
+import { visibleColorScale } from "./shared/toggleColorScale";
 
 type IButtonProps = Component< & {
   baseColorPos: number;

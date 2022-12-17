@@ -1,12 +1,12 @@
 import { Component, createEffect } from "solid-js";
 import { css } from "solid-styled";
-import { visibleColorScale } from "../App";
 import { BaseBackgroundArr, colorsToArr } from "../functions/colorConfig";
 import { calcMaxAPCAText } from "../functions/contrastCalc";
 import { focused } from "../functions/keyHandler";
 import ColorSwatchLarge from "./colorSwatchLarge";
 import PlaygroundBtn from "./playground/button/playgroundButton";
 import { darkMode } from "./shared/darkModeToggle";
+import { visibleColorScale } from "./shared/toggleColorScale";
 
 const DEBUG = false
 

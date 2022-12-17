@@ -1,9 +1,8 @@
 import { Component, createEffect, createSignal, onMount } from "solid-js"
-import { setColorScale } from "../../App";
 import { colors } from "../../assets/color";
 import Button from "../../assets/components/button.styled"
 import { generatedColors } from "../../functions/colorConfig";
-import { currScaleText } from "./toggleColorScale";
+import { currScaleText, setColorScale } from "./toggleColorScale";
 
 export const [darkMode, setDarkMode] = createSignal(window.matchMedia('(prefers-color-scheme: dark)').matches)
 

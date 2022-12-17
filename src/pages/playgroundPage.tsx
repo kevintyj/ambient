@@ -48,13 +48,13 @@ const PlaygroundPage: Component = () => {
       <div class="flex justify-center lg:px-6">
         <div class="flex flex-row flex-auto overflow-x-hidden -mb-20 w-full max-w-screen-2xl">
         <div class="flex-none h-screen w-0 sm:w-4 md:w-8 lg:w-64 transition-all">
-          <div class="border-b h-12 px-4 sm:px-6 lg:px-10 flex justify-center fixed backdrop-blur-md backdrop-brightness-125
+          <div class="border-b h-12 px-0 lg:px-10 flex fixed backdrop-blur-md backdrop-brightness-125
         bg-neutral-50 dark:bg-[#181819] border-b-neutral-200 dark:border-b-neutral-800 
-        bg-opacity-80 dark:bg-opacity-90 w-full z-50 md:hidden">
+        bg-opacity-80 dark:bg-opacity-90 w-full z-50 md:hidden justify-start items-center">
             <a onClick={() => setMobileMenu(true)} class="
-            block fixed left-4 sm:left-10 top-16
-            bg-white dark:bg-neutral-900 z-50 md:z-[60] rounded-md
-            drop-shadow-[0_0_8px_rgba(0,0,0,0.2)]">
+            block pl-4 sm:pl-10
+            z-50 md:z-[60] rounded-md
+            drop-shadow-[0_0_4px_rgba(0,0,0,0.08)]">
               <Button square>
                 <i class="bi bi-list"></i>
               </Button>
@@ -64,14 +64,15 @@ const PlaygroundPage: Component = () => {
           backdrop-blur-md backdrop-brightness-125 bg-opacity-80 
           bg-neutral-50 dark:bg-[#181819] 
           border-r border-neutral-200 dark:border-neutral-800 
-          pb-20 z-50 justify-between transition-[transform]
-          -translate-x-60 md:-translate-x-56 lg:translate-x-0 
-          hover:translate-x-0 hover:drop-shadow-[0_0_35px_rgba(0,0,0,0.4)]
-          lg:hover:drop-shadow-none h-[calc(100vh-56px)]">
+          pb-20 z-50 justify-between transition-[transform] 
+          -translate-x-60 md:-translate-x-56 lg:translate-x-0 ease-in-out 
+          hover:translate-x-0 dark:hover:shadow-[0_35px_35px_rgba(0,0,0,0.4)] 
+          hover:shadow-[0_35px_35px_#00000032] 
+          h-[calc(100vh-56px)] hover:lg:shadow-none hover:lg:dark:shadow-none">
             <a onClick={() => setMobileMenu(true)} class="
             hidden md:block lg:hidden fixed left-60 top-8
             bg-white dark:bg-neutral-900 z-50 md:z-[60] rounded-md
-            drop-shadow-[0_0_8px_rgba(0,0,0,0.2)]">
+            drop-shadow-[0_0_8px_rgba(0,0,0,0.14)]">
               <Button square>
                 <i class="bi bi-chevron-bar-right"></i>
               </Button>
