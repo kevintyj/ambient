@@ -5,7 +5,7 @@ import ColorTablePage from './pages/colorTablePage';
 import ComingSoonPage from './pages/comingSoonPage';
 import Footer from './components/layouts/footer';
 import { Toaster } from 'solid-toast';
-import PlaygroundPage from './pages/playgroundPage';
+import PlaygroundRoutes from './components/playground/playgroundRoutes';
 
 const App: Component = () => {
   return (
@@ -23,11 +23,11 @@ const App: Component = () => {
      <div class='flex flex-col min-h-screen justify-between bg-white dark:bg-[#181819]'>
       <NavBar/>
       <main class='my-auto lg:px-4'>
-        <div class="h-[72px] lg:h-20">
+        <div class="h-14">
         </div>
         <Routes>
             <Route path={"/"} component={ColorTablePage}/>
-            <Route path={"/playground"} component={PlaygroundPage}/>
+            <PlaygroundRoutes/>
             <Route path={"/coming-soon"} component={ComingSoonPage}/>
             <Route path={"/*"} component={ComingSoonPage}/>
         </Routes>

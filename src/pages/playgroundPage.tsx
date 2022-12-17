@@ -1,80 +1,88 @@
-import { Component } from "solid-js";
-import Collapsible from "../assets/components/collapsible.styled";
-import PlaygroundBtn from "../components/playground/button/playgroundButton";
-import PlaygroundButtons from "../components/playgroundButtons";
-import PlaygroundDocumentation from "../components/playgroundDocumentation";
-import ToggleColorScale, { currScaleText } from "../components/shared/toggleColorScale";
+import { Outlet } from "@solidjs/router";
+import { Component, createSignal } from "solid-js";
+import { css } from "solid-styled";
+import Button from "../assets/components/button.styled";
+import DocumentationMenuList from "../assets/components/documentationMenu.styled";
 
 const PlaygroundPage: Component = () => {
+
+  const [mobileMenu, setMobileMenu] = createSignal(false)
+
+  const [menuList, setMenuList] = createSignal({
+    "Components" : "",
+    "Introduction" : "/playground/intro",
+    "Buttons" : "/playground",
+    "Texts" : "/playground/text"
+  })
+
+  css`
+    .menuBG {
+      display: flex;
+    }
+    .menuShown {
+      transform: translateX(0) !important;
+    }
+  `
+
   return (
     <>
-      <div class='flex justify-center w-full px-4 sm:px-6'>
-        <div class='flex flex-col w-full max-w-screen-2xl gap-y-1 pb-6'>
-          <h1 class="font-semibold font-display text-3xl text-slate-800 dark:text-slate-200">
-            Color Playground
-          </h1>
-          <p class='text-slate-600 dark:text-neutral-500 pb-6'>
-            This area was created for users to see the effect of Color Scales on UIUX components. We have devised components to test your color scales to.
-          </p>
-          <h1 class="font-semibold font-display text-xl text-slate-800 dark:text-slate-200 pb-2">
-            Color Swatch
-          </h1>
-          <div class="flex gap-x-2">
-            <ToggleColorScale/>
-          </div>
+      <div class="hidden h-screen w-screen fixed top-0 left-0
+      backdrop-blur-sm z-[100] bg-neutral-50 dark:bg-[#181819]
+      bg-opacity-60 dark:bg-opacity-70" classList={{menuBG: mobileMenu()}}>
+        <div class="left-0 h-screen border-r p-4 py-3 sm:px-6 flex flex-col
+         backdrop-blur-md bg-neutral-50 dark:bg-[#181819] 
+         border-neutral-200 dark:border-neutral-800 
+         w-64 shadow-xl" 
+        classList={{menuShown: mobileMenu()}}>
+            <a onClick={() => setMobileMenu(false)} class="my-2 mb-6">
+              <Button>
+                <i class="bi bi-list"></i>
+              </Button>
+            </a>
+            <DocumentationMenuList list={menuList()}/>
         </div>
       </div>
-      <div class='flex justify-center w-full px-4 sm:px-6'>
-        <div class='flex flex-col gap-x-8 w-full max-w-screen-2xl'>
-          <div class='flex flex-col pb-4'>
-            <h4 class="text-slate-600 dark:text-neutral-500">
-              Active Color Swatch
-            </h4>
-            <h3 class="font-semibold font-display text-xl text-slate-800 dark:text-slate-200 pb-2">
-              {currScaleText()}
-            </h3>
+      <div class="flex justify-center lg:px-6">
+        <div class="flex flex-row flex-auto overflow-x-hidden -mb-20 w-full max-w-screen-2xl">
+        <div class="flex-none h-screen w-0 sm:w-4 md:w-8 lg:w-64 transition-all">
+          <div class="border-b h-12 px-4 sm:px-6 lg:px-10 flex justify-center fixed backdrop-blur-md backdrop-brightness-125
+        bg-neutral-50 dark:bg-[#181819] border-b-neutral-200 dark:border-b-neutral-800 
+        bg-opacity-80 dark:bg-opacity-90 w-full z-50 md:hidden">
+            <a onClick={() => setMobileMenu(true)} class="
+            block fixed left-4 sm:left-10 top-16
+            bg-white dark:bg-neutral-900 z-50 md:z-[60] rounded-md
+            drop-shadow-[0_0_8px_rgba(0,0,0,0.2)]">
+              <Button square>
+                <i class="bi bi-list"></i>
+              </Button>
+            </a>
           </div>
-          <div class="flex flex-col gap-8 pb-16">
-            <Collapsible title="Possible color combinations for button">
-              <div class="flex flex-col gap-8 pb-6 pt-2"> 
-                <h6 class="text-slate-800 dark:text-slate-200 -my-2">
-                  Secondary Buttons - Increase text contrast on hover
-                </h6>
-                <PlaygroundButtons baseColorPos={2}/>
-                <h6 class="text-slate-800 dark:text-slate-200 -my-2">
-                  Primary Buttons - Increase text contrast on hover
-                </h6>
-                <PlaygroundButtons baseColorPos={5} border="top"/>
-                <h6 class="text-slate-800 dark:text-slate-200 -my-2">
-                  Primary Buttons - Colorful text
-                </h6>
-                <PlaygroundButtons baseColorPos={5} border="top" textColorful/>
-                <h6 class="text-slate-800 dark:text-slate-200 -my-2">
-                  Secondary Buttons (Default) - Colorful text
-                </h6>
-                <PlaygroundButtons baseColorPos={2} textColorful/>
-                <h6 class="text-slate-800 dark:text-slate-200 -my-2">
-                  Primary Buttons (Default) - Increase button contrast on hover
-                </h6>
-                <PlaygroundButtons baseColorPos={5} border="top" direction={1}/>
-              </div>
-            </Collapsible>
-            <div class="flex flex-col gap-3">
-              <h6 class="text-lg text-slate-800 dark:text-slate-200 pb-2">
-                Secondary Buttons
-              </h6>
-              <PlaygroundButtons baseColorPos={2} textColorful/>
+          <div class="hidden sm:flex flex-col fixed w-64 overflow-x-visible lg:-mx-4
+          backdrop-blur-md backdrop-brightness-125 bg-opacity-80 
+          bg-neutral-50 dark:bg-[#181819] 
+          border-r border-neutral-200 dark:border-neutral-800 
+          pb-20 z-50 h-full justify-between transition-all
+          -translate-x-60 md:-translate-x-56 lg:translate-x-0 
+          hover:translate-x-0 hover:drop-shadow-[0_0_35px_rgba(0,0,0,0.4)]">
+            <a onClick={() => setMobileMenu(true)} class="
+            hidden md:block lg:hidden fixed left-60 top-8
+            bg-white dark:bg-neutral-900 z-50 md:z-[60] rounded-md
+            drop-shadow-[0_0_8px_rgba(0,0,0,0.2)]">
+              <Button square>
+                <i class="bi bi-chevron-bar-right"></i>
+              </Button>
+            </a>
+            <div class="p-6 pl-4 sm:pl-6 md:pt-8 lg:pl-4">
+              <DocumentationMenuList list={menuList()}/>
             </div>
-            <div class="flex flex-col gap-3">
-              <h6 class="text-lg text-slate-800 dark:text-slate-200 pb-2">
-                Primary Buttons
-              </h6>
-              <PlaygroundButtons baseColorPos={5} border="top" direction={1}/>
-            </div>
+            <div class="h-28"/>
           </div>
-          <PlaygroundDocumentation/>
         </div>
-      </div> 
+        <div class="flex flex-col overflow-x-hidden pt-16 md:pt-8 lg:-mr-6">
+          <Outlet/>
+        </div>
+      </div>
+      </div>
     </>
   )
 }

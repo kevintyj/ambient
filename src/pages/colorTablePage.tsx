@@ -14,7 +14,7 @@ const ColorTablePage: Component = () => {
   return (
     <>
       <KeyHandler/>
-      <div class='flex justify-center w-full px-4 sm:px-6'>
+      <div class='flex justify-center w-full px-4 sm:px-6 pt-6 md:pt-8'>
         <div class='flex flex-col w-full max-w-screen-2xl gap-y-1 pb-6'>
           <h1 class="font-semibold font-display text-3xl text-slate-800 dark:text-slate-200">
             Ambient Color Generation Tool

@@ -368,5 +368,5 @@ const BaseColorScaleLight: Record<string, Record<string, string>> = {
   }
 }
 
-export const colors = createMemo(() => darkMode() ? BaseColorScaleDark : BaseColorScaleLight);
-export const colorsArr = createMemo(() => colorsToArr(colors()));
+export const colors = () => darkMode() ? BaseColorScaleDark : BaseColorScaleLight;
+export const colorsArr = () => colorsToArr(colors());

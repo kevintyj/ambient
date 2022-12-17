@@ -6,6 +6,7 @@ import DarkModeToggle, { darkMode } from "../shared/darkModeToggle";
 import { useLocation } from "@solidjs/router";
 import { css } from "solid-styled";
 
+
 const NavBar: Component = () => {
 
   const location = useLocation();

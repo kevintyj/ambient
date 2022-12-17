@@ -21,7 +21,7 @@ const Collapsible: ICollapsibleProps = (props) => {
     hover:shadow hover:border-neutral-300 dark:hover:border-neutral-700
     active:border-neutral-300
     dark:active:border-neutral-700
-    flex flex-col transition-all">
+    flex flex-col transition-all ease-out">
       <button class="flex text-default sm:text-lg justify-between py-2.5 px-3 sm:px-5" onClick={handleState}>
         {props.title}
         <i class="bi bi-plus text-lg"></i>
