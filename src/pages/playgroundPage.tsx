@@ -1,8 +1,9 @@
-import { Outlet } from "@solidjs/router";
-import { Component, createSignal } from "solid-js";
+import { A, Outlet, useLocation } from "@solidjs/router";
+import { Component, createSignal, Show } from "solid-js";
 import { css } from "solid-styled";
 import Button from "../assets/components/button.styled";
 import DocumentationMenuList from "../assets/components/documentationMenu.styled";
+import Divider from "../components/playground/components/divider";
 
 const PlaygroundPage: Component = () => {
 
@@ -12,10 +13,15 @@ const PlaygroundPage: Component = () => {
     "Components" : "",
     "Introduction" : "/playground/intro",
     "Buttons" : "/playground/buttons",
-    "Texts" : "/playground/text",
+    "Texts" : "/playground/texts",
     "Pages": "",
     "Documentation": "/playground/documentation"
   })
+
+  const pathname = () => useLocation().pathname;
+  const currInd = () => Object.entries(menuList()).findIndex(val => val[1] == pathname());
+  const prevPath = () => Object.values(menuList())[currInd() - 1] ? Object.values(menuList())[currInd() - 1] : ""
+  const nextPath = () => Object.values(menuList())[currInd() + 1] ? Object.values(menuList())[currInd() + 1] : ""
 
   css`
     .menuBG {
@@ -83,8 +89,31 @@ const PlaygroundPage: Component = () => {
             <div class="h-28"/>
           </div>
         </div>
-        <div class="flex flex-col overflow-x-hidden pt-16 md:pt-8 lg:-mr-6">
+        <div class="flex flex-col overflow-x-hidden pt-16 md:pt-8 lg:-mr-4 pb-12">
           <Outlet/>
+          <div class='flex flex-col justify-center px-4 sm:px-6 pt-12'>
+            <div class='flex flex-col w-full max-w-screen-2xl gap-y-1'>
+              <Divider/>
+              <div class="flex justify-between w-full text-slate-600 dark:text-neutral-500">
+                <A href={prevPath() ? prevPath() : "#"}>
+                  <Show when={prevPath() != ""}>
+                    <i class="bi bi-arrow-left pr-2"/>
+                    <a class="font-semibold font-display text-slate-700 dark:text-neutral-300">
+                      {Object.keys(menuList())[currInd() - 1]}
+                    </a>
+                  </Show>
+                </A>
+                <A href={nextPath() ? nextPath() : "#"} class="justify-self-end">
+                  <Show when={nextPath() != ""}>
+                    <a class="font-semibold font-display text-slate-700 dark:text-neutral-300">
+                      {Object.keys(menuList())[currInd() + 1]}
+                    </a>
+                    <i class="bi bi-arrow-right pl-2"/>
+                  </Show>
+                </A>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       </div>

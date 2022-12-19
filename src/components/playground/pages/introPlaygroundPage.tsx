@@ -1,4 +1,5 @@
 import { Component } from "solid-js";
+import Divider from "../components/divider";
 
 const IntroPlaygroundPage: Component = () => {
   return(
@@ -15,7 +16,7 @@ const IntroPlaygroundPage: Component = () => {
             The Playground was created for users to quickly test and see how different colors may look in different UIUX applications.
           </p>
         </div>
-        <div class="pb-6 border-b border-neutral-200 dark:border-neutral-800 mb-6"></div>
+        <Divider/>
         <div class='flex flex-col w-full max-w-screen-2xl gap-y-2 pb-6'>
           <div class='flex flex-col'>
             <h3 class="font-semibold font-display text-xl text-slate-800 dark:text-slate-200">

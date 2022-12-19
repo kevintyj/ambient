@@ -1,5 +1,5 @@
 import { Component } from "solid-js";
-import PlaygroundDocumentation from "../../playgroundDocumentation";
+import PlaygroundDocumentation from "../components/playgroundDocumentation";
 
 const DocumentationSamplePage: Component = () => {
   return(

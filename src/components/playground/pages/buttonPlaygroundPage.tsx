@@ -1,10 +1,10 @@
 import { Component } from "solid-js";
 import Collapsible from "../../../assets/components/collapsible.styled";
-import PlaygroundButtons from "../../playgroundButtons";
-import PlaygroundDocumentation from "../../playgroundDocumentation";
 import ToggleColorScale, { currScaleText } from "../../shared/toggleColorScale";
+import Divider from "../components/divider";
+import PlaygroundButtons from "../components/playgroundButtons";
 
-const buttonPlaygroundPage: Component = () => {
+const ButtonPlaygroundPage: Component = () => {
   return (
     <div class="flex flex-col">
       <div class='flex justify-center px-4 sm:px-6'>
@@ -28,7 +28,7 @@ const buttonPlaygroundPage: Component = () => {
       </div>
       <div class='flex flex-auto flex-col justify-center w-full px-4 sm:px-6'>
         <div class='flex flex-col gap-x-8 w-full max-w-screen-2xl'>
-          <div class='flex flex-col pb-4'>
+          <div class='flex flex-col'>
             <h4 class="text-slate-600 dark:text-neutral-500">
               Active Color Swatch
             </h4>
@@ -36,7 +36,8 @@ const buttonPlaygroundPage: Component = () => {
               {currScaleText()}
             </h3>
           </div>
-          <div class="flex flex-col gap-8 pb-16">
+          <Divider/>
+          <div class="flex flex-col gap-8">
             <Collapsible title="Possible color combinations for button">
               <div class="flex flex-col gap-8 pb-6 pt-2"> 
                 <h6 class="text-slate-800 dark:text-slate-200 -my-2">
@@ -80,4 +81,4 @@ const buttonPlaygroundPage: Component = () => {
   )
 }
 
-export default buttonPlaygroundPage
+export default ButtonPlaygroundPage
