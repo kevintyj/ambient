@@ -1,4 +1,4 @@
-import { Component } from 'solid-js';
+import { Component, JSXElement, onMount } from 'solid-js';
 import { Routes, Route } from "@solidjs/router"
 import NavBar from "./components/layouts/navBar";
 import ColorTablePage from './pages/colorTablePage';
@@ -9,6 +9,22 @@ import PlaygroundRoutes from './components/playground/playgroundRoutes';
 import KeyHandler from './functions/keyHandler';
 
 const App: Component = () => {
+
+  onMount(() => {
+    let ASCII = `                                                  
+    █████   ███    ███ ██████  ██ ███████ ███    ██ ████████       
+    ██   ██ ████  ████ ██   ██ ██ ██      ████   ██    ██    
+    ███████ ██ ████ ██ ██████  ██ █████   ██ ██  ██    ██    
+    ██   ██ ██  ██  ██ ██   ██ ██ ██      ██  ██ ██    ██    
+    ██   ██ ██      ██ ██████  ██ ███████ ██   ████    ██    
+    `
+
+    ASCII += `\n    Using Ambient at work? Work with me on your next project!
+    https://kevintyj.com
+    `
+    console.log(`%c${ASCII}`, `font-family: monospace; color: #F13D52; `)
+  })
+
   return (
    <>
       <KeyHandler/>
@@ -22,7 +38,7 @@ const App: Component = () => {
           duration: 2000
         }}
       />
-      <div class='flex flex-col min-h-screen justify-between bg-white dark:bg-[#181819]'>
+      <div class='flex flex-col z-50 min-h-screen justify-between bg-white dark:bg-[#181819]'>
         <NavBar/>
         <main class='my-auto lg:px-4'>
           <div class="h-14">

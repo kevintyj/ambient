@@ -27,6 +27,17 @@ const IntroPlaygroundPage: Component = () => {
           </p>
           <div class='flex flex-col'>
             <h4 class="text-slate-600 dark:text-neutral-500">
+              Shortcuts
+            </h4>
+            <h3 class="font-semibold font-display text-xl text-slate-800 dark:text-slate-200">
+              Changing Dark/Light Modes
+            </h3>
+          </div>
+          <p class='text-slate-600 dark:text-neutral-500 pb-6'>
+            Cmd + k or Ctrl + k can be used to quickly switch between Dark and Light Mode at any page in the application. There is also a helpful toggle on the top of the navigation page.
+          </p>
+          <div class='flex flex-col'>
+            <h4 class="text-slate-600 dark:text-neutral-500">
               Interactive components
             </h4>
             <h3 class="font-semibold font-display text-xl text-slate-800 dark:text-slate-200">

@@ -1,5 +1,6 @@
 import {Component, createEffect, createSignal, onCleanup } from "solid-js";
 import { colorsArr } from "../assets/color";
+import { darkMode, setDarkMode } from "../components/shared/darkModeToggle";
 
 export const [focused, setFocused] = createSignal([7,5]);
 
@@ -12,6 +13,9 @@ const KeyHandler: Component = () => {
   createEffect(() => {
     document.removeEventListener('keydown', () => true);
     document.addEventListener('keydown', (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        setDarkMode(!darkMode());
+      }
       if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
         e.preventDefault();
       }

@@ -56,25 +56,25 @@ const PlaygroundPage: Component = () => {
             z-50 md:z-[60] rounded-md
             drop-shadow-[0_0_4px_rgba(0,0,0,0.08)]">
               <Button square>
-                <i class="bi bi-list"></i>
+                <i class="bi bi-list -ml-1"></i>
               </Button>
             </a>
           </div>
           <div class="hidden sm:flex flex-col fixed w-64 overflow-x-visible lg:-mx-4
-          backdrop-blur-md backdrop-brightness-125 bg-opacity-80 
-          bg-neutral-50 dark:bg-[#181819] 
+          backdrop-blur-md backdrop-brightness-125 lg:backdrop-blur-0 lg:backdrop-brightness-100 bg-opacity-80 
+          bg-neutral-50 dark:bg-[#181819] lg:bg-transparent dark:lg:bg-transparent 
           border-r border-neutral-200 dark:border-neutral-800 
-          pb-20 z-50 justify-between transition-[transform] 
+          mb-20 z-50 justify-between transition-[transform] 
           -translate-x-60 md:-translate-x-56 lg:translate-x-0 ease-in-out 
           hover:translate-x-0 dark:hover:shadow-[0_35px_35px_rgba(0,0,0,0.4)] 
           hover:shadow-[0_35px_35px_#00000032] 
           h-[calc(100vh-56px)] hover:lg:shadow-none hover:lg:dark:shadow-none">
             <a onClick={() => setMobileMenu(true)} class="
-            hidden md:block lg:hidden fixed left-60 top-8
+            hidden md:block lg:hidden absolute left-60 top-8
             bg-white dark:bg-neutral-900 z-50 md:z-[60] rounded-md
             drop-shadow-[0_0_8px_rgba(0,0,0,0.14)]">
               <Button square>
-                <i class="bi bi-chevron-bar-right"></i>
+                <i class="bi bi-chevron-bar-right -ml-1"></i>
               </Button>
             </a>
             <div class="p-6 pl-4 sm:pl-6 lg:pl-4 pt-2">
