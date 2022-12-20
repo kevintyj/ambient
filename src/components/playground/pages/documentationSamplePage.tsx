@@ -1,5 +1,9 @@
 import { Component } from "solid-js";
+import { colorsToArr } from "../../../functions/colorConfig";
+import ColorSwatchLarge from "../../colorSwatchLarge";
+import { visibleColorScale } from "../../shared/toggleColorScale";
 import PlaygroundDocumentation from "../components/playgroundDocumentation";
+import SandboxCard from "../components/sandboxCard";
 
 const DocumentationSamplePage: Component = () => {
   return(
@@ -14,7 +18,11 @@ const DocumentationSamplePage: Component = () => {
           </h1>
         </div>
 
-        <PlaygroundDocumentation/>
+        <ColorSwatchLarge swatch={visibleColorScale()} swatchArr={colorsToArr(visibleColorScale())}trackIndex='id'/>
+
+        <SandboxCard>
+          <PlaygroundDocumentation/>
+        </SandboxCard>
       </div>
     </>
   )

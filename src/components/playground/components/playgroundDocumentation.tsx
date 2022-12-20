@@ -76,8 +76,7 @@ const PlaygroundDocumentation: Component = () => {
   }
 
   return (
-    <div class="flex flex-col">
-      <ColorSwatchLarge swatch={visibleColorScale()} swatchArr={watchingSwatch()}trackIndex='id'/>
+    <div class="flex flex-col pb-3">
       <div class="flex pt-6 gap-x-6">
         <div class="flex-none w-64 h-full border-r border-color">
           <div class="flex flex-col pr-6">

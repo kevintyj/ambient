@@ -15,7 +15,7 @@ const Button: IButtonProps = (props) => {
     active:border-neutral-300
     dark:active:border-neutral-700
     active:translate-y-px"
-    classList={{'w-8 px-0': props.square}}>
+    classList={{'w-8 h-8 px-0': props.square}}>
       {props.children}
     </button>
   )

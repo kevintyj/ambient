@@ -3,6 +3,7 @@ import Divider from "../components/divider";
 import Heading from "../components/heading";
 import LinkAnchor from "../components/link";
 import Paragraph from "../components/paragraph";
+import SandboxCard from "../components/sandboxCard";
 
 const TextPlaygroundPage: Component = () => {
 
@@ -66,32 +67,34 @@ const TextPlaygroundPage: Component = () => {
         </div>
         <Divider/>
         <div class="flex flex-col gap-y-4">
-          <div>
-            <Heading size={1}>
-              We do things differently,
-            </Heading>
-            <Heading size={1}>
-              Its what makes us unique.
-            </Heading>
-          </div>
-          <Paragraph>
-            <Paragraph class="bold">
-              Technology can be complicated sometimes. It has its own ecosystem, its own language, and it’s just difficult to understand how it works. 
-            </Paragraph> 
-            Some of us humans may not get it easily. This is why our core value is to build an intimate and intricate connection between technology and humans. 
-            After all tech is built to help humans. 
-          </Paragraph>
-          <Paragraph>
-            Our technology is for everyone. Our tech is humanly familiar. This is perhaps what we thrive the most, which makes us different from the other traditional agencies. 
-            We care deeply about helping you tackle your most significant challenges and turn your vision into reality, keeping the end-user in mind at all times. With us, it’s never just about the project in hand. 
-            <Paragraph class="bold">
-              It’s about building trust and enabling your long-term success. 
+          <SandboxCard>
+            <div>
+              <Heading size={1}>
+                We do things differently,
+              </Heading>
+              <Heading size={1}>
+                Its what makes us unique.
+              </Heading>
+            </div>
+            <Paragraph>
+              <Paragraph class="bold">
+                Technology can be complicated sometimes. It has its own ecosystem, its own language, and it’s just difficult to understand how it works. 
+              </Paragraph> 
+              Some of us humans may not get it easily. This is why our core value is to build an intimate and intricate connection between technology and humans. 
+              After all tech is built to help humans. 
             </Paragraph>
-            We will meet you where you are on your journey, integrate our people with yours, and share our skills every step of the way to make the product you envisioned a reality.  
-          </Paragraph>
-          <LinkAnchor>
-            Check out what makes us different <i class="bi bi-arrow-right"/>
-          </LinkAnchor>
+            <Paragraph>
+              Our technology is for everyone. Our tech is humanly familiar. This is perhaps what we thrive the most, which makes us different from the other traditional agencies. 
+              We care deeply about helping you tackle your most significant challenges and turn your vision into reality, keeping the end-user in mind at all times. With us, it’s never just about the project in hand. 
+              <Paragraph class="bold">
+                It’s about building trust and enabling your long-term success. 
+              </Paragraph>
+              We will meet you where you are on your journey, integrate our people with yours, and share our skills every step of the way to make the product you envisioned a reality.  
+            </Paragraph>
+            <LinkAnchor>
+              Check out what makes us different <i class="bi bi-arrow-right"/>
+            </LinkAnchor>  
+          </SandboxCard> 
         </div>
       </div>
     </>
