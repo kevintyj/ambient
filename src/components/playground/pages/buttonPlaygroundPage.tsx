@@ -1,8 +1,10 @@
 import { Component } from "solid-js";
 import Collapsible from "../../../assets/components/collapsible.styled";
 import ToggleColorScale, { currScaleText } from "../../shared/toggleColorScale";
+import DefaultButton from "../components/defaultButton";
 import Divider from "../components/divider";
 import PlaygroundButtons from "../components/playgroundButtons";
+import SandboxCard from "../components/sandboxCard";
 
 const ButtonPlaygroundPage: Component = () => {
   return (
@@ -73,6 +75,42 @@ const ButtonPlaygroundPage: Component = () => {
                 Primary Buttons
               </h6>
               <PlaygroundButtons baseColorPos={5} border="top" direction={1}/>
+            </div>
+            <div class="flex flex-col gap-3">
+              <h6 class="text-lg text-slate-800 dark:text-slate-200 pb-2">
+                Default Button
+              </h6>
+              <SandboxCard>
+                <div class="flex w-full justify-center">
+                  <DefaultButton type="default">
+                    Default Button
+                  </DefaultButton>
+                </div>
+              </SandboxCard>
+            </div>
+            <div class="flex flex-col gap-3">
+              <h6 class="text-lg text-slate-800 dark:text-slate-200 pb-2">
+                Default Secondary Button
+              </h6>
+              <SandboxCard>
+                <div class="flex w-full justify-center">
+                  <DefaultButton type="secondary">
+                    Secondary Button
+                  </DefaultButton>
+                </div>
+              </SandboxCard>
+            </div>
+            <div class="flex flex-col gap-3">
+              <h6 class="text-lg text-slate-800 dark:text-slate-200 pb-2">
+                Default Primary Button
+              </h6>
+              <SandboxCard>
+                <div class="flex w-full justify-center">
+                  <DefaultButton type="primary">
+                    Primary Button
+                  </DefaultButton>
+                </div>
+              </SandboxCard>
             </div>
           </div>
         </div>

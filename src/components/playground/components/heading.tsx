@@ -1,19 +1,12 @@
 import { JSX } from "solid-js/jsx-runtime";
 import { css } from "solid-styled";
-import { colorsToArr } from "../../../functions/colorConfig";
-import { focused } from "../../../functions/keyHandler";
-import { visibleColorScale } from "../../shared/toggleColorScale";
+import { neutralSwatch } from "./colorSwatch";
 
 const Heading = (props : JSX.SelectHTMLAttributes<HTMLHeadingElement & {
   size?: 1 | 2 | 3 | 4 | 5 | 6
 }>) => {
 
-  const watchingSwatch = () => colorsToArr(visibleColorScale());
-  const focusRow = () => focused()[1]
-
-  const baseSwatch = () => watchingSwatch()[focusRow()]
-  const baseNeutral = () => watchingSwatch()[0]
-  const headerColor = () => baseNeutral()[9]
+  const headerColor = () => neutralSwatch(9)
 
   const textSize = () => {
     return props.size ? 

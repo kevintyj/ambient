@@ -7,6 +7,7 @@ import ColorSwatchLarge from "../../colorSwatchLarge";
 import PlaygroundBtn from "../button/playgroundButton";
 import { darkMode } from "../../shared/darkModeToggle";
 import { visibleColorScale } from "../../shared/toggleColorScale";
+import DefaultButton from "./defaultButton";
 
 const DEBUG = false
 
@@ -15,9 +16,6 @@ const PlaygroundDocumentation: Component = () => {
   const watchingSwatch = () => colorsToArr(visibleColorScale());
   const swatchNames = () => Object.keys(visibleColorScale());
   const focusRow = () => focused()[1]
-
-  const textColor = () => "NEUTRAL" in visibleColorScale() ? 
-  [visibleColorScale()["NEUTRAL"]["00"], visibleColorScale()["NEUTRAL"]["09"]] : ['red', 'red'];
 
   const baseSwatch = () => watchingSwatch()[focusRow()]
   const baseNeutral = () => watchingSwatch()[0]
@@ -31,8 +29,6 @@ const PlaygroundDocumentation: Component = () => {
   const codeBorder = () => baseNeutral()[1]
   const codeBorderTop = () => baseNeutral()[2]
   const codeColor = () => baseNeutral()[8]
-
-  const buttonBG = () => baseSwatch()[5]
 
   createEffect(() => {
     if (DEBUG) console.log("Page Effected");
@@ -70,10 +66,6 @@ const PlaygroundDocumentation: Component = () => {
       color: ${codeColor()};
     }
   `
-
-  const calcTextColor = () => {
-    return calcMaxAPCAText(buttonBG(), textColor()[0], textColor()[1])
-  }
 
   return (
     <div class="flex flex-col pb-3">
@@ -114,22 +106,12 @@ const PlaygroundDocumentation: Component = () => {
             proident, sunt in culpa qui officia deserunt mollit anim id 
             est laborum.</p>
           <div class="flex flex-wrap py-2 gap-3">
-            <PlaygroundBtn border={'full'}
-              textColor={watchingSwatch()[0][9]}
-              color={darkMode() ? watchingSwatch()[0][0] : BaseBackgroundArr[0]}
-              hoverColor={darkMode() ? BaseBackgroundArr[1] : BaseBackgroundArr[0]}
-              borderColor={watchingSwatch()[0][2]}
-              hoverBorderColor={watchingSwatch()[0][1]}>
+            <DefaultButton type="default">
               More documentation
-            </PlaygroundBtn>
-            <PlaygroundBtn border={'top'} 
-              textColor={calcTextColor()}
-              color={buttonBG()}
-              hoverColor={baseSwatch()[6]}
-              borderColor={baseSwatch()[6]}
-              hoverBorderColor={baseSwatch()[7]}>
-                Go see examples!
-            </PlaygroundBtn>
+            </DefaultButton>
+            <DefaultButton type="primary">
+              Go see examples!
+            </DefaultButton>
           </div>
           <h2 class="text-2xl heading font-bold pt-4">Using TurboPack</h2>
           <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 

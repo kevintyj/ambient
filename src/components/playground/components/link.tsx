@@ -1,23 +1,15 @@
 import { JSX } from "solid-js/jsx-runtime";
 import { css } from "solid-styled";
-import { colorsToArr } from "../../../functions/colorConfig";
-import { focused } from "../../../functions/keyHandler";
-import { visibleColorScale } from "../../shared/toggleColorScale";
+import { colorSwatch } from "./colorSwatch";
 
 const LinkAnchor = (props : JSX.SelectHTMLAttributes<HTMLAnchorElement & {
   size?: 'base' | 'large' | 'small'
 }>) => {
 
-  const watchingSwatch = () => colorsToArr(visibleColorScale());
-  const focusRow = () => focused()[1]
-
-  const baseSwatch = () => watchingSwatch()[focusRow()]
-  const baseNeutral = () => watchingSwatch()[0]
-
-  const linkColor = () => baseSwatch()[7]
-  const linkHoverColor = () => baseSwatch()[6]
-  const hintColor = () => baseSwatch()[4]
-  const hintHoverColor = () => baseSwatch()[3]
+  const linkColor = () => colorSwatch(7)
+  const linkHoverColor = () => colorSwatch(6)
+  const hintColor = () => colorSwatch(4)
+  const hintHoverColor = () => colorSwatch(3)
 
   const textSize = () => {
     return props.size ? 
