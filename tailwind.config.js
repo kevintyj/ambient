@@ -13,7 +13,8 @@ module.exports = {
         'am-pink':'#F13D52',
         'helper-primary': '#EA6042',
         'helper-secondary': '#FF9979',
-        'helper-transparent': '#EA604229'
+        'helper-transparent': '#EA604229',
+        'helper-dark': '#511C10'
       },
       fontFamily: {
         'display': ['Hubot Sans', ...defaultTheme.fontFamily.sans],

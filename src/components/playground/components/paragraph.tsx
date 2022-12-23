@@ -8,7 +8,7 @@ const Paragraph = (props : JSX.SelectHTMLAttributes<HTMLParagraphElement & {
 
   const bodyColor = () => neutralSwatch(7)
   const boldColor = () => neutralSwatch(8)
-  const hintColor = () => neutralSwatch(5)
+  const hintColor = () => neutralSwatch(4)
 
   const textSize = () => {
     return props.size ? 

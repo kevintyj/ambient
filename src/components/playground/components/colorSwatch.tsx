@@ -6,8 +6,8 @@ import { visibleColorScale } from "../../shared/toggleColorScale";
 const watchingSwatch = () => colorsToArr(visibleColorScale());
 const focusRow = () => focused()[1]
 
-const baseSwatch = () => watchingSwatch()[focusRow()]
-const baseNeutral = () => watchingSwatch()[0]
+export const baseSwatch = () => watchingSwatch()[focusRow()]
+export const baseNeutral = () => watchingSwatch()[0]
 
 const textColor = () => "NEUTRAL" in visibleColorScale() ? 
 [visibleColorScale()["NEUTRAL"]["00"], visibleColorScale()["NEUTRAL"]["09"]] : ['red', 'red'];

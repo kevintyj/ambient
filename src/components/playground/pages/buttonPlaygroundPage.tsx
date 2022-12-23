@@ -1,5 +1,6 @@
 import { Component } from "solid-js";
 import Collapsible from "../../../assets/components/collapsible.styled";
+import ColorSwatchHelper from "../../colorSwatchHelper";
 import ToggleColorScale, { currScaleText } from "../../shared/toggleColorScale";
 import DefaultButton from "../components/defaultButton";
 import Divider from "../components/divider";
@@ -80,6 +81,7 @@ const ButtonPlaygroundPage: Component = () => {
               <h6 class="text-lg text-slate-800 dark:text-slate-200 pb-2">
                 Default Button
               </h6>
+              {/* <ColorSwatchHelper track="neutral" active={[3, 4, 6, 7]} activeHelper={['Hint Hover', 'Hint', 'Default Hover', 'Default']}/> */}
               <SandboxCard>
                 <div class="flex w-full justify-center">
                   <DefaultButton type="default">
