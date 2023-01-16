@@ -1,6 +1,5 @@
 import { Component } from "solid-js";
 import Collapsible from "../../../assets/components/collapsible.styled";
-import ColorSwatchHelper from "../../colorSwatchHelper";
 import ToggleColorScale, { currScaleText } from "../../shared/toggleColorScale";
 import DefaultButton from "../components/defaultButton";
 import Divider from "../components/divider";

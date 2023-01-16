@@ -5,10 +5,45 @@ import DataPlot from "../components/dataPlot";
 import Button from "../assets/components/button.styled";
 import { colorsToArr } from "../functions/colorConfig";
 import ToggleColorScale, { currScaleText, visibleColorScale } from "../components/shared/toggleColorScale";
+import {darkMode} from "../components/shared/darkModeToggle";
 
 const ColorTablePage: Component = () => {
 
   const visibleColorScaleArr = createMemo(() => colorsToArr(visibleColorScale()))
+
+  const handleColorExport = (mode: 'obj' | 'arr') => {
+    const darkText = darkMode() ? 'dark' : 'light';
+    const fileName = `${currScaleText()}-${darkText}.json`;
+    const obj = mode == 'obj' ? ColorExportAsObj() : ColorExportAsArr()
+    const file = new Blob([JSON.stringify(obj, undefined, 2)], {
+      type: 'application/json'
+    });
+    const link = document.createElement('a');
+    link.download = fileName;
+    link.href = URL.createObjectURL(file);
+    link.click();
+    link.remove();
+  }
+
+  const ColorExportAsArr = () => {
+    const out: Record<string, Array<string>> = {}
+    Object.keys(visibleColorScale()).forEach((key, i) => {
+      out[key.toLowerCase()] = visibleColorScaleArr()[i]
+    })
+    return out;
+  }
+
+  const ColorExportAsObj = () => {
+    const out: Record<string, Record<string, string>> = {}
+    Object.keys(visibleColorScale()).forEach((key, i) => {
+      const colorOut: Record<string, string> = {}
+      Object.keys(visibleColorScale()[key]).forEach((key, k) => {
+        colorOut[k] = visibleColorScaleArr()[i][k]
+      })
+      out[key.toLowerCase()] = colorOut
+    })
+    return out;
+  }
 
   return (
     <>
@@ -27,7 +62,7 @@ const ColorTablePage: Component = () => {
             Color Swatch
           </h1>
           <p class='text-slate-600 dark:text-neutral-500 pb-2'>
-          This tool was designed with the Flex Design Colors in mind. This color set can be modified and also exported. 
+          This tool was designed with the Flex Design Colors in mind. This color set can be modified and also exported.
           </p>
           <div class="flex gap-2 flex-wrap">
             <a href="/coming-soon">
@@ -38,6 +73,16 @@ const ColorTablePage: Component = () => {
             <a href="/#">
               <Button>
                 Import Colorset
+              </Button>
+            </a>
+            <a onClick={() => handleColorExport('obj')}>
+              <Button>
+                Export Colorset
+              </Button>
+            </a>
+            <a onClick={() => handleColorExport('arr')}>
+              <Button>
+                Export Colorset as Array
               </Button>
             </a>
             <ToggleColorScale/>
