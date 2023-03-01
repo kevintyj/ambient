@@ -3,7 +3,7 @@ import { colors, colorsArr } from "../assets/color";
 import ColorIdentifier from "../assets/components/colorIdentifier.styled";
 import { calcMinAPCA } from "../functions/contrastCalc";
 import { focused } from "../functions/keyHandler";
-import Toast, { copy } from "./shared/tost";
+import Toast, { copy } from "./shared/toast";
 
 type IColorSwatchProps<T = {}> = Component<T &{
   swatch?: Record<string, Record<string, string>>;

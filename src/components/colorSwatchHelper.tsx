@@ -2,7 +2,7 @@ import { Component, createEffect, For, onMount, Show } from "solid-js";
 import ColorIdentifier from "../assets/components/colorIdentifier.styled";
 import { baseNeutral, baseSwatch } from "./playground/components/colorSwatch";
 import HelperBadge from "./playground/components/helperBadge";
-import { copy } from "./shared/tost";
+import { copy } from "./shared/toast";
 
 
 type IColorSwatchHelperProps<T = {}> = Component<T &{
@@ -30,6 +30,9 @@ const ColorSwatchHelper: IColorSwatchHelperProps = (props) => {
     <>
       <div class="flex flex-col w-full">
         <div class="flex">
+          <Show when={props.track == 'neutralbg'}>
+
+          </Show>
           <For each={props.track == 'neutral' ? baseNeutral() : baseSwatch()}>{(color, k) =>
             <ColorIdentifier color={color}
                               class={`h-10 flex flex-1 justify-center items-center font-mono font-medium outline-none`}

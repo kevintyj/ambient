@@ -3,7 +3,7 @@ import { colors, colorsArr } from "../assets/color";
 import ColorIdentifier from "../assets/components/colorIdentifier.styled";
 import { colorsToArr } from "../functions/colorConfig";
 import { focused } from "../functions/keyHandler";
-import { copy } from "./shared/tost";
+import { copy } from "./shared/toast";
 
 type IColorSwatchLargeProps<T = {}> = Component<T &{
   swatch?: Record<string, Record<string, string>>;
@@ -12,7 +12,7 @@ type IColorSwatchLargeProps<T = {}> = Component<T &{
 }>
 
 const ColorSwatchLarge: IColorSwatchLargeProps = (props) => {
-  
+
   const watchingSwatch = () => props.swatch ? props.swatch : colors();
   const watchingSwatchArr = () => props.swatchArr ? props.swatchArr : colorsArr();
 
@@ -23,12 +23,12 @@ const ColorSwatchLarge: IColorSwatchLargeProps = (props) => {
           {props.trackIndex == 'color' ? 'Color Name' : 'Color ID'}
         </h4>
         <h2 class="font-display text-xl capitalize font-semibold text-slate-800 dark:text-slate-200">
-          {props.trackIndex == 'color' ? 
-          Object.keys(watchingSwatch())[focused()[1]].toLocaleLowerCase() : 
+          {props.trackIndex == 'color' ?
+          Object.keys(watchingSwatch())[focused()[1]].toLocaleLowerCase() :
           `0${Object.keys(Object.values(watchingSwatch()))[focused()[0]]}`}
         </h2>
         <div class="flex h-9 items-center w-full overflow-hidden">
-          <For each={props.trackIndex == 'color' ? 
+          <For each={props.trackIndex == 'color' ?
           Object.keys(Object.values(watchingSwatch())[0]) :
           Object.keys(watchingSwatch())
         }>{(id, i) =>
@@ -39,8 +39,8 @@ const ColorSwatchLarge: IColorSwatchLargeProps = (props) => {
           }</For>
         </div>
         <div class="flex">
-          <For each={props.trackIndex == 'color' ? 
-          watchingSwatchArr()[focused()[1]] : 
+          <For each={props.trackIndex == 'color' ?
+          watchingSwatchArr()[focused()[1]] :
           watchingSwatchArr().map(val => val[focused()[0]])}>{(color, k) =>
             <ColorIdentifier color={color}
                               tabindex={0}
