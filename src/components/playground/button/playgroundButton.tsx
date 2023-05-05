@@ -27,7 +27,7 @@ const PlaygroundBtn: IButtonProps = (props) => {
     .playground-btn:hover {
       background-color: ${props.hoverColor ? props.hoverColor : ''};
       border-color: ${props.hoverBorderColor ? props.hoverBorderColor : 
-      props.borderColor ? props.borderColor : ''};
+        props.borderColor ? props.borderColor : ''};
       border-top-color: ${props.borderTopHoverColor ? props.borderTopHoverColor : props.hoverBorderColor ? props.hoverBorderColor : '' };
     }
   `;

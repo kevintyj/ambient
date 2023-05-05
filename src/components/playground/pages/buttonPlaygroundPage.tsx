@@ -41,7 +41,7 @@ const ButtonPlaygroundPage: Component = () => {
           <Divider/>
           <div class="flex flex-col gap-8">
             <Collapsible title="Possible color combinations for button">
-              <div class="flex flex-col gap-8 pb-6 pt-2"> 
+              <div class="flex flex-col gap-8 pb-6 pt-2">
                 <h6 class="text-slate-800 dark:text-slate-200 -my-2">
                   Secondary Buttons - Increase text contrast on hover
                 </h6>
@@ -68,7 +68,7 @@ const ButtonPlaygroundPage: Component = () => {
               <h6 class="text-lg text-slate-800 dark:text-slate-200 pb-2">
                 Secondary Buttons
               </h6>
-              <PlaygroundButtons baseColorPos={2} textColorful/>
+              <PlaygroundButtons baseColorPos={2} border="full" textColorful direction={1}/>
             </div>
             <div class="flex flex-col gap-3">
               <h6 class="text-lg text-slate-800 dark:text-slate-200 pb-2">
@@ -115,7 +115,7 @@ const ButtonPlaygroundPage: Component = () => {
             </div>
           </div>
         </div>
-      </div> 
+      </div>
     </div>
   )
 }
