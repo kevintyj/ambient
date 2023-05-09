@@ -14,7 +14,7 @@ const DarkModeToggle: Component = () => {
       setDarkMode(localStorage.getItem('theme') == 'dark' ? true : false);
     }
   })
-  
+
   createEffect(() => {
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
     if (darkMode()) {
@@ -40,11 +40,11 @@ const DarkModeToggle: Component = () => {
   }
 
   return(
-    <button onClick={() => toggleDarkMode()}>
-      <Button>
-        {darkMode() ? <i class="bi bi-lightbulb-fill"></i> : <i class="bi bi-moon-stars-fill"></i>}
+      <Button aria={"Dark-mode Toggle"}>
+        <a onClick={() => toggleDarkMode()}>
+          {darkMode() ? <i class="bi bi-lightbulb-fill"></i> : <i class="bi bi-moon-stars-fill"></i>}
+        </a>
       </Button>
-    </button>
   )
 }
 

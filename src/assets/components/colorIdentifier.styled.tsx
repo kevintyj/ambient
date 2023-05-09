@@ -26,7 +26,7 @@ const ColorIdentifier: IColorIdentifier = (props) => {
       style={`
         background-color: ${props.color ? props.color : 'white'};
         color: ${props.textColor ? props.textColor : 'black'}
-      `} 
+      `}
     >
       {props.children}
     </div>

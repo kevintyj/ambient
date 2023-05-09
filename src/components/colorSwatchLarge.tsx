@@ -19,9 +19,9 @@ const ColorSwatchLarge: IColorSwatchLargeProps = (props) => {
   return (
     <>
       <div class="flex flex-col w-full pb-6">
-        <h4 class="text-slate-600 dark:text-neutral-500">
+        <h2 class="text-slate-600 dark:text-neutral-500">
           {props.trackIndex == 'color' ? 'Color Name' : 'Color ID'}
-        </h4>
+        </h2>
         <h2 class="font-display text-xl capitalize font-semibold text-slate-800 dark:text-slate-200">
           {props.trackIndex == 'color' ?
           Object.keys(watchingSwatch())[focused()[1]].toLocaleLowerCase() :

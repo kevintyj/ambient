@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'am-pink':'#F13D52',
+        'am-pink':'#de273c',
         'helper-primary': '#EA6042',
         'helper-secondary': '#FF9979',
         'helper-transparent': '#EA604229',

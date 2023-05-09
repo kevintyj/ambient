@@ -66,22 +66,22 @@ const ColorTablePage: Component = () => {
           </p>
           <div class="flex gap-2 flex-wrap">
             <a href="/coming-soon">
-              <Button>
+              <Button aria={"Configure Colors"}>
                 Configure Colors
               </Button>
             </a>
             <a href="/#">
-              <Button>
+              <Button aria={"Import Color Set"}>
                 Import Colorset
               </Button>
             </a>
             <a onClick={() => handleColorExport('obj')}>
-              <Button>
+              <Button aria={"Export Current Colors as Object"}>
                 Export Colorset
               </Button>
             </a>
             <a onClick={() => handleColorExport('arr')}>
-              <Button>
+              <Button aria={"Export Current Colors as Array"}>
                 Export Colorset as Array
               </Button>
             </a>
@@ -92,9 +92,9 @@ const ColorTablePage: Component = () => {
       <div class='flex justify-center w-full px-4 sm:px-6'>
         <div class='flex flex-row gap-x-8 flex-wrap 2xl:flex-nowrap w-full max-w-screen-2xl'>
           <div class='flex flex-col basis-full 2xl:basis-1/2 pb-10'>
-            <h4 class="text-slate-600 dark:text-neutral-500">
+            <h2 class="text-slate-600 dark:text-neutral-500">
               Active Color Swatch
-            </h4>
+            </h2>
             <h3 class="font-semibold font-display text-xl text-slate-800 dark:text-slate-200 pb-2">
               {currScaleText()}
             </h3>

@@ -36,7 +36,9 @@ const ColorSwatch: IColorSwatchProps = (props) => {
                              class={`grow text-[10px] sm:text-xs h-10 flex flex-1 justify-center items-center font-mono font-medium outline-none 
                              ${focusedState()[0] == k() && focusedState()[1] == j() ? 'focused' : ''}`}
                              onClick={() => copy(color)}>
-              {calcMinAPCA(Object.values(swatch), color)[0].toFixed()}
+              {Math.abs(calcMinAPCA(Object.values(swatch), color)[0]) > 60 ?
+                calcMinAPCA(Object.values(swatch), color)[0].toFixed() :
+              ""}
             </ColorIdentifier>
           }</For>
         </div>

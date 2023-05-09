@@ -16,7 +16,7 @@ const SandboxCard: ParentComponent = (props) => {
             <div class={`relative rounded border w-full max-w-screen-xl 
             border-neutral-300 bg-white dark:border-neutral-800 dark:bg-[${BaseBackgroundArr[1]}] shadow p-6 sm:p-8`}>
               <div class="absolute right-4 top-3" onClick={() => setOpen(false)}>
-                <Button square>
+                <Button aria={"Toggle Fullscreen View"} square>
                   <i class="bi bi-fullscreen-exit -mx-[3.5px]"></i>
                 </Button>
               </div>
@@ -27,7 +27,7 @@ const SandboxCard: ParentComponent = (props) => {
       </Show>
       <div class={`relative rounded border w-full border-neutral-300 bg-white dark:border-neutral-800 dark:bg-[${BaseBackgroundArr[1]}] shadow p-6 sm:p-8`}>
         <div class="absolute right-4 top-3" onClick={() => setOpen(true)}>
-          <Button square>
+          <Button aria={"Toggle Fullscreen View"} square>
             <i class="bi bi-fullscreen -mx-[3.5px]"></i>
           </Button>
         </div>

@@ -17,12 +17,12 @@ const Collapsible: ICollapsibleProps = (props) => {
     bg-white dark:bg-neutral-800/50 dark:text-slate-100
     border border-neutral-200 dark:border-neutral-800
     border-7-neutral-300 dark:border-t-neutral-700/50
-    shadow-sm dark:shadow-black/50 
+    shadow-sm dark:shadow-black/50
     hover:shadow hover:border-neutral-300 dark:hover:border-neutral-700
     active:border-neutral-300
     dark:active:border-neutral-700
     flex flex-col transition-all">
-      <button class="flex text-default sm:text-lg justify-between py-2.5 px-3 sm:px-5" onClick={handleState}>
+      <button aria-label={props.title} class="flex text-default sm:text-lg justify-between py-2.5 px-3 sm:px-5" onClick={handleState}>
         {props.title}
         <i class={`bi text-lg ${state() ? 'bi-chevron-down' : 'bi-chevron-up'}`}></i>
       </button>

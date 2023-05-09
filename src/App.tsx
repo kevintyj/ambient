@@ -28,7 +28,7 @@ const App: Component = () => {
   return (
    <>
       <KeyHandler/>
-      <Toaster 
+      <Toaster
         position='bottom-right'
         gutter={8}
         containerClassName=""
@@ -40,7 +40,7 @@ const App: Component = () => {
       />
       <div class='flex flex-col z-50 min-h-screen justify-between bg-white dark:bg-[#181819]'>
         <NavBar/>
-        <main class='my-auto lg:px-4'>
+        <main role={"main"} class='my-auto lg:px-4'>
           <div class="h-14">
           </div>
           <Routes>

@@ -29,39 +29,39 @@ const NavBar: Component = () => {
 
   return (
     <>
-      <nav class="h-screen w-screen hidden justify-end fixed
+      <nav role={"navigation"} class="h-screen w-screen hidden justify-end fixed
       backdrop-blur-sm z-[100] bg-neutral-50 dark:bg-[#181819]
       bg-opacity-60 dark:bg-opacity-70 cursor-pointer" classList={{menuBG: mobileMenu()}} onClick={() => setMobileMenu(false)}>
         <div class="absolute h-screen border-l p-4 py-3 sm:px-6 lg:px-10 flex flex-col justify-between
-         backdrop-blur-md bg-neutral-50 dark:bg-[#181819] 
+         backdrop-blur-md bg-neutral-50 dark:bg-[#181819]
          border-l-neutral-200 dark:border-l-neutral-800
-        bg-opacity-80 dark:bg-opacity-90 w-64 max-w-full translate-x-full shadow-xl anim-menu" 
+        bg-opacity-80 dark:bg-opacity-90 w-64 max-w-full translate-x-full shadow-xl anim-menu"
         classList={{menuShown: mobileMenu()}}>
           <div class="flex space-x-2 w-full justify-end">
             <a onClick={() => setMobileMenu(false)}>
-              <Button>
+              <Button aria={"Open Menu"}>
                 <i class="bi bi-list"></i>
               </Button>
             </a>
           </div>
           <div class="flex flex-col space-y-2 w-full pt-[1px] justify-start text-end">
-            <a href="/playground/intro" 
-            class="font-medium text-lg font-display 
-            text-slate-700 dark:text-slate-300 rounded-lg 
+            <a href="/playground/intro"
+            class="font-medium text-lg font-display
+            text-slate-700 dark:text-slate-300 rounded-lg
             hover:text-slate-900 hover:-translate-x-1 transition-all"
             classList={{['font-bold']: pathname().includes('/playground')}}>
               Playground
             </a>
-            <a href="https://github.com/kevintyj/ambient" 
-            class="font-medium text-lg font-display 
-            text-slate-700 dark:text-slate-300 rounded-lg 
+            <a href="https://github.com/kevintyj/ambient"
+            class="font-medium text-lg font-display
+            text-slate-700 dark:text-slate-300 rounded-lg
             hover:text-slate-900 hover:-translate-x-1 transition-all"
             classList={{['font-bold']: pathname() == '/github'}}>
               Github
             </a>
-            <a href="/coming-soon" 
-            class="font-medium text-lg font-display 
-            text-slate-700 dark:text-slate-300 rounded-lg 
+            <a href="/coming-soon"
+            class="font-medium text-lg font-display
+            text-slate-700 dark:text-slate-300 rounded-lg
             hover:text-slate-900 hover:-translate-x-1 transition-all"
             classList={{['font-bold']: pathname() == '/coming-soon'}}>
               Documentation
@@ -69,12 +69,12 @@ const NavBar: Component = () => {
           </div>
           <div class="flex flex-col space-y-2 w-full items-end">
             <a href="https://github.com/kevintyj/ambient">
-              <Button>
+              <Button aria={"Open Github"}>
                 <i class="bi bi-github"></i>
               </Button>
             </a>
             <a href="/coming-soon">
-              <Button>
+              <Button aria={"Open Documentation"}>
                 Documentation
               </Button>
             </a>
@@ -83,7 +83,7 @@ const NavBar: Component = () => {
         </div>
       </nav>
       <nav class="border-b h-14 px-4 sm:px-6 lg:px-10 flex justify-center fixed backdrop-blur-md backdrop-brightness-125
-      bg-neutral-50 dark:bg-[#181819] border-b-neutral-200 dark:border-b-neutral-800 
+      bg-neutral-50 dark:bg-[#181819] border-b-neutral-200 dark:border-b-neutral-800
       bg-opacity-80 dark:bg-opacity-90 w-full z-50">
         <div class="flex items-center w-full max-w-screen-2xl">
           <div class="flex items-center space-x-4 w-full pt-[1px]">
@@ -93,7 +93,7 @@ const NavBar: Component = () => {
             </div>
             <a href="https://kevintyj.com" class="font-medium text-sm font-display text-slate-700 dark:text-slate-300 rounded-lg hover:text-slate-900 underline pr-4 hidden sm:block">by Kevin (Taeyoon) Jin</a>
 
-            <A href="/playground/intro" 
+            <A href="/playground/intro"
             class="font-medium text-sm font-display text-slate-700 dark:text-slate-300 rounded-lg hover:text-slate-900 hidden md:block"
             classList={{['font-bold']: pathname().includes('/playground')}}>
               Playground
@@ -101,18 +101,18 @@ const NavBar: Component = () => {
           </div>
           <div class="flex items-center space-x-2">
             <A href="/docs" class="hidden md:block">
-              <Button>
+              <Button aria={"Open Documentation"}>
                 Documentation
               </Button>
             </A>
             <A href="https://github.com/kevintyj/ambient">
-              <Button>
+              <Button aria={"Open Github"}>
                 <i class="bi bi-github"></i>
               </Button>
             </A>
             <DarkModeToggle/>
             <a onClick={() => setMobileMenu(true)} class="block md:hidden">
-              <Button>
+              <Button aria={"Open Menu"}>
                 <i class="bi bi-list"></i>
               </Button>
             </a>

@@ -28,7 +28,7 @@ const ToggleColorScale: Component = () => {
     };
   }
   return(
-    <Select value="fu" onChange={handleColorScaleChange}>
+    <Select aria-label={"Change Color Pallet"} value="fu" onChange={handleColorScaleChange}>
       <option value={'fc'}>
         Flex Design Colors
       </option>
