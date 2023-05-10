@@ -15,14 +15,14 @@ const Footer: Component = () => {
           <a href="/" class="block dark:hidden w-28 saturate-0 opacity-60"><img src={lightLogoUrl} alt={"Ambient Logo"}/></a>
           <a href="/" class="hidden dark:block w-28 saturate-0 opacity-60"><img src={darkLogoUrl} alt={"Ambient Logo"}/></a>
         </div>
-        <p class='text-slate-600 dark:text-neutral-500 pt-2 text-sm'>
+        <p class='text-slate-600 dark:text-neutral-400 pt-2 text-sm'>
           Built with <a class="font-semibold underline" href="http://solidjs.com/">Solidjs</a>,
           with the help of <a class="font-semibold underline" href="https://vis4.net/chromajs/">Chromajs</a>,
           <a class="font-semibold underline" href="https://felte.dev/">Felte</a>,
           <a class="font-semibold underline" href="https://icons.getbootstrap.com/">Bootstrap Icons</a>,
           and <a class="font-semibold underline" href="https://github.com/Myndex/SAPC-APCA">WCAG APCA</a>
         </p>
-        <p class='text-slate-600 dark:text-neutral-500 text-sm'>
+        <p class='text-slate-600 dark:text-neutral-400 text-sm'>
           Check out the <a class="font-semibold underline" href="https://github.com/kevintyj/ambient"><i class="bi bi-github"></i> Source Code!</a>
         </p>
       </div>

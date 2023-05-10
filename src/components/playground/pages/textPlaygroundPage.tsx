@@ -21,7 +21,7 @@ const TextPlaygroundPage: Component = () => {
     <>
       <div class='flex flex-col justify-center px-4 sm:px-6'>
         <div class='flex flex-col w-full max-w-screen-2xl gap-y-1'>
-          <h6 class="font-semibold text-sm text-am-pink">
+          <h6 class="font-semibold text-sm text-am-pink dark:text-am-pink-light">
             Components
           </h6>
           <h1 class="font-semibold font-display text-3xl text-slate-800 dark:text-slate-200">
@@ -86,7 +86,7 @@ const TextPlaygroundPage: Component = () => {
           )}</For>
         </div>
         <div class='flex flex-col w-full max-w-screen-2xl gap-y-1'>
-          <h6 class="font-semibold text-sm text-am-pink">
+          <h6 class="font-semibold text-sm text-am-pink dark:text-am-pink-light">
             Sample
           </h6>
           <h1 class="font-semibold font-display text-3xl text-slate-800 dark:text-slate-200">

@@ -60,7 +60,7 @@ const Toast: IToastProps = (props) => {
         </p>
       </div>
       {local.showExit &&
-        <a class="cursor-pointer -mt-0.5" onClick={() => toast.dismiss(props.toast.id)}><i class="bi bi-x text-slate-600 dark:text-neutral-500"></i></a>
+        <a class="cursor-pointer -mt-0.5" onClick={() => toast.dismiss(props.toast.id)}><i class="bi bi-x text-slate-600 dark:text-neutral-400"></i></a>
       }
     </div>
   )

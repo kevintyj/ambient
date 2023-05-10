@@ -16,7 +16,7 @@ const MenuItem: IMenuItemProps = (props) => {
   return (
     <A href={props.link}
     class="pl-3 py-1"
-    classList={{'-ml-px text-am-pink font-semibold border-l-2 border-am-pink': props.selected}}>
+    classList={{'-ml-px text-am-pink dark:text-am-pink-light font-semibold border-l-2 border-am-pink dark:border-am-pink-light': props.selected}}>
       {props.children}
     </A>
   )
@@ -36,10 +36,10 @@ const DocumentationMenuList: IMenuListProps = (props) => {
           </h3>}
         >
           <div class="h-7 border-l border-neutral-200 dark:border-neutral-800
-          text-slate-500 dark:text-neutral-600 hover:text-slate-600 hover:dark:text-neutral-500
+          text-slate-500 dark:text-neutral-400 hover:text-slate-600 hover:dark:text-neutral-400
           transition-all">
             <MenuItem selected={link == pathname()} link={link}>
-              {item} 
+              {item}
             </MenuItem>
           </div>
         </Show>

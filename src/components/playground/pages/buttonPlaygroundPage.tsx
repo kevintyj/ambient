@@ -12,13 +12,13 @@ const ButtonPlaygroundPage: Component = () => {
     <div class="flex flex-col">
       <div class='flex justify-center px-4 sm:px-6'>
         <div class='flex flex-col w-full max-w-screen-2xl gap-y-1 pb-6'>
-          <h6 class="font-semibold text-sm text-am-pink">
+          <h6 class="font-semibold text-sm text-am-pink dark:text-am-pink-light">
             Components
           </h6>
           <h1 class="font-semibold font-display text-3xl text-slate-800 dark:text-slate-200">
             Buttons
           </h1>
-          <p class='text-slate-600 dark:text-neutral-500 pb-6'>
+          <p class='text-slate-600 dark:text-neutral-400 pb-6'>
             This area was created for users to see the effect of Color Scales on UIUX components. We have devised components to test your color scales to.
           </p>
           <h1 class="font-semibold font-display text-xl text-slate-800 dark:text-slate-200 pb-2">
@@ -32,7 +32,7 @@ const ButtonPlaygroundPage: Component = () => {
       <div class='flex flex-auto flex-col justify-center w-full px-4 sm:px-6'>
         <div class='flex flex-col gap-x-8 w-full max-w-screen-2xl'>
           <div class='flex flex-col'>
-            <h4 class="text-slate-600 dark:text-neutral-500">
+            <h4 class="text-slate-600 dark:text-neutral-400">
               Active Color Swatch
             </h4>
             <h3 class="font-semibold font-display text-xl text-slate-800 dark:text-slate-200 pb-2">

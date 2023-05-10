@@ -11,6 +11,7 @@ module.exports = {
     extend: {
       colors: {
         'am-pink':'#de273c',
+        'am-pink-light': '#ff4d62',
         'helper-primary': '#EA6042',
         'helper-secondary': '#FF9979',
         'helper-transparent': '#EA604229',

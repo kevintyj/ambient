@@ -20,14 +20,14 @@ const ColorSwatch: IColorSwatchProps = (props) => {
       <div class="flex h-9 items-center w-full">
         <div class="w-24 hidden sm:block" />
         <For each={Object.keys(Object.values(watchingSwatch())[0])}>{(id, i) =>
-          <div class="flex-grow text-sm sm:text-base font-mono text-slate-600 dark:text-neutral-500">
+          <div class="flex-grow text-sm sm:text-base font-mono text-slate-600 dark:text-neutral-400">
             {id}
           </div>
         }</For>
       </div>
       <For each={Object.entries(watchingSwatch())}>{([color, swatch], j) =>
         <div class="flex items-center">
-          <div class="w-24 pr-4 flex-none justify-end text-slate-600 dark:text-neutral-500 capitalize hidden sm:block">
+          <div class="w-24 pr-4 flex-none justify-end text-slate-600 dark:text-neutral-400 capitalize hidden sm:block">
             {color.toLocaleLowerCase()}
           </div>
           <For each={Object.values(swatch)}>{(color, k) =>

@@ -94,7 +94,7 @@ const PlaygroundPage: Component = () => {
           <div class='flex flex-col justify-center px-4 sm:px-6 pt-12'>
             <div class='flex flex-col w-full max-w-screen-2xl gap-y-1'>
               <Divider/>
-              <div class="flex justify-between w-full text-slate-600 dark:text-neutral-500">
+              <div class="flex justify-between w-full text-slate-600 dark:text-neutral-400">
                 <div>
                   <Show when={prevPath() != ""}>
                     <A href={prevPath() ? prevPath() : "#"}>
