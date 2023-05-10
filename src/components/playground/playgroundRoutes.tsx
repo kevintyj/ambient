@@ -2,6 +2,7 @@ import { Route } from "@solidjs/router";
 import { Component, lazy } from "solid-js";
 import TesterPage from "./pages/testerPage";
 import TextPlaygroundPage from "./pages/textPlaygroundPage";
+import LandingSamplePage from "./pages/landingSamplePage";
 const PlaygroundPage = lazy (() => import("../../pages/playgroundPage"));
 const ButtonPlaygroundPage  = lazy(() => import("./pages/buttonPlaygroundPage"));
 const IntroPlaygroundPage  = lazy(() => import("./pages/introPlaygroundPage"));
@@ -16,6 +17,8 @@ const PlaygroundRoutes: Component = () => {
         <Route path="/texts" component={TextPlaygroundPage}/>
 
         <Route path="/documentation" component={DocumentationSamplePage}/>
+        <Route path="/landing" component={LandingSamplePage}/>
+
         <Route path="/test" component={TesterPage}/>
       </Route>
     </>

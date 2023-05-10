@@ -15,7 +15,8 @@ const PlaygroundPage: Component = () => {
     "Buttons" : "/playground/buttons",
     "Texts" : "/playground/texts",
     "Pages": "",
-    "Documentation": "/playground/documentation"
+    "Documentation": "/playground/documentation",
+    "Landing": "/playground/landing"
   })
 
   const pathname = () => useLocation().pathname;

@@ -1,4 +1,4 @@
-import { Component, For } from "solid-js";
+import {Component, For, Show} from "solid-js";
 import { colors, colorsArr } from "../assets/color";
 import ColorIdentifier from "../assets/components/colorIdentifier.styled";
 import { colorsToArr } from "../functions/colorConfig";
@@ -9,6 +9,7 @@ type IColorSwatchLargeProps<T = {}> = Component<T &{
   swatch?: Record<string, Record<string, string>>;
   swatchArr?: Array<Array<string>>;
   trackIndex?: 'color' | 'id';
+  disableText?: boolean;
 }>
 
 const ColorSwatchLarge: IColorSwatchLargeProps = (props) => {
@@ -19,14 +20,16 @@ const ColorSwatchLarge: IColorSwatchLargeProps = (props) => {
   return (
     <>
       <div class="flex flex-col w-full pb-6">
-        <h2 class="text-slate-600 dark:text-neutral-400">
-          {props.trackIndex == 'color' ? 'Color Name' : 'Color ID'}
-        </h2>
-        <h2 class="font-display text-xl capitalize font-semibold text-slate-800 dark:text-slate-200">
-          {props.trackIndex == 'color' ?
-          Object.keys(watchingSwatch())[focused()[1]].toLocaleLowerCase() :
-          `0${Object.keys(Object.values(watchingSwatch()))[focused()[0]]}`}
-        </h2>
+        <Show when={!props.disableText}>
+          <h2 class="text-slate-600 dark:text-neutral-400">
+            {props.trackIndex == 'color' ? 'Color Name' : 'Color ID'}
+          </h2>
+          <h2 class="font-display text-xl capitalize font-semibold text-slate-800 dark:text-slate-200">
+            {props.trackIndex == 'color' ?
+              Object.keys(watchingSwatch())[focused()[1]].toLocaleLowerCase() :
+              `0${Object.keys(Object.values(watchingSwatch()))[focused()[0]]}`}
+          </h2>
+        </Show>
         <div class="flex h-9 items-center w-full overflow-hidden">
           <For each={props.trackIndex == 'color' ?
           Object.keys(Object.values(watchingSwatch())[0]) :

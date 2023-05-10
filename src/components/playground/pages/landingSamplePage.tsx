@@ -2,10 +2,10 @@ import { Component } from "solid-js";
 import { colorsToArr } from "../../../functions/colorConfig";
 import ColorSwatchLarge from "../../colorSwatchLarge";
 import { visibleColorScale } from "../../shared/toggleColorScale";
-import PlaygroundDocumentation from "../components/playgroundDocumentation";
 import SandboxCard from "../components/sandboxCard";
+import PlaygroundLanding from "../components/playgroundLanding";
 
-const DocumentationSamplePage: Component = () => {
+const LandingSamplePage: Component = () => {
   return(
     <>
       <div class='flex flex-col justify-center px-4 sm:px-6'>
@@ -14,18 +14,18 @@ const DocumentationSamplePage: Component = () => {
             Pages
           </h6>
           <h1 class="font-semibold font-display text-3xl text-slate-800 dark:text-slate-200">
-            Documentation
+            Landing Page
           </h1>
         </div>
 
-        <ColorSwatchLarge swatch={visibleColorScale()} swatchArr={colorsToArr(visibleColorScale())}trackIndex='id' disableText/>
+        <ColorSwatchLarge swatch={visibleColorScale()} swatchArr={colorsToArr(visibleColorScale())} trackIndex='id' disableText/>
 
         <SandboxCard>
-          <PlaygroundDocumentation/>
+          <PlaygroundLanding/>
         </SandboxCard>
       </div>
     </>
   )
 }
 
-export default DocumentationSamplePage
+export default LandingSamplePage

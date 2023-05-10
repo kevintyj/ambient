@@ -6,7 +6,7 @@ export const BaseBackgroundArr: Array<string> = ['#FFFFFF', '#181819'];
 const BaseBackgroundDarkMixed = chroma.mix(BaseBackgroundArr[1], '#000', 0.2, 'rgb')
 
 const ScalePrimObj = {
-  "NEUTRAL": ['#F4F4F2', '#626262', '#181816'],
+  "NEUTRAL": ['#F8F8F6', '#626262', '#181816'],
   "OCEAN": ['#E6F5FA', '#359AFA', '#081F46'],
   // "SKY": ['#E2F1FF', '#1B78E7', '#091847'],
   "BLUE": ['#E9EEFE', '#264FE3', '#061148'],
