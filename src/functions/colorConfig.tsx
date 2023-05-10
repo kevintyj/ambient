@@ -13,7 +13,7 @@ const ScalePrimObj = {
   "INDIGO": ['#EBEDFB', '#4624D3', '#0B003D'],
   "VIOLET": ['#F0E9F8', '#6C1CDB', '#1c063d'],
   "CRIMSON": ["#FAEAF2", "#E03780", "#420518"],
-  "WINE": ['#FDE9ED', '#9d1635', '#32000A'], 
+  "WINE": ['#FDE9ED', '#9d1635', '#32000A'],
   "RED": ['#FEEEEC', '#CA2331', '#380004'],
   "SUN": ['#FEF2EE', '#ea3e33', '#460405'],
   "ORANGE": ['#FDF6ED', '#fb7912', '#52160B'],
@@ -32,11 +32,11 @@ const generateDarkScales = (genScaleObj: Record<string, Array<string>>, darkScal
     const mixedDark = chroma.mix(chroma(genScaleObj[prop][1]), BaseBackgroundDarkMixed, 0.8, 'rgb')
     const mixedLight = chroma.mix(primary, genScaleObj[prop][0], 0.7, 'lch')
     out[prop] = [
-      prop == "NEUTRAL" ? chroma(genScaleObj[prop][2]).brighten(0.3).hex() : 
-        chroma.mix(chroma(genScaleObj[prop][2]).darken(0.3), mixedDark, 0.1, 'lab').saturate(0.7).hex(), 
-      primary.hex(), 
-      prop == "NEUTRAL" ? chroma(mixedLight).brighten(0.75).hex() : 
-        chroma.mix(mixedLight, genScaleObj[prop][0], 0.6, 'lab').hex()
+      prop == "NEUTRAL" ? chroma(genScaleObj[prop][2]).brighten(0.3).hex() :
+        chroma.mix(chroma(genScaleObj[prop][2]).darken(0.44), mixedDark, 0.15, 'lab').saturate(0.7).hex(),
+      chroma.mix(primary.hex(), mixedLight.hex(),0.03).hex(),
+      prop == "NEUTRAL" ? chroma(mixedLight).brighten(0.75).hex() :
+        chroma.mix(mixedLight, genScaleObj[prop][0], 0.86, 'lab').hex()
       ]
   }
   return out
