@@ -8,6 +8,7 @@ import HelperBadge from "../components/helperBadge";
 import LinkAnchor from "../components/link";
 import Paragraph from "../components/paragraph";
 import SandboxCard from "../components/sandboxCard";
+import AccessibilityCheck from "../../shared/accessibilityCheck";
 
 const TextPlaygroundPage: Component = () => {
 
@@ -32,6 +33,8 @@ const TextPlaygroundPage: Component = () => {
           <h6 class="text-lg text-slate-800 dark:text-slate-200 pt-2">
             Headings
           </h6>
+          <AccessibilityCheck APCA/>
+
           <ColorSwatchHelper track="neutral" active={[9]} activeHelper={['Default']}/>
           <For each={headingSizes}>{size => (
             <Heading size={size}>
@@ -41,9 +44,12 @@ const TextPlaygroundPage: Component = () => {
               </HelperBadge>
             </Heading>
           )}</For>
+
           <h6 class="text-lg text-slate-800 dark:text-slate-200 pt-3 pb-1">
             Paragraphs (body)
           </h6>
+          <AccessibilityCheck APCA/>
+
           <ColorSwatchHelper track="neutral" active={[4, 7, 8]} activeHelper={['Hint', 'Default', 'Bold']}/>
           <For each={textTypes}>{type => (
             <For each={textSizes}>{size => (
@@ -55,9 +61,12 @@ const TextPlaygroundPage: Component = () => {
               </Paragraph>
             )}</For>
           )}</For>
+
           <h6 class="text-lg text-slate-800 dark:text-slate-200 pt-3 pb-1">
             Links
           </h6>
+          <AccessibilityCheck APCA WCAG={false}/>
+
           <ColorSwatchHelper track="color" active={[3, 4, 6, 7]} activeHelper={['Hint Hover', 'Hint', 'Default Hover', 'Default']}/>
           <For each={textSizes}>{size => (
             <LinkAnchor size={size}>
@@ -99,24 +108,24 @@ const TextPlaygroundPage: Component = () => {
             <div class="flex flex-col gap-4">
               <Paragraph>
                 <Paragraph class="bold">
-                  Technology can be complicated sometimes. It has its own ecosystem, its own language, and it’s just difficult to understand how it works. 
-                </Paragraph> 
-                Some of us humans may not get it easily. This is why our core value is to build an intimate and intricate connection between technology and humans. 
-                After all tech is built to help humans. 
+                  Technology can be complicated sometimes. It has its own ecosystem, its own language, and it’s just difficult to understand how it works.
+                </Paragraph>
+                Some of us humans may not get it easily. This is why our core value is to build an intimate and intricate connection between technology and humans.
+                After all tech is built to help humans.
               </Paragraph>
               <Paragraph>
-                Our technology is for everyone. Our tech is humanly familiar. This is perhaps what we thrive the most, which makes us different from the other traditional agencies. 
-                We care deeply about helping you tackle your most significant challenges and turn your vision into reality, keeping the end-user in mind at all times. With us, it’s never just about the project in hand. 
+                Our technology is for everyone. Our tech is humanly familiar. This is perhaps what we thrive the most, which makes us different from the other traditional agencies.
+                We care deeply about helping you tackle your most significant challenges and turn your vision into reality, keeping the end-user in mind at all times. With us, it’s never just about the project in hand.
                 <Paragraph class="bold">
-                  It’s about building trust and enabling your long-term success. 
+                  It’s about building trust and enabling your long-term success.
                 </Paragraph>
-                We will meet you where you are on your journey, integrate our people with yours, and share our skills every step of the way to make the product you envisioned a reality.  
+                We will meet you where you are on your journey, integrate our people with yours, and share our skills every step of the way to make the product you envisioned a reality.
               </Paragraph>
               <LinkAnchor>
                 Check out what makes us different <i class="bi bi-arrow-right"/>
-              </LinkAnchor>   
-            </div> 
-          </SandboxCard> 
+              </LinkAnchor>
+            </div>
+          </SandboxCard>
         </div>
       </div>
     </>
