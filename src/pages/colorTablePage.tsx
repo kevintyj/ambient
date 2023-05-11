@@ -53,7 +53,7 @@ const ColorTablePage: Component = () => {
             Ambient Color Generation Tool
           </h1>
           <p class='text-slate-600 dark:text-neutral-400 pb-6'>
-          This tool is designed to generate contrast ready color pallets built specifically for UIUX design. Unlike other pallette generation tools, Ambient generates the colors based on the primary color. Hues, saturation, and relative lightness adjustments are made automatically using our algorithm. These values can be adjusted by adjusting the base functions.styled.tsx file located inside the styles folder. As ambient relies on the primary color for alternative color generation, primary colors must be contrast compliant. Ambient displays both WACG and APCA definitions of text contrast, a 4.5:1(WACG) or 60Lc(APCA) is recommended for text contrast. Please remember that for the best results, contrast in colors or differences in color should not represent meaningful information in UIUX design to prevent accessability issues.
+          This tool is designed to generate contrast ready color pallets built specifically for UIUX design. Unlike other palette generation tools, Ambient generates the colors based on the primary color. Hues, saturation, and relative lightness adjustments are made automatically using our algorithm. These values can be adjusted by adjusting the base functions.styled.tsx file located inside the styles folder. As ambient relies on the primary color for alternative color generation, primary colors must be contrast compliant. Ambient displays both WACG and APCA definitions of text contrast, a 4.5:1(WACG) or 60Lc(APCA) is recommended for text contrast. Please remember that for the best results, contrast in colors or differences in color should not represent meaningful information in UIUX design to prevent accessability issues.
           </p>
           <h1 class="font-semibold font-display text-3xl text-slate-800 dark:text-slate-200 pb-4">
             Color Table
@@ -65,7 +65,7 @@ const ColorTablePage: Component = () => {
           This tool was designed with the Flex Design Colors in mind. This color set can be modified and also exported.
           </p>
           <div class="flex gap-2 flex-wrap">
-            <a href="/coming-soon">
+            <a href="/gen">
               <Button aria={"Configure Colors"}>
                 Configure Colors
               </Button>

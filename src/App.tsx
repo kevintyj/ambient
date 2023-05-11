@@ -7,6 +7,7 @@ import Footer from './components/layouts/footer';
 import { Toaster } from 'solid-toast';
 import PlaygroundRoutes from './components/playground/playgroundRoutes';
 import KeyHandler from './functions/keyHandler';
+import ColorGenerationPage from "./pages/colorGenerationPage";
 
 const App: Component = () => {
 
@@ -45,6 +46,7 @@ const App: Component = () => {
           </div>
           <Routes>
               <Route path={"/"} component={ColorTablePage}/>
+              <Route path={"/gen"} component={ColorGenerationPage}/>
               <PlaygroundRoutes/>
               <Route path={"/coming-soon"} component={ComingSoonPage}/>
               <Route path={"/*"} component={ComingSoonPage}/>

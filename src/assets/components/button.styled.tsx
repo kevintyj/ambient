@@ -3,6 +3,7 @@ import {ParentComponent} from "solid-js";
 type IButtonProps = ParentComponent< & {
   square?: boolean;
   aria: string;
+  type?: "button" | "submit" | "reset" | undefined;
 }>;
 
 const Button: IButtonProps = (props) => {
@@ -18,7 +19,7 @@ const Button: IButtonProps = (props) => {
     active:border-neutral-300
     dark:active:border-neutral-700
     active:translate-y-px"
-    classList={{'w-8 h-8 px-0': props.square}}>
+    classList={{'w-8 h-8 px-0': props.square}} type={props.type}>
       {props.children}
     </button>
   )

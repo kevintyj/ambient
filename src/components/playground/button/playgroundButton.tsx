@@ -11,6 +11,7 @@ type IButtonProps = ParentComponent< & {
   borderTopColor?: string;
   borderTopHoverColor?: string;
   selfFlex?: boolean;
+  type?: "submit" | "reset" | "button" | undefined;
 }>;
 
 const PlaygroundBtn: IButtonProps = (props) => {
@@ -39,7 +40,7 @@ const PlaygroundBtn: IButtonProps = (props) => {
       border border-neutral-200 dark:border-neutral-800
       shadow-sm hover:shadow pt-1 py-1.5 px-4
       dark:shadow-black/20
-      active:translate-y-px capitalize ${props.selfFlex ? '' : 'self-start'}`}>
+      active:translate-y-px capitalize ${props.selfFlex ? '' : 'self-start'}`} type={props.type ? props.type : "button"}>
         {props.children}
       </button>
     </>

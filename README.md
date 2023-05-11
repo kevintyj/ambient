@@ -2,7 +2,7 @@
 
 **[Live Demo](https://ambient-rvx.web.app/)**
 
-This tool is designed to generate **contrast ready** color pallets built specifically for UIUX design. Unlike other pallette generation tools, Ambient generates the colors **based on the primary color**. Hues, saturation, and relative lightness adjustments are made automatically using our algorithm. As ambient relies on the primary color for alternative color generation, primary colors **must be contrast compliant**. Ambient displays both WACG and APCA definitions of text contrast, 4.5:1(WACG) or 60Lc(APCA) is recommended for text contrast. 
+This tool is designed to generate **contrast ready** color pallets built specifically for UIUX design. Unlike other palette generation tools, Ambient generates the colors **based on the primary color**. Hues, saturation, and relative lightness adjustments are made automatically using our algorithm. As ambient relies on the primary color for alternative color generation, primary colors **must be contrast compliant**. Ambient displays both WACG and APCA definitions of text contrast, 4.5:1(WACG) or 60Lc(APCA) is recommended for text contrast. 
 
 #### Limitations
 

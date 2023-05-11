@@ -21,6 +21,7 @@
     "vite-plugin-solid-styled": "^0.7.4"
   },
   "dependencies": {
+    "@felte/solid": "^1.2.7",
     "@solidjs/router": "^0.5.1",
     "@types/chroma-js": "^2.1.4",
     "bootstrap-icons": "^1.10.2",

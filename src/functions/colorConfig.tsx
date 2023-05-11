@@ -5,7 +5,7 @@ export const BaseBackgroundArr: Array<string> = ['#FFFFFF', '#181819'];
 
 const BaseBackgroundDarkMixed = chroma.mix(BaseBackgroundArr[1], '#000', 0.2, 'rgb')
 
-const ScalePrimObj = {
+export const ScalePrimObj = {
   "NEUTRAL": ['#F8F8F6', '#626262', '#181816'],
   "OCEAN": ['#E6F5FA', '#359AFA', '#081F46'],
   // "SKY": ['#E2F1FF', '#1B78E7', '#091847'],
@@ -25,7 +25,7 @@ const ScalePrimObj = {
 }
 
 // Generate dark scales using background colors
-const generateDarkScales = (genScaleObj: Record<string, Array<string>>, darkScale: Array<string>) => {
+export const generateDarkScales = (genScaleObj: Record<string, Array<string>>, darkScale: Array<string>) => {
   const out: Record<string, Array<string>> = {}
   for (const prop in genScaleObj) {
     const primary = chroma.mix(genScaleObj[prop][0], genScaleObj[prop][1], (prop == "NEUTRAL" ? 0.8 : 0.95), 'lab')
@@ -58,7 +58,7 @@ const generateScalePrimObject = (genScale: Array<string>) => {
 }
 
 // Generate the entire object map for the color scale
-const genColorScale = (genScaleObj: Record<string, Array<string>>, dark: boolean) => {
+export const genColorScale = (genScaleObj: Record<string, Array<string>>, dark: boolean) => {
   const out: Record<string, Record<string, string>> = {}
   for (const prop in genScaleObj) {
     if (dark) out[prop] = generateScalePrimObject(redefineDarkScale(generateScalePrim(genScaleObj[prop])))
