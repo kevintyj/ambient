@@ -17,6 +17,7 @@ export const ScalePrimObj = {
   "RED": ['#FEEEEC', '#CA2331', '#380004'],
   "SUN": ['#FEF2EE', '#ea3e33', '#460405'],
   "ORANGE": ['#FDF6ED', '#fb7912', '#52160B'],
+  "AMBER": ['#fdfaf2', '#fdad18', '#542210'],
   "YELLOW": ['#FDFCF2', '#f8c51a', '#58280F'],
   "SAPLING": ['#FAFEEC', '#a2c940', '#2b3a06'],
   "GREEN": ['#EEFDF3', '#0da750', '#002f0f'],
