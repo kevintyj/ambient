@@ -25,10 +25,46 @@ const ColorTablePage: Component = () => {
     link.remove();
   }
 
+  const handleJSExport = (mode: 'arrjs' | 'objjs') => {
+    const darkText = darkMode() ? 'dark' : 'light';
+    const fileName = `${currScaleText()}-${darkText}.js`;
+    const str = mode == 'arrjs' ? ColorExportAsArrJS() : ColorExportAsObjJS();
+    const file = new Blob([str], {
+      type: 'application/javascript'
+    });
+    const link = document.createElement('a');
+    link.download = fileName;
+    link.href = URL.createObjectURL(file);
+    link.click();
+    link.remove();
+  }
+
   const ColorExportAsArr = () => {
     const out: Record<string, Array<string>> = {}
     Object.keys(visibleColorScale()).forEach((key, i) => {
       out[key.toLowerCase()] = visibleColorScaleArr()[i]
+    })
+    return out;
+  }
+
+  const ColorExportAsArrJS = () => {
+    let out: string = ''
+    Object.keys(visibleColorScale()).forEach((key, i) => {
+      out += `const ${key.toLowerCase()} = [${visibleColorScaleArr()[i]}];\r\n`
+    })
+    return out;
+  }
+
+  const ColorExportAsObjJS = () => {
+    let out: string = ''
+    const type: string = 'ColorScale<HexColor>'
+    Object.keys(visibleColorScale()).forEach((key, i) => {
+      let newobj: string = `export const ${key.toLowerCase()}: ${type} = {\r\n`
+      Object.keys(visibleColorScale()[key]).forEach((_, k) => {
+        newobj += `   ${k}: '${visibleColorScaleArr()[i][k]}',\r\n`
+      })
+      newobj += '}'
+      out += `${newobj};\r\n\r\n`
     })
     return out;
   }
@@ -83,6 +119,16 @@ const ColorTablePage: Component = () => {
             <a onClick={() => handleColorExport('arr')}>
               <Button aria={"Export Current Colors as Array"}>
                 Export Colorset as Array
+              </Button>
+            </a>
+            <a onClick={() => handleJSExport('arrjs')}>
+              <Button aria={"Export Current Colors as Array"}>
+                Export Colorset as Array (JS)
+              </Button>
+            </a>
+            <a onClick={() => handleJSExport('objjs')}>
+              <Button aria={"Export Current Colors as Array"}>
+                Export Colorset as Object (JS)
               </Button>
             </a>
             <ToggleColorScale/>
