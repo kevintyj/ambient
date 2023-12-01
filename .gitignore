@@ -1,12 +1,9 @@
-# dist
-.solid
-.output
-.vercel
-.netlify
-netlify
+# commited dist files
+!dist
+lib
 
 # dependencies
-/node_modules
+node_modules
 
 # IDEs and editors
 /.idea
@@ -21,3 +18,6 @@ gitignore
 # System Files
 .DS_Store
 Thumbs.db
+
+# Test files
+coverage
