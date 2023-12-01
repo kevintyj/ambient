@@ -1,4 +1,10 @@
-![Ambient - generate contrast safe colors for UIUX](https://github.com/kevintyj/ambient/raw/master/public/ambient.png)
+![Ambient - generate contrast safe colors for UIUX](https://github.com/kevintyj/ambient/raw/main/public/ambient.png)
+
+---
+
+
+[![🧪 CI Tests](https://github.com/kevintyj/ambient/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/kevintyj/ambient/actions/workflows/ci.yml)
+[![License](https://img.shields.io/github/license/kevintyj/ambient)](https://github.com/kevintyj/ambient/blob/main/LICENSE)
 
 **[Live Demo](https://ambient-rvx.web.app/)**
 

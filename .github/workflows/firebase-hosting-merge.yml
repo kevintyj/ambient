@@ -2,17 +2,40 @@
 # https://github.com/firebase/firebase-tools
 
 name: Deploy to Firebase Hosting on merge
-'on':
+on:
   push:
     branches:
-      - master
+      - main
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: npm i && npm run build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - name: 🔖Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: 📦Setup PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: 🌳Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: 🛠️Install dependencies from lockfile
+        run: pnpm install --frozen-lockfile
+
+      - name: 🧾Print versions
+        run: |
+          git --version
+          node --version
+          pnpm --version
+          pnpm commitlint --version
+
+      - name: 🚀 Firebase deployment on merge!
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_AMBIENT_RVX }}'
