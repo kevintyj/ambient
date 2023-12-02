@@ -2,17 +2,17 @@ import type { Component } from 'solid-js';
 import { For, Show } from 'solid-js';
 import { colors, colorsArr } from '../assets/color';
 import ColorIdentifier from '../assets/components/colorIdentifier.styled';
-import { focused } from '../functions/keyHandler';
+import { focused, setFocused } from '../functions/keyHandler';
 import { copy } from './shared/toast';
 
-type IColorSwatchLargeProps<T = object> = Component<T & {
+type ColorSwatchLargeProps<T = object> = Component<T & {
 	swatch?: Record<string, Record<string, string>>
 	swatchArr?: Array<Array<string>>
 	trackIndex?: 'color' | 'id'
 	disableText?: boolean
 }>;
 
-const ColorSwatchLarge: IColorSwatchLargeProps = (props) => {
+const ColorSwatchLarge: ColorSwatchLargeProps = (props) => {
 	const watchingSwatch = () => props.swatch ? props.swatch : colors();
 	const watchingSwatchArr = () => props.swatchArr ? props.swatchArr : colorsArr();
 
@@ -25,7 +25,8 @@ const ColorSwatchLarge: IColorSwatchLargeProps = (props) => {
 					</h2>
 					<h2 class="font-display text-xl capitalize font-semibold text-slate-800 dark:text-slate-200">
 						{props.trackIndex === 'color'
-							? Object.keys(watchingSwatch())[focused()[1]].toLocaleLowerCase()
+							? Object.keys(watchingSwatch())[focused()[1]]?.toLocaleLowerCase()
+							?? setFocused([focused()[0], watchingSwatchArr().length - 1])
 							: `0${Object.keys(Object.values(watchingSwatch()))[focused()[0]]}`}
 					</h2>
 				</Show>
@@ -52,12 +53,9 @@ const ColorSwatchLarge: IColorSwatchLargeProps = (props) => {
 							<ColorIdentifier
 								color={color}
 								tabindex={0}
-								class={`h-12 flex flex-1 justify-center items-center font-mono font-medium outline-none
-                              ${(focused()[0] === k() && props.trackIndex === 'color')
-                              || (focused()[1] === k() && props.trackIndex === 'id')
-                              ? 'focused'
-: ''}`}
 								onClick={() => copy(color)}
+								class={`h-12 flex flex-1 justify-center items-center font-mono font-medium outline-none
+								${(focused()[0] === k() && props.trackIndex === 'color') || (focused()[1] === k() && props.trackIndex === 'id') ? 'focused' : ''}`}
 							/>
 						)}
 					</For>
