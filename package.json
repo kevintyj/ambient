@@ -5,7 +5,7 @@
 	"description": "Color Checker Tool",
 	"author": "Kevin Taeyoon Jin <hello@kevintyj.com>",
 	"license": "BSD-3-Clause",
-	"homepage": "https://github.com/kevintyj/ambient#readme",
+	"homepage": "https://ambient.kevintyj.com",
 	"repository": "github:kevintyj/ambient",
 	"bugs": {
 		"url": "https://github.com/kevintyj/ambient/issues"
