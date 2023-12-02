@@ -1,12 +1,14 @@
-import type { ParentComponent } from 'solid-js';
+import type { JSX, ParentComponent } from 'solid-js';
+import { splitProps } from 'solid-js';
 
-type IButtonProps = ParentComponent< & {
+type ButtonProps = ParentComponent< & {
 	square?: boolean
 	aria: string
 	type?: 'button' | 'submit' | 'reset' | undefined
-}>;
+} & JSX.HTMLAttributes<HTMLButtonElement>>;
 
-const Button: IButtonProps = (props) => {
+const Button: ButtonProps = (props) => {
+	const [_, buttonProps] = splitProps(props, ['square', 'aria', 'type']);
 	return (
 		<button
 			aria-label={props.aria}
@@ -21,6 +23,7 @@ const Button: IButtonProps = (props) => {
     active:translate-y-px"
 			classList={{ 'w-8 h-8 px-0': props.square }}
 			type={props.type}
+			{...buttonProps}
 		>
 			{props.children}
 		</button>

@@ -42,10 +42,8 @@ const DarkModeToggle: Component = () => {
 	};
 
 	return (
-		<Button aria="Dark-mode Toggle">
-			<a onClick={() => toggleDarkMode()}>
-				{darkMode() ? <i class="bi bi-lightbulb-fill"></i> : <i class="bi bi-moon-stars-fill"></i>}
-			</a>
+		<Button aria="Dark-mode Toggle" onClick={() => toggleDarkMode()}>
+			{darkMode() ? <i class="bi bi-lightbulb-fill"></i> : <i class="bi bi-moon-stars-fill"></i>}
 		</Button>
 	);
 };

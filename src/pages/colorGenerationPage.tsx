@@ -78,6 +78,15 @@ const ColorGenerationPage: Component = () => {
 								<input type="file" onChange={handleFileChange} class="hidden" />
 							</label>
 						</Button>
+						<Button
+							aria="Export Current Table as Object"
+							onClick={() => handleColorExport('obj')}
+						>
+							Export Color Table
+						</Button>
+						<Button aria="Export Current Table as Array" onClick={() => handleColorExport('arr')}>
+							Export Color Table as Array
+						</Button>
 						<a onClick={() => handleColorExport('obj')}>
 							<Button aria="Export Current Table as Object">
 								Export Color Table

@@ -1,7 +1,7 @@
 import type { ParentComponent } from 'solid-js';
 import { css } from 'solid-styled';
 
-type IButtonProps = ParentComponent< & {
+type ButtonProps = ParentComponent< & {
 	textColor?: string
 	color?: string
 	hoverColor?: string
@@ -14,7 +14,7 @@ type IButtonProps = ParentComponent< & {
 	type?: 'submit' | 'reset' | 'button' | undefined
 }>;
 
-const PlaygroundBtn: IButtonProps = (props) => {
+const PlaygroundBtn: ButtonProps = (props) => {
 	css`
     .playground-btn {
       color: ${props.textColor ? props.textColor : ''};

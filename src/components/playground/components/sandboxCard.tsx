@@ -13,14 +13,17 @@ const SandboxCard: ParentComponent = (props) => {
 			>
 				<div class="fixed w-screen max-h-screen overflow-x-scroll bg-black bg-opacity-90 dark:bg-opacity-70 top-0 left-0 z-[9998] backdrop-blur">
 					<div class="flex w-full h-full justify-center items-center p-6 sm:p-8 z-[9999]">
-						<div class={`relative rounded border w-full max-w-screen-xl 
+						<div class={`relative rounded border w-full max-w-screen-xl
             border-neutral-300 bg-white dark:border-neutral-800 dark:bg-[${BaseBackgroundArr[1]}] shadow p-6 sm:p-8`}
 						>
-							<div class="absolute right-4 top-3" onClick={() => setOpen(false)}>
-								<Button aria="Toggle Fullscreen View" square>
-									<i class="bi bi-fullscreen-exit -mx-[3.5px]"></i>
-								</Button>
-							</div>
+							<Button
+								aria="Toggle Fullscreen View"
+								square
+								class="absolute right-4 top-3"
+								onClick={() => setOpen(false)}
+							>
+								<i class="bi bi-fullscreen-exit -mx-[3.5px]"></i>
+							</Button>
 							{props.children}
 						</div>
 					</div>

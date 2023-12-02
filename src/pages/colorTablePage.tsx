@@ -111,26 +111,31 @@ const ColorTablePage: Component = () => {
 								Import Colorset
 							</Button>
 						</a>
-						<a onClick={() => handleColorExport('obj')}>
-							<Button aria="Export Current Colors as Object">
-								Export Colorset
-							</Button>
-						</a>
-						<a onClick={() => handleColorExport('arr')}>
-							<Button aria="Export Current Colors as Array">
-								Export Colorset as Array
-							</Button>
-						</a>
-						<a onClick={() => handleJSExport('arrjs')}>
-							<Button aria="Export Current Colors as Array">
-								Export Colorset as Array (JS)
-							</Button>
-						</a>
-						<a onClick={() => handleJSExport('objjs')}>
-							<Button aria="Export Current Colors as Array">
-								Export Colorset as Object (JS)
-							</Button>
-						</a>
+						<Button
+							aria="Export Current Colors as Object"
+							onClick={() => handleColorExport('obj')}
+						>
+							Export Colorset
+						</Button>
+						<Button
+							aria="Export Current Colors as Object"
+							onClick={() => handleColorExport('arr')}
+						>
+							Export Colorset as Array
+						</Button>
+						<Button
+							aria="Export Current Colors as Object"
+							onClick={() => handleJSExport('arrjs')}
+						>
+							Export Colorset as Array (JS)
+						</Button>
+						<Button
+							aria="Export Current Colors as Object"
+							onClick={() => handleJSExport('objjs')}
+						>
+							Export Colorset as Object (JS)
+						</Button>
+
 						<ToggleColorScale />
 					</div>
 				</div>
