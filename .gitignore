@@ -1,8 +1,8 @@
-# commited dist files
-!dist
+# Commited dist files
+dist
 lib
 
-# dependencies
+# Dependencies
 node_modules
 
 # IDEs and editors
@@ -21,3 +21,6 @@ Thumbs.db
 
 # Test files
 coverage
+
+# Firebase
+.firebase
