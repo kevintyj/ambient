@@ -42,9 +42,21 @@ const DarkModeToggle: Component = () => {
 	};
 
 	return (
-		<Button aria="Dark-mode Toggle" onClick={() => toggleDarkMode()}>
-			{darkMode() ? <i class="bi bi-lightbulb-fill"></i> : <i class="bi bi-moon-stars-fill"></i>}
-		</Button>
+		<div class="group relative">
+			<Button aria="Dark-mode Toggle" onClick={() => toggleDarkMode()}>
+				{darkMode() ? <i class="bi bi-lightbulb-fill"></i> : <i class="bi bi-moon-stars-fill"></i>}
+			</Button>
+			<div
+				role="tooltip"
+				class={`
+				rounded-md border border-helper-dark
+				text-helper-primary bg-helper-dark bg-opacity-70
+				px-1.5 py-1.5 text-sm absolute z-40 hidden group-hover:block
+				right-0 top-10 w-16 text-center`}
+			>
+				⌘ + K
+			</div>
+		</div>
 	);
 };
 

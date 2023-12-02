@@ -121,13 +121,11 @@ const NavBar: Component = () => {
 
 						<DarkModeToggle />
 
-						<Button
-							aria="Open Menu"
-							class="block md:hidden"
-							onClick={() => setMobileMenu(true)}
-						>
-							<i class="bi bi-list"></i>
-						</Button>
+						<a class="block md:hidden">
+							<Button aria="Open Menu" onClick={() => setMobileMenu(true)}>
+								<i class="bi bi-list"></i>
+							</Button>
+						</a>
 					</div>
 				</div>
 			</nav>
